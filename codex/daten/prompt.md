@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Basis-Routing mit GoRouter einrichten`
+# Nächster Schritt: Phase 1 – `Environment Configuration System`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -10,6 +10,7 @@
 - Flutter BLoC Basisklassen implementiert ✓
 - HTTP Client mit Dio konfiguriert ✓
 - Secure Storage Service implementiert ✓
+- Basis-Routing mit GoRouter eingerichtet ✓
 
 ## Referenzen
 - `/README.md`
@@ -17,21 +18,21 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Basis-Routing mit GoRouter einrichten`
+## Nächste Aufgabe: `Environment Configuration System`
 
 ### Vorbereitungen
 - Navigiere zu `flutter_app/mrs_unkwn_app/lib/core`.
 
 ### Implementierungsschritte
-- Erstelle `routing/app_router.dart` mit `AppRouter` Klasse und statischer `GoRouter` Instanz.
-- Definiere Route-Konstanten in `routing/route_constants.dart`: `/login`, `/register`, `/home`, `/family-setup`.
-- Implementiere grundlegende Routen mit `GoRoute` Objekten.
-- Füge Navigation-Guards für authentifizierte Routen hinzu.
-- Konfiguriere Redirect-Logik für nicht-authentifizierte Benutzer.
+- Erstelle `config/environment.dart` mit `Environment` Klasse.
+- Implementiere statische Methoden: `String get apiBaseUrl`, `bool get isProduction`, `String get appName`.
+- Definiere Environment-Typen: `dev`, `staging`, `prod`.
+- Lege separate Konfigurationsdateien in `lib/config/`: `dev_config.dart`, `staging_config.dart`, `prod_config.dart` an.
+- Nutze `--dart-define` für Build-Zeit-Konfiguration.
 
 ### Validierung
-- `ls flutter_app/mrs_unkwn_app/lib/core/routing`
-- `grep -n "class AppRouter" flutter_app/mrs_unkwn_app/lib/core/routing/app_router.dart`
+- `ls flutter_app/mrs_unkwn_app/lib/core/config`
+- `grep -n "class Environment" flutter_app/mrs_unkwn_app/lib/core/config/environment.dart`
 
 ### Selbstgenerierung
 - Schreibe nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md`.

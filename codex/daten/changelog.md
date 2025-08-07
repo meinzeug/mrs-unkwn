@@ -41,3 +41,7 @@
 ### Phase 1: Secure Storage Service implementieren - 2025-08-07
 - `SecureStorageService` hinzugefügt mit Methoden für Speichern, Lesen, Löschen und vollständiges Entfernen von Daten
 - Android `encryptedSharedPreferences` aktiviert für erhöhte Sicherheit
+
+### Phase 1: Basis-Routing mit GoRouter einrichten - 2025-08-07
+- `AppRouter` mit statischer `GoRouter` Instanz und Routen erstellt
+- Route-Konstanten definiert und Navigations-Guards sowie Redirect-Logik implementiert

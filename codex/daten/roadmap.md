@@ -43,7 +43,7 @@ Details: Erstelle `lib/core/network/dio_client.dart`. Implementiere `DioClient` 
 [x] Secure Storage Service implementieren:
 Details: Erstelle `lib/core/storage/secure_storage_service.dart`. Implementiere `SecureStorageService` Klasse mit `FlutterSecureStorage` Instanz. Erstelle Methoden: `Future<void> store(String key, String value)`, `Future<String?> read(String key)`, `Future<void> delete(String key)`, `Future<void> deleteAll()`. Konfiguriere Android-spezifische Optionen: `encryptedSharedPreferences: true`. Definiere Konstanten für Storage-Keys: `TOKEN_KEY`, `REFRESH_TOKEN_KEY`, `USER_DATA_KEY`.
 
-[ ] Basis-Routing mit GoRouter einrichten:
+[x] Basis-Routing mit GoRouter einrichten:
 Details: Erstelle `lib/core/routing/app_router.dart`. Implementiere `AppRouter` Klasse mit statischen `GoRouter` Instanz. Definiere Route-Konstanten in `lib/core/routing/route_constants.dart`: `/login`, `/register`, `/home`, `/family-setup`. Implementiere grundlegende Routen mit `GoRoute` Objects. Füge Navigation-Guards für authentifizierte Routen hinzu. Konfiguriere Redirect-Logic für nicht-authentifizierte Benutzer.
 
 [ ] Environment Configuration System:
