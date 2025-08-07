@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `User-Tabelle Migration erstellen`
+# Nächster Schritt: Phase 1 – `Family-Tabellen Migration erstellen`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -18,6 +18,7 @@
 - Express Server Basis-Konfiguration implementiert ✓
 - Environment Variables Setup implementiert ✓
 - Database Connection Setup mit PostgreSQL ✓
+- User-Tabelle Migration erstellt ✓
 
 ## Referenzen
 - `/README.md`
@@ -25,16 +26,17 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `User-Tabelle Migration erstellen`
+## Nächste Aufgabe: `Family-Tabellen Migration erstellen`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `backend/`.
 
 ### Implementierungsschritte
-- `npx knex migrate:make create_users_table` ausführen.
-- In der generierten Migration `users` Tabelle mit Spalten `id`, `name`, `email`, `password`, `created_at`, `updated_at` erstellen.
-- `email` als einzigartigen Index definieren.
-- In `down()` die Tabelle wieder entfernen.
+- `npx knex migrate:make create_families_table` ausführen.
+- In der Migration `families` Tabelle mit Spalten `id`, `name`, `created_by`, `subscription_tier`, `created_at`, `updated_at` erstellen.
+- `family_members` Tabelle mit Spalten `id`, `family_id`, `user_id`, `role`, `permissions`, `joined_at` erstellen.
+- Fremdschlüssel-Constraints und Indexe für Relationen setzen.
+- In `down()` beide Tabellen wieder entfernen.
 
 ### Validierung
 - `npx tsc --noEmit`.

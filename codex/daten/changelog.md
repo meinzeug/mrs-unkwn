@@ -80,3 +80,8 @@
 - Dependencies `pg` und `knex` sowie Dev-Dependency `@types/pg` hinzugefügt
 - `src/database/connection.ts` mit Knex-Konfiguration und `testConnection()` erstellt
 - Verzeichnis `src/database/migrations/` angelegt
+
+### Phase 1: User-Tabelle Migration erstellen - 2025-08-07
+- `knexfile.ts` für Migrationskonfiguration hinzugefügt
+- Migration zur Erstellung der `users` Tabelle mit UUID, Namen, E-Mail, Passwort-Hash und Rollenfeldern erstellt
+- `knex migrate:latest` und `knex migrate:rollback` erfolgreich ausgeführt
