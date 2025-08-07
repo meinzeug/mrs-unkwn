@@ -19,6 +19,14 @@ fi
 PUBSPEC="$TARGET_DIR/pubspec.yaml"
 if [ -f "$PUBSPEC" ]; then
   perl -0pi -e 's/sdk: ">=([0-9]+\.[0-9]+\.[0-9]+)/sdk: ">=3.16.0/' "$PUBSPEC"
+
+  if ! grep -q "dio:" "$PUBSPEC"; then
+    perl -0pi -e 's/dependencies:\n/dependencies:\n  dio: ^5.3.0\n  flutter_bloc: ^8.1.3\n  get_it: ^7.6.0\n  flutter_secure_storage: ^9.0.0\n  go_router: ^12.0.0\n  hive: ^2.2.3\n  json_annotation: ^4.8.1\n/' "$PUBSPEC"
+  fi
+
+  if ! grep -q "mocktail:" "$PUBSPEC"; then
+    perl -0pi -e 's/dev_dependencies:\n/dev_dependencies:\n  build_runner: ^2.4.7\n  json_serializable: ^6.7.1\n  flutter_test:\n    sdk: flutter\n  mocktail: ^1.0.0\n/' "$PUBSPEC"
+  fi
 fi
 
 MAIN_DART="$TARGET_DIR/lib/main.dart"

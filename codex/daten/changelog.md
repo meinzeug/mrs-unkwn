@@ -18,3 +18,6 @@
 
 ### Phase 1: Flutter-Projekt mit Multi-Platform-Support - 2025-08-07
 - Skript `scripts/create_flutter_project.sh` hinzugefügt, das das Projekt automatisch erzeugt und anpasst
+
+### Phase 1: pubspec.yaml mit Dependencies konfiguriert - 2025-08-07
+- `scripts/create_flutter_project.sh` erweitert, um benötigte Dependencies und Dev-Dependencies in `pubspec.yaml` automatisch einzutragen
