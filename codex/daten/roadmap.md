@@ -1,10 +1,19 @@
+# Mrs-Unkwn Entwicklungsroadmap
+
+## Phase 0: Initialisierung
+- [x] README.md analysiert
+- [x] Basisverzeichnisse erstellt
+- [x] __init__.py Dateien angelegt
+- [x] requirements.txt, .gitignore und env.example erstellt
+- [x] Dokumentation und Changelog eingerichtet
+
 # Mrs-Unkwn Entwicklungsroadmap - Phase 1 (Monate 1-3)
 
 ## Phase 1: Foundation & Core Infrastructure
 
 ### Milestone 1: Repository Setup und Basis-Infrastruktur
 
-[ ] Git Repository initialisieren und .gitignore konfigurieren:
+[x] Git Repository initialisieren und .gitignore konfigurieren:
 Details: Erstelle ein neues Git-Repository mit `git init`. Füge eine .gitignore-Datei hinzu die folgende Flutter/Dart-spezifische Ausschlüsse enthält: `build/`, `*.apk`, `*.aab`, `*.ipa`, `*.dSYM/`, `android/.gradle/`, `ios/Pods/`, `ios/.symlinks/`, `pubspec.lock`, `.dart_tool/`, `.packages`, `.metadata`. Erstelle die Ordnerstruktur: `flutter_app/`, `backend/`, `docs/`, `scripts/`, `.github/workflows/`. Initialer Commit mit "Initial project structure".
 
 [ ] Flutter SDK installieren und Entwicklungsumgebung einrichten:

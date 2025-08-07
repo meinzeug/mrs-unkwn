@@ -1,0 +1,27 @@
+# Flutter / Dart
+build/
+*.apk
+*.aab
+*.ipa
+*.dSYM/
+android/.gradle/
+ios/Pods/
+ios/.symlinks/
+pubspec.lock
+.dart_tool/
+.packages
+.metadata
+
+# Node.js
+node_modules/
+dist/
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Misc
+.idea/
+.vscode/
+.DS_Store
