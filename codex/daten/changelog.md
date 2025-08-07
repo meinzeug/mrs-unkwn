@@ -15,3 +15,6 @@
 ### Phase 1: Flutter SDK Installation und Entwicklungsumgebung - 2025-08-07
 - Flutter SDK 3.32.8 installiert und Grundkonfiguration durchgeführt
 - `flutter --version` und `flutter doctor` ausgeführt (fehlende Komponenten: Android SDK, Chrome, clang, GTK)
+
+### Phase 1: Flutter-Projekt mit Multi-Platform-Support - 2025-08-07
+- Skript `scripts/create_flutter_project.sh` hinzugefügt, das das Projekt automatisch erzeugt und anpasst

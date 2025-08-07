@@ -12,6 +12,9 @@ pubspec.lock
 .packages
 .metadata
 
+# Generated Flutter project
+flutter_app/
+
 # Node.js
 node_modules/
 dist/
