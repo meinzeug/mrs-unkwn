@@ -16,7 +16,7 @@
 [x] Git Repository initialisieren und .gitignore konfigurieren:
 Details: Erstelle ein neues Git-Repository mit `git init`. Füge eine .gitignore-Datei hinzu die folgende Flutter/Dart-spezifische Ausschlüsse enthält: `build/`, `*.apk`, `*.aab`, `*.ipa`, `*.dSYM/`, `android/.gradle/`, `ios/Pods/`, `ios/.symlinks/`, `pubspec.lock`, `.dart_tool/`, `.packages`, `.metadata`. Erstelle die Ordnerstruktur: `flutter_app/`, `backend/`, `docs/`, `scripts/`, `.github/workflows/`. Initialer Commit mit "Initial project structure".
 
-[ ] Flutter SDK installieren und Entwicklungsumgebung einrichten:
+[x] Flutter SDK installieren und Entwicklungsumgebung einrichten:
 Details: Lade Flutter SDK von flutter.dev herunter. Extrahiere das SDK nach `C:\flutter` (Windows) oder `~/flutter` (macOS/Linux). Füge Flutter-Pfad zur PATH-Umgebungsvariable hinzu. Führe `flutter doctor` aus und behebe alle gemeldeten Probleme. Installiere Android Studio oder VS Code mit Flutter/Dart-Erweiterungen. Konfiguriere Android SDK mit API Level 21+ und iOS Deployment Target 11.0+.
 
 [ ] Flutter-Projekt mit Multi-Platform-Support erstellen:
