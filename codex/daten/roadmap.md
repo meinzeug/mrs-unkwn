@@ -69,7 +69,7 @@ Details: Erstelle `.env.example` mit required Variables: `DATABASE_URL`, `JWT_SE
 [x] Database Connection Setup mit PostgreSQL:
 Details: Installiere PostgreSQL-Dependencies: `npm install pg knex`. Installiere Types: `npm install --save-dev @types/pg`. Erstelle `src/database/connection.ts` mit Knex-Konfiguration. Definiere Database-Config-Object mit Connection-String aus Environment. Exportiere Knex-Instanz. Erstelle `src/database/migrations/` Ordner für Schema-Migrations. Implementiere Connection-Test-Funktion.
 
-[ ] User-Tabelle Migration erstellen:
+[x] User-Tabelle Migration erstellen:
 Details: Führe `npx knex migrate:make create_users_table` aus. In der generierten Migration-Datei, implementiere `up()` Funktion: erstelle `users` Tabelle mit Spalten `id` (UUID, primary), `email` (string, unique), `password_hash` (string), `first_name` (string), `last_name` (string), `role` (enum: parent/child), `created_at` (timestamp), `updated_at` (timestamp). Implementiere `down()` Funktion zum Löschen der Tabelle.
 
 [ ] Family-Tabellen Migration erstellen:
