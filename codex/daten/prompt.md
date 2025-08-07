@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Node.js Express Server initialisieren`
+# Nächster Schritt: Phase 1 – `Express Server Basis-Konfiguration`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -14,6 +14,7 @@
 - Environment Configuration System implementiert ✓
 - Error Handling und Logging System implementiert ✓
 - JSON Serialization Setup implementiert ✓
+- Node.js Express Server initialisiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -21,22 +22,23 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Node.js Express Server initialisieren`
+## Nächste Aufgabe: `Express Server Basis-Konfiguration`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `backend/`.
 
 ### Implementierungsschritte
-- `npm init -y` ausführen.
-- Dependencies installieren: `express cors helmet morgan dotenv bcrypt jsonwebtoken express-validator`.
-- Dev-Dependencies installieren: `nodemon typescript @types/node @types/express ts-node`.
-- `tsconfig.json` mit Node.js Standardkonfiguration erstellen.
-- Ordner `src/` mit Datei `index.ts` als Entry-Point anlegen.
+- In `src/index.ts` benötigte Module importieren: `express`, `cors`, `helmet`, `morgan`.
+- Express-App Instanz `const app = express()` erstellen.
+- Middleware konfigurieren: `app.use(cors())`, `app.use(helmet())`, `app.use(morgan('combined'))`, `app.use(express.json())`.
+- Port definieren: `const PORT = process.env.PORT || 3000`.
+- Server starten: `app.listen(PORT, callback)`.
+- Health-Check-Endpoint `app.get('/health', handler)` hinzufügen.
 
 ### Validierung
-- `ls backend`
-- `ls backend/src`
 - `npx tsc --noEmit`
+- `npx ts-node src/index.ts` (Server starten)
+- In neuem Terminal: `curl http://localhost:3000/health`
 
 ### Selbstgenerierung
 - Schreibe nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md`.

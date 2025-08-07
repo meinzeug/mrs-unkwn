@@ -58,3 +58,9 @@
 - `BaseModel` mit `fromJson` und `toJson` implementiert
 - `flutter packages pub run build_runner build` ausgeführt
 - `.gitignore` angepasst, um `build.yaml` zu versionieren
+### Phase 1: Node.js Express Server initialisieren - 2025-08-07
+- `backend` Verzeichnis erstellt und Node-Projekt mit `npm init -y` initialisiert
+- Dependencies installiert: express, cors, helmet, morgan, dotenv, bcrypt, jsonwebtoken, express-validator
+- Dev-Dependencies installiert: nodemon, typescript, @types/node, @types/express, ts-node
+- `tsconfig.json` mit Node.js Standardkonfiguration hinzugefügt
+- `src/index.ts` als Entry-Point angelegt
