@@ -37,7 +37,7 @@ Details: Erstelle `lib/core/di/service_locator.dart`. Importiere `get_it` Packag
 [x] Flutter BLoC Setup mit Basis-Strukturen:
 Details: Erstelle `lib/core/bloc/base_bloc.dart` mit abstrakten `BaseBloc<Event, State>` Klasse die `Bloc<Event, State>` erweitert. Implementiere Standard-Error-Handling und Logging. Erstelle `lib/core/bloc/base_event.dart` und `base_state.dart` mit abstrakten Basis-Klassen. Erstelle `lib/core/bloc/bloc_observer.dart` die `BlocObserver` erweitert für globales Bloc-Event-Logging.
 
-[ ] HTTP Client mit Dio konfigurieren:
+[x] HTTP Client mit Dio konfigurieren:
 Details: Erstelle `lib/core/network/dio_client.dart`. Implementiere `DioClient` Klasse mit Singleton-Pattern. Konfiguriere Dio-Instanz mit `BaseOptions`: `baseUrl` aus Environment-Variable, `connectTimeout: 30000`, `receiveTimeout: 30000`. Füge Interceptors hinzu: `LogInterceptor` für Entwicklung, Custom-Interceptor für JWT-Token-Handling. Implementiere `get()`, `post()`, `put()`, `delete()` Methoden mit Error-Handling.
 
 [ ] Secure Storage Service implementieren:

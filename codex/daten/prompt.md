@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `HTTP Client mit Dio konfigurieren`
+# Nächster Schritt: Phase 1 – `Secure Storage Service implementieren`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -8,6 +8,7 @@
 - Core-Ordnerstruktur mit Basis-Klassen erstellt ✓
 - Dependency Injection mit GetIt eingerichtet ✓
 - Flutter BLoC Basisklassen implementiert ✓
+- HTTP Client mit Dio konfiguriert ✓
 
 ## Referenzen
 - `/README.md`
@@ -15,20 +16,24 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `HTTP Client mit Dio konfigurieren`
+## Nächste Aufgabe: `Secure Storage Service implementieren`
 
 ### Vorbereitungen
 - Navigiere zu `flutter_app/mrs_unkwn_app/lib/core`.
 
 ### Implementierungsschritte
-- Erstelle `network/dio_client.dart` mit Singleton `DioClient`.
-- Konfiguriere `Dio` mit `BaseOptions` (`baseUrl`, `connectTimeout`, `receiveTimeout`).
-- Füge Entwicklungs `LogInterceptor` und JWT-Interceptor hinzu.
-- Implementiere Methoden `get()`, `post()`, `put()`, `delete()` mit Fehlerbehandlung.
+- Erstelle `storage/secure_storage_service.dart` mit `SecureStorageService` Singleton.
+- Verwende `FlutterSecureStorage` mit `encryptedSharedPreferences: true` für Android.
+- Implementiere Methoden:
+  - `Future<void> store(String key, String value)`
+  - `Future<String?> read(String key)`
+  - `Future<void> delete(String key)`
+  - `Future<void> deleteAll()`
+- Definiere Konstanten für Storage-Keys `TOKEN_KEY`, `REFRESH_TOKEN_KEY`, `USER_DATA_KEY`.
 
 ### Validierung
-- `ls flutter_app/mrs_unkwn_app/lib/core/network`
-- `grep -n "class DioClient" flutter_app/mrs_unkwn_app/lib/core/network/dio_client.dart`
+- `ls flutter_app/mrs_unkwn_app/lib/core/storage`
+- `grep -n "class SecureStorageService" flutter_app/mrs_unkwn_app/lib/core/storage/secure_storage_service.dart`
 
 ### Selbstgenerierung
 - Schreibe nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md`.
