@@ -46,7 +46,7 @@ Details: Erstelle `lib/core/storage/secure_storage_service.dart`. Implementiere 
 [x] Basis-Routing mit GoRouter einrichten:
 Details: Erstelle `lib/core/routing/app_router.dart`. Implementiere `AppRouter` Klasse mit statischen `GoRouter` Instanz. Definiere Route-Konstanten in `lib/core/routing/route_constants.dart`: `/login`, `/register`, `/home`, `/family-setup`. Implementiere grundlegende Routen mit `GoRoute` Objects. Füge Navigation-Guards für authentifizierte Routen hinzu. Konfiguriere Redirect-Logic für nicht-authentifizierte Benutzer.
 
-[ ] Environment Configuration System:
+[x] Environment Configuration System:
 Details: Erstelle `lib/core/config/environment.dart` mit `Environment` Klasse. Implementiere statische Methoden: `String get apiBaseUrl`, `bool get isProduction`, `String get appName`. Definiere Environment-Types: `dev`, `staging`, `prod`. Erstelle separate Konfigurationsdateien: `lib/config/dev_config.dart`, `staging_config.dart`, `prod_config.dart`. Verwende `--dart-define` für Build-Zeit-Konfiguration.
 
 [ ] Error Handling und Logging System:
