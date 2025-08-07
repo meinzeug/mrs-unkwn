@@ -66,7 +66,7 @@ Details: In `src/index.ts`, importiere required modules: `express`, `cors`, `hel
 [x] Environment Variables Setup:
 Details: Erstelle `.env.example` mit required Variables: `DATABASE_URL`, `JWT_SECRET`, `JWT_REFRESH_SECRET`, `EMAIL_SERVICE_KEY`, `NODE_ENV`. Erstelle `.env` Datei basierend auf Example. In `src/config/config.ts`, implementiere Configuration-Object mit `dotenv` import. Exportiere typed Configuration-Interface mit allen Environment-Variables. Validiere required Variables beim Server-Start.
 
-[ ] Database Connection Setup mit PostgreSQL:
+[x] Database Connection Setup mit PostgreSQL:
 Details: Installiere PostgreSQL-Dependencies: `npm install pg knex`. Installiere Types: `npm install --save-dev @types/pg`. Erstelle `src/database/connection.ts` mit Knex-Konfiguration. Definiere Database-Config-Object mit Connection-String aus Environment. Exportiere Knex-Instanz. Erstelle `src/database/migrations/` Ordner für Schema-Migrations. Implementiere Connection-Test-Funktion.
 
 [ ] User-Tabelle Migration erstellen:
