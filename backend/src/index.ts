@@ -1,3 +1,22 @@
 import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import morgan from 'morgan';
 
-console.log('Server initialized');
+const app = express();
+
+app.use(cors());
+app.use(helmet());
+app.use(morgan('combined'));
+app.use(express.json());
+
+const PORT = process.env.PORT || 3000;
+
+app.get('/health', (_req, res) => {
+  res.json({ status: 'ok' });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});
+
