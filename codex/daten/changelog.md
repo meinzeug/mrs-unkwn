@@ -24,3 +24,6 @@
 
 ### Phase 1: Basis App-Struktur mit Material App konfigurieren - 2025-08-07
 - `lib/app.dart` angelegt und `lib/main.dart` angepasst, um `MaterialApp` mit `MrsUnkwnApp` zu verwenden
+
+### Phase 1: Core-Ordnerstruktur mit Basis-Klassen erstellen - 2025-08-07
+- `AppConstants`, `Failure`-Klassen, `NetworkInfo` Interface und `AppTheme` implementiert

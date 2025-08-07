@@ -28,7 +28,7 @@ Details: Öffne `pubspec.yaml` und füge folgende dependencies hinzu unter `depe
 [x] Basis App-Struktur mit Material App konfigurieren:
 Details: Erstelle neue Datei `lib/app.dart`. Implementiere `MrsUnkwnApp` Klasse die `StatelessWidget` erweitert. Im `build` Methode, gebe `MaterialApp` zurück mit `title: 'Mrs-Unkwn'`, `theme: ThemeData(primarySwatch: Colors.blue)`, `home: Placeholder()`. In `lib/main.dart`, importiere `app.dart` und rufe `runApp(MrsUnkwnApp())` in der main() Funktion auf.
 
-[ ] Core-Ordnerstruktur mit Basis-Klassen erstellen:
+[x] Core-Ordnerstruktur mit Basis-Klassen erstellen:
 Details: Erstelle `lib/core/constants/app_constants.dart` mit Klasse `AppConstants` und statischen Strings für App-Name, Version, API-Base-URL. Erstelle `lib/core/errors/failures.dart` mit abstrakten `Failure` Klasse und konkrete Implementierungen `ServerFailure`, `NetworkFailure`, `AuthFailure`. Erstelle `lib/core/network/network_info.dart` Interface für Netzwerk-Konnektivitätsprüfung. Erstelle `lib/core/theme/app_theme.dart` mit `AppTheme` Klasse für einheitliches Styling.
 
 [ ] Dependency Injection mit GetIt einrichten:
