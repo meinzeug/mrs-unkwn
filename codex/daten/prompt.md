@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Express Server Basis-Konfiguration`
+# Nächster Schritt: Phase 1 – `Environment Variables Setup`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -15,6 +15,7 @@
 - Error Handling und Logging System implementiert ✓
 - JSON Serialization Setup implementiert ✓
 - Node.js Express Server initialisiert ✓
+- Express Server Basis-Konfiguration implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -22,25 +23,24 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Express Server Basis-Konfiguration`
+## Nächste Aufgabe: `Environment Variables Setup`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `backend/`.
 
 ### Implementierungsschritte
-- In `src/index.ts` benötigte Module importieren: `express`, `cors`, `helmet`, `morgan`.
-- Express-App Instanz `const app = express()` erstellen.
-- Middleware konfigurieren: `app.use(cors())`, `app.use(helmet())`, `app.use(morgan('combined'))`, `app.use(express.json())`.
-- Port definieren: `const PORT = process.env.PORT || 3000`.
-- Server starten: `app.listen(PORT, callback)`.
-- Health-Check-Endpoint `app.get('/health', handler)` hinzufügen.
+- `.env.example` mit Variablen `DATABASE_URL`, `JWT_SECRET`, `JWT_REFRESH_SECRET`, `EMAIL_SERVICE_KEY`, `NODE_ENV` anlegen.
+- `.env` aus Vorlage generieren (nicht committen).
+- `src/config/config.ts` erstellen und `dotenv` einbinden.
+- Konfigurationsobjekt mit typisierten Environment-Variablen exportieren.
+- Beim Server-Start auf notwendige Variablen prüfen.
 
 ### Validierung
 - `npx tsc --noEmit`
-- `npx ts-node src/index.ts` (Server starten)
-- In neuem Terminal: `curl http://localhost:3000/health`
+- `npx ts-node src/index.ts` starten und auf erfolgreiche Initialisierung prüfen.
 
 ### Selbstgenerierung
-- Schreibe nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md`.
+- Nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md` schreiben.
 
 *Hinweis: Codex kann keine Binärdateien mergen. Benötigte Dateien müssen durch Skripte generiert werden. Halte den Codeumfang dieses Sprints unter 500 Zeilen.*
+

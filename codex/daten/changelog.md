@@ -64,3 +64,8 @@
 - Dev-Dependencies installiert: nodemon, typescript, @types/node, @types/express, ts-node
 - `tsconfig.json` mit Node.js Standardkonfiguration hinzugefügt
 - `src/index.ts` als Entry-Point angelegt
+
+### Phase 1: Express Server Basis-Konfiguration - 2025-08-07
+- Express-App mit `cors`, `helmet`, `morgan` und JSON-Parsing konfiguriert
+- Health-Check-Endpoint `/health` implementiert
+- Serverstart auf konfigurierbarem Port umgesetzt
