@@ -34,3 +34,6 @@
 
 ### Phase 1: Flutter BLoC Setup mit Basis-Strukturen - 2025-08-07
 - Basis-BLoC Klassen (`BaseEvent`, `BaseState`, `BaseBloc`) und `AppBlocObserver` erstellt
+
+### Phase 1: HTTP Client mit Dio konfigurieren - 2025-08-07
+- `DioClient` als Singleton mit Basisoptionen, JWT- und Log-Interceptor sowie CRUD-Methoden implementiert
