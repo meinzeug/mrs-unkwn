@@ -34,7 +34,7 @@ Details: Erstelle `lib/core/constants/app_constants.dart` mit Klasse `AppConstan
 [x] Dependency Injection mit GetIt einrichten:
 Details: Erstelle `lib/core/di/service_locator.dart`. Importiere `get_it` Package. Erstelle globale Variable `final sl = GetIt.instance;`. Implementiere `configureDependencies()` Funktion die alle Services registriert. Erstelle `_registerCore()`, `_registerFeatures()`, `_registerExternal()` Hilfsfunktionen. Rufe `configureDependencies()` in `main.dart` vor `runApp()` auf.
 
-[ ] Flutter BLoC Setup mit Basis-Strukturen:
+[x] Flutter BLoC Setup mit Basis-Strukturen:
 Details: Erstelle `lib/core/bloc/base_bloc.dart` mit abstrakten `BaseBloc<Event, State>` Klasse die `Bloc<Event, State>` erweitert. Implementiere Standard-Error-Handling und Logging. Erstelle `lib/core/bloc/base_event.dart` und `base_state.dart` mit abstrakten Basis-Klassen. Erstelle `lib/core/bloc/bloc_observer.dart` die `BlocObserver` erweitert für globales Bloc-Event-Logging.
 
 [ ] HTTP Client mit Dio konfigurieren:

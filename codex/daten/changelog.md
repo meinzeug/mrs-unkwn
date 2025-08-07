@@ -31,3 +31,6 @@
 ### Phase 1: Dependency Injection mit GetIt einrichten - 2025-08-07
 - `service_locator.dart` erstellt und `configureDependencies()` eingebunden
 - `main.dart` angepasst, um `configureDependencies()` vor `runApp` aufzurufen
+
+### Phase 1: Flutter BLoC Setup mit Basis-Strukturen - 2025-08-07
+- Basis-BLoC Klassen (`BaseEvent`, `BaseState`, `BaseBloc`) und `AppBlocObserver` erstellt
