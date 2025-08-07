@@ -75,3 +75,8 @@
 - `src/config/config.ts` hinzugefügt und Variablenvalidierung implementiert
 - `.gitignore` erweitert, um `.env`-Dateien auszuschließen
 - `src/index.ts` lädt Konfiguration und protokolliert aktuelles Environment
+
+### Phase 1: Database Connection Setup mit PostgreSQL - 2025-08-07
+- Dependencies `pg` und `knex` sowie Dev-Dependency `@types/pg` hinzugefügt
+- `src/database/connection.ts` mit Knex-Konfiguration und `testConnection()` erstellt
+- Verzeichnis `src/database/migrations/` angelegt
