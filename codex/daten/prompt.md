@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Environment Variables Setup`
+# Nächster Schritt: Phase 1 – `Database Connection Setup mit PostgreSQL`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -16,6 +16,7 @@
 - JSON Serialization Setup implementiert ✓
 - Node.js Express Server initialisiert ✓
 - Express Server Basis-Konfiguration implementiert ✓
+- Environment Variables Setup implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -23,21 +24,21 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Environment Variables Setup`
+## Nächste Aufgabe: `Database Connection Setup mit PostgreSQL`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `backend/`.
 
 ### Implementierungsschritte
-- `.env.example` mit Variablen `DATABASE_URL`, `JWT_SECRET`, `JWT_REFRESH_SECRET`, `EMAIL_SERVICE_KEY`, `NODE_ENV` anlegen.
-- `.env` aus Vorlage generieren (nicht committen).
-- `src/config/config.ts` erstellen und `dotenv` einbinden.
-- Konfigurationsobjekt mit typisierten Environment-Variablen exportieren.
-- Beim Server-Start auf notwendige Variablen prüfen.
+- Dependencies `pg` und `knex` installieren.
+- Dev-Dependency `@types/pg` installieren.
+- `src/database/connection.ts` mit Knex-Konfiguration basierend auf `config.databaseUrl` erstellen.
+- Knex-Instanz exportieren und `testConnection()` Funktion implementieren.
+- Verzeichnis `src/database/migrations/` anlegen.
 
 ### Validierung
 - `npx tsc --noEmit`
-- `npx ts-node src/index.ts` starten und auf erfolgreiche Initialisierung prüfen.
+- `npx ts-node src/database/connection.ts` ausführen und erfolgreiche Verbindung prüfen.
 
 ### Selbstgenerierung
 - Nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md` schreiben.

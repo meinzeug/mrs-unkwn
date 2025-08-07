@@ -69,3 +69,9 @@
 - Express-App mit `cors`, `helmet`, `morgan` und JSON-Parsing konfiguriert
 - Health-Check-Endpoint `/health` implementiert
 - Serverstart auf konfigurierbarem Port umgesetzt
+
+### Phase 1: Environment Variables Setup - 2025-08-07
+- `.env.example` mit notwendigen Variablen erstellt
+- `src/config/config.ts` hinzugefügt und Variablenvalidierung implementiert
+- `.gitignore` erweitert, um `.env`-Dateien auszuschließen
+- `src/index.ts` lädt Konfiguration und protokolliert aktuelles Environment
