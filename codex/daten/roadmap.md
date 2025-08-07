@@ -31,7 +31,7 @@ Details: Erstelle neue Datei `lib/app.dart`. Implementiere `MrsUnkwnApp` Klasse 
 [x] Core-Ordnerstruktur mit Basis-Klassen erstellen:
 Details: Erstelle `lib/core/constants/app_constants.dart` mit Klasse `AppConstants` und statischen Strings für App-Name, Version, API-Base-URL. Erstelle `lib/core/errors/failures.dart` mit abstrakten `Failure` Klasse und konkrete Implementierungen `ServerFailure`, `NetworkFailure`, `AuthFailure`. Erstelle `lib/core/network/network_info.dart` Interface für Netzwerk-Konnektivitätsprüfung. Erstelle `lib/core/theme/app_theme.dart` mit `AppTheme` Klasse für einheitliches Styling.
 
-[ ] Dependency Injection mit GetIt einrichten:
+[x] Dependency Injection mit GetIt einrichten:
 Details: Erstelle `lib/core/di/service_locator.dart`. Importiere `get_it` Package. Erstelle globale Variable `final sl = GetIt.instance;`. Implementiere `configureDependencies()` Funktion die alle Services registriert. Erstelle `_registerCore()`, `_registerFeatures()`, `_registerExternal()` Hilfsfunktionen. Rufe `configureDependencies()` in `main.dart` vor `runApp()` auf.
 
 [ ] Flutter BLoC Setup mit Basis-Strukturen:

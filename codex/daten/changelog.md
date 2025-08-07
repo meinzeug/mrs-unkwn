@@ -27,3 +27,7 @@
 
 ### Phase 1: Core-Ordnerstruktur mit Basis-Klassen erstellen - 2025-08-07
 - `AppConstants`, `Failure`-Klassen, `NetworkInfo` Interface und `AppTheme` implementiert
+
+### Phase 1: Dependency Injection mit GetIt einrichten - 2025-08-07
+- `service_locator.dart` erstellt und `configureDependencies()` eingebunden
+- `main.dart` angepasst, um `configureDependencies()` vor `runApp` aufzurufen
