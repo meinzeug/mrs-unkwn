@@ -22,7 +22,7 @@ Details: Lade Flutter SDK von flutter.dev herunter. Extrahiere das SDK nach `C:\
 [x] Flutter-Projekt mit Multi-Platform-Support erstellen:
 Details: Navigiere in den `flutter_app/`-Ordner. Führe `flutter create --org com.mrsunkwn --platforms android,ios,web,windows,macos,linux mrs_unkwn_app` aus. Öffne `pubspec.yaml` und setze `flutter` Version auf minimum "3.16.0". Entferne Standard-Demo-Code aus `lib/main.dart`. Erstelle Basis-Ordnerstruktur in `lib/`: `core/`, `features/`, `shared/`, `platform_channels/`.
 
-[ ] pubspec.yaml mit erforderlichen Dependencies konfigurieren:
+[x] pubspec.yaml mit erforderlichen Dependencies konfigurieren:
 Details: Öffne `pubspec.yaml` und füge folgende dependencies hinzu unter `dependencies:`: `dio: ^5.3.0` (HTTP client), `flutter_bloc: ^8.1.3` (State Management), `get_it: ^7.6.0` (Dependency Injection), `flutter_secure_storage: ^9.0.0` (Secure Storage), `go_router: ^12.0.0` (Navigation), `hive: ^2.2.3` (Local Database), `json_annotation: ^4.8.1` (JSON Serialization). Unter `dev_dependencies:` füge hinzu: `build_runner: ^2.4.7`, `json_serializable: ^6.7.1`, `flutter_test:`, `mocktail: ^1.0.0`.
 
 [ ] Basis App-Struktur mit Material App konfigurieren:
