@@ -1,10 +1,10 @@
-# Nächster Schritt: Phase 1 – `JSON Serialization Setup`
+# Nächster Schritt: Phase 1 – `Node.js Express Server initialisieren`
 
 ## Status
 - Phase 0 abgeschlossen ✓
 - Flutter SDK installiert (3.32.8)
-- `pubspec.yaml` mit Dependencies konfiguriert
-- Material App Grundstruktur implementiert
+- `pubspec.yaml` mit Dependencies konfiguriert ✓
+- Material App Grundstruktur implementiert ✓
 - Core-Ordnerstruktur mit Basis-Klassen erstellt ✓
 - Dependency Injection mit GetIt eingerichtet ✓
 - Flutter BLoC Basisklassen implementiert ✓
@@ -13,6 +13,7 @@
 - Basis-Routing mit GoRouter eingerichtet ✓
 - Environment Configuration System implementiert ✓
 - Error Handling und Logging System implementiert ✓
+- JSON Serialization Setup implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -20,20 +21,22 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `JSON Serialization Setup`
+## Nächste Aufgabe: `Node.js Express Server initialisieren`
 
 ### Vorbereitungen
-- Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
+- Navigiere zum Projekt-Root `backend/`.
 
 ### Implementierungsschritte
-- Erstelle `build.yaml` für `json_serializable` Konfiguration mit `explicit_to_json: true` und `create_to_json: true`.
-- Erstelle `lib/core/models/base_model.dart` mit `@JsonSerializable()` Annotation.
-- Implementiere `fromJson()` und `toJson()` Methoden.
-- Führe `flutter packages pub run build_runner build` aus, um Dateien zu generieren.
+- `npm init -y` ausführen.
+- Dependencies installieren: `express cors helmet morgan dotenv bcrypt jsonwebtoken express-validator`.
+- Dev-Dependencies installieren: `nodemon typescript @types/node @types/express ts-node`.
+- `tsconfig.json` mit Node.js Standardkonfiguration erstellen.
+- Ordner `src/` mit Datei `index.ts` als Entry-Point anlegen.
 
 ### Validierung
-- `ls flutter_app/mrs_unkwn_app/lib/core/models`
-- `grep -n "class BaseModel" flutter_app/mrs_unkwn_app/lib/core/models/base_model.dart`
+- `ls backend`
+- `ls backend/src`
+- `npx tsc --noEmit`
 
 ### Selbstgenerierung
 - Schreibe nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md`.

@@ -52,3 +52,9 @@
 ### Phase 1: Error Handling und Logging System - 2025-08-07
 - `Logger` Klasse mit verschiedenen Log-Leveln implementiert
 - Globales `ErrorHandler.handleError` für benutzerfreundliche Fehlermeldungen erstellt
+
+### Phase 1: JSON Serialization Setup - 2025-08-07
+- `build.yaml` für `json_serializable` konfiguriert
+- `BaseModel` mit `fromJson` und `toJson` implementiert
+- `flutter packages pub run build_runner build` ausgeführt
+- `.gitignore` angepasst, um `build.yaml` zu versionieren

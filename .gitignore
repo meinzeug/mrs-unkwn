@@ -18,6 +18,7 @@ flutter_app/*
 flutter_app/mrs_unkwn_app/*
 !flutter_app/mrs_unkwn_app/lib/
 !flutter_app/mrs_unkwn_app/lib/**
+!flutter_app/mrs_unkwn_app/build.yaml
 
 # Node.js
 node_modules/
