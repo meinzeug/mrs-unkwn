@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Flutter BLoC Setup mit Basis-Strukturen`
+# Nächster Schritt: Phase 1 – `HTTP Client mit Dio konfigurieren`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -7,6 +7,7 @@
 - Material App Grundstruktur implementiert
 - Core-Ordnerstruktur mit Basis-Klassen erstellt ✓
 - Dependency Injection mit GetIt eingerichtet ✓
+- Flutter BLoC Basisklassen implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -14,19 +15,20 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Flutter BLoC Setup mit Basis-Strukturen`
+## Nächste Aufgabe: `HTTP Client mit Dio konfigurieren`
 
 ### Vorbereitungen
 - Navigiere zu `flutter_app/mrs_unkwn_app/lib/core`.
 
 ### Implementierungsschritte
-- Erstelle `bloc/base_event.dart` und `bloc/base_state.dart` mit abstrakten Klassen.
-- Implementiere `bloc/base_bloc.dart` mit Standard-Error-Handling und Logging.
-- Erstelle `bloc/bloc_observer.dart` zur globalen BLoC-Überwachung.
+- Erstelle `network/dio_client.dart` mit Singleton `DioClient`.
+- Konfiguriere `Dio` mit `BaseOptions` (`baseUrl`, `connectTimeout`, `receiveTimeout`).
+- Füge Entwicklungs `LogInterceptor` und JWT-Interceptor hinzu.
+- Implementiere Methoden `get()`, `post()`, `put()`, `delete()` mit Fehlerbehandlung.
 
 ### Validierung
-- `ls flutter_app/mrs_unkwn_app/lib/core/bloc`
-- `grep -n "class BaseBloc" flutter_app/mrs_unkwn_app/lib/core/bloc/base_bloc.dart`
+- `ls flutter_app/mrs_unkwn_app/lib/core/network`
+- `grep -n "class DioClient" flutter_app/mrs_unkwn_app/lib/core/network/dio_client.dart`
 
 ### Selbstgenerierung
 - Schreibe nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md`.
