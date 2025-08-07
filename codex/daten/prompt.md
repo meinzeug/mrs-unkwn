@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Dependency Injection mit GetIt einrichten`
+# Nächster Schritt: Phase 1 – `Flutter BLoC Setup mit Basis-Strukturen`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -6,6 +6,7 @@
 - `pubspec.yaml` mit Dependencies konfiguriert
 - Material App Grundstruktur implementiert
 - Core-Ordnerstruktur mit Basis-Klassen erstellt ✓
+- Dependency Injection mit GetIt eingerichtet ✓
 
 ## Referenzen
 - `/README.md`
@@ -13,23 +14,21 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Dependency Injection mit GetIt einrichten`
+## Nächste Aufgabe: `Flutter BLoC Setup mit Basis-Strukturen`
 
 ### Vorbereitungen
-- Führe bei Bedarf `scripts/create_flutter_project.sh` aus.
 - Navigiere zu `flutter_app/mrs_unkwn_app/lib/core`.
 
 ### Implementierungsschritte
-- Erstelle `di/service_locator.dart` mit globalem `sl` (`GetIt.instance`).
-- Implementiere `configureDependencies()` zur Registrierung aller Services.
-- Lege Hilfsfunktionen `_registerCore()`, `_registerFeatures()`, `_registerExternal()` an.
-- Rufe `configureDependencies()` in `main.dart` vor `runApp()` auf.
+- Erstelle `bloc/base_event.dart` und `bloc/base_state.dart` mit abstrakten Klassen.
+- Implementiere `bloc/base_bloc.dart` mit Standard-Error-Handling und Logging.
+- Erstelle `bloc/bloc_observer.dart` zur globalen BLoC-Überwachung.
 
 ### Validierung
-- `ls flutter_app/mrs_unkwn_app/lib/core/di` (verifiziere Datei)
-- `grep -n "configureDependencies" flutter_app/mrs_unkwn_app/lib/main.dart`
+- `ls flutter_app/mrs_unkwn_app/lib/core/bloc`
+- `grep -n "class BaseBloc" flutter_app/mrs_unkwn_app/lib/core/bloc/base_bloc.dart`
 
 ### Selbstgenerierung
-- Schreibe nach Abschluss dieses Schrittes automatisch den nächsten Prompt zum Weiterarbeiten in `/codex/daten/prompt.md`.
+- Schreibe nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md`.
 
-*Hinweis: Halte den Codeumfang dieses Sprints unter 500 Zeilen.*
+*Hinweis: Codex kann keine Binärdateien mergen. Benötigte Dateien müssen durch Skripte generiert werden. Halte den Codeumfang dieses Sprints unter 500 Zeilen.*
