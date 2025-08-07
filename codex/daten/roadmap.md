@@ -40,7 +40,7 @@ Details: Erstelle `lib/core/bloc/base_bloc.dart` mit abstrakten `BaseBloc<Event,
 [x] HTTP Client mit Dio konfigurieren:
 Details: Erstelle `lib/core/network/dio_client.dart`. Implementiere `DioClient` Klasse mit Singleton-Pattern. Konfiguriere Dio-Instanz mit `BaseOptions`: `baseUrl` aus Environment-Variable, `connectTimeout: 30000`, `receiveTimeout: 30000`. Füge Interceptors hinzu: `LogInterceptor` für Entwicklung, Custom-Interceptor für JWT-Token-Handling. Implementiere `get()`, `post()`, `put()`, `delete()` Methoden mit Error-Handling.
 
-[ ] Secure Storage Service implementieren:
+[x] Secure Storage Service implementieren:
 Details: Erstelle `lib/core/storage/secure_storage_service.dart`. Implementiere `SecureStorageService` Klasse mit `FlutterSecureStorage` Instanz. Erstelle Methoden: `Future<void> store(String key, String value)`, `Future<String?> read(String key)`, `Future<void> delete(String key)`, `Future<void> deleteAll()`. Konfiguriere Android-spezifische Optionen: `encryptedSharedPreferences: true`. Definiere Konstanten für Storage-Keys: `TOKEN_KEY`, `REFRESH_TOKEN_KEY`, `USER_DATA_KEY`.
 
 [ ] Basis-Routing mit GoRouter einrichten:

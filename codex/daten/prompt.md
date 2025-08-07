@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Secure Storage Service implementieren`
+# Nächster Schritt: Phase 1 – `Basis-Routing mit GoRouter einrichten`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -9,6 +9,7 @@
 - Dependency Injection mit GetIt eingerichtet ✓
 - Flutter BLoC Basisklassen implementiert ✓
 - HTTP Client mit Dio konfiguriert ✓
+- Secure Storage Service implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -16,24 +17,21 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Secure Storage Service implementieren`
+## Nächste Aufgabe: `Basis-Routing mit GoRouter einrichten`
 
 ### Vorbereitungen
 - Navigiere zu `flutter_app/mrs_unkwn_app/lib/core`.
 
 ### Implementierungsschritte
-- Erstelle `storage/secure_storage_service.dart` mit `SecureStorageService` Singleton.
-- Verwende `FlutterSecureStorage` mit `encryptedSharedPreferences: true` für Android.
-- Implementiere Methoden:
-  - `Future<void> store(String key, String value)`
-  - `Future<String?> read(String key)`
-  - `Future<void> delete(String key)`
-  - `Future<void> deleteAll()`
-- Definiere Konstanten für Storage-Keys `TOKEN_KEY`, `REFRESH_TOKEN_KEY`, `USER_DATA_KEY`.
+- Erstelle `routing/app_router.dart` mit `AppRouter` Klasse und statischer `GoRouter` Instanz.
+- Definiere Route-Konstanten in `routing/route_constants.dart`: `/login`, `/register`, `/home`, `/family-setup`.
+- Implementiere grundlegende Routen mit `GoRoute` Objekten.
+- Füge Navigation-Guards für authentifizierte Routen hinzu.
+- Konfiguriere Redirect-Logik für nicht-authentifizierte Benutzer.
 
 ### Validierung
-- `ls flutter_app/mrs_unkwn_app/lib/core/storage`
-- `grep -n "class SecureStorageService" flutter_app/mrs_unkwn_app/lib/core/storage/secure_storage_service.dart`
+- `ls flutter_app/mrs_unkwn_app/lib/core/routing`
+- `grep -n "class AppRouter" flutter_app/mrs_unkwn_app/lib/core/routing/app_router.dart`
 
 ### Selbstgenerierung
 - Schreibe nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md`.

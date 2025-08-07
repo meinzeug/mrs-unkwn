@@ -37,3 +37,7 @@
 
 ### Phase 1: HTTP Client mit Dio konfigurieren - 2025-08-07
 - `DioClient` als Singleton mit Basisoptionen, JWT- und Log-Interceptor sowie CRUD-Methoden implementiert
+
+### Phase 1: Secure Storage Service implementieren - 2025-08-07
+- `SecureStorageService` hinzugefügt mit Methoden für Speichern, Lesen, Löschen und vollständiges Entfernen von Daten
+- Android `encryptedSharedPreferences` aktiviert für erhöhte Sicherheit
