@@ -1,9 +1,9 @@
-# Nächster Schritt: Phase 1 – Flutter-Projekt mit Multi-Platform-Support erstellen
+# Nächster Schritt: Phase 1 – `pubspec.yaml` mit erforderlichen Dependencies konfigurieren
 
 ## Status
 - Phase 0 abgeschlossen ✓
 - Flutter SDK installiert (3.32.8)
-- `flutter doctor` zeigt noch offene Abhängigkeiten (Android SDK, Chrome, clang, GTK)
+- Flutter-Projekt wird bei Bedarf durch `scripts/create_flutter_project.sh` erzeugt
 
 ## Referenzen
 - `/README.md`
@@ -11,18 +11,20 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: Flutter-Projekt mit Multi-Platform-Support erstellen
+## Nächste Aufgabe: `pubspec.yaml` mit erforderlichen Dependencies konfigurieren
+
+### Vorbereitungen
+- Führe bei Bedarf `scripts/create_flutter_project.sh` aus, um die Projektstruktur zu generieren.
+- Navigiere zu `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- Navigiere in den `flutter_app/`-Ordner.
-- Führe `flutter create --org com.mrsunkwn --platforms android,ios,web,windows,macos,linux mrs_unkwn_app` aus.
-- Öffne `pubspec.yaml` und setze `flutter` Version auf minimum "3.16.0".
-- Entferne Standard-Demo-Code aus `lib/main.dart`.
-- Erstelle Basis-Ordnerstruktur in `lib/`: `core/`, `features/`, `shared/`, `platform_channels/`.
+- Öffne `pubspec.yaml`.
+- Füge unter `dependencies:` hinzu: `dio: ^5.3.0`, `flutter_bloc: ^8.1.3`, `get_it: ^7.6.0`, `flutter_secure_storage: ^9.0.0`, `go_router: ^12.0.0`, `hive: ^2.2.3`, `json_annotation: ^4.8.1`.
+- Füge unter `dev_dependencies:` hinzu: `build_runner: ^2.4.7`, `json_serializable: ^6.7.1`, `flutter_test:` und `mocktail: ^1.0.0`.
+- Speichere die Datei.
 
 ### Validierung
-- `flutter --version`
-- Vorhandensein der Projektstruktur `flutter_app/mrs_unkwn_app`
+- `grep dio pubspec.yaml` (innerhalb des Projektordners)
 
 ### Selbstgenerierung
 - Schreibe nach Abschluss dieses Schrittes automatisch den nächsten Prompt zum Weiterarbeiten in `/codex/daten/prompt.md`.
