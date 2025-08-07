@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Environment Configuration System`
+# Nächster Schritt: Phase 1 – `Error Handling und Logging System`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -11,6 +11,7 @@
 - HTTP Client mit Dio konfiguriert ✓
 - Secure Storage Service implementiert ✓
 - Basis-Routing mit GoRouter eingerichtet ✓
+- Environment Configuration System implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -18,21 +19,21 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Environment Configuration System`
+## Nächste Aufgabe: `Error Handling und Logging System`
 
 ### Vorbereitungen
 - Navigiere zu `flutter_app/mrs_unkwn_app/lib/core`.
 
 ### Implementierungsschritte
-- Erstelle `config/environment.dart` mit `Environment` Klasse.
-- Implementiere statische Methoden: `String get apiBaseUrl`, `bool get isProduction`, `String get appName`.
-- Definiere Environment-Typen: `dev`, `staging`, `prod`.
-- Lege separate Konfigurationsdateien in `lib/config/`: `dev_config.dart`, `staging_config.dart`, `prod_config.dart` an.
-- Nutze `--dart-define` für Build-Zeit-Konfiguration.
+- Erstelle `utils/logger.dart` mit `Logger` Klasse basierend auf `dart:developer`.
+- Implementiere Log-Level: `debug()`, `info()`, `warning()`, `error()`.
+- Konfiguriere unterschiedliche Ausgabe für Debug/Release-Builds.
+- Erstelle `errors/error_handler.dart` für globales Exception-Handling.
+- Implementiere `handleError()` Funktion für verschiedene Exception-Typen und User-Messages.
 
 ### Validierung
-- `ls flutter_app/mrs_unkwn_app/lib/core/config`
-- `grep -n "class Environment" flutter_app/mrs_unkwn_app/lib/core/config/environment.dart`
+- `ls flutter_app/mrs_unkwn_app/lib/core/utils`
+- `grep -n "class Logger" flutter_app/mrs_unkwn_app/lib/core/utils/logger.dart`
 
 ### Selbstgenerierung
 - Schreibe nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md`.

@@ -45,3 +45,6 @@
 ### Phase 1: Basis-Routing mit GoRouter einrichten - 2025-08-07
 - `AppRouter` mit statischer `GoRouter` Instanz und Routen erstellt
 - Route-Konstanten definiert und Navigations-Guards sowie Redirect-Logik implementiert
+
+### Phase 1: Environment Configuration System - 2025-08-07
+- `Environment` Klasse und spezifische Konfigurationsdateien für `dev`, `staging` und `prod` hinzugefügt
