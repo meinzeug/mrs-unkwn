@@ -21,3 +21,6 @@
 
 ### Phase 1: pubspec.yaml mit Dependencies konfiguriert - 2025-08-07
 - `scripts/create_flutter_project.sh` erweitert, um benötigte Dependencies und Dev-Dependencies in `pubspec.yaml` automatisch einzutragen
+
+### Phase 1: Basis App-Struktur mit Material App konfigurieren - 2025-08-07
+- `lib/app.dart` angelegt und `lib/main.dart` angepasst, um `MaterialApp` mit `MrsUnkwnApp` zu verwenden

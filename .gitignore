@@ -13,7 +13,11 @@ pubspec.lock
 .metadata
 
 # Generated Flutter project
-flutter_app/
+flutter_app/*
+!flutter_app/mrs_unkwn_app/
+flutter_app/mrs_unkwn_app/*
+!flutter_app/mrs_unkwn_app/lib/
+!flutter_app/mrs_unkwn_app/lib/**
 
 # Node.js
 node_modules/
