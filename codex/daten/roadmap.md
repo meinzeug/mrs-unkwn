@@ -57,7 +57,7 @@ Details: Erstelle `build.yaml` im Projekt-Root für json_serializable Konfigurat
 
 ### Milestone 2: Backend API Foundation
 
-[ ] Node.js Express Server initialisieren:
+[x] Node.js Express Server initialisieren:
 Details: Navigiere in `backend/` Ordner. Führe `npm init -y` aus. Installiere Dependencies: `npm install express cors helmet morgan dotenv bcrypt jsonwebtoken express-validator`. Installiere Development-Dependencies: `npm install --save-dev nodemon typescript @types/node @types/express ts-node`. Erstelle `tsconfig.json` mit Standard-TypeScript-Konfiguration für Node.js. Erstelle `src/` Ordner mit `index.ts` als Entry-Point.
 
 [ ] Express Server Basis-Konfiguration:
