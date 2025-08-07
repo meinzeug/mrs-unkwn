@@ -63,7 +63,7 @@ Details: Navigiere in `backend/` Ordner. Führe `npm init -y` aus. Installiere D
 [x] Express Server Basis-Konfiguration:
 Details: In `src/index.ts`, importiere required modules: `express`, `cors`, `helmet`, `morgan`. Erstelle Express-App-Instanz: `const app = express()`. Konfiguriere Middleware: `app.use(cors())`, `app.use(helmet())`, `app.use(morgan('combined'))`, `app.use(express.json())`. Definiere Port: `const PORT = process.env.PORT || 3000`. Starte Server mit `app.listen(PORT, callback)`. Erstelle Health-Check-Endpoint: `app.get('/health', handler)`.
 
-[ ] Environment Variables Setup:
+[x] Environment Variables Setup:
 Details: Erstelle `.env.example` mit required Variables: `DATABASE_URL`, `JWT_SECRET`, `JWT_REFRESH_SECRET`, `EMAIL_SERVICE_KEY`, `NODE_ENV`. Erstelle `.env` Datei basierend auf Example. In `src/config/config.ts`, implementiere Configuration-Object mit `dotenv` import. Exportiere typed Configuration-Interface mit allen Environment-Variables. Validiere required Variables beim Server-Start.
 
 [ ] Database Connection Setup mit PostgreSQL:
