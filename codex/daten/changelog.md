@@ -114,3 +114,9 @@
 - `auth.middleware.ts` mit Token-Verifizierung, Rollen- und Optional-Auth-Funktionen erstellt
 - Express `Request` Typ um `user` Feld erweitert
 - Roadmap aktualisiert
+
+### Phase 1: Basic API Routes Setup - 2025-08-08
+- `auth.routes.ts` mit Endpunkten für Registrierung, Login, Token-Refresh und Logout erstellt
+- `user.routes.ts` mit Profilabruf, Profilaktualisierung und Account-Löschung implementiert
+- Haupt-Router `routes/index.ts` hinzugefügt und unter `/api` in `src/index.ts` eingebunden
+- Roadmap aktualisiert
