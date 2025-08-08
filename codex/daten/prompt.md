@@ -1,63 +1,8 @@
-# Nächster Schritt: Phase 1 – `Monitoring und Crash Reporting`
+# Nächster Schritt: Phase 2 – TBD
 
 ## Status
 - Phase 0 abgeschlossen ✓
-- Flutter SDK installiert (3.32.8)
-- `pubspec.yaml` mit Dependencies konfiguriert ✓
-- Material App Grundstruktur implementiert ✓
-- Core-Ordnerstruktur mit Basis-Klassen erstellt ✓
-- Dependency Injection mit GetIt eingerichtet ✓
-- Flutter BLoC Basisklassen implementiert ✓
-- HTTP Client mit Dio konfiguriert ✓
-- Secure Storage Service implementiert ✓
-- Basis-Routing mit GoRouter eingerichtet ✓
-- Environment Configuration System implementiert ✓
-- Error Handling und Logging System implementiert ✓
-- JSON Serialization Setup implementiert ✓
-- Node.js Express Server initialisiert ✓
-- Express Server Basis-Konfiguration implementiert ✓
-- Environment Variables Setup implementiert ✓
-- Database Connection Setup mit PostgreSQL ✓
-- User-Tabelle Migration erstellt ✓
-- Family-Tabellen Migration erstellt ✓
-- JWT Authentication Service implementiert ✓
-- Password Hashing Service implementiert ✓
-- User Repository Pattern implementiert ✓
-- Request Validation Middleware implementiert ✓
-- Authentication Middleware implementiert ✓
-- Basic API Routes Setup implementiert ✓
-- Error Handling Middleware implementiert ✓
-- API Response Standardization implementiert ✓
-- Login Screen UI Layout erstellt ✓
-- Login Form Validation implementiert ✓
-- Login BLoC State Management implementiert ✓
-- Login API Integration implementiert ✓
-- Login Loading States UI implementiert ✓
-- Register Screen UI Layout implementiert ✓
-- Registration BLoC Events/States implementiert ✓
-- Registration API Integration implementiert ✓
-- Password Strength Indicator implementiert ✓
-- OpenAI API Integration Setup implementiert ✓
-- Chat Message Model und Serialization implementiert ✓
-- AI Prompt Engineering für Sokratische Methode implementiert ✓
-- Chat UI Interface Implementation implementiert ✓
-- AI Response Generation Service implementiert ✓
-- Subject Classification System implementiert ✓
-- Learning Session Management implementiert ✓
-- AI Tutoring BLoC State Management implementiert ✓
-- Voice Input Integration implementiert ✓
-- Basic Content Moderation implementiert ✓
-- Learning Progress Analytics implementiert ✓
-- Chat History und Persistence implementiert ✓
-- Unit Testing Setup für Flutter implementiert ✓
-- Widget Testing für UI Components implementiert ✓
-- BLoC Testing Implementation implementiert ✓
-- API Integration Testing implementiert ✓
-- E2E Testing mit Integration Tests implementiert ✓
-- Performance Testing und Profiling implementiert ✓
-- Security Testing Implementation implementiert ✓
-- Automated Testing in CI/CD implementiert ✓
-- Manual Testing Procedures implementiert ✓
+- Phase 1 abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
@@ -65,24 +10,18 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Monitoring und Crash Reporting`
-
+## Nächste Aufgabe: Wird in Phase 2 definiert.
 
 ### Vorbereitungen
-- Projekt für Monitoring- und Crash-Reporting vorbereiten.
+- Auf weitere Instruktionen warten.
 
 ### Implementierungsschritte
-- Firebase Crashlytics für Produktionsberichte integrieren.
-- Custom-Error-Tracking für Business-Logik implementieren.
-- Performance-Monitoring mit Firebase Performance oder Sentry aktivieren.
-- Fehlerwarnungen für kritische Produktionsprobleme einrichten.
-- Dashboard zur Fehleranalyse bereitstellen.
-- Mechanismus zur Nutzerfeedback-Sammlung implementieren.
+- TBD
 
 ### Validierung
-- `dart format` auf geänderten Dateien ausführen.
-- `flutter analyze`.
-- `flutter test`.
+- `dart format`
+- `flutter analyze`
+- `flutter test`
 
 ### Selbstgenerierung
 - Nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md` schreiben.
