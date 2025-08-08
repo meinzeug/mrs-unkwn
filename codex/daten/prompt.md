@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Security Testing Implementation`
+# Nächster Schritt: Phase 1 – `Automated Testing in CI/CD`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -55,6 +55,7 @@
 - API Integration Testing implementiert ✓
 - E2E Testing mit Integration Tests implementiert ✓
 - Performance Testing und Profiling implementiert ✓
+- Security Testing Implementation implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -62,18 +63,19 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Security Testing Implementation`
+## Nächste Aufgabe: `Automated Testing in CI/CD`
 
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- API-Security testen: Authentication-Bypass-Versuche, Token-Validierung, Input-Sanitization.
-- Lokale Datenverschlüsselung und Secure-Storage prüfen.
-- Penetration-Tests für Platform-Channels durchführen.
-- Privacy-Controls und Datenzugriffsrechte testen.
-- Security-Vulnerability-Scanning in CI/CD integrieren.
+- GitHub-Actions Workflow für automatisierte Tests einrichten.
+- Test-Matrix für mehrere Flutter-Versionen und Plattformen konfigurieren.
+- Parallele Testausführung für schnellere CI-Läufe implementieren.
+- Testberichte und Coverage nach Codecov hochladen.
+- Benachrichtigungen bei fehlgeschlagenen Tests und Artifacts konfigurieren.
+- Retry-Logik für flackernde Tests implementieren.
 
 ### Validierung
 - `dart format` auf geänderten Dateien ausführen.
