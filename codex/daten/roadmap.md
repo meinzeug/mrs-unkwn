@@ -371,7 +371,7 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 ## Phase 5: Personalisiertes Lernen & Gamification
 
 ### Milestone 1: Gamification Engine
-- [ ] Gamification-Engine zur Motivation der Lernenden implementieren
+- [x] Gamification-Engine zur Motivation der Lernenden implementieren
 - [x] Skript `scripts/generate_badge_assets.sh` erzeugt Badge-Icons automatisch
 
 ### Milestone 2: Adaptive Learning Paths

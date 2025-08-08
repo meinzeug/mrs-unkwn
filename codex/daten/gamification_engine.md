@@ -15,7 +15,7 @@
 
 ### BadgeManager
 - Vergibt Badges bei Erreichen bestimmter Meilensteine.
-- Nutzt von `scripts/generate_badge_assets.sh` erzeugte Icons.
+- Nutzt von [`scripts/generate_badge_assets.sh`](../../scripts/generate_badge_assets.sh) erzeugte Icons.
 
 ## Datenmodell
 - Tabellen/Collections für `points`, `levels`, `badges`, `user_badges`.
