@@ -268,7 +268,7 @@ Details: Implement Chat-History-Storage using Hive-Database für Offline-Access.
 
 ### Milestone 7: Integration und Testing Framework
 
-[ ] Unit Testing Setup für Flutter:
+[x] Unit Testing Setup für Flutter:
 Details: Konfiguriere `test/` Directory-Structure: `unit/`, `widget/`, `integration/`. Setup Test-Dependencies in pubspec.yaml: `flutter_test`, `mocktail`, `bloc_test`. Erstelle `test/helpers/` mit Test-Utilities und Mock-Objects. Implement Base-Test-Classes für Common-Test-Patterns. Create Test-Data-Factories für Model-Generation. Setup Code-Coverage-Reporting mit `lcov`.
 
 [ ] Widget Testing für UI Components:

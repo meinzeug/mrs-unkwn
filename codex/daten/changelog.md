@@ -240,3 +240,10 @@
 - `TutoringBloc` integriert Chat-History, Such-, Export- und Backup-Events
 - `service_locator.dart` registriert ChatHistoryService und SecureStorageService für Schlüsselverwaltung
 - `scripts/create_flutter_project.sh` um `hive_flutter` erweitert
+
+### Phase 1: Unit Testing Setup für Flutter - 2025-08-08
+- Testverzeichnisstruktur `test/unit`, `test/widget`, `test/integration` und `test/helpers` angelegt
+- Basis-Testhelfer mit Mock-Services und Datenfabriken in `test/helpers/test_helpers.dart` erstellt
+- `scripts/create_flutter_project.sh` um automatische Eintragung von `bloc_test` erweitert
+- Skript `run_flutter_tests.sh` für Coverage-Ausführung hinzugefügt
+- `dart format` und `flutter analyze` (Werkzeuge evtl. unvollständig) ausgeführt

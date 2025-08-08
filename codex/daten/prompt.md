@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Unit Testing Setup für Flutter`
+# Nächster Schritt: Phase 1 – `Widget Testing für UI Components`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -49,6 +49,7 @@
 - Basic Content Moderation implementiert ✓
 - Learning Progress Analytics implementiert ✓
 - Chat History und Persistence implementiert ✓
+- Unit Testing Setup für Flutter implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -56,17 +57,18 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Unit Testing Setup für Flutter`
+## Nächste Aufgabe: `Widget Testing für UI Components`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- Testverzeichnisstruktur `test/unit`, `test/widget` und `test/integration` anlegen.
-- Benötigte Test-Dependencies (`flutter_test`, `mocktail`, `bloc_test`) in `pubspec.yaml` durch Skript sicherstellen.
-- `test/helpers/` mit gemeinsamen Utility-Funktionen und Mock-Klassen erstellen.
-- Basisklassen für Tests und Datenfabriken für Modelle anlegen.
-- Code-Coverage-Reporting mit `lcov` vorbereiten.
+- Widget-Tests für Custom-Widgets und Screens erstellen.
+- Login-Screen testen: Form-Validierung, Button-States, Navigation.
+- Chat-UI testen: Nachrichtendarstellung, Eingabe und Scroll-Verhalten.
+- Golden-Tests zur UI-Konsistenz hinzufügen.
+- Responsive-Layouts für unterschiedliche Bildschirmgrößen prüfen.
+- Async-Operationen und BLoC-State-Änderungen in Tests behandeln.
 
 ### Validierung
 - `dart format` auf geänderten Dateien ausführen.

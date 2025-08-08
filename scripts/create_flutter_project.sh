@@ -27,7 +27,9 @@ if [ -f "$PUBSPEC" ]; then
   fi
 
   if ! grep -q "mocktail:" "$PUBSPEC"; then
-    perl -0pi -e 's/dev_dependencies:\n/dev_dependencies:\n  build_runner: ^2.4.7\n  json_serializable: ^6.7.1\n  flutter_test:\n    sdk: flutter\n  mocktail: ^1.0.0\n/' "$PUBSPEC"
+    perl -0pi -e 's/dev_dependencies:\n/dev_dependencies:\n  build_runner: ^2.4.7\n  json_serializable: ^6.7.1\n  flutter_test:\n    sdk: flutter\n  mocktail: ^1.0.0\n  bloc_test: ^9.1.0\n/' "$PUBSPEC"
+  elif ! grep -q "bloc_test:" "$PUBSPEC"; then
+    perl -0pi -e 's/mocktail: \^1.0.0/mocktail: ^1.0.0\n  bloc_test: ^9.1.0/' "$PUBSPEC"
   fi
 fi
 
