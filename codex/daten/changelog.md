@@ -185,3 +185,8 @@
 ### Phase 1: Chat Message Model und Serialization - 2025-08-08
 - `ChatMessage` Modell mit JSON-Serialisierung und Unterstützung für Text, Bild und Datei-Anhänge erstellt
 - Roadmap aktualisiert
+
+### Phase 1: AI Prompt Engineering für Sokratische Methode - 2025-08-08
+- `socratic_prompts.dart` mit fachspezifischen, altersgerechten System-Prompts erstellt
+- Kontext- und Tokenlimit-Management für Gesprächsverläufe implementiert
+- Roadmap aktualisiert
