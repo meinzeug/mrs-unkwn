@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Learning Session Management`
+# Nächster Schritt: Phase 1 – `AI Tutoring BLoC State Management`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -43,6 +43,7 @@
 - Chat UI Interface Implementation implementiert ✓
 - AI Response Generation Service implementiert ✓
 - Subject Classification System implementiert ✓
+- Learning Session Management implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -50,20 +51,20 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Learning Session Management`
+## Nächste Aufgabe: `AI Tutoring BLoC State Management`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- `lib/features/tutoring/data/models/learning_session.dart` erstellen.
-- Session-Start/End-Logik mit Duration-Berechnung implementieren.
-- Metriken wie Fragenanzahl, Themen und AI-Interaktionen verfolgen.
-- Speicherung in lokaler Datenbank vorbereiten.
-- Platzhalter für Backend-Sync und Wiederaufnahme von Sessions einfügen.
+- `lib/features/tutoring/presentation/bloc/tutoring_bloc.dart` erstellen.
+- Events: `SendMessageRequested`, `LoadChatHistoryRequested`, `StartLearningSessionRequested`, `EndLearningSessionRequested`.
+- States: `TutoringInitial`, `TutoringLoading`, `MessagesLoaded`, `MessageSent`, `TutoringError`.
+- Event-Handler implementieren mit AI-API-Integration und lokalem Datenmanagement.
+- Optimistische UI-Updates für bessere User Experience umsetzen.
 
 ### Validierung
-- `dart format lib/features/tutoring/data/models/learning_session.dart`.
+- `dart format lib/features/tutoring/presentation/bloc/tutoring_bloc.dart`.
 - `flutter analyze`.
 
 ### Selbstgenerierung

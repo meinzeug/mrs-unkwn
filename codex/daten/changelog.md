@@ -205,3 +205,9 @@
 - `SubjectClassificationService` mit Schlüsselwort-basierter Klassifikation und Fachwechsel-Erkennung erstellt
 - Historien-Tracking vorbereitet und Platzhalter für ML-basierte Klassifikation hinzugefügt
 - Service im `service_locator` registriert, Roadmap und Prompt aktualisiert
+
+### Phase 1: Learning Session Management - 2025-08-08
+- `LearningSession` Modell mit Start/End-Logik und Dauerberechnung erstellt
+- Metriken für Fragen, Themen und AI-Interaktionen hinzugefügt
+- Platzhalter für lokale Speicherung und Backend-Sync implementiert
+- Roadmap und Prompt aktualisiert
