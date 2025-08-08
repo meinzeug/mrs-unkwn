@@ -1,0 +1,52 @@
+import '../../../../core/network/dio_client.dart';
+import '../../../../core/storage/secure_storage_service.dart';
+import '../../presentation/bloc/auth_bloc.dart';
+
+/// Implementation of [AuthRepository] using [DioClient] for HTTP requests.
+class AuthRepositoryImpl implements AuthRepository {
+  AuthRepositoryImpl({
+    DioClient? dioClient,
+    SecureStorageService? storageService,
+  })  : _dio = dioClient ?? DioClient(),
+        _storage = storageService ?? SecureStorageService();
+
+  final DioClient _dio;
+  final SecureStorageService _storage;
+
+  @override
+  Future<User> login(String email, String password) async {
+    try {
+      final response = await _dio.post<Map<String, dynamic>>(
+        '/api/auth/login',
+        data: {
+          'email': email,
+          'password': password,
+        },
+      );
+
+      final data = response.data?['data'] as Map<String, dynamic>?;
+      if (data == null) {
+        throw Exception('Invalid response format');
+      }
+      final tokens = data['tokens'] as Map<String, dynamic>;
+      final accessToken = tokens['accessToken'] as String;
+      final refreshToken = tokens['refreshToken'] as String;
+
+      await _storage.store(SecureStorageService.tokenKey, accessToken);
+      await _storage.store(
+        SecureStorageService.refreshTokenKey,
+        refreshToken,
+      );
+
+      return const User(id: 'temporary');
+    } catch (e) {
+      throw Exception('Login failed: $e');
+    }
+  }
+
+  @override
+  Future<void> logout() async {
+    await _storage.delete(SecureStorageService.tokenKey);
+    await _storage.delete(SecureStorageService.refreshTokenKey);
+  }
+}

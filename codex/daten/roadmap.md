@@ -110,7 +110,7 @@ Details: In `LoginPage`, erstelle `GlobalKey<FormState> _formKey`. Wrappen Sie F
 [x] Login BLoC State Management:
 Details: Erstelle `lib/features/auth/presentation/bloc/auth_bloc.dart`. Definiere `AuthEvent` Klasse mit `LoginRequested(email, password)`, `LogoutRequested`, `AuthStatusChanged` Events. Definiere `AuthState` mit `AuthInitial`, `AuthLoading`, `AuthSuccess(User)`, `AuthFailure(String message)` States. Implementiere `AuthBloc` die Events handled und entsprechende States emittiert. Verwende Repository-Pattern für API-Calls.
 
-[ ] Login API Integration:
+[x] Login API Integration:
 Details: Erstelle `lib/features/auth/data/repositories/auth_repository_impl.dart`. Implementiere `login(String email, String password)` Methode. Erstelle POST-Request zu `/api/auth/login` mit Email/Password im Body. Handle HTTP-Response: Bei 200 Status, parse JSON und extrahiere Token. Speichere Access-Token und Refresh-Token in Secure-Storage. Bei Error-Response, werfe entsprechende Exception mit Error-Message.
 
 [ ] Login Loading States UI:
