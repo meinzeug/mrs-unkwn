@@ -17,4 +17,8 @@ export const userRegistrationSchema = [
       minSymbols: 1,
     })
     .withMessage('Password must be at least 8 characters long and include uppercase, lowercase, number and symbol'),
+  body('language')
+    .optional()
+    .isIn(['en', 'de'])
+    .withMessage('Language must be en or de'),
 ];

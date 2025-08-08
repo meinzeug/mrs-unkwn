@@ -13,6 +13,7 @@ interface RegisterBody {
   name: string;
   email: string;
   password: string;
+  language?: string;
 }
 
 interface LoginBody {
@@ -24,7 +25,7 @@ router.post(
   '/register',
   validateRequest(userRegistrationSchema),
   async (req: Request<{}, {}, RegisterBody>, res: Response) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, language } = req.body;
     const existing = await userRepository.findByEmail(email);
     if (existing) {
       return res.error('User already exists', 409);
@@ -41,6 +42,7 @@ router.post(
       first_name,
       last_name,
       role: 'parent',
+      language: language ?? 'en',
     });
 
     const tokens = authService.generateTokens(user.id);
