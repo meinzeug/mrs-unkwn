@@ -366,3 +366,14 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 - [x] JavaScript-SDK mit Beispielaufrufen bereitstellen
 - [x] TypeScript-Typdefinitionen veröffentlichen
 
+# Mrs-Unkwn Entwicklungsroadmap - Phase 5 (Monate 25-30)
+
+## Phase 5: Personalisiertes Lernen & Gamification
+
+### Milestone 1: Gamification Engine
+- [ ] Gamification-Engine zur Motivation der Lernenden implementieren
+- [ ] Skript `scripts/generate_badge_assets.sh` erzeugt Badge-Icons automatisch
+
+### Milestone 2: Adaptive Learning Paths
+- [ ] KI-gestützte Lernpfade basierend auf Nutzerleistung entwickeln
+- [ ] Skript `scripts/train_adaptive_model.sh` erstellt und trainiert notwendige Modelle
