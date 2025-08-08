@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `AI Tutoring BLoC State Management`
+# Nächster Schritt: Phase 1 – `Voice Input Integration`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -44,6 +44,7 @@
 - AI Response Generation Service implementiert ✓
 - Subject Classification System implementiert ✓
 - Learning Session Management implementiert ✓
+- AI Tutoring BLoC State Management implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -51,20 +52,21 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `AI Tutoring BLoC State Management`
+## Nächste Aufgabe: `Voice Input Integration`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- `lib/features/tutoring/presentation/bloc/tutoring_bloc.dart` erstellen.
-- Events: `SendMessageRequested`, `LoadChatHistoryRequested`, `StartLearningSessionRequested`, `EndLearningSessionRequested`.
-- States: `TutoringInitial`, `TutoringLoading`, `MessagesLoaded`, `MessageSent`, `TutoringError`.
-- Event-Handler implementieren mit AI-API-Integration und lokalem Datenmanagement.
-- Optimistische UI-Updates für bessere User Experience umsetzen.
+- `speech_to_text` Package in `pubspec.yaml` hinzufügen.
+- Voice-Recording-UI mit Wellenform und Aufnahme-Timer implementieren.
+- Speech-to-Text-Konvertierung mit Fehlerbehandlung für unklare Sprache umsetzen.
+- Sprachenerkennung für Deutsch und Englisch integrieren.
+- Voice-Kommandos (Senden, Chat leeren) einbauen.
+- Mikrofon-Berechtigungen und Datenschutz beachten.
 
 ### Validierung
-- `dart format lib/features/tutoring/presentation/bloc/tutoring_bloc.dart`.
+- `dart format` auf geänderten Dateien ausführen.
 - `flutter analyze`.
 
 ### Selbstgenerierung
