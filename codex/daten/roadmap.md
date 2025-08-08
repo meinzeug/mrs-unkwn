@@ -230,7 +230,7 @@ Details: Optimize Background-Service für Minimal-Battery-Impact using JobSchedu
 
 ### Milestone 6: Basic AI Tutoring Foundation
 
-[ ] OpenAI API Integration Setup:
+[x] OpenAI API Integration Setup:
 Details: Installiere `http` Package für API-Requests. Erstelle `lib/core/services/openai_service.dart`. Implementiere `OpenAIService` Klasse mit API-Key aus Environment-Variables. Create Methods: `sendChatRequest(String message, List<ChatMessage> context)`. Handle API-Rate-Limiting mit Exponential-Backoff-Retry. Implement Request-Timeout-Handling (30 seconds). Store API-Usage-Statistics für Cost-Tracking.
 
 [ ] Chat Message Model und Serialization:

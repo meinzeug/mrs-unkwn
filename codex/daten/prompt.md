@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `OpenAI API Integration Setup`
+# Nächster Schritt: Phase 1 – `Chat Message Model und Serialization`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -37,6 +37,7 @@
 - Registration BLoC Events/States implementiert ✓
 - Registration API Integration implementiert ✓
 - Password Strength Indicator implementiert ✓
+- OpenAI API Integration Setup implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -44,21 +45,20 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `OpenAI API Integration Setup`
+## Nächste Aufgabe: `Chat Message Model und Serialization`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- `http` Package prüfen oder installieren.
-- `lib/core/services/openai_service.dart` erstellen.
-- API-Key über Environment-Variablen laden.
-- Methode `sendChatRequest(String message, List<ChatMessage> context)` implementieren.
-- Rate-Limiting mit Exponential Backoff und Timeout (30s) berücksichtigen.
-- API-Nutzungsstatistiken für Cost-Tracking speichern.
+- `lib/features/tutoring/data/models/chat_message.dart` erstellen.
+- Eigenschaften: `id`, `role` (user/assistant/system), `content`, `timestamp`, `metadata`.
+- `@JsonSerializable()` nutzen und `fromJson()` sowie `toJson()` implementieren.
+- Message-Typen: Text, Image, File-Attachment.
+- Threading für Multi-Turn-Konversationen berücksichtigen.
 
 ### Validierung
-- `dart format lib/core/services/openai_service.dart`.
+- `dart format lib/features/tutoring/data/models/chat_message.dart`.
 - `flutter analyze`.
 
 ### Selbstgenerierung
