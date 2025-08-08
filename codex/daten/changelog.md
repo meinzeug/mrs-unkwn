@@ -293,3 +293,9 @@
 - `MonitoringDashboardPage` mit Feedback-Funktion erstellt
 - Skript `setup_firebase_config.sh` generiert benötigte Firebase-Konfigurationsdateien
 - Roadmap und Prompt aktualisiert
+
+### Phase 2: Advanced Homework Detection Service - 2025-08-09
+- `HomeworkDetectionService` und `/homework/detect` Route hinzugefügt
+- Skript `setup_homework_detection.sh` zum automatischen Download des Modells erstellt
+- Tests erweitert und package.json angepasst
+- Roadmap und Prompt aktualisiert
