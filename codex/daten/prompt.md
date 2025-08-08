@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `User Repository Pattern`
+# Nächster Schritt: Phase 1 – `Request Validation Middleware`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -22,6 +22,7 @@
 - Family-Tabellen Migration erstellt ✓
 - JWT Authentication Service implementiert ✓
 - Password Hashing Service implementiert ✓
+- User Repository Pattern implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -29,15 +30,17 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `User Repository Pattern`
+## Nächste Aufgabe: `Request Validation Middleware`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `backend/`.
 
 ### Implementierungsschritte
-- `src/repositories/user.repository.ts` erstellen.
-- `UserRepository` Klasse mit Methoden `create`, `findByEmail`, `findById`, `update`, `delete` implementieren.
-- Knex Query-Builder verwenden.
+- `src/middleware/validation.middleware.ts` erstellen.
+- `validateRequest` Higher-Order-Function implementieren, die express-validator Rules akzeptiert.
+- Validation-Schemas in `src/validation/schemas/` anlegen: `userRegistration.schema.ts`, `userLogin.schema.ts`.
+- Jedes Schema definiert Validation-Rules für Request-Body-Fields.
+- Error-Response-Format mit Field-specific-Messages bei Validation-Failures implementieren.
 
 ### Validierung
 - `npx tsc --noEmit`.

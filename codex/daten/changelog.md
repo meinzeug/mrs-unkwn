@@ -99,3 +99,8 @@
 ### Phase 1: Password Hashing Service implementieren - 2025-08-08
 - `PasswordService` mit bcrypt Hashing, Passwort-Validierung und Vergleichsfunktion hinzugefügt
 - Roadmap aktualisiert
+
+### Phase 1: User Repository Pattern implementieren - 2025-08-08
+- `UserRepository` in `backend/src/repositories/user.repository.ts` erstellt
+- CRUD-Methoden (`create`, `findByEmail`, `findById`, `update`, `delete`) mit Knex umgesetzt
+- Roadmap aktualisiert
