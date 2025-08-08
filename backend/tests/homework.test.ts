@@ -12,15 +12,13 @@ async function run() {
   const modelDir = path.resolve(__dirname, '../data');
   const modelFile = path.join(modelDir, 'homework_model.bin');
   const versionFile = path.join(modelDir, 'model_version.json');
-  if (!fs.existsSync(modelFile)) {
-    fs.mkdirSync(modelDir, { recursive: true });
-    const model = {
-      weights: { chatgpt: 2.0, ai: 1.5 },
-      bias: -1.0,
-      threshold: 0.5,
-    };
-    fs.writeFileSync(modelFile, JSON.stringify(model));
-  }
+  fs.mkdirSync(modelDir, { recursive: true });
+  const model = {
+    weights: { chatgpt: 2.0, ai: 1.5 },
+    bias: -1.0,
+    threshold: 0.5,
+  };
+  fs.writeFileSync(modelFile, JSON.stringify(model));
   fs.writeFileSync(versionFile, JSON.stringify({ version: 1 }));
 
   const dataset = [
