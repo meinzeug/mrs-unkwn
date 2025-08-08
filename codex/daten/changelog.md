@@ -95,3 +95,7 @@
 - `AuthService` mit Token-Erstellung, Verifikation, Refresh und Blacklisting erstellt
 - `types.d.ts` um Deklaration für `jsonwebtoken` erweitert
 - Roadmap aktualisiert
+
+### Phase 1: Password Hashing Service implementieren - 2025-08-08
+- `PasswordService` mit bcrypt Hashing, Passwort-Validierung und Vergleichsfunktion hinzugefügt
+- Roadmap aktualisiert

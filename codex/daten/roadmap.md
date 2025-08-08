@@ -78,7 +78,7 @@ Details: Erstelle Migration für `families` Tabelle: `id` (UUID), `name` (string
 [x] JWT Authentication Service implementieren:
 Details: Erstelle `src/services/auth.service.ts`. Implementiere `AuthService` Klasse mit Methoden: `generateTokens(userId: string)`, `verifyAccessToken(token: string)`, `verifyRefreshToken(token: string)`, `refreshTokens(refreshToken: string)`. Verwende `jsonwebtoken` Library. Konfiguriere Token-Expiry: Access-Token 15min, Refresh-Token 7 Tage. Implementiere Token-Blacklisting-Logic.
 
-[ ] Password Hashing Service:
+[x] Password Hashing Service:
 Details: Erstelle `src/services/password.service.ts`. Implementiere `PasswordService` mit static methods: `async hashPassword(password: string): Promise<string>` mit `bcrypt.hash()` und salt-rounds 12. Implementiere `async comparePassword(password: string, hash: string): Promise<boolean>` mit `bcrypt.compare()`. Füge Password-Strength-Validation hinzu: mindestens 8 Zeichen, 1 Uppercase, 1 Lowercase, 1 Number, 1 Special-Character.
 
 [ ] User Repository Pattern implementieren:
