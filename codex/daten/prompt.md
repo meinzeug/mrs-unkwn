@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Authentication Middleware`
+# Nächster Schritt: Phase 1 – `Basic API Routes Setup`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -24,6 +24,7 @@
 - Password Hashing Service implementiert ✓
 - User Repository Pattern implementiert ✓
 - Request Validation Middleware implementiert ✓
+- Authentication Middleware implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -31,17 +32,17 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Authentication Middleware`
+## Nächste Aufgabe: `Basic API Routes Setup`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `backend/`.
 
 ### Implementierungsschritte
-- `src/middleware/auth.middleware.ts` erstellen.
-- `authenticateToken` Middleware-Funktion implementieren, die Authorization-Header prüft, JWT-Token extrahiert und verifiziert.
-- Bei gültigem Token User-Daten zu `req.user` hinzufügen.
-- `authorizeRoles(...roles)` Middleware für Role-based-Access-Control implementieren.
-- `optionalAuth` Middleware für Endpoints hinzufügen, die sowohl Auth als auch Non-Auth-Requests akzeptieren.
+- `src/routes/` Ordner erstellen.
+- `auth.routes.ts` mit Express-Router: POST `/register`, POST `/login`, POST `/refresh`, POST `/logout`.
+- `user.routes.ts` erstellen: GET `/profile`, PUT `/profile`, DELETE `/account`.
+- `src/routes/index.ts` als Main-Router implementieren, der alle Feature-Router kombiniert.
+- Main-Router in `src/index.ts` unter `/api` Prefix mounten.
 
 ### Validierung
 - `npx tsc --noEmit`.

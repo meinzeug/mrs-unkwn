@@ -87,7 +87,7 @@ Details: Erstelle `src/repositories/user.repository.ts`. Implementiere `UserRepo
 [x] Request Validation Middleware:
 Details: Erstelle `src/middleware/validation.middleware.ts`. Implementiere `validateRequest` Higher-Order-Function die express-validator Rules akzeptiert. Erstelle Validation-Schemas in `src/validation/schemas/`: `userRegistration.schema.ts`, `userLogin.schema.ts`. Jedes Schema definiert Validation-Rules für Request-Body-Fields. Implementiere Error-Response-Format für Validation-Failures mit Field-specific-Messages.
 
-[ ] Authentication Middleware implementieren:
+[x] Authentication Middleware implementieren:
 Details: Erstelle `src/middleware/auth.middleware.ts`. Implementiere `authenticateToken` Middleware-Funktion die Authorization-Header prüft, JWT-Token extrahiert und verifiziert. Bei gültigem Token, füge User-Data zu `req.user` hinzu. Implementiere `authorizeRoles(...roles)` Middleware für Role-based-Access-Control. Erstelle `optionalAuth` Middleware für Endpoints die sowohl Auth als auch Non-Auth-Requests akzeptieren.
 
 [ ] Basic API Routes Setup:
