@@ -125,7 +125,7 @@ Details: Erweitere `AuthEvent` um `RegisterRequested(firstName, lastName, email,
 [x] Registration API Integration:
 Details: In `AuthRepositoryImpl`, implementiere `register()` Methode. Erstelle POST-Request zu `/api/auth/register` endpoint. Include alle Required-Fields in Request-Body. Handle API-Response: Success-Case mit User-Data, Error-Cases mit spezifischen Messages. Parse Validation-Errors vom Backend und mappen Sie zu User-friendly-Messages. Implementiere Automatic-Login nach successful Registration.
 
-[ ] Password Strength Indicator:
+[x] Password Strength Indicator:
 Details: Erstelle `lib/shared/widgets/password_strength_indicator.dart` Widget. Implementiere Password-Strength-Calculation basierend auf: Length (>8), Uppercase-Letters, Lowercase-Letters, Numbers, Special-Characters. Zeige visuellen Strength-Indicator mit Colors: Red (Weak), Orange (Medium), Green (Strong). Update Indicator in Real-time während User-Typing. Zeige Improvement-Suggestions unter dem Indicator.
 
 [ ] Biometric Authentication Setup:
