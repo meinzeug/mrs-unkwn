@@ -363,6 +363,6 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 - [x] NPM-Skript `test:external` zum Ausführen der Tests hinzufügen
 
 ### Milestone 4: Client-SDK für Drittanbieter-API
-- [ ] JavaScript-SDK mit Beispielaufrufen bereitstellen
+- [x] JavaScript-SDK mit Beispielaufrufen bereitstellen
 - [ ] TypeScript-Typdefinitionen veröffentlichen
 

@@ -372,3 +372,8 @@
 - Testdatei `backend/tests/external_api.test.ts` prüft externe Endpunkte mit gültigem und ungültigem API-Key
 - NPM-Skript `test:external` zum Ausführen der externen API-Tests hinzugefügt
 - Roadmap und Prompt aktualisiert
+
+### Phase 4: Client-SDK für Drittanbieter-API - 2025-08-10
+- SDK-Grundgerüst unter `backend/sdk/` mit `healthCheck` Funktion erstellt
+- Skript `scripts/build_sdk.sh` generiert JavaScript-Dateien automatisch
+- Roadmap und Prompt aktualisiert
