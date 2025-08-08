@@ -14,27 +14,39 @@ interface Model {
 
 let cachedModel: Model | null = null;
 
-function getCurrentVersion(): number {
+interface ModelInfo {
+  version: number;
+  lastRetrained: string | null;
+}
+
+function getCurrentInfo(): ModelInfo {
   if (!fs.existsSync(VERSION_FILE)) {
-    return 0;
+    return { version: 0, lastRetrained: null };
   }
   try {
     const raw = fs.readFileSync(VERSION_FILE, 'utf8');
-    const { version } = JSON.parse(raw) as { version: number };
-    return typeof version === 'number' ? version : 0;
+    const data = JSON.parse(raw) as Partial<ModelInfo> & { version?: number };
+    return {
+      version: typeof data.version === 'number' ? data.version : 0,
+      lastRetrained: typeof data.lastRetrained === 'string' ? data.lastRetrained : null,
+    };
   } catch {
-    return 0;
+    return { version: 0, lastRetrained: null };
   }
 }
 
-function setVersion(version: number): void {
+function setModelInfo(info: ModelInfo): void {
   const dir = path.dirname(VERSION_FILE);
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(VERSION_FILE, JSON.stringify({ version }));
+  fs.writeFileSync(VERSION_FILE, JSON.stringify(info));
+}
+
+export function getModelInfo(): ModelInfo {
+  return getCurrentInfo();
 }
 
 export function getModelVersion(): number {
-  return getCurrentVersion();
+  return getCurrentInfo().version;
 }
 
 function loadModel(): Model {
@@ -134,11 +146,12 @@ export async function retrainModel(): Promise<void> {
     }
     model.bias += lr * error;
   }
-  const version = getCurrentVersion() + 1;
+  const current = getCurrentInfo();
+  const version = current.version + 1;
   fs.writeFileSync(MODEL_PATH, JSON.stringify(model));
   const versionedPath = path.join(MODEL_DIR, `homework_model_v${version}.bin`);
   fs.writeFileSync(versionedPath, JSON.stringify(model));
-  setVersion(version);
+  setModelInfo({ version, lastRetrained: new Date().toISOString() });
   fs.unlinkSync(FEEDBACK_LOG_PATH);
   cachedModel = model;
 }

@@ -319,5 +319,5 @@ Details: Trainingsskript liest Feedback-Logs ein, aktualisiert Modellgewichte un
 [x] Automatisierte Modell-Bereitstellung und geplantes Retraining:
 Details: NPM-Skript, GitHub Action und Modellversionierung eingeführt.
 
-[ ] API-Endpunkt für Modellversion und Retrain-Datum:
+[x] API-Endpunkt für Modellversion und Retrain-Datum:
 Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
