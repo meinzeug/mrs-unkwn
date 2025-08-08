@@ -116,7 +116,7 @@ Details: Erstelle `lib/features/auth/data/repositories/auth_repository_impl.dart
 [x] Login Loading States UI:
 Details: In `LoginPage`, wrappen Sie gesamte UI in `BlocConsumer<AuthBloc, AuthState>`. Im `listener`, handle `AuthSuccess` State (Navigate zu Home), `AuthFailure` State (Show-SnackBar mit Error). Im `builder`, zeige Loading-Indicator wenn State `AuthLoading` ist. Disable Login-Button während Loading. Replace ElevatedButton-Child mit `CircularProgressIndicator()` bei Loading-State.
 
-[ ] Register Screen UI erstellen:
+[x] Register Screen UI erstellen:
 Details: Erstelle `lib/features/auth/presentation/pages/register_page.dart`. Implementiere ähnliches Layout wie Login mit zusätzlichen Fields: `firstName`, `lastName`, `confirmPassword`. Füge `DropdownButtonFormField` für User-Role (Parent/Child) hinzu. Implementiere Checkbox für Terms-Acceptance mit Link zu Terms-Page. Erstelle komplexere Validation-Logic: Password-Confirmation-Match, Terms-Acceptance-Required.
 
 [ ] Registration BLoC Events/States:
