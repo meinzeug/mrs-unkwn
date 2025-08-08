@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Manual Testing Procedures`
+# Nächster Schritt: Phase 1 – `Monitoring und Crash Reporting`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -57,6 +57,7 @@
 - Performance Testing und Profiling implementiert ✓
 - Security Testing Implementation implementiert ✓
 - Automated Testing in CI/CD implementiert ✓
+- Manual Testing Procedures implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -64,19 +65,19 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Manual Testing Procedures`
+## Nächste Aufgabe: `Monitoring und Crash Reporting`
 
 
 ### Vorbereitungen
-- Relevante Dokumentationsordner für Testprozeduren vorbereiten.
+- Projekt für Monitoring- und Crash-Reporting vorbereiten.
 
 ### Implementierungsschritte
-- Manuelle Test-Checklisten für jede Release erstellen.
-- User-Acceptance-Testing-Szenarien mit realen Nutzungsmustern definieren.
-- Beta-Testprogramm mit Family-Testern aufsetzen.
-- Bug-Reporting-Vorlagen und Issue-Tracking-Prozesse erstellen.
-- Usability-Testing-Sessions mit Zielgruppen vorbereiten.
-- Testprozeduren und Quality-Gates dokumentieren.
+- Firebase Crashlytics für Produktionsberichte integrieren.
+- Custom-Error-Tracking für Business-Logik implementieren.
+- Performance-Monitoring mit Firebase Performance oder Sentry aktivieren.
+- Fehlerwarnungen für kritische Produktionsprobleme einrichten.
+- Dashboard zur Fehleranalyse bereitstellen.
+- Mechanismus zur Nutzerfeedback-Sammlung implementieren.
 
 ### Validierung
 - `dart format` auf geänderten Dateien ausführen.
