@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Voice Input Integration`
+# Nächster Schritt: Phase 1 – `Basic Content Moderation`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -45,6 +45,7 @@
 - Subject Classification System implementiert ✓
 - Learning Session Management implementiert ✓
 - AI Tutoring BLoC State Management implementiert ✓
+- Voice Input Integration implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -52,18 +53,18 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Voice Input Integration`
+## Nächste Aufgabe: `Basic Content Moderation`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- `speech_to_text` Package in `pubspec.yaml` hinzufügen.
-- Voice-Recording-UI mit Wellenform und Aufnahme-Timer implementieren.
-- Speech-to-Text-Konvertierung mit Fehlerbehandlung für unklare Sprache umsetzen.
-- Sprachenerkennung für Deutsch und Englisch integrieren.
-- Voice-Kommandos (Senden, Chat leeren) einbauen.
-- Mikrofon-Berechtigungen und Datenschutz beachten.
+- Client-side-Content-Filtering für Schülernachrichten vor dem Senden.
+- Keyword-Listen für Profanity, Gewalt und Adult-Content implementieren.
+- AI-Antworten auf pädagogische Angemessenheit prüfen.
+- Eltern-Benachrichtigungen bei Verstößen auslösen.
+- Prozess zur Anfechtung falscher Positivmeldungen vorsehen.
+- Moderationsprotokolle zur Nachverfolgung speichern.
 
 ### Validierung
 - `dart format` auf geänderten Dateien ausführen.
