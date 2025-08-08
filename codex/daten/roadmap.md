@@ -380,3 +380,6 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 
 ### Milestone 3: Projektabschluss & Review
 - [x] Abschlussüberprüfung, Dokumentationsabgleich und Code-Checks
+
+# Wartungsmodus
+- [x] Wartungscheck am 2025-08-14: Tests (`npm test`, `pytest codex/tests`) erfolgreich
