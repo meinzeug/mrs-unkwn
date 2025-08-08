@@ -93,7 +93,7 @@ Details: Erstelle `src/middleware/auth.middleware.ts`. Implementiere `authentica
 [x] Basic API Routes Setup:
 Details: Erstelle `src/routes/` Ordner. Implementiere `auth.routes.ts` mit Express-Router: POST `/register`, POST `/login`, POST `/refresh`, POST `/logout`. Erstelle `user.routes.ts`: GET `/profile`, PUT `/profile`, DELETE `/account`. Erstelle `src/routes/index.ts` als Main-Router der alle Feature-Router kombiniert. Mounten Sie Main-Router in `src/index.ts` unter `/api` Prefix.
 
-[ ] Error Handling Middleware:
+[x] Error Handling Middleware:
 Details: Erstelle `src/middleware/error.middleware.ts`. Implementiere global Error-Handler-Middleware die alle unhandled Errors abfängt. Unterscheide zwischen verschiedenen Error-Types: ValidationError, DatabaseError, AuthenticationError, etc. Erstelle standardisierte Error-Response-Format: `{error: {message, code, details}}`. Implementiere different Error-Handling für Development vs Production (Stack-Traces nur in Dev).
 
 [ ] API Response Standardization:

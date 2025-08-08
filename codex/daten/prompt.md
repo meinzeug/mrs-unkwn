@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Error Handling Middleware`
+# Nächster Schritt: Phase 1 – `API Response Standardization`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -26,6 +26,7 @@
 - Request Validation Middleware implementiert ✓
 - Authentication Middleware implementiert ✓
 - Basic API Routes Setup implementiert ✓
+- Error Handling Middleware implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -33,17 +34,16 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Error Handling Middleware`
+## Nächste Aufgabe: `API Response Standardization`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `backend/`.
 
 ### Implementierungsschritte
-- `src/middleware/error.middleware.ts` erstellen.
-- Globale Fehlerbehandlungs-Middleware implementieren, die Validation-, Datenbank- und Authentifizierungsfehler unterscheidet.
-- Einheitliches Fehlerformat `{ error: { message, code, details } }` verwenden.
-- Unterschiedliche Ausgabe für Development vs. Production (Stack-Traces nur in Dev).
-- Middleware in `src/index.ts` registrieren.
+- `src/utils/response.util.ts` erstellen.
+- Helper-Funktionen `success(data, message, statusCode)`, `error(message, statusCode, details)` und `paginated(data, pagination)` implementieren.
+- Einheitliches API-Response-Format `{ success: boolean, data?: object, error?: object, message: string, timestamp: string }` sicherstellen.
+- Response-Wrapper-Middleware implementieren und in `src/index.ts` registrieren.
 
 ### Validierung
 - `npx tsc --noEmit`.
