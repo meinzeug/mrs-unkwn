@@ -299,3 +299,8 @@
 - Skript `setup_homework_detection.sh` zum automatischen Download des Modells erstellt
 - Tests erweitert und package.json angepasst
 - Roadmap und Prompt aktualisiert
+
+### Phase 2: ML-Modell-Integration für präzisere Erkennung - 2025-08-09
+- HomeworkDetectionService lädt Modellgewichte und ersetzt heuristische Erkennung.
+- Tests angepasst, um Modellinferenz zu validieren.
+- Roadmap und Prompt aktualisiert.

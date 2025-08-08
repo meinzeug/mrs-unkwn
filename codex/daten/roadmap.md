@@ -307,5 +307,8 @@ Details: Integrate Firebase-Crashlytics für Production-Crash-Reporting. Setup C
 [x] Basissystem für Hausaufgabenerkennung:
 Details: Service und Route implementiert, um AI-generierte Inhalte in Hausaufgaben zu erkennen. Skript `setup_homework_detection.sh` lädt benötigtes Modell.
 
-[ ] ML-Modell-Integration für präzisere Erkennung:
-Details: Echtes ML-Modell einbinden und heuristische Erkennung ersetzen.
+[x] ML-Modell-Integration für präzisere Erkennung:
+Details: Echtes ML-Modell eingebunden und heuristische Erkennung ersetzt.
+
+[ ] Modell-Evaluierung und Feedback-Mechanismus:
+Details: Genauigkeit mit Testdaten prüfen und Verbesserungsfeedback sammeln.

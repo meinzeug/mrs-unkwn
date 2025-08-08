@@ -1,29 +1,30 @@
-# Nächster Schritt: Phase 2 – Homework Detection Model Integration
+# Nächster Schritt: Phase 2 – Modell-Evaluierung & Feedback
 
 ## Status
 - Phase 0 abgeschlossen ✓
 - Phase 1 abgeschlossen ✓
 - Phase 2 gestartet: Basissystem implementiert ✓
+- Phase 2: ML-Modell integriert ✓
 
 ## Referenzen
 - `/README.md`
 - `/codex/AGENTS.md`
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
-- `scripts/setup_homework_detection.sh`
 - `backend/src/services/homework.service.ts`
+- `backend/tests/homework.test.ts`
 
 ## Nächste Aufgabe
-Integriere ein echtes ML-Modell in den HomeworkDetectionService, um AI-generierte Texte zuverlässiger zu erkennen.
+Bewerte die Genauigkeit des HomeworkDetectionService anhand von Testdaten und implementiere einen Feedback-Mechanismus zur Verbesserung.
 
 ### Vorbereitungen
-- `scripts/setup_homework_detection.sh` ausführen, um das Modell zu laden.
-- Bestehenden Service und Route prüfen.
+- Repräsentative Testdatensätze definieren.
+- Logging für Fehlklassifikationen vorbereiten.
 
 ### Implementierungsschritte
-- Modell laden und initialisieren.
-- Heuristische Erkennung durch Modellaufruf ersetzen.
-- Tests und Validierungen anpassen.
+- Evaluationsfunktion erstellen, die die Erkennungsgenauigkeit berechnet.
+- Feedback-Mechanismus ergänzen (z. B. Logging oder Endpoint).
+- Tests und Validierungen erweitern.
 
 ### Validierung
 - `bash -n scripts/setup_homework_detection.sh`
