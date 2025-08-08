@@ -320,3 +320,8 @@
 - GitHub Action konfiguriert wöchentlichen Retrain-Lauf und stellt Modell als Artefakt bereit.
 - NPM-Skript `retrain-model` und Versionstracking für das Modell eingeführt.
 - `setup_homework_detection.sh` legt `model_version.json` automatisch an.
+
+### Phase 2: API für Modellinformationen - 2025-08-09
+- Endpoint `/homework/model` liefert aktuelle Modellversion und letztes Retrain-Datum.
+- Service speichert `lastRetrained` in `model_version.json`.
+- Tests, Skripte und Dokumentation aktualisiert.

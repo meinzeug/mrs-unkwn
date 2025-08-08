@@ -1,40 +1,28 @@
-# Nächster Schritt: Phase 2 – Modellversions-API
+# Nächster Schritt: Phase 3 – Roadmap planen
 
 ## Status
 - Phase 0 abgeschlossen ✓
 - Phase 1 abgeschlossen ✓
-- Phase 2 gestartet: Basissystem implementiert ✓
-- Phase 2: ML-Modell integriert ✓
-- Phase 2: Modell-Evaluierung & Feedback ✓
-- Phase 2: Modell-Retraining automatisiert ✓
-- Phase 2: Modell-Bereitstellung automatisiert ✓
+- Phase 2 abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
 - `/codex/AGENTS.md`
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
-- `backend/package.json`
-- `backend/src/services/homework.service.ts`
-- `backend/tests/homework.test.ts`
-- `scripts/setup_homework_detection.sh`
-- `scripts/retrain_homework_model.ts`
-- `.github/workflows/retrain_model.yml`
 
 ## Nächste Aufgabe
-Implementiere einen API-Endpunkt, der die aktuelle Modellversion und das letzte Retrain-Datum zurückgibt.
+Erstelle die Roadmap für Phase 3 mit den nächsten Entwicklungszielen.
 
 ### Vorbereitungen
-- Route und Rückgabeformat definieren.
-- Quelle für Retrain-Zeitpunkt festlegen.
+- Bisherige Projektziele analysieren.
 
 ### Implementierungsschritte
-- Route und Controller für Modellinformationen erstellen.
-- Service um Abfrage von Version und Datum erweitern.
-- Tests und Dokumentation aktualisieren.
+- Neue Milestones für Phase 3 entwerfen.
+- `codex/daten/roadmap.md` um Phase 3 erweitern.
 
 ### Validierung
-- `npm test --prefix backend`
+- Nur Dokumentation, keine Tests erforderlich.
 
 ### Selbstgenerierung
 - Nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md` schreiben.

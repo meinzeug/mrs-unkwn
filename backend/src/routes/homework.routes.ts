@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { detectAIContent, submitFeedback } from '../services/homework.service';
+import { detectAIContent, submitFeedback, getModelInfo } from '../services/homework.service';
 
 const router = Router();
 
@@ -24,6 +24,15 @@ router.post('/feedback', async (req, res) => {
   try {
     const predicted = await submitFeedback(text, expected);
     res.json({ predicted });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.get('/model', (_req, res) => {
+  try {
+    const info = getModelInfo();
+    res.json(info);
   } catch (err: any) {
     res.status(500).json({ error: err.message });
   }

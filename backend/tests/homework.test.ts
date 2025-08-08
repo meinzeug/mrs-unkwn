@@ -6,6 +6,7 @@ import {
 } from '../src/services/homework.service';
 import fs from 'fs';
 import path from 'path';
+import { AddressInfo } from 'net';
 
 async function run() {
   const modelDir = path.resolve(__dirname, '../data');
@@ -60,6 +61,34 @@ async function run() {
   if (versionAfter !== versionBefore + 1) {
     throw new Error('Expected model version to increment');
   }
+
+  process.env.DATABASE_URL = 'postgres://user:pass@localhost:5432/test';
+  process.env.JWT_SECRET = 'test-secret';
+  process.env.JWT_REFRESH_SECRET = 'test-refresh';
+  process.env.EMAIL_SERVICE_KEY = 'test-email';
+  process.env.NODE_ENV = 'test';
+
+  const { default: app } = await import('../src/index');
+  await new Promise<void>((resolve, reject) => {
+    const server = app.listen(0, async () => {
+      try {
+        const port = (server.address() as AddressInfo).port;
+        const res = await fetch(`http://localhost:${port}/api/homework/model`);
+        const data = await res.json();
+        if (data.version !== versionAfter) {
+          throw new Error('Expected version from API to match latest version');
+        }
+        if (typeof data.lastRetrained !== 'string') {
+          throw new Error('Expected lastRetrained to be a string');
+        }
+        server.close();
+        resolve();
+      } catch (err) {
+        server.close();
+        reject(err);
+      }
+    });
+  });
 
   console.log('homework.test.ts passed');
 }
