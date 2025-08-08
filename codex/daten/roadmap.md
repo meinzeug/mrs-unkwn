@@ -364,5 +364,5 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 
 ### Milestone 4: Client-SDK für Drittanbieter-API
 - [x] JavaScript-SDK mit Beispielaufrufen bereitstellen
-- [ ] TypeScript-Typdefinitionen veröffentlichen
+- [x] TypeScript-Typdefinitionen veröffentlichen
 

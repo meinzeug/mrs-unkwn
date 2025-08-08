@@ -377,3 +377,9 @@
 - SDK-Grundgerüst unter `backend/sdk/` mit `healthCheck` Funktion erstellt
 - Skript `scripts/build_sdk.sh` generiert JavaScript-Dateien automatisch
 - Roadmap und Prompt aktualisiert
+
+### Phase 4: TypeScript-Typdefinitionen für Client-SDK - 2025-08-10
+- `build_sdk.sh` erzeugt nun `.d.ts` Dateien im SDK `dist` Ordner
+- `ThirdPartyApiClient.healthCheck` liefert typisierten `HealthResponse`
+- Dokumentation zu `backend/third_party_api.md` um Hinweis auf SDK-Build erweitert
+- Roadmap und Prompt aktualisiert
