@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `AI Prompt Engineering für Sokratische Methode`
+# Nächster Schritt: Phase 1 – `Chat UI Interface Implementation`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -39,6 +39,7 @@
 - Password Strength Indicator implementiert ✓
 - OpenAI API Integration Setup implementiert ✓
 - Chat Message Model und Serialization implementiert ✓
+- AI Prompt Engineering für Sokratische Methode implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -46,20 +47,21 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `AI Prompt Engineering für Sokratische Methode`
+## Nächste Aufgabe: `Chat UI Interface Implementation`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- `lib/features/tutoring/data/prompts/socratic_prompts.dart` erstellen.
-- System-Prompts für Mathematik, Naturwissenschaften, Literatur und Geschichte definieren.
-- Prompt-Templates implementieren, die sokratisches Fragen fördern.
-- Altersgerechte Varianten und Kontext-Verkettung berücksichtigen.
-- Token-Limits und Kontext-Management beachten.
+- `lib/features/tutoring/presentation/pages/chat_page.dart` erstellen.
+- Chat-Bubble-UI mit Sender-Differenzierung (Student vs AI) implementieren.
+- Message-Input-Field mit Send-Button und Voice-Option hinzufügen.
+- Auto-Scroll zu neuesten Nachrichten und Load-More-History implementieren.
+- Typing-Indicator während AI-Antwort generieren.
+- Nachrichtenzustände (Sending, Sent, Error) visuell darstellen.
 
 ### Validierung
-- `dart format lib/features/tutoring/data/prompts/socratic_prompts.dart`.
+- `dart format lib/features/tutoring/presentation/pages/chat_page.dart`.
 - `flutter analyze`.
 
 ### Selbstgenerierung

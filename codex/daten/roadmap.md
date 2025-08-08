@@ -236,7 +236,7 @@ Details: Installiere `http` Package für API-Requests. Erstelle `lib/core/servic
 [x] Chat Message Model und Serialization:
 Details: Erstelle `lib/features/tutoring/data/models/chat_message.dart`. Implementiere `ChatMessage` Model mit Properties: `id`, `role` (user/assistant/system), `content`, `timestamp`, `metadata`. Add `@JsonSerializable()` für Serialization. Implement `fromJson()` und `toJson()` Methods. Create Message-Types: Text, Image, File-Attachment. Handle Message-Threading für Multi-turn-Conversations.
 
-[ ] AI Prompt Engineering für Sokratische Methode:
+[x] AI Prompt Engineering für Sokratische Methode:
 Details: Erstelle `lib/features/tutoring/data/prompts/socratic_prompts.dart`. Define System-Prompts für verschiedene Subjects: Math, Science, Literature, History. Implement Prompt-Templates die Socratic-Questioning fördern: "Instead of giving the answer, ask a guiding question". Create Age-appropriate-Prompts für Different-Grade-Levels. Implement Context-Building für Previous-Conversation-History. Handle Prompt-Length-Limits und Token-Management.
 
 [ ] Chat UI Interface Implementation:
