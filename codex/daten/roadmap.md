@@ -84,7 +84,7 @@ Details: Erstelle `src/services/password.service.ts`. Implementiere `PasswordSer
 [x] User Repository Pattern implementieren:
 Details: Erstelle `src/repositories/user.repository.ts`. Implementiere `UserRepository` Klasse mit Database-Abstraction-Layer. Methoden: `async create(userData: CreateUserDTO): Promise<User>`, `async findByEmail(email: string): Promise<User | null>`, `async findById(id: string): Promise<User | null>`, `async update(id: string, data: UpdateUserDTO): Promise<User>`, `async delete(id: string): Promise<void>`. Verwende Knex Query-Builder.
 
-[ ] Request Validation Middleware:
+[x] Request Validation Middleware:
 Details: Erstelle `src/middleware/validation.middleware.ts`. Implementiere `validateRequest` Higher-Order-Function die express-validator Rules akzeptiert. Erstelle Validation-Schemas in `src/validation/schemas/`: `userRegistration.schema.ts`, `userLogin.schema.ts`. Jedes Schema definiert Validation-Rules für Request-Body-Fields. Implementiere Error-Response-Format für Validation-Failures mit Field-specific-Messages.
 
 [ ] Authentication Middleware implementieren:
