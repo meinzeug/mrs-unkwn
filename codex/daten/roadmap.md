@@ -328,8 +328,8 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 
 ### Milestone 1: Multi-Language Support
 
-- [ ] UI- und Backend-Lokalisierung für Deutsch und Englisch
-- [ ] Skript `scripts/generate_translations.sh` erzeugt Übersetzungsdateien automatisch
+- [x] UI- und Backend-Lokalisierung für Deutsch und Englisch
+- [x] Skript `scripts/generate_translations.sh` erzeugt Übersetzungsdateien automatisch
 
 ### Milestone 2: Schul-Integrationen
 

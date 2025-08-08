@@ -7,6 +7,7 @@ export interface User {
   first_name: string;
   last_name: string;
   role: 'parent' | 'child';
+  language: string;
   created_at?: Date;
   updated_at?: Date;
 }
@@ -18,7 +19,7 @@ export class UserRepository {
   async create(userData: CreateUserDTO): Promise<User> {
     const [user] = await db<User>('users')
       .insert(userData)
-      .returning(['id', 'email', 'password_hash', 'first_name', 'last_name', 'role', 'created_at', 'updated_at']);
+      .returning(['id', 'email', 'password_hash', 'first_name', 'last_name', 'role', 'language', 'created_at', 'updated_at']);
     return user;
   }
 
@@ -36,7 +37,7 @@ export class UserRepository {
     const [user] = await db<User>('users')
       .where({ id })
       .update(data)
-      .returning(['id', 'email', 'password_hash', 'first_name', 'last_name', 'role', 'created_at', 'updated_at']);
+      .returning(['id', 'email', 'password_hash', 'first_name', 'last_name', 'role', 'language', 'created_at', 'updated_at']);
     return user;
   }
 

@@ -329,3 +329,9 @@
 ### Phase 3: Roadmap Planung - 2025-08-09
 - Phase-3-Ziele mit Meilensteinen (Multi-Language, Schul-Integrationen, Analytics, B2B) zur `roadmap.md` hinzugefügt
 - `prompt.md` auf nächsten Schritt aktualisiert
+
+### Phase 3: Multi-Language Support Infrastruktur - 2025-08-09
+- Flutter-App mit Lokalisierungs-Framework und ARB-Dateien für Deutsch/Englisch erweitert
+- Backend um Spracheinstellungen inkl. Migration und API-Updates ergänzt
+- Skript `scripts/generate_translations.sh` zur automatischen Generierung von Übersetzungsdateien erstellt
+- Roadmap und Prompt aktualisiert
