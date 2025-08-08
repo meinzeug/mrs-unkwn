@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 3 – B2B Features implementieren
+# Nächster Schritt: Phase 4 – API für Drittanbieter vorbereiten
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -7,6 +7,7 @@
 - Phase 3 Milestone 1 abgeschlossen ✓
 - Phase 3 Milestone 2 abgeschlossen ✓
 - Phase 3 Milestone 3 abgeschlossen ✓
+- Phase 3 Milestone 4 abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
@@ -15,14 +16,14 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Organisations-Accounts und Rollenverwaltung einführen.
+API für Drittanbieter vorbereiten.
 
 ### Vorbereitungen
-- Backend- und Flutter-Strukturen für Nutzerverwaltung prüfen.
+- Analyse bestehender API-Struktur im Backend.
 
 ### Implementierungsschritte
-- Organisations-Accounts und Rollenverwaltung einführen.
-- Skript `scripts/create_sample_organizations.sh` erstellen, das Beispiel-Organisationen anlegt.
+- Öffentliche API-Endpunkte für Drittanbieter definieren und dokumentieren.
+- Authentifizierungsmechanismus mit API-Schlüsseln einführen.
 
 ### Validierung
 - `python -m py_compile` auf geänderten Python-Dateien ausführen.

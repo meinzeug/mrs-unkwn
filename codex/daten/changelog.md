@@ -345,3 +345,9 @@
 - `AnalyticsDashboardPage` visualisiert aggregierte Lernmetriken und ermöglicht CSV-Export
 - Skript `scripts/generate_analytics_data.sh` generiert Demo-Datensätze
 - Roadmap und Prompt aktualisiert
+
+### Phase 3: B2B Features - 2025-08-09
+- Organisations-Accounts und Rollenverwaltung implementiert
+- Skript `scripts/create_sample_organizations.sh` erstellt Beispiel-Organisationen
+- Backend-Migration, Repositories, Services und Routen für Organisationen hinzugefügt
+- Flutter-Service und Modell zur Organisationsverwaltung erstellt
