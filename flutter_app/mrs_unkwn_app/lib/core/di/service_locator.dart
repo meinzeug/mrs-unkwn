@@ -3,6 +3,7 @@ import '../services/openai_service.dart';
 import '../../features/tutoring/data/services/ai_response_service.dart';
 import '../../features/tutoring/data/services/subject_classification_service.dart';
 import '../../features/tutoring/data/services/content_moderation_service.dart';
+import '../../features/analytics/data/services/learning_analytics_service.dart';
 
 final sl = GetIt.instance;
 
@@ -32,6 +33,9 @@ void _registerFeatures() {
   );
   sl.registerLazySingleton<ParentNotificationService>(
     () => ParentNotificationService(),
+  );
+  sl.registerLazySingleton<LearningAnalyticsService>(
+    () => LearningAnalyticsService(),
   );
 }
 
