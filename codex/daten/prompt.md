@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Registration BLoC Events/States`
+# Nächster Schritt: Phase 1 – `Registration API Integration`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -34,6 +34,7 @@
 - Login API Integration implementiert ✓
 - Login Loading States UI implementiert ✓
 - Register Screen UI Layout implementiert ✓
+- Registration BLoC Events/States implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -41,18 +42,18 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Registration BLoC Events/States`
+## Nächste Aufgabe: `Registration API Integration`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/`.
 
 ### Implementierungsschritte
-- `AuthEvent` um `RegisterRequested(firstName, lastName, email, password, role)` erweitern.
-- `AuthState` um `RegisterSuccess` und `RegisterFailure` ergänzen.
-- In `AuthBloc` Handler `_onRegisterRequested` implementieren.
+- In `AuthRepositoryImpl` Methode `register` hinzufügen.
+- POST-Request zu `/api/auth/register` mit notwendigen Feldern senden.
+- API-Responses und Fehlerfälle handhaben.
 
 ### Validierung
-- `dart format lib/features/auth/presentation/bloc/auth_bloc.dart`.
+- `dart format lib/features/auth/data/repositories/auth_repository_impl.dart`.
 - `flutter analyze`.
 
 ### Selbstgenerierung

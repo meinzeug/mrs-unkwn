@@ -159,3 +159,10 @@
 - `register_page.dart` mit Feldern für Vorname, Nachname, Email, Passwortbestätigung und Rollenwahl erstellt
 - Checkbox für Nutzungsbedingungen mit Validierung hinzugefügt
 - Roadmap aktualisiert
+
+### Phase 1: Registration BLoC Events/States - 2025-08-08
+- `AuthEvent` um `RegisterRequested` erweitert
+- `AuthState` um `RegisterSuccess` und `RegisterFailure` ergänzt
+- `AuthBloc` um Handler `_onRegisterRequested` erweitert
+- `AuthRepository` um `register` Methode ergänzt
+- Roadmap aktualisiert
