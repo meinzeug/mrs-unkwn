@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../../data/models/chat_message.dart';
+import '../../data/services/voice_input_service.dart';
 
 enum MessageStatus { sending, sent, error }
 
@@ -23,6 +26,11 @@ class _ChatPageState extends State<ChatPage> {
   final ScrollController _scrollController = ScrollController();
   bool _isTyping = false;
   bool _isLoadingMore = false;
+  final VoiceInputService _voice = VoiceInputService();
+  bool _isRecording = false;
+  double _soundLevel = 0;
+  Timer? _recordTimer;
+  int _recordSeconds = 0;
 
   @override
   void dispose() {
@@ -59,6 +67,50 @@ class _ChatPageState extends State<ChatPage> {
         uiMessage.status = MessageStatus.error;
       });
     });
+  }
+
+  void _clearChat() {
+    setState(() => _messages.clear());
+  }
+
+  void _handleVoiceResult(String text) {
+    final lower = text.toLowerCase();
+    if (lower == 'senden' || lower == 'send') {
+      _sendMessage();
+    } else if (lower == 'chat leeren' || lower == 'clear chat') {
+      _clearChat();
+    } else {
+      setState(() => _controller.text = text);
+    }
+  }
+
+  Future<void> _toggleRecording() async {
+    if (_isRecording) {
+      await _voice.stop();
+      _recordTimer?.cancel();
+      setState(() {
+        _isRecording = false;
+        _soundLevel = 0;
+        _recordSeconds = 0;
+      });
+      return;
+    }
+    await _voice.start(
+      onResult: _handleVoiceResult,
+      onSoundLevel: (level) => setState(() => _soundLevel = level.clamp(0, 120)),
+      onError: (msg) =>
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg))),
+    );
+    _recordTimer = Timer.periodic(const Duration(seconds: 1), (_) {
+      setState(() => _recordSeconds++);
+    });
+    setState(() => _isRecording = true);
+  }
+
+  String _formatDuration(int seconds) {
+    final m = seconds ~/ 60;
+    final s = (seconds % 60).toString().padLeft(2, '0');
+    return '$m:$s';
   }
 
   void _simulateAiResponse(String userText) {
@@ -138,26 +190,44 @@ class _ChatPageState extends State<ChatPage> {
   Widget _buildInputArea() {
     return Padding(
       padding: const EdgeInsets.all(8),
-      child: Row(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(
-            child: TextField(
-              controller: _controller,
-              onSubmitted: (_) => _sendMessage(),
-              decoration: const InputDecoration(
-                hintText: 'Nachricht eingeben...',
-                border: OutlineInputBorder(),
+          if (_isRecording)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: LinearProgressIndicator(value: _soundLevel / 120),
+                  ),
+                  const SizedBox(width: 8),
+                  Text(_formatDuration(_recordSeconds)),
+                ],
               ),
             ),
-          ),
-          const SizedBox(width: 8),
-          IconButton(
-            icon: const Icon(Icons.mic),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.send),
-            onPressed: _sendMessage,
+          Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: _controller,
+                  onSubmitted: (_) => _sendMessage(),
+                  decoration: const InputDecoration(
+                    hintText: 'Nachricht eingeben...',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              IconButton(
+                icon: Icon(_isRecording ? Icons.stop : Icons.mic),
+                onPressed: _toggleRecording,
+              ),
+              IconButton(
+                icon: const Icon(Icons.send),
+                onPressed: _sendMessage,
+              ),
+            ],
           ),
         ],
       ),

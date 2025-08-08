@@ -217,3 +217,9 @@
 - AI-Integration über `AIResponseService` und Fachklassifikation via `SubjectClassificationService`
 - Optimistische UI-Updates und Sitzungsmetriken integriert
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Voice Input Integration - 2025-08-08
+- `scripts/create_flutter_project.sh` fügt `speech_to_text` Dependency hinzu
+- `VoiceInputService` mit Sprach-zu-Text und Sprach­erkennung für Deutsch/Englisch erstellt
+- `chat_page.dart` um Aufnahme-Timer, Wellenform und Sprachbefehle zum Senden oder Leeren ergänzt
+- Roadmap und Prompt aktualisiert
