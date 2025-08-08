@@ -26,11 +26,14 @@ if [ -f "$PUBSPEC" ]; then
     perl -0pi -e 's/dependencies:\n/dependencies:\n  speech_to_text: ^6.6.1\n/' "$PUBSPEC"
   fi
   if ! grep -q "mocktail:" "$PUBSPEC"; then
-    perl -0pi -e 's/dev_dependencies:\n/dev_dependencies:\n  build_runner: ^2.4.7\n  json_serializable: ^6.7.1\n  flutter_test:\n    sdk: flutter\n  mocktail: ^1.0.0\n  bloc_test: ^9.1.0\n  mockito: ^5.4.2\n/' "$PUBSPEC"
+    perl -0pi -e 's/dev_dependencies:\n/dev_dependencies:\n  build_runner: ^2.4.7\n  json_serializable: ^6.7.1\n  flutter_test:\n    sdk: flutter\n  integration_test:\n    sdk: flutter\n  mocktail: ^1.0.0\n  bloc_test: ^9.1.0\n  mockito: ^5.4.2\n/' "$PUBSPEC"
   elif ! grep -q "bloc_test:" "$PUBSPEC"; then
     perl -0pi -e 's/mocktail: \^1.0.0/mocktail: ^1.0.0\n  bloc_test: ^9.1.0\n  mockito: ^5.4.2/' "$PUBSPEC"
   elif ! grep -q "mockito:" "$PUBSPEC"; then
     perl -0pi -e 's/bloc_test: \^9.1.0/bloc_test: ^9.1.0\n  mockito: ^5.4.2/' "$PUBSPEC"
+  fi
+  if ! grep -q "integration_test:" "$PUBSPEC"; then
+    perl -0pi -e 's/flutter_test:\n    sdk: flutter/flutter_test:\n    sdk: flutter\n  integration_test:\n    sdk: flutter/' "$PUBSPEC"
   fi
 fi
 
@@ -48,5 +51,7 @@ fi
 for dir in core features shared platform_channels; do
   mkdir -p "$TARGET_DIR/lib/$dir"
 done
+
+mkdir -p "$TARGET_DIR/integration_test"
 
 echo "Flutter project prepared at $TARGET_DIR"
