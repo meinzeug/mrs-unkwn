@@ -200,3 +200,8 @@
 - `AIResponseService` mit Streaming-Ausgabe, Content-Filterung und Response-Caching erstellt
 - Service im `service_locator` registriert
 - Roadmap aktualisiert
+
+### Phase 1: Subject Classification System - 2025-08-08
+- `SubjectClassificationService` mit Schlüsselwort-basierter Klassifikation und Fachwechsel-Erkennung erstellt
+- Historien-Tracking vorbereitet und Platzhalter für ML-basierte Klassifikation hinzugefügt
+- Service im `service_locator` registriert, Roadmap und Prompt aktualisiert

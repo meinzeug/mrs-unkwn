@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import '../services/openai_service.dart';
 import '../../features/tutoring/data/services/ai_response_service.dart';
+import '../../features/tutoring/data/services/subject_classification_service.dart';
 
 final sl = GetIt.instance;
 
@@ -18,6 +19,9 @@ void _registerFeatures() {
   // Register feature-specific services here
   sl.registerLazySingleton<AIResponseService>(
     () => AIResponseService(openAI: sl()),
+  );
+  sl.registerLazySingleton<SubjectClassificationService>(
+    () => SubjectClassificationService(),
   );
 }
 

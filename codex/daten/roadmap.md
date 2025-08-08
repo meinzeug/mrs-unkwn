@@ -245,7 +245,7 @@ Details: Erstelle `lib/features/tutoring/presentation/pages/chat_page.dart`. Imp
 [x] AI Response Generation Service:
 Details: Erstelle `ai_response_service.dart` der OpenAI-API-Calls managed. Implement Request-Building mit Conversation-Context und System-Prompts. Handle Streaming-Responses für Real-time-Message-Display. Implement Content-Filtering für Inappropriate-AI-Responses. Add Response-Caching für Similar-Questions. Handle API-Errors gracefully mit User-friendly-Error-Messages.
 
-[ ] Subject Classification System:
+[x] Subject Classification System:
 Details: Implementiere Subject-Detection-Algorithm für Student-Questions. Create Keyword-Based-Classification für Basic-Subject-Detection: Math-Keywords (equation, solve, calculate), Science-Keywords (experiment, hypothesis), etc. Implement Machine-Learning-Classification für Better-Accuracy. Store Subject-History für Learning-Analytics. Handle Multi-Subject-Questions und Subject-Switching in Conversations.
 
 [ ] Learning Session Management:
