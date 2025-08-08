@@ -1,11 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 
-const MODEL_PATH = path.resolve(__dirname, '../../data/homework_model.bin');
-const FEEDBACK_LOG_PATH = path.resolve(
-  __dirname,
-  '../../data/homework_feedback.log'
-);
+const MODEL_DIR = path.resolve(__dirname, '../../data');
+const MODEL_PATH = path.join(MODEL_DIR, 'homework_model.bin');
+const VERSION_FILE = path.join(MODEL_DIR, 'model_version.json');
+const FEEDBACK_LOG_PATH = path.join(MODEL_DIR, 'homework_feedback.log');
 
 interface Model {
   weights: Record<string, number>;
@@ -14,6 +13,29 @@ interface Model {
 }
 
 let cachedModel: Model | null = null;
+
+function getCurrentVersion(): number {
+  if (!fs.existsSync(VERSION_FILE)) {
+    return 0;
+  }
+  try {
+    const raw = fs.readFileSync(VERSION_FILE, 'utf8');
+    const { version } = JSON.parse(raw) as { version: number };
+    return typeof version === 'number' ? version : 0;
+  } catch {
+    return 0;
+  }
+}
+
+function setVersion(version: number): void {
+  const dir = path.dirname(VERSION_FILE);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(VERSION_FILE, JSON.stringify({ version }));
+}
+
+export function getModelVersion(): number {
+  return getCurrentVersion();
+}
 
 function loadModel(): Model {
   if (!fs.existsSync(MODEL_PATH)) {
@@ -112,7 +134,11 @@ export async function retrainModel(): Promise<void> {
     }
     model.bias += lr * error;
   }
+  const version = getCurrentVersion() + 1;
   fs.writeFileSync(MODEL_PATH, JSON.stringify(model));
+  const versionedPath = path.join(MODEL_DIR, `homework_model_v${version}.bin`);
+  fs.writeFileSync(versionedPath, JSON.stringify(model));
+  setVersion(version);
   fs.unlinkSync(FEEDBACK_LOG_PATH);
   cachedModel = model;
 }

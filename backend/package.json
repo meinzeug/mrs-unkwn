@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "ts-node --transpile-only tests/security.test.ts && ts-node --transpile-only tests/homework.test.ts"
+    "test": "ts-node --transpile-only tests/security.test.ts && ts-node --transpile-only tests/homework.test.ts",
+    "retrain-model": "ts-node --transpile-only ../scripts/retrain_homework_model.ts"
   },
   "keywords": [],
   "author": "",

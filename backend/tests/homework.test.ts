@@ -10,6 +10,7 @@ import path from 'path';
 async function run() {
   const modelDir = path.resolve(__dirname, '../data');
   const modelFile = path.join(modelDir, 'homework_model.bin');
+  const versionFile = path.join(modelDir, 'model_version.json');
   if (!fs.existsSync(modelFile)) {
     fs.mkdirSync(modelDir, { recursive: true });
     const model = {
@@ -19,6 +20,7 @@ async function run() {
     };
     fs.writeFileSync(modelFile, JSON.stringify(model));
   }
+  fs.writeFileSync(versionFile, JSON.stringify({ version: 1 }));
 
   const dataset = [
     { text: 'This is a regular homework submission.', label: false },
@@ -45,13 +47,18 @@ async function run() {
   }
 
   const before = JSON.parse(fs.readFileSync(modelFile, 'utf8')).weights.chatgpt;
+  const versionBefore = JSON.parse(fs.readFileSync(versionFile, 'utf8')).version;
   await retrainModel();
   const after = JSON.parse(fs.readFileSync(modelFile, 'utf8')).weights.chatgpt;
+  const versionAfter = JSON.parse(fs.readFileSync(versionFile, 'utf8')).version;
   if (before === after) {
     throw new Error('Expected model weight to change after retraining');
   }
   if (fs.existsSync(feedbackFile)) {
     throw new Error('Expected feedback log to be removed after retraining');
+  }
+  if (versionAfter !== versionBefore + 1) {
+    throw new Error('Expected model version to increment');
   }
 
   console.log('homework.test.ts passed');

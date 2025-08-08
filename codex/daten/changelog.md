@@ -315,3 +315,8 @@
 - Skript `scripts/retrain_homework_model.ts` erstellt, um das Retraining auszuführen und Modell-Datei zu generieren.
 - Tests in `backend/tests/homework.test.ts` erweitert und Feedback-Logbereinigung geprüft.
 - Roadmap und Prompt aktualisiert.
+
+### Phase 2: Automatisierte Modell-Bereitstellung - 2025-08-09
+- GitHub Action konfiguriert wöchentlichen Retrain-Lauf und stellt Modell als Artefakt bereit.
+- NPM-Skript `retrain-model` und Versionstracking für das Modell eingeführt.
+- `setup_homework_detection.sh` legt `model_version.json` automatisch an.
