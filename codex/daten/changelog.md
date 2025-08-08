@@ -140,3 +140,7 @@
 - Passwortfeld mit Mindestlänge und Toggle für Sichtbarkeit ergänzt
 - `_validateAndSubmit()` Methode hinzugefügt
 - `dart format` und `flutter analyze` (Dependencies fehlen) ausgeführt
+
+### Phase 1: Login BLoC State Management - 2025-08-08
+- `auth_bloc.dart` mit Events, States und AuthBloc implementiert
+- Roadmap aktualisiert
