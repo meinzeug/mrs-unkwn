@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Performance Testing und Profiling`
+# Nächster Schritt: Phase 1 – `Security Testing Implementation`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -54,6 +54,7 @@
 - BLoC Testing Implementation implementiert ✓
 - API Integration Testing implementiert ✓
 - E2E Testing mit Integration Tests implementiert ✓
+- Performance Testing und Profiling implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -61,19 +62,18 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Performance Testing und Profiling`
+## Nächste Aufgabe: `Security Testing Implementation`
 
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- Performance-Benchmarks für kritische App-Flows einrichten.
-- Speicherverbrauch während Chat-Sessions und großer Datenladungen messen.
-- Batterieverbrauch für Background-Monitoring-Services profilieren.
-- App-Startup-Time und Navigations-Performance testen.
-- Performance-Regression-Tests in die CI/CD-Pipeline integrieren.
-- Flutter-DevTools zur Performance-Analyse verwenden.
+- API-Security testen: Authentication-Bypass-Versuche, Token-Validierung, Input-Sanitization.
+- Lokale Datenverschlüsselung und Secure-Storage prüfen.
+- Penetration-Tests für Platform-Channels durchführen.
+- Privacy-Controls und Datenzugriffsrechte testen.
+- Security-Vulnerability-Scanning in CI/CD integrieren.
 
 ### Validierung
 - `dart format` auf geänderten Dateien ausführen.
