@@ -234,3 +234,9 @@
 - `ProgressPage` und `ProgressChart` zur Visualisierung des Lernfortschritts erstellt
 - `TutoringBloc` überträgt beendete Sitzungen an den Analytics-Service
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Chat History und Persistence - 2025-08-08
+- `ChatHistoryService` mit Hive-Speicherung, Verschlüsselung, Suche, Export, Cleanup sowie Backup/Restore erstellt
+- `TutoringBloc` integriert Chat-History, Such-, Export- und Backup-Events
+- `service_locator.dart` registriert ChatHistoryService und SecureStorageService für Schlüsselverwaltung
+- `scripts/create_flutter_project.sh` um `hive_flutter` erweitert

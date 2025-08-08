@@ -4,6 +4,8 @@ import '../../features/tutoring/data/services/ai_response_service.dart';
 import '../../features/tutoring/data/services/subject_classification_service.dart';
 import '../../features/tutoring/data/services/content_moderation_service.dart';
 import '../../features/analytics/data/services/learning_analytics_service.dart';
+import '../storage/secure_storage_service.dart';
+import '../../features/tutoring/data/services/chat_history_service.dart';
 
 final sl = GetIt.instance;
 
@@ -15,6 +17,7 @@ Future<void> configureDependencies() async {
 
 void _registerCore() {
   // Register core services here
+  sl.registerLazySingleton<SecureStorageService>(() => SecureStorageService());
 }
 
 void _registerFeatures() {
@@ -36,6 +39,9 @@ void _registerFeatures() {
   );
   sl.registerLazySingleton<LearningAnalyticsService>(
     () => LearningAnalyticsService(),
+  );
+  sl.registerLazySingleton<ChatHistoryService>(
+    () => ChatHistoryService(sl()),
   );
 }
 

@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Chat History und Persistence`
+# Nächster Schritt: Phase 1 – `Unit Testing Setup für Flutter`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -48,6 +48,7 @@
 - Voice Input Integration implementiert ✓
 - Basic Content Moderation implementiert ✓
 - Learning Progress Analytics implementiert ✓
+- Chat History und Persistence implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -55,18 +56,17 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Chat History und Persistence`
+## Nächste Aufgabe: `Unit Testing Setup für Flutter`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- Chat-History-Storage mit Hive-Datenbank für Offline-Zugriff implementieren.
-- Chat-Export-Funktion für Eltern-Review bereitstellen.
-- Suchfunktion für Chat-History mit Keyword- und Datumsfiltern integrieren.
-- Chat-Datenverschlüsselung zur Wahrung der Privatsphäre einführen.
-- Automatischen Chat-Cleanup nach definierter Aufbewahrungsfrist implementieren.
-- Backup- und Restore-Funktionalität für Chats erstellen.
+- Testverzeichnisstruktur `test/unit`, `test/widget` und `test/integration` anlegen.
+- Benötigte Test-Dependencies (`flutter_test`, `mocktail`, `bloc_test`) in `pubspec.yaml` durch Skript sicherstellen.
+- `test/helpers/` mit gemeinsamen Utility-Funktionen und Mock-Klassen erstellen.
+- Basisklassen für Tests und Datenfabriken für Modelle anlegen.
+- Code-Coverage-Reporting mit `lcov` vorbereiten.
 
 ### Validierung
 - `dart format` auf geänderten Dateien ausführen.

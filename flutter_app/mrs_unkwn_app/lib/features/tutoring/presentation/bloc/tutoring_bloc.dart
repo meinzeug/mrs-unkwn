@@ -11,6 +11,7 @@ import '../../data/services/subject_classification_service.dart';
 import '../../data/services/content_moderation_service.dart';
 import '../../../analytics/data/services/learning_analytics_service.dart';
 import '../../../../core/di/service_locator.dart';
+import '../../data/services/chat_history_service.dart';
 
 /// Events
 abstract class TutoringEvent extends BaseEvent {
@@ -26,6 +27,30 @@ class SendMessageRequested extends TutoringEvent {
 
 class LoadChatHistoryRequested extends TutoringEvent {
   const LoadChatHistoryRequested();
+}
+
+class SearchChatHistoryRequested extends TutoringEvent {
+  const SearchChatHistoryRequested({this.keyword, this.from, this.to});
+
+  final String? keyword;
+  final DateTime? from;
+  final DateTime? to;
+}
+
+class ExportChatRequested extends TutoringEvent {
+  const ExportChatRequested(this.path);
+
+  final String path;
+}
+
+class BackupChatRequested extends TutoringEvent {
+  const BackupChatRequested();
+}
+
+class RestoreChatRequested extends TutoringEvent {
+  const RestoreChatRequested(this.json);
+
+  final String json;
 }
 
 class StartLearningSessionRequested extends TutoringEvent {
@@ -67,6 +92,24 @@ class TutoringError extends TutoringState {
   final String message;
 }
 
+class ChatExported extends TutoringState {
+  const ChatExported(this.path);
+
+  final String path;
+}
+
+class ChatBackupCreated extends TutoringState {
+  const ChatBackupCreated(this.data);
+
+  final String data;
+}
+
+class ChatRestored extends TutoringState {
+  const ChatRestored(this.messages);
+
+  final List<ChatMessage> messages;
+}
+
 /// BLoC handling tutoring chat logic.
 class TutoringBloc extends BaseBloc<TutoringEvent, TutoringState> {
   TutoringBloc({
@@ -76,17 +119,23 @@ class TutoringBloc extends BaseBloc<TutoringEvent, TutoringState> {
     ModerationLogService? logService,
     ParentNotificationService? notifier,
     LearningAnalyticsService? analytics,
+    ChatHistoryService? history,
   })  : _aiService = aiService ?? AIResponseService(),
        _classifier = classifier ?? SubjectClassificationService(),
        _moderator = moderator ?? ContentModerationService(),
        _logService = logService ?? ModerationLogService(),
        _notifier = notifier ?? ParentNotificationService(),
        _analytics = analytics ?? sl<LearningAnalyticsService>(),
+       _historyService = history ?? sl<ChatHistoryService>(),
         super(const TutoringInitial()) {
     on<SendMessageRequested>(_onSendMessageRequested);
     on<LoadChatHistoryRequested>(_onLoadChatHistoryRequested);
     on<StartLearningSessionRequested>(_onStartLearningSessionRequested);
     on<EndLearningSessionRequested>(_onEndLearningSessionRequested);
+    on<SearchChatHistoryRequested>(_onSearchChatHistoryRequested);
+    on<ExportChatRequested>(_onExportChatRequested);
+    on<BackupChatRequested>(_onBackupChatRequested);
+    on<RestoreChatRequested>(_onRestoreChatRequested);
   }
 
   final AIResponseService _aiService;
@@ -95,6 +144,7 @@ class TutoringBloc extends BaseBloc<TutoringEvent, TutoringState> {
   final ModerationLogService _logService;
   final ParentNotificationService _notifier;
   final LearningAnalyticsService _analytics;
+  final ChatHistoryService _historyService;
   final List<ChatMessage> _history = [];
   LearningSession? _session;
 
@@ -103,8 +153,55 @@ class TutoringBloc extends BaseBloc<TutoringEvent, TutoringState> {
     Emitter<TutoringState> emit,
   ) async {
     emit(const TutoringLoading());
-    // TODO: Load from persistent storage when available.
+    final messages = await _historyService.getMessages();
+    _history
+      ..clear()
+      ..addAll(messages);
     emit(MessagesLoaded(List.unmodifiable(_history)));
+  }
+
+  Future<void> _onSearchChatHistoryRequested(
+    SearchChatHistoryRequested event,
+    Emitter<TutoringState> emit,
+  ) async {
+    emit(const TutoringLoading());
+    final results = await _historyService.search(
+      keyword: event.keyword,
+      from: event.from,
+      to: event.to,
+    );
+    emit(MessagesLoaded(List.unmodifiable(results)));
+  }
+
+  Future<void> _onExportChatRequested(
+    ExportChatRequested event,
+    Emitter<TutoringState> emit,
+  ) async {
+    emit(const TutoringLoading());
+    await _historyService.exportToFile(event.path);
+    emit(ChatExported(event.path));
+  }
+
+  Future<void> _onBackupChatRequested(
+    BackupChatRequested event,
+    Emitter<TutoringState> emit,
+  ) async {
+    emit(const TutoringLoading());
+    final data = await _historyService.backup();
+    emit(ChatBackupCreated(data));
+  }
+
+  Future<void> _onRestoreChatRequested(
+    RestoreChatRequested event,
+    Emitter<TutoringState> emit,
+  ) async {
+    emit(const TutoringLoading());
+    await _historyService.restore(event.json);
+    final messages = await _historyService.getMessages();
+    _history
+      ..clear()
+      ..addAll(messages);
+    emit(ChatRestored(List.unmodifiable(_history)));
   }
 
   Future<void> _onStartLearningSessionRequested(
@@ -147,6 +244,7 @@ class TutoringBloc extends BaseBloc<TutoringEvent, TutoringState> {
       timestamp: DateTime.now(),
     );
     _history.add(userMessage);
+    await _historyService.addMessage(userMessage);
     _session = _session?.incrementQuestion(
       topic: _classifier.classify(event.message).first,
     );
@@ -193,6 +291,7 @@ class TutoringBloc extends BaseBloc<TutoringEvent, TutoringState> {
         timestamp: DateTime.now(),
       );
       _history.add(aiMessage);
+      await _historyService.addMessage(aiMessage);
       _session = _session?.incrementAiInteractions();
       emit(MessageSent(List.unmodifiable(_history)));
     } catch (e) {

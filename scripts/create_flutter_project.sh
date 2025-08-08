@@ -21,7 +21,7 @@ if [ -f "$PUBSPEC" ]; then
   perl -0pi -e 's/sdk: ">=([0-9]+\.[0-9]+\.[0-9]+)/sdk: ">=3.16.0/' "$PUBSPEC"
 
   if ! grep -q "dio:" "$PUBSPEC"; then
-    perl -0pi -e 's/dependencies:\n/dependencies:\n  dio: ^5.3.0\n  flutter_bloc: ^8.1.3\n  get_it: ^7.6.0\n  flutter_secure_storage: ^9.0.0\n  go_router: ^12.0.0\n  hive: ^2.2.3\n  json_annotation: ^4.8.1\n  speech_to_text: ^6.6.1\n/' "$PUBSPEC"
+    perl -0pi -e 's/dependencies:\n/dependencies:\n  dio: ^5.3.0\n  flutter_bloc: ^8.1.3\n  get_it: ^7.6.0\n  flutter_secure_storage: ^9.0.0\n  go_router: ^12.0.0\n  hive: ^2.2.3\n  hive_flutter: ^1.1.0\n  json_annotation: ^4.8.1\n  speech_to_text: ^6.6.1\n/' "$PUBSPEC"
   elif ! grep -q "speech_to_text:" "$PUBSPEC"; then
     perl -0pi -e 's/dependencies:\n/dependencies:\n  speech_to_text: ^6.6.1\n/' "$PUBSPEC"
   fi

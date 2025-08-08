@@ -24,6 +24,9 @@ class SecureStorageService {
   /// Storage key for serialized user data.
   static const String userDataKey = 'USER_DATA_KEY';
 
+  /// Storage key for chat encryption key.
+  static const String chatKey = 'CHAT_KEY';
+
   /// Stores a value under the given [key].
   Future<void> store(String key, String value) => _storage.write(key: key, value: value);
 
