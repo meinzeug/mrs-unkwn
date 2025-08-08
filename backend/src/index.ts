@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import { config } from './config/config';
 import routes from './routes';
 import { errorHandler } from './middleware/error.middleware';
+import { responseHandler } from './middleware/response.middleware';
 
 const app = express();
 
@@ -12,11 +13,12 @@ app.use(cors());
 app.use(helmet());
 app.use(morgan('combined'));
 app.use(express.json());
+app.use(responseHandler);
 
 app.use('/api', routes);
 
 app.get('/health', (_req, res) => {
-  res.json({ status: 'ok' });
+  res.success({ status: 'ok' }, 'Health check');
 });
 
 app.use(errorHandler);

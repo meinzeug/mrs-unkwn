@@ -125,3 +125,8 @@
 - Globale Fehlerbehandlungs-Middleware `error.middleware.ts` erstellt
 - Einheitliches Fehlerformat `{ error: { message, code, details } }` implementiert
 - Middleware in `src/index.ts` registriert und Roadmap aktualisiert
+
+### Phase 1: API Response Standardization - 2025-08-08
+- Einheitliche Response-Helfer in `response.util.ts` implementiert
+- Response-Wrapper-Middleware registriert und bestehende Routen angepasst
+- Roadmap aktualisiert

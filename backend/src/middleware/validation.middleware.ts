@@ -28,6 +28,6 @@ export const validateRequest = (validations: ValidationChain[]) => {
       })),
     };
 
-    return res.status(400).json(formatted);
+    return res.error('Validation failed', 400, formatted);
   };
 };

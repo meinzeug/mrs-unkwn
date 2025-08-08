@@ -6,15 +6,15 @@ const router = Router();
 
 router.get('/profile', authenticateToken, (req: Request, res: Response) => {
   if (!req.user) {
-    return res.status(401).json({ message: 'Unauthorized' });
+    return res.error('Unauthorized', 401);
   }
   const { password_hash, ...user } = req.user;
-  return res.json({ user });
+  return res.success({ user });
 });
 
 router.put('/profile', authenticateToken, async (req: Request, res: Response) => {
   if (!req.user) {
-    return res.status(401).json({ message: 'Unauthorized' });
+    return res.error('Unauthorized', 401);
   }
   const { first_name, last_name } = req.body as {
     first_name?: string;
@@ -25,15 +25,15 @@ router.put('/profile', authenticateToken, async (req: Request, res: Response) =>
     last_name: last_name ?? req.user.last_name,
   });
   const { password_hash, ...user } = updated;
-  return res.json({ user });
+  return res.success({ user }, 'Profile updated');
 });
 
 router.delete('/account', authenticateToken, async (req: Request, res: Response) => {
   if (!req.user) {
-    return res.status(401).json({ message: 'Unauthorized' });
+    return res.error('Unauthorized', 401);
   }
   await userRepository.delete(req.user.id);
-  return res.status(204).send();
+  return res.success(null, 'Account deleted');
 });
 
 export default router;

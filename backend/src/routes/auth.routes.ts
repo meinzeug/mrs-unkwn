@@ -27,7 +27,7 @@ router.post(
     const { name, email, password } = req.body;
     const existing = await userRepository.findByEmail(email);
     if (existing) {
-      return res.status(409).json({ message: 'User already exists' });
+      return res.error('User already exists', 409);
     }
 
     const password_hash = await PasswordService.hashPassword(password);
@@ -44,7 +44,7 @@ router.post(
     });
 
     const tokens = authService.generateTokens(user.id);
-    return res.status(201).json({ tokens });
+    return res.success({ tokens }, 'User registered', 201);
   },
 );
 
@@ -55,16 +55,16 @@ router.post(
     const { email, password } = req.body;
     const user = await userRepository.findByEmail(email);
     if (!user) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+      return res.error('Invalid credentials', 401);
     }
 
     const valid = await PasswordService.comparePassword(password, user.password_hash);
     if (!valid) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+      return res.error('Invalid credentials', 401);
     }
 
     const tokens = authService.generateTokens(user.id);
-    return res.json({ tokens });
+    return res.success({ tokens }, 'Login successful');
   },
 );
 
@@ -77,14 +77,14 @@ router.post(
   async (req: Request<{}, {}, RefreshBody>, res: Response) => {
     const { refreshToken } = req.body;
     if (!refreshToken) {
-      return res.status(400).json({ message: 'Refresh token required' });
+      return res.error('Refresh token required', 400);
     }
 
     try {
       const tokens = authService.refreshTokens(refreshToken);
-      return res.json({ tokens });
+      return res.success({ tokens }, 'Token refreshed');
     } catch {
-      return res.status(401).json({ message: 'Invalid token' });
+      return res.error('Invalid token', 401);
     }
   },
 );
@@ -104,7 +104,7 @@ router.post(
     if (refreshToken) {
       authService.blacklistToken(refreshToken);
     }
-    return res.status(204).send();
+    return res.success(null, 'Logged out');
   },
 );
 

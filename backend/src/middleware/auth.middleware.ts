@@ -12,7 +12,7 @@ export const authenticateToken = async (
 ): Promise<void> => {
   const token = extractToken(req.headers['authorization']);
   if (!token) {
-    res.status(401).json({ message: 'Unauthorized' });
+    res.error('Unauthorized', 401);
     return;
   }
 
@@ -20,13 +20,13 @@ export const authenticateToken = async (
     const payload = authService.verifyAccessToken(token);
     const user = await userRepository.findById(payload.userId);
     if (!user) {
-      res.status(401).json({ message: 'Unauthorized' });
+      res.error('Unauthorized', 401);
       return;
     }
     req.user = user;
     next();
   } catch {
-    res.status(401).json({ message: 'Unauthorized' });
+    res.error('Unauthorized', 401);
   }
 };
 
@@ -35,7 +35,7 @@ export const authorizeRoles = (
 ) => {
   return (req: Request, res: Response, next: NextFunction): void => {
     if (!req.user || !roles.includes(req.user.role)) {
-      res.status(403).json({ message: 'Forbidden' });
+      res.error('Forbidden', 403);
       return;
     }
     next();
@@ -61,6 +61,6 @@ export const optionalAuth = async (
     }
     next();
   } catch {
-    res.status(401).json({ message: 'Unauthorized' });
+    res.error('Unauthorized', 401);
   }
 };

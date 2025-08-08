@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { config } from '../config/config';
+import { error as formatError } from '../utils/response.util';
 
 interface AppError extends Error {
   statusCode?: number;
@@ -31,18 +32,17 @@ export const errorHandler = (
       break;
   }
 
-  const errorResponse: Record<string, unknown> = {
-    message: err.message || 'Internal Server Error',
-    code,
-  };
+  const details: Record<string, unknown> = { code };
 
   if (err.details) {
-    errorResponse.details = err.details;
+    details.details = err.details;
   }
 
   if (config.nodeEnv !== 'production' && err.stack) {
-    errorResponse.stack = err.stack;
+    details.stack = err.stack;
   }
 
-  res.status(statusCode).json({ error: errorResponse });
+  res
+    .status(statusCode)
+    .json(formatError(err.message || 'Internal Server Error', statusCode, details));
 };
