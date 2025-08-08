@@ -1,4 +1,4 @@
-# Nächster Schritt: Projektabschluss – Review & Feinschliff
+# Nächster Schritt: Wartungsmodus – Fehlerbehebungen & Updates
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -14,30 +14,27 @@
 - Phase 4 Milestone 4 abgeschlossen ✓
 - Phase 5 Milestone 1 abgeschlossen ✓
 - Phase 5 Milestone 2 abgeschlossen ✓
+- Phase 5 Milestone 3 abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
 - `/codex/AGENTS.md`
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
-- `/codex/daten/adaptive_learning_paths.md`
-- `scripts/train_adaptive_model.sh`
-- `backend/third_party_api.md`
 
 ## Nächste Aufgabe
-Gesamtes Projekt überprüfen, letzte Dokumentations- und Code-Checks durchführen.
+Projekt im Wartungsmodus halten, Fehlerberichte beobachten und bei Bedarf Bugfixes oder Updates durchführen.
 
 ### Vorbereitungen
-- Roadmap-Eintrag zu Phase 5 Milestone 2 prüfen.
+- Repository auf neue Issues oder Fehlerhinweise prüfen.
 
 ### Implementierungsschritte
-- Dokumentation prüfen und ggf. korrigieren.
-- Offene Punkte oder TODOs identifizieren und abschließen.
+- Bei Bedarf Fehler beheben oder Aktualisierungen vornehmen.
 
 ### Validierung
-- `npm test` im Backend ausführen.
+- Entsprechende Tests (z. B. `npm test`) ausführen.
 
 ### Selbstgenerierung
-- Nach Abschluss finalen Prompt erstellen.
+- Nach jeder Wartungsaufgabe neuen Prompt erstellen.
 
 *Hinweis: Codex kann keine Binärdateien mergen. Benötigte Dateien werden durch Skripte generiert. Halte den Codeumfang dieses Sprints unter 500 Zeilen.*

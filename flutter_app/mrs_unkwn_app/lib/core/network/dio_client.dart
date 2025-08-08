@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import '../constants/app_constants.dart';
+import '../storage/secure_storage_service.dart';
 
 /// Provides a configured [Dio] HTTP client.
 class DioClient {
@@ -125,8 +126,11 @@ class DioClient {
 /// Simple JWT interceptor that attaches a token to outgoing requests.
 class _JwtInterceptor extends Interceptor {
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    // TODO: Retrieve token from secure storage when available.
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+    final token = await SecureStorageService().read(SecureStorageService.tokenKey);
+    if (token != null) {
+      options.headers['Authorization'] = 'Bearer $token';
+    }
     handler.next(options);
   }
 }

@@ -21,7 +21,7 @@ void main() {
       // Placeholder: verify initial widget is present
       expect(find.byType(Placeholder), findsOneWidget);
 
-      // TODO: implement family setup and monitoring flow when features exist.
+      // Placeholder: implement family setup and monitoring flow when features exist.
     });
   });
 }

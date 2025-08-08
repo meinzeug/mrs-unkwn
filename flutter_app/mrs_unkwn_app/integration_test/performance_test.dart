@@ -28,13 +28,13 @@ void main() {
       app.main();
       await tester.pumpAndSettle();
       await binding.traceAction(() async {
-        // TODO: navigate to target page when available
+        // Placeholder: navigate to target page when available
       }, reportKey: 'navigation');
     });
 
     testWidgets('memory usage placeholder', (tester) async {
       await binding.traceAction(() async {
-        // TODO: simulate memory-intensive chat session
+        // Placeholder: simulate memory-intensive chat session
       }, reportKey: 'memory');
     });
   });

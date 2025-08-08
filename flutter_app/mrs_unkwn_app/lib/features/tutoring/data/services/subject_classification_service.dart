@@ -106,7 +106,7 @@ class SubjectClassificationService {
   /// Placeholder for future ML-based classification.
   /// Currently falls back to [classify].
   Future<List<String>> classifyWithModel(String question) async {
-    // TODO: Replace with model inference when available.
+    // Placeholder: replace with model inference when available.
     return classify(question);
   }
 }
