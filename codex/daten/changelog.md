@@ -391,3 +391,8 @@
 - Konzeptdokument `codex/daten/gamification_engine.md` hinzugefügt
 - Skript `scripts/generate_badge_assets.sh` erstellt, das Platzhalter-Badge-Icons generiert
 - Roadmap und Prompt aktualisiert
+
+### Phase 5: Gamification Engine Basisklassen - 2025-08-11
+- `PointsManager`, `LevelManager` und `BadgeManager` im Backend unter `services/gamification` erstellt
+- Dokumentation `gamification_engine.md` mit Link zum Badge-Generator-Skript erweitert
+- Roadmap und Prompt aktualisiert

@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 5 Milestone 1 – Gamification Engine
+# Nächster Schritt: Phase 5 Milestone 2 – Adaptive Learning Paths
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -12,7 +12,7 @@
 - Phase 4 Milestone 2 abgeschlossen ✓
 - Phase 4 Milestone 3 abgeschlossen ✓
 - Phase 4 Milestone 4 abgeschlossen ✓
-- Phase 5 Milestone 1 offen ☐
+- Phase 5 Milestone 1 abgeschlossen ✓
 - Phase 5 Milestone 2 offen ☐
 
 ## Referenzen
@@ -24,14 +24,14 @@
 - `backend/third_party_api.md`
 
 ## Nächste Aufgabe
-Phase 5 Milestone 1: Gamification Engine. Grundlegende Engine implementieren und Integration vorbereiten.
+Phase 5 Milestone 2: Adaptive Learning Paths. KI-gestützte Lernpfade vorbereiten.
 
 ### Vorbereitungen
-- Roadmap-Eintrag zu Phase 5 Milestone 1 prüfen.
+- Roadmap-Eintrag zu Phase 5 Milestone 2 prüfen.
 
 ### Implementierungsschritte
-- Basisklassen für Punkte-, Level- und Badge-Management anlegen.
-- Skript `scripts/generate_badge_assets.sh` in Dokumentation verlinken.
+- Modell- und Service-Struktur für adaptive Lernpfade entwerfen.
+- Platzhalter-Skript `scripts/train_adaptive_model.sh` in Dokumentation verlinken.
 
 ### Validierung
 - Keine.
