@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `API Response Standardization`
+# Nächster Schritt: Phase 1 – `Login Screen UI Layout`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -27,6 +27,7 @@
 - Authentication Middleware implementiert ✓
 - Basic API Routes Setup implementiert ✓
 - Error Handling Middleware implementiert ✓
+- API Response Standardization implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -34,20 +35,21 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `API Response Standardization`
+## Nächste Aufgabe: `Login Screen UI Layout`
 
 ### Vorbereitungen
-- Navigiere zum Projekt-Root `backend/`.
+- Navigiere zum Projekt-Root `flutter_app/`.
 
 ### Implementierungsschritte
-- `src/utils/response.util.ts` erstellen.
-- Helper-Funktionen `success(data, message, statusCode)`, `error(message, statusCode, details)` und `paginated(data, pagination)` implementieren.
-- Einheitliches API-Response-Format `{ success: boolean, data?: object, error?: object, message: string, timestamp: string }` sicherstellen.
-- Response-Wrapper-Middleware implementieren und in `src/index.ts` registrieren.
+- `lib/features/auth/presentation/pages/login_page.dart` erstellen.
+- `LoginPage` als `StatefulWidget` mit `Scaffold` und `AppBar(title: 'Login')` implementieren.
+- Body als `SingleChildScrollView` mit Logo-Container (150x150), Titel "Willkommen bei Mrs-Unkwn".
+- Zwei `TextFormField` für Email und Password mit `InputDecoration`.
+- `ElevatedButton` zum Login und `TextButton` für "Registrieren".
 
 ### Validierung
-- `npx tsc --noEmit`.
-- `npm test` (falls Tests vorhanden).
+- `flutter format lib/features/auth/presentation/pages/login_page.dart`.
+- `flutter analyze`.
 
 ### Selbstgenerierung
 - Nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md` schreiben.
