@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Chat Message Model und Serialization`
+# Nächster Schritt: Phase 1 – `AI Prompt Engineering für Sokratische Methode`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -38,6 +38,7 @@
 - Registration API Integration implementiert ✓
 - Password Strength Indicator implementiert ✓
 - OpenAI API Integration Setup implementiert ✓
+- Chat Message Model und Serialization implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -45,20 +46,20 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Chat Message Model und Serialization`
+## Nächste Aufgabe: `AI Prompt Engineering für Sokratische Methode`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- `lib/features/tutoring/data/models/chat_message.dart` erstellen.
-- Eigenschaften: `id`, `role` (user/assistant/system), `content`, `timestamp`, `metadata`.
-- `@JsonSerializable()` nutzen und `fromJson()` sowie `toJson()` implementieren.
-- Message-Typen: Text, Image, File-Attachment.
-- Threading für Multi-Turn-Konversationen berücksichtigen.
+- `lib/features/tutoring/data/prompts/socratic_prompts.dart` erstellen.
+- System-Prompts für Mathematik, Naturwissenschaften, Literatur und Geschichte definieren.
+- Prompt-Templates implementieren, die sokratisches Fragen fördern.
+- Altersgerechte Varianten und Kontext-Verkettung berücksichtigen.
+- Token-Limits und Kontext-Management beachten.
 
 ### Validierung
-- `dart format lib/features/tutoring/data/models/chat_message.dart`.
+- `dart format lib/features/tutoring/data/prompts/socratic_prompts.dart`.
 - `flutter analyze`.
 
 ### Selbstgenerierung

@@ -181,3 +181,7 @@
 - `OpenAIService` mit `sendChatRequest` und Exponential Backoff erstellt
 - Service im `service_locator` registriert
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Chat Message Model und Serialization - 2025-08-08
+- `ChatMessage` Modell mit JSON-Serialisierung und Unterstützung für Text, Bild und Datei-Anhänge erstellt
+- Roadmap aktualisiert
