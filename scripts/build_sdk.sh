@@ -8,5 +8,5 @@ DIST_DIR="$SDK_DIR/dist"
 mkdir -p "$DIST_DIR"
 
 cd "$ROOT_DIR/backend"
-npx tsc "$SDK_DIR/index.ts" --module commonjs --target ES2020 --lib ES2020 --moduleResolution node --types node --outDir "$DIST_DIR"
+npx tsc "$SDK_DIR/index.ts" --module commonjs --target ES2020 --lib ES2020 --moduleResolution node --types node --declaration --outDir "$DIST_DIR"
 echo "SDK built at $DIST_DIR"

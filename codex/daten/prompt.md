@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 4 – TypeScript-Typdefinitionen für Client-SDK
+# Nächster Schritt: Roadmap abgeschlossen – neue Anforderungen ausstehend
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -11,7 +11,7 @@
 - Phase 4 Milestone 1 abgeschlossen ✓
 - Phase 4 Milestone 2 abgeschlossen ✓
 - Phase 4 Milestone 3 abgeschlossen ✓
-- Phase 4 Milestone 4 (JS-SDK) abgeschlossen ✓
+- Phase 4 Milestone 4 abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
@@ -21,21 +21,18 @@
 - `backend/third_party_api.md`
 
 ## Nächste Aufgabe
-TypeScript-Typdefinitionen für das Client-SDK veröffentlichen.
+Keine weiteren Aufgaben definiert. Bitte neue Anforderungen in der Roadmap ergänzen.
 
 ### Vorbereitungen
-- Bestehenden SDK-Code analysieren.
-- Build-Prozess für Typdefinitionen prüfen.
+- Roadmap auf kommende Meilensteine prüfen.
 
 ### Implementierungsschritte
-- `build_sdk.sh` erweitern, um `.d.ts` Dateien zu erzeugen.
-- Typdefinitionen im Ordner `backend/sdk/dist` ablegen.
+- Auf neue Aufgaben warten.
 
 ### Validierung
-- `python -m py_compile` auf geänderten Python-Dateien ausführen.
-- `npm test` und `flutter test` ausführen (falls vorhanden).
+- Keine.
 
 ### Selbstgenerierung
-- Nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md` schreiben.
+- Nach Ergänzung neuer Aufgaben diesen Prompt aktualisieren.
 
 *Hinweis: Codex kann keine Binärdateien mergen. Benötigte Dateien werden durch Skripte generiert. Halte den Codeumfang dieses Sprints unter 500 Zeilen.*

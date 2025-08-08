@@ -46,5 +46,8 @@ Alle externen Endpunkte sind auf 100 Anfragen pro Minute begrenzt. Für Tests ka
 ## Beispielskript
 Führe `ts-node scripts/example_api_client.ts` aus, um API-Key-Erstellung und Anfragen zu demonstrieren. Das Skript erzeugt alle benötigten Artefakte automatisch; es werden keine Binärdateien im Repository gespeichert.
 
+## Client SDK
+Das Skript `scripts/build_sdk.sh` erzeugt das JavaScript-SDK sowie die zugehörigen TypeScript-Typdefinitionen (`.d.ts`) im Verzeichnis `backend/sdk/dist`. Die generierten Dateien werden nicht versioniert und müssen vor der Verwendung erstellt werden.
+
 Weitere Endpunkte folgen.
 
