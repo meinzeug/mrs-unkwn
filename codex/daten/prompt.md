@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Request Validation Middleware`
+# Nächster Schritt: Phase 1 – `Authentication Middleware`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -23,6 +23,7 @@
 - JWT Authentication Service implementiert ✓
 - Password Hashing Service implementiert ✓
 - User Repository Pattern implementiert ✓
+- Request Validation Middleware implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -30,17 +31,17 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Request Validation Middleware`
+## Nächste Aufgabe: `Authentication Middleware`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `backend/`.
 
 ### Implementierungsschritte
-- `src/middleware/validation.middleware.ts` erstellen.
-- `validateRequest` Higher-Order-Function implementieren, die express-validator Rules akzeptiert.
-- Validation-Schemas in `src/validation/schemas/` anlegen: `userRegistration.schema.ts`, `userLogin.schema.ts`.
-- Jedes Schema definiert Validation-Rules für Request-Body-Fields.
-- Error-Response-Format mit Field-specific-Messages bei Validation-Failures implementieren.
+- `src/middleware/auth.middleware.ts` erstellen.
+- `authenticateToken` Middleware-Funktion implementieren, die Authorization-Header prüft, JWT-Token extrahiert und verifiziert.
+- Bei gültigem Token User-Daten zu `req.user` hinzufügen.
+- `authorizeRoles(...roles)` Middleware für Role-based-Access-Control implementieren.
+- `optionalAuth` Middleware für Endpoints hinzufügen, die sowohl Auth als auch Non-Auth-Requests akzeptieren.
 
 ### Validierung
 - `npx tsc --noEmit`.

@@ -104,3 +104,8 @@
 - `UserRepository` in `backend/src/repositories/user.repository.ts` erstellt
 - CRUD-Methoden (`create`, `findByEmail`, `findById`, `update`, `delete`) mit Knex umgesetzt
 - Roadmap aktualisiert
+
+### Phase 1: Request Validation Middleware - 2025-08-08
+- `validateRequest` Middleware mit feldspezifischem Fehlerformat erstellt
+- Validierungsschemas für Registrierung und Login hinzugefügt
+- Roadmap aktualisiert
