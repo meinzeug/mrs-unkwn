@@ -414,3 +414,7 @@
 - Offene TODO-Kommentare bereinigt und JWT-Token-Abfrage in den HTTP-Client integriert
 - Roadmap und Prompt aktualisiert
 - Backend-Tests mit `npm test` ausgeführt
+
+### Wartungscheck - 2025-08-08
+- Repository auf neue Issues geprüft
+- `npm test` und `pytest codex/tests` ausgeführt – keine Fehler gefunden

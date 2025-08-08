@@ -16,6 +16,8 @@
 - Phase 5 Milestone 2 abgeschlossen ✓
 - Phase 5 Milestone 3 abgeschlossen ✓
 
+- Letzter Wartungscheck am 2025-08-08 – keine offenen Issues
+
 ## Referenzen
 - `/README.md`
 - `/codex/AGENTS.md`
@@ -32,7 +34,7 @@ Projekt im Wartungsmodus halten, Fehlerberichte beobachten und bei Bedarf Bugfix
 - Bei Bedarf Fehler beheben oder Aktualisierungen vornehmen.
 
 ### Validierung
-- Entsprechende Tests (z. B. `npm test`) ausführen.
+- Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`) ausführen.
 
 ### Selbstgenerierung
 - Nach jeder Wartungsaufgabe neuen Prompt erstellen.
