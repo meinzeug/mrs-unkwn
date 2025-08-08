@@ -309,3 +309,9 @@
 - Evaluationsfunktion zur Genauigkeitsberechnung und Feedback-Logging implementiert.
 - Feedback-Endpoint `/homework/feedback` ergänzt und Tests erweitert.
 - Roadmap und Prompt aktualisiert.
+
+### Phase 2: Modell-Retraining mit Feedback-Daten - 2025-08-09
+- `retrainModel` Routine implementiert, die Feedback-Logs einliest und Modellgewichte anpasst.
+- Skript `scripts/retrain_homework_model.ts` erstellt, um das Retraining auszuführen und Modell-Datei zu generieren.
+- Tests in `backend/tests/homework.test.ts` erweitert und Feedback-Logbereinigung geprüft.
+- Roadmap und Prompt aktualisiert.
