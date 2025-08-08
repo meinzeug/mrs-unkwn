@@ -84,6 +84,30 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<void> refreshToken() async {
+    try {
+      final response = await _dio.post<Map<String, dynamic>>(
+        '/api/auth/refresh',
+      );
+      final data = response.data?['data'] as Map<String, dynamic>?;
+      if (data == null) {
+        throw Exception('Invalid response format');
+      }
+      final tokens = data['tokens'] as Map<String, dynamic>;
+      await _storage.store(
+        SecureStorageService.tokenKey,
+        tokens['accessToken'] as String,
+      );
+      await _storage.store(
+        SecureStorageService.refreshTokenKey,
+        tokens['refreshToken'] as String,
+      );
+    } catch (e) {
+      throw Exception('Token refresh failed: $e');
+    }
+  }
+
+  @override
   Future<void> logout() async {
     await _storage.delete(SecureStorageService.tokenKey);
     await _storage.delete(SecureStorageService.refreshTokenKey);

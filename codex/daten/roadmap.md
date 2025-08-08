@@ -277,7 +277,7 @@ Details: Erstelle Widget-Tests für alle Custom-Widgets und Screens. Test Login-
 [x] BLoC Testing Implementation:
 Details: Use `bloc_test` Package für BLoC-Unit-Testing. Test alle BLoC-Events und entsprechende State-Transitions. Mock Repository-Dependencies with Mocktail. Test Error-Handling und Edge-Cases in BLoCs. Implement Async-Testing für API-Calls und Database-Operations. Create BLoC-Integration-Tests für Complex-User-Flows.
 
-[ ] API Integration Testing:
+[x] API Integration Testing:
 Details: Setup Test-Environment mit Mock-HTTP-Server using `mockito`. Create API-Test-Scenarios: Success-Responses, Error-Responses, Network-Failures. Test Authentication-Flow: Login, Token-Refresh, Logout. Test Family-Management-APIs: Create, Update, Delete, Member-Management. Implement API-Contract-Testing für Backend-Compatibility.
 
 [ ] E2E Testing mit Integration Tests:
