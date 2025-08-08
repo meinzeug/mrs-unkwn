@@ -16,7 +16,7 @@
 - Phase 5 Milestone 2 abgeschlossen ✓
 - Phase 5 Milestone 3 abgeschlossen ✓
 
-- Letzter Wartungscheck am 2025-08-11 – keine offenen Issues
+- Letzter Wartungscheck am 2025-08-12 – keine offenen Issues
 
 ## Referenzen
 - `/README.md`
@@ -39,4 +39,4 @@ Projekt im Wartungsmodus halten, Fehlerberichte beobachten und bei Bedarf Bugfix
 ### Selbstgenerierung
 - Nach jeder Wartungsaufgabe neuen Prompt erstellen.
 
-*Hinweis: Codex kann keine Binärdateien mergen. Benötigte Dateien werden durch Skripte generiert. Halte den Codeumfang dieses Sprints unter 500 Zeilen.*
+*Hinweis: Codex kann keine Binärdateien mergen. Benötigte Dateien werden durch Skripte beim Ausführen automatisch erzeugt. Halte den Codeumfang dieses Sprints unter 500 Zeilen.*
