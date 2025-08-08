@@ -396,3 +396,9 @@
 - `PointsManager`, `LevelManager` und `BadgeManager` im Backend unter `services/gamification` erstellt
 - Dokumentation `gamification_engine.md` mit Link zum Badge-Generator-Skript erweitert
 - Roadmap und Prompt aktualisiert
+
+### Phase 5: Adaptive Learning Paths Grundstruktur - 2025-08-11
+- `AdaptivePathService` und `LearningPathNode` Modell unter `backend/src/services/adaptive` erstellt
+- Konzeptdokument `adaptive_learning_paths.md` ergänzt
+- Skript `scripts/train_adaptive_model.sh` erzeugt Modellgewichte automatisch
+- Roadmap und Prompt aktualisiert
