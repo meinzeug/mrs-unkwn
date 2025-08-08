@@ -6,5 +6,5 @@ export interface LearningPathNode {
 
 export interface UserProgress {
   userId: string;
-  completed: Set<string>;
+  completed: { [pathId: string]: Set<string> };
 }

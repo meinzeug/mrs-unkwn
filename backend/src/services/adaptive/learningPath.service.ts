@@ -1,8 +1,12 @@
 import { LearningPathNode } from "./learningPath.model";
 
+/**
+ * Service verwaltet Lernpfade und Nutzerfortschritt im Speicher.
+ * Fortschritt wird pro Nutzer und Pfad getrennt gespeichert.
+ */
 export class AdaptivePathService {
   private paths: Map<string, LearningPathNode[]> = new Map();
-  private progress: Map<string, Set<string>> = new Map();
+  private progress: Map<string, Map<string, Set<string>>> = new Map();
 
   constructor() {
     this.paths.set("default", [
@@ -11,16 +15,36 @@ export class AdaptivePathService {
     ]);
   }
 
-  async getNext(userId: string, pathId = "default"): Promise<LearningPathNode | null> {
-    const completed = this.progress.get(userId) ?? new Set<string>();
+  /**
+   * Liefert den nächsten Abschnitt basierend auf abgeschlossenem Fortschritt.
+   */
+  async getNext(
+    userId: string,
+    pathId = "default",
+  ): Promise<LearningPathNode | null> {
+    const userProgress = this.progress.get(userId)?.get(pathId) ?? new Set<string>();
     const nodes = this.paths.get(pathId) ?? [];
-    return nodes.find((n) => n.prerequisiteIds.every((id) => completed.has(id))) ?? null;
+    return (
+      nodes.find(
+        (n) => !userProgress.has(n.id) && n.prerequisiteIds.every((id) => userProgress.has(id)),
+      ) ?? null
+    );
   }
 
-  async recordResult(userId: string, nodeId: string, success: boolean): Promise<void> {
+  /**
+   * Speichert das Ergebnis eines Lernabschnitts und aktualisiert den Fortschritt.
+   */
+  async recordResult(
+    userId: string,
+    pathId: string,
+    nodeId: string,
+    success: boolean,
+  ): Promise<void> {
     if (!success) return;
-    const completed = this.progress.get(userId) ?? new Set<string>();
+    const userMap = this.progress.get(userId) ?? new Map<string, Set<string>>();
+    const completed = userMap.get(pathId) ?? new Set<string>();
     completed.add(nodeId);
-    this.progress.set(userId, completed);
+    userMap.set(pathId, completed);
+    this.progress.set(userId, userMap);
   }
 }

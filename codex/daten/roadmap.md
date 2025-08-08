@@ -375,5 +375,5 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 - [x] Skript `scripts/generate_badge_assets.sh` erzeugt Badge-Icons automatisch
 
 ### Milestone 2: Adaptive Learning Paths
-- [ ] KI-gestützte Lernpfade basierend auf Nutzerleistung entwickeln
+- [x] KI-gestützte Lernpfade basierend auf Nutzerleistung entwickeln
 - [x] Skript `scripts/train_adaptive_model.sh` erstellt und trainiert notwendige Modelle

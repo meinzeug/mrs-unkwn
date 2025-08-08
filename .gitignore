@@ -33,6 +33,7 @@ dist/
 **/.env
 package-lock.json
 backend/data/
+backend/models/
 backend/src/integrations/*.json
 
 # Python
