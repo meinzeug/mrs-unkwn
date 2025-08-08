@@ -239,7 +239,7 @@ Details: Erstelle `lib/features/tutoring/data/models/chat_message.dart`. Impleme
 [x] AI Prompt Engineering für Sokratische Methode:
 Details: Erstelle `lib/features/tutoring/data/prompts/socratic_prompts.dart`. Define System-Prompts für verschiedene Subjects: Math, Science, Literature, History. Implement Prompt-Templates die Socratic-Questioning fördern: "Instead of giving the answer, ask a guiding question". Create Age-appropriate-Prompts für Different-Grade-Levels. Implement Context-Building für Previous-Conversation-History. Handle Prompt-Length-Limits und Token-Management.
 
-[ ] Chat UI Interface Implementation:
+[x] Chat UI Interface Implementation:
 Details: Erstelle `lib/features/tutoring/presentation/pages/chat_page.dart`. Implementiere Chat-Bubble-UI mit Sender-Differentiation (Student vs AI). Create Message-Input-Field mit Send-Button und Voice-Input-Option. Implement Auto-Scroll zu newest Messages und Load-More-History. Add Typing-Indicators during AI-Response-Generation. Handle Message-Delivery-Status (Sending, Sent, Error) mit Visual-Indicators.
 
 [ ] AI Response Generation Service:

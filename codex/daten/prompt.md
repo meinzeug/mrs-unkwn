@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Chat UI Interface Implementation`
+# Nächster Schritt: Phase 1 – `AI Response Generation Service`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -40,6 +40,7 @@
 - OpenAI API Integration Setup implementiert ✓
 - Chat Message Model und Serialization implementiert ✓
 - AI Prompt Engineering für Sokratische Methode implementiert ✓
+- Chat UI Interface Implementation implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -47,21 +48,21 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Chat UI Interface Implementation`
+## Nächste Aufgabe: `AI Response Generation Service`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- `lib/features/tutoring/presentation/pages/chat_page.dart` erstellen.
-- Chat-Bubble-UI mit Sender-Differenzierung (Student vs AI) implementieren.
-- Message-Input-Field mit Send-Button und Voice-Option hinzufügen.
-- Auto-Scroll zu neuesten Nachrichten und Load-More-History implementieren.
-- Typing-Indicator während AI-Antwort generieren.
-- Nachrichtenzustände (Sending, Sent, Error) visuell darstellen.
+- `lib/features/tutoring/data/services/ai_response_service.dart` erstellen.
+- OpenAI-API-Requests mit Gesprächskontext und System-Prompts aufbauen.
+- Streaming-Responses für Echtzeit-Anzeige handhaben.
+- Content-Filtering für unangemessene Antworten implementieren.
+- Response-Caching für ähnliche Fragen hinzufügen.
+- Benutzerfreundliche Fehlerbehandlung integrieren.
 
 ### Validierung
-- `dart format lib/features/tutoring/presentation/pages/chat_page.dart`.
+- `dart format lib/features/tutoring/data/services/ai_response_service.dart`.
 - `flutter analyze`.
 
 ### Selbstgenerierung
