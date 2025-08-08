@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 2 – Automatisierte Modell-Bereitstellung
+# Nächster Schritt: Phase 2 – Modellversions-API
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -7,31 +7,33 @@
 - Phase 2: ML-Modell integriert ✓
 - Phase 2: Modell-Evaluierung & Feedback ✓
 - Phase 2: Modell-Retraining automatisiert ✓
+- Phase 2: Modell-Bereitstellung automatisiert ✓
 
 ## Referenzen
 - `/README.md`
 - `/codex/AGENTS.md`
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
+- `backend/package.json`
 - `backend/src/services/homework.service.ts`
 - `backend/tests/homework.test.ts`
 - `scripts/setup_homework_detection.sh`
 - `scripts/retrain_homework_model.ts`
+- `.github/workflows/retrain_model.yml`
 
 ## Nächste Aufgabe
-Automatisiere das Deployment des retrainierten Modells und plane regelmäßige Trainingsläufe.
+Implementiere einen API-Endpunkt, der die aktuelle Modellversion und das letzte Retrain-Datum zurückgibt.
 
 ### Vorbereitungen
-- Zeitplan für regelmäßiges Retraining definieren.
-- Mechanismus zur Modellversionierung entwerfen.
+- Route und Rückgabeformat definieren.
+- Quelle für Retrain-Zeitpunkt festlegen.
 
 ### Implementierungsschritte
-- NPM-Skript oder CI-Job anlegen, der `retrain_homework_model.ts` periodisch ausführt.
-- Modellversions-Tracking in Datenordner integrieren.
-- Dokumentation aktualisieren.
+- Route und Controller für Modellinformationen erstellen.
+- Service um Abfrage von Version und Datum erweitern.
+- Tests und Dokumentation aktualisieren.
 
 ### Validierung
-- `bash -n scripts/setup_homework_detection.sh`
 - `npm test --prefix backend`
 
 ### Selbstgenerierung
