@@ -53,7 +53,7 @@ class ParentNotificationService {
     required String message,
     required List<ModerationCategory> categories,
   }) async {
-    // TODO: integrate with real notification mechanism.
+    // Placeholder: integrate with real notification mechanism.
     debugPrint('Parent notified: $message categories: $categories');
   }
 }

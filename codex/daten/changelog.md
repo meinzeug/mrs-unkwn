@@ -409,3 +409,8 @@
 - Tests für Service und Route ergänzt und `package.json` aktualisiert
 - `scripts/train_adaptive_model.sh` erzeugt nun Platzhalter-Datensatz
 - Dokumentation, Roadmap und Prompt aktualisiert
+
+### Phase 5: Projektabschluss – Review & Feinschliff - 2025-08-11
+- Offene TODO-Kommentare bereinigt und JWT-Token-Abfrage in den HTTP-Client integriert
+- Roadmap und Prompt aktualisiert
+- Backend-Tests mit `npm test` ausgeführt

@@ -21,7 +21,7 @@ void main() {
       // Placeholder: verify initial widget is present
       expect(find.byType(Placeholder), findsOneWidget);
 
-      // TODO: implement registration, login and chat flow when UI is available.
+      // Placeholder: implement registration, login and chat flow when UI is available.
     });
   });
 }

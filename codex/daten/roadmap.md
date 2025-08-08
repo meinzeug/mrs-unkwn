@@ -377,3 +377,6 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 ### Milestone 2: Adaptive Learning Paths
 - [x] KI-gestützte Lernpfade basierend auf Nutzerleistung entwickeln
 - [x] Skript `scripts/train_adaptive_model.sh` erstellt und trainiert notwendige Modelle
+
+### Milestone 3: Projektabschluss & Review
+- [x] Abschlussüberprüfung, Dokumentationsabgleich und Code-Checks
