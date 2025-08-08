@@ -122,7 +122,7 @@ Details: Erstelle `lib/features/auth/presentation/pages/register_page.dart`. Imp
 [x] Registration BLoC Events/States:
 Details: Erweitere `AuthEvent` um `RegisterRequested(firstName, lastName, email, password, role)` Event. Erweitere `AuthState` um `RegisterSuccess`, `RegisterFailure` States. In `AuthBloc`, implementiere `_onRegisterRequested` Handler der Registration-API aufruft. Handle verschiedene Error-Cases: Email-bereits-verwendet, Invalid-Input, Network-Error. Emittiere entsprechende States mit Error-Messages.
 
-[ ] Registration API Integration:
+[x] Registration API Integration:
 Details: In `AuthRepositoryImpl`, implementiere `register()` Methode. Erstelle POST-Request zu `/api/auth/register` endpoint. Include alle Required-Fields in Request-Body. Handle API-Response: Success-Case mit User-Data, Error-Cases mit spezifischen Messages. Parse Validation-Errors vom Backend und mappen Sie zu User-friendly-Messages. Implementiere Automatic-Login nach successful Registration.
 
 [ ] Password Strength Indicator:

@@ -45,6 +45,45 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<User> register(
+    String firstName,
+    String lastName,
+    String email,
+    String password,
+    String role,
+  ) async {
+    try {
+      final response = await _dio.post<Map<String, dynamic>>(
+        '/api/auth/register',
+        data: {
+          'name': '$firstName $lastName',
+          'email': email,
+          'password': password,
+          'role': role,
+        },
+      );
+
+      final data = response.data?['data'] as Map<String, dynamic>?;
+      if (data == null) {
+        throw Exception('Invalid response format');
+      }
+      final tokens = data['tokens'] as Map<String, dynamic>;
+      final accessToken = tokens['accessToken'] as String;
+      final refreshToken = tokens['refreshToken'] as String;
+
+      await _storage.store(SecureStorageService.tokenKey, accessToken);
+      await _storage.store(
+        SecureStorageService.refreshTokenKey,
+        refreshToken,
+      );
+
+      return const User(id: 'temporary');
+    } catch (e) {
+      throw Exception('Registration failed: $e');
+    }
+  }
+
+  @override
   Future<void> logout() async {
     await _storage.delete(SecureStorageService.tokenKey);
     await _storage.delete(SecureStorageService.refreshTokenKey);
