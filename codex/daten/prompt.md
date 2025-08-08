@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Family-Tabellen Migration erstellen`
+# Nächster Schritt: Phase 1 – `JWT Authentication Service implementieren`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -19,6 +19,7 @@
 - Environment Variables Setup implementiert ✓
 - Database Connection Setup mit PostgreSQL ✓
 - User-Tabelle Migration erstellt ✓
+- Family-Tabellen Migration erstellt ✓
 
 ## Referenzen
 - `/README.md`
@@ -26,22 +27,21 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Family-Tabellen Migration erstellen`
+## Nächste Aufgabe: `JWT Authentication Service implementieren`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `backend/`.
 
 ### Implementierungsschritte
-- `npx knex migrate:make create_families_table` ausführen.
-- In der Migration `families` Tabelle mit Spalten `id`, `name`, `created_by`, `subscription_tier`, `created_at`, `updated_at` erstellen.
-- `family_members` Tabelle mit Spalten `id`, `family_id`, `user_id`, `role`, `permissions`, `joined_at` erstellen.
-- Fremdschlüssel-Constraints und Indexe für Relationen setzen.
-- In `down()` beide Tabellen wieder entfernen.
+- `src/services/auth.service.ts` erstellen.
+- `AuthService` Klasse mit Methoden `generateTokens(userId: string)`, `verifyAccessToken(token: string)`, `verifyRefreshToken(token: string)`, `refreshTokens(refreshToken: string)` implementieren.
+- `jsonwebtoken` für Token-Erstellung und -Validierung verwenden.
+- Ablaufzeiten: Access-Token 15 Minuten, Refresh-Token 7 Tage.
+- Token-Blacklisting-Logik vorbereiten.
 
 ### Validierung
 - `npx tsc --noEmit`.
-- `npx knex migrate:latest` (führt Migration aus).
-- `npx knex migrate:rollback` (setzt Migration zurück).
+- `npm test` (falls Tests vorhanden).
 
 ### Selbstgenerierung
 - Nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md` schreiben.

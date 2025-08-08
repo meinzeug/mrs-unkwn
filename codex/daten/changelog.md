@@ -85,3 +85,8 @@
 - `knexfile.ts` für Migrationskonfiguration hinzugefügt
 - Migration zur Erstellung der `users` Tabelle mit UUID, Namen, E-Mail, Passwort-Hash und Rollenfeldern erstellt
 - `knex migrate:latest` und `knex migrate:rollback` erfolgreich ausgeführt
+
+### Phase 1: Family-Tabellen Migration erstellen - 2025-08-07
+- Migration für `families` und `family_members` Tabellen implementiert
+- Spalten, Fremdschlüssel-Constraints und Indexe hinzugefügt
+- `knex migrate:latest` und `knex migrate:rollback` ausgeführt (fehlgeschlagen: Unable to acquire a connection)
