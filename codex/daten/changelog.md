@@ -120,3 +120,8 @@
 - `user.routes.ts` mit Profilabruf, Profilaktualisierung und Account-Löschung implementiert
 - Haupt-Router `routes/index.ts` hinzugefügt und unter `/api` in `src/index.ts` eingebunden
 - Roadmap aktualisiert
+
+### Phase 1: Error Handling Middleware - 2025-08-08
+- Globale Fehlerbehandlungs-Middleware `error.middleware.ts` erstellt
+- Einheitliches Fehlerformat `{ error: { message, code, details } }` implementiert
+- Middleware in `src/index.ts` registriert und Roadmap aktualisiert
