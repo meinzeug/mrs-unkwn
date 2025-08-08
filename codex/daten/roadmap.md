@@ -90,7 +90,7 @@ Details: Erstelle `src/middleware/validation.middleware.ts`. Implementiere `vali
 [x] Authentication Middleware implementieren:
 Details: Erstelle `src/middleware/auth.middleware.ts`. Implementiere `authenticateToken` Middleware-Funktion die Authorization-Header prüft, JWT-Token extrahiert und verifiziert. Bei gültigem Token, füge User-Data zu `req.user` hinzu. Implementiere `authorizeRoles(...roles)` Middleware für Role-based-Access-Control. Erstelle `optionalAuth` Middleware für Endpoints die sowohl Auth als auch Non-Auth-Requests akzeptieren.
 
-[ ] Basic API Routes Setup:
+[x] Basic API Routes Setup:
 Details: Erstelle `src/routes/` Ordner. Implementiere `auth.routes.ts` mit Express-Router: POST `/register`, POST `/login`, POST `/refresh`, POST `/logout`. Erstelle `user.routes.ts`: GET `/profile`, PUT `/profile`, DELETE `/account`. Erstelle `src/routes/index.ts` als Main-Router der alle Feature-Router kombiniert. Mounten Sie Main-Router in `src/index.ts` unter `/api` Prefix.
 
 [ ] Error Handling Middleware:

@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Basic API Routes Setup`
+# Nächster Schritt: Phase 1 – `Error Handling Middleware`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -25,6 +25,7 @@
 - User Repository Pattern implementiert ✓
 - Request Validation Middleware implementiert ✓
 - Authentication Middleware implementiert ✓
+- Basic API Routes Setup implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -32,17 +33,17 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Basic API Routes Setup`
+## Nächste Aufgabe: `Error Handling Middleware`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `backend/`.
 
 ### Implementierungsschritte
-- `src/routes/` Ordner erstellen.
-- `auth.routes.ts` mit Express-Router: POST `/register`, POST `/login`, POST `/refresh`, POST `/logout`.
-- `user.routes.ts` erstellen: GET `/profile`, PUT `/profile`, DELETE `/account`.
-- `src/routes/index.ts` als Main-Router implementieren, der alle Feature-Router kombiniert.
-- Main-Router in `src/index.ts` unter `/api` Prefix mounten.
+- `src/middleware/error.middleware.ts` erstellen.
+- Globale Fehlerbehandlungs-Middleware implementieren, die Validation-, Datenbank- und Authentifizierungsfehler unterscheidet.
+- Einheitliches Fehlerformat `{ error: { message, code, details } }` verwenden.
+- Unterschiedliche Ausgabe für Development vs. Production (Stack-Traces nur in Dev).
+- Middleware in `src/index.ts` registrieren.
 
 ### Validierung
 - `npx tsc --noEmit`.
