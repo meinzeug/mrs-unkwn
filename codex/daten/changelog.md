@@ -247,3 +247,9 @@
 - `scripts/create_flutter_project.sh` um automatische Eintragung von `bloc_test` erweitert
 - Skript `run_flutter_tests.sh` für Coverage-Ausführung hinzugefügt
 - `dart format` und `flutter analyze` (Werkzeuge evtl. unvollständig) ausgeführt
+
+### Phase 1: Widget Testing für UI Components - 2025-08-08
+- Widget-Tests für Login- und Chat-UI erstellt
+- Golden-Tests hinzugefügt und Skript `generate_goldens.sh` zum Erstellen der Assets erstellt
+- `.gitignore` erweitert, um generierte Golden-Dateien auszuschließen
+- Roadmap und Prompt aktualisiert

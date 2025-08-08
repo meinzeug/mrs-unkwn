@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Widget Testing für UI Components`
+# Nächster Schritt: Phase 1 – `BLoC Testing Implementation`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -50,6 +50,7 @@
 - Learning Progress Analytics implementiert ✓
 - Chat History und Persistence implementiert ✓
 - Unit Testing Setup für Flutter implementiert ✓
+- Widget Testing für UI Components implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -57,18 +58,15 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Widget Testing für UI Components`
+## Nächste Aufgabe: `BLoC Testing Implementation`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- Widget-Tests für Custom-Widgets und Screens erstellen.
-- Login-Screen testen: Form-Validierung, Button-States, Navigation.
-- Chat-UI testen: Nachrichtendarstellung, Eingabe und Scroll-Verhalten.
-- Golden-Tests zur UI-Konsistenz hinzufügen.
-- Responsive-Layouts für unterschiedliche Bildschirmgrößen prüfen.
-- Async-Operationen und BLoC-State-Änderungen in Tests behandeln.
+- BLoC-Tests mit `bloc_test` für Auth- und Tutoring-BLoCs hinzufügen.
+- Repository-Abhängigkeiten mittels `mocktail` mocken.
+- Edge-Cases und Fehlerzustände prüfen.
 
 ### Validierung
 - `dart format` auf geänderten Dateien ausführen.

@@ -21,6 +21,7 @@ flutter_app/mrs_unkwn_app/*
 !flutter_app/mrs_unkwn_app/build.yaml
 !flutter_app/mrs_unkwn_app/test/
 !flutter_app/mrs_unkwn_app/test/**
+flutter_app/mrs_unkwn_app/test/goldens/
 
 # Node.js
 node_modules/
