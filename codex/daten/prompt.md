@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `BLoC Testing Implementation`
+# Nächster Schritt: Phase 1 – `API Integration Testing`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -51,6 +51,7 @@
 - Chat History und Persistence implementiert ✓
 - Unit Testing Setup für Flutter implementiert ✓
 - Widget Testing für UI Components implementiert ✓
+- BLoC Testing Implementation implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -58,19 +59,22 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `BLoC Testing Implementation`
+## Nächste Aufgabe: `API Integration Testing`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- BLoC-Tests mit `bloc_test` für Auth- und Tutoring-BLoCs hinzufügen.
-- Repository-Abhängigkeiten mittels `mocktail` mocken.
-- Edge-Cases und Fehlerzustände prüfen.
+- Testumgebung mit Mock-HTTP-Server (`mockito`) aufsetzen.
+- API-Test-Szenarien für Erfolgs-, Fehler- und Netzwerkfälle schreiben.
+- Authentifizierungs-Flow (Login, Token-Refresh, Logout) testen.
+- Family-Management-APIs (Create, Update, Delete, Member-Management) abdecken.
+- API-Contract-Tests zur Sicherstellung der Backend-Kompatibilität hinzufügen.
 
 ### Validierung
 - `dart format` auf geänderten Dateien ausführen.
 - `flutter analyze`.
+- `flutter test`.
 
 ### Selbstgenerierung
 - Nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md` schreiben.
