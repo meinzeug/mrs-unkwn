@@ -149,3 +149,8 @@
 - `auth_repository_impl.dart` mit Login- und Logout-Logik erstellt
 - Tokens werden nach erfolgreichem Login sicher gespeichert
 - `dart format` und `flutter analyze` (Werkzeuge nicht verfügbar) ausgeführt
+
+### Phase 1: Login Loading States UI - 2025-08-08
+- UI in `login_page.dart` mit `BlocConsumer` um BLoC-Stati erweitert
+- Navigation bei Erfolg und SnackBar bei Fehler implementiert
+- Login-Button zeigt Ladeindikator und ist während Loading deaktiviert
