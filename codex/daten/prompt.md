@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Password Strength Indicator`
+# Nächster Schritt: Phase 1 – `OpenAI API Integration Setup`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -36,6 +36,7 @@
 - Register Screen UI Layout implementiert ✓
 - Registration BLoC Events/States implementiert ✓
 - Registration API Integration implementiert ✓
+- Password Strength Indicator implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -43,23 +44,24 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Password Strength Indicator`
+## Nächste Aufgabe: `OpenAI API Integration Setup`
 
 ### Vorbereitungen
-- Navigiere zum Projekt-Root `flutter_app/`.
+- Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- `lib/shared/widgets/password_strength_indicator.dart` erstellen.
-- Passwortstärke basierend auf Länge, Groß-/Kleinbuchstaben, Zahlen und Sonderzeichen berechnen.
-- Farbliche Anzeige (Rot/Orange/Grün) und Verbesserungsvorschläge integrieren.
-- Echtzeit-Aktualisierung während der Eingabe implementieren.
+- `http` Package prüfen oder installieren.
+- `lib/core/services/openai_service.dart` erstellen.
+- API-Key über Environment-Variablen laden.
+- Methode `sendChatRequest(String message, List<ChatMessage> context)` implementieren.
+- Rate-Limiting mit Exponential Backoff und Timeout (30s) berücksichtigen.
+- API-Nutzungsstatistiken für Cost-Tracking speichern.
 
 ### Validierung
-- `dart format lib/shared/widgets/password_strength_indicator.dart`.
+- `dart format lib/core/services/openai_service.dart`.
 - `flutter analyze`.
 
 ### Selbstgenerierung
 - Nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md` schreiben.
 
 *Hinweis: Codex kann keine Binärdateien mergen. Benötigte Dateien müssen durch Skripte generiert werden. Halte den Codeumfang dieses Sprints unter 500 Zeilen.*
-
