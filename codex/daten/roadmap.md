@@ -383,3 +383,4 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 
 # Wartungsmodus
 - [x] Wartungscheck am 2025-08-14: Tests (`npm test`, `pytest codex/tests`) erfolgreich
+- [x] Wartungscheck am 2025-08-15: Tests (`npm test`, `pytest codex/tests`) erfolgreich
