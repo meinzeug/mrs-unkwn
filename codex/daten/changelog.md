@@ -362,3 +362,8 @@
 - Developer-Portal mit HTML-Oberfläche und API-Routen zur Verwaltung von Schlüsseln erstellt
 - Rate-Limiting für externe Endpunkte mit `express-rate-limit` hinzugefügt
 - Test für Rate-Limiting und Dokumentation erweitert
+
+### Phase 4: API-Dokumentation & Beispielskripte - 2025-08-10
+- Dokumentation `backend/third_party_api.md` um Authentifizierungsbeispiele, Fehlercodes und Nutzungshinweise erweitert
+- Skript `scripts/example_api_client.ts` demonstriert API-Key-Erstellung und API-Abfragen
+- Roadmap und Prompt aktualisiert
