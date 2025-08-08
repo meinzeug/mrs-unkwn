@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 4 – Client-SDK für Drittanbieter-API
+# Nächster Schritt: Phase 4 – TypeScript-Typdefinitionen für Client-SDK
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -11,6 +11,7 @@
 - Phase 4 Milestone 1 abgeschlossen ✓
 - Phase 4 Milestone 2 abgeschlossen ✓
 - Phase 4 Milestone 3 abgeschlossen ✓
+- Phase 4 Milestone 4 (JS-SDK) abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
@@ -20,15 +21,15 @@
 - `backend/third_party_api.md`
 
 ## Nächste Aufgabe
-Client-SDK für die Drittanbieter-API erstellen.
+TypeScript-Typdefinitionen für das Client-SDK veröffentlichen.
 
 ### Vorbereitungen
-- Anforderungen an Client-Bibliotheken prüfen.
-- Zielplattform (z.B. TypeScript) festlegen.
+- Bestehenden SDK-Code analysieren.
+- Build-Prozess für Typdefinitionen prüfen.
 
 ### Implementierungsschritte
-- SDK-Grundgerüst im Ordner `backend/sdk/` erstellen.
-- Beispiel-Funktion für `GET /api/external/health` implementieren.
+- `build_sdk.sh` erweitern, um `.d.ts` Dateien zu erzeugen.
+- Typdefinitionen im Ordner `backend/sdk/dist` ablegen.
 
 ### Validierung
 - `python -m py_compile` auf geänderten Python-Dateien ausführen.
