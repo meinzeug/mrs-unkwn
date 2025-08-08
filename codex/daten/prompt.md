@@ -1,29 +1,35 @@
-# Nächster Schritt: Phase 2 – TBD
+# Nächster Schritt: Phase 2 – Homework Detection Model Integration
 
 ## Status
 - Phase 0 abgeschlossen ✓
 - Phase 1 abgeschlossen ✓
+- Phase 2 gestartet: Basissystem implementiert ✓
 
 ## Referenzen
 - `/README.md`
 - `/codex/AGENTS.md`
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
+- `scripts/setup_homework_detection.sh`
+- `backend/src/services/homework.service.ts`
 
-## Nächste Aufgabe: Wird in Phase 2 definiert.
+## Nächste Aufgabe
+Integriere ein echtes ML-Modell in den HomeworkDetectionService, um AI-generierte Texte zuverlässiger zu erkennen.
 
 ### Vorbereitungen
-- Auf weitere Instruktionen warten.
+- `scripts/setup_homework_detection.sh` ausführen, um das Modell zu laden.
+- Bestehenden Service und Route prüfen.
 
 ### Implementierungsschritte
-- TBD
+- Modell laden und initialisieren.
+- Heuristische Erkennung durch Modellaufruf ersetzen.
+- Tests und Validierungen anpassen.
 
 ### Validierung
-- `dart format`
-- `flutter analyze`
-- `flutter test`
+- `bash -n scripts/setup_homework_detection.sh`
+- `npm test --prefix backend`
 
 ### Selbstgenerierung
 - Nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md` schreiben.
 
-*Hinweis: Codex kann keine Binärdateien mergen. Benötigte Dateien müssen durch Skripte generiert werden. Halte den Codeumfang dieses Sprints unter 500 Zeilen.*
+*Hinweis: Codex kann keine Binärdateien mergen. Benötigte Dateien werden durch Skripte generiert. Halte den Codeumfang dieses Sprints unter 500 Zeilen.*

@@ -297,3 +297,15 @@ Details: Create Manual-Testing-Checklists für Each-Release. Define User-Accepta
 
 [x] Monitoring und Crash Reporting:
 Details: Integrate Firebase-Crashlytics für Production-Crash-Reporting. Setup Custom-Error-Tracking für Business-Logic-Errors. Implement Performance-Monitoring mit Firebase-Performance oder Sentry. Create Error-Alerting-System für Critical-Production-Issues. Setup Error-Analysis-Dashboard für Development-Team. Implement User-Feedback-Collection für Issue-Resolution.
+
+# Mrs-Unkwn Entwicklungsroadmap - Phase 2 (Monate 7-12)
+
+## Phase 2: Enhanced Features
+
+### Milestone 1: Advanced Homework Detection
+
+[x] Basissystem für Hausaufgabenerkennung:
+Details: Service und Route implementiert, um AI-generierte Inhalte in Hausaufgaben zu erkennen. Skript `setup_homework_detection.sh` lädt benötigtes Modell.
+
+[ ] ML-Modell-Integration für präzisere Erkennung:
+Details: Echtes ML-Modell einbinden und heuristische Erkennung ersetzen.
