@@ -279,3 +279,7 @@
 - Backend-Tests für Authentifizierung, Token-Prüfung und Input-Sanitization implementiert
 - Secure-Storage-Test für lokale Datenverschlüsselung erstellt
 - Roadmap und Prompt aktualisiert
+### Phase 1: Automated Testing in CI/CD - 2025-08-08
+- GitHub Actions Workflow `flutter_ci.yml` mit Testmatrix für mehrere Flutter-Versionen und Plattformen hinzugefügt
+- Retry-Logik für flackernde Tests sowie Coverage-Upload zu Codecov implementiert
+- Artefakt-Upload und Fehlbenachrichtigung bei Testfehlschlägen konfiguriert

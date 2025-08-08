@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Automated Testing in CI/CD`
+# Nächster Schritt: Phase 1 – `Manual Testing Procedures`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -56,6 +56,7 @@
 - E2E Testing mit Integration Tests implementiert ✓
 - Performance Testing und Profiling implementiert ✓
 - Security Testing Implementation implementiert ✓
+- Automated Testing in CI/CD implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -63,19 +64,19 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Automated Testing in CI/CD`
+## Nächste Aufgabe: `Manual Testing Procedures`
 
 
 ### Vorbereitungen
-- Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
+- Relevante Dokumentationsordner für Testprozeduren vorbereiten.
 
 ### Implementierungsschritte
-- GitHub-Actions Workflow für automatisierte Tests einrichten.
-- Test-Matrix für mehrere Flutter-Versionen und Plattformen konfigurieren.
-- Parallele Testausführung für schnellere CI-Läufe implementieren.
-- Testberichte und Coverage nach Codecov hochladen.
-- Benachrichtigungen bei fehlgeschlagenen Tests und Artifacts konfigurieren.
-- Retry-Logik für flackernde Tests implementieren.
+- Manuelle Test-Checklisten für jede Release erstellen.
+- User-Acceptance-Testing-Szenarien mit realen Nutzungsmustern definieren.
+- Beta-Testprogramm mit Family-Testern aufsetzen.
+- Bug-Reporting-Vorlagen und Issue-Tracking-Prozesse erstellen.
+- Usability-Testing-Sessions mit Zielgruppen vorbereiten.
+- Testprozeduren und Quality-Gates dokumentieren.
 
 ### Validierung
 - `dart format` auf geänderten Dateien ausführen.
