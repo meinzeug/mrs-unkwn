@@ -72,7 +72,7 @@ Details: Installiere PostgreSQL-Dependencies: `npm install pg knex`. Installiere
 [x] User-Tabelle Migration erstellen:
 Details: Führe `npx knex migrate:make create_users_table` aus. In der generierten Migration-Datei, implementiere `up()` Funktion: erstelle `users` Tabelle mit Spalten `id` (UUID, primary), `email` (string, unique), `password_hash` (string), `first_name` (string), `last_name` (string), `role` (enum: parent/child), `created_at` (timestamp), `updated_at` (timestamp). Implementiere `down()` Funktion zum Löschen der Tabelle.
 
-[ ] Family-Tabellen Migration erstellen:
+[x] Family-Tabellen Migration erstellen:
 Details: Erstelle Migration für `families` Tabelle: `id` (UUID), `name` (string), `created_by` (UUID, foreign key zu users), `subscription_tier` (string), `created_at`, `updated_at`. Erstelle `family_members` Junction-Tabelle: `id` (UUID), `family_id` (UUID, foreign key), `user_id` (UUID, foreign key), `role` (string), `permissions` (JSON), `joined_at` (timestamp). Definiere Foreign-Key-Constraints und Indexes.
 
 [ ] JWT Authentication Service implementieren:
