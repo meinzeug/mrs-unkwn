@@ -1,0 +1,73 @@
+name: Flutter CI
+
+on:
+  push:
+    paths:
+      - 'flutter_app/**'
+      - '.github/workflows/flutter_ci.yml'
+  pull_request:
+    paths:
+      - 'flutter_app/**'
+      - '.github/workflows/flutter_ci.yml'
+
+jobs:
+  test:
+    name: Test on ${{ matrix.os }} with Flutter ${{ matrix.flutter }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        flutter: ['3.16.0', '3.19.0']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ matrix.flutter }}
+      - name: Flutter pub get
+        working-directory: flutter_app/mrs_unkwn_app
+        run: flutter pub get
+      - name: Format
+        working-directory: flutter_app/mrs_unkwn_app
+        run: dart format --output=none .
+      - name: Analyze
+        working-directory: flutter_app/mrs_unkwn_app
+        run: flutter analyze
+      - name: Run tests with retry
+        working-directory: flutter_app/mrs_unkwn_app
+        run: |
+          attempt=0
+          until [ $attempt -ge 3 ]
+          do
+            ((attempt++))
+            echo "Test attempt $attempt"
+            if bash ../../scripts/run_flutter_tests.sh 2>&1 | tee test_output.log; then
+              success=1
+              break
+            fi
+            sleep 5
+          done
+          if [ -z "$success" ]; then
+            echo "Tests failed after 3 attempts"
+            exit 1
+          fi
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ matrix.os }}-${{ matrix.flutter }}
+          path: flutter_app/mrs_unkwn_app/coverage/lcov.info
+      - name: Upload test log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-log-${{ matrix.os }}-${{ matrix.flutter }}
+          path: flutter_app/mrs_unkwn_app/test_output.log
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: flutter_app/mrs_unkwn_app/coverage/lcov.info
+          flags: ${{ matrix.os }}-${{ matrix.flutter }}
+          fail_ci_if_error: false
+      - name: Notify on failure
+        if: failure()
+        run: echo "Tests failed on ${{ matrix.os }} with Flutter ${{ matrix.flutter }}"
