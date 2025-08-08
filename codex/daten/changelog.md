@@ -268,3 +268,8 @@
 - `integration_test` Paket konfiguriert und E2E-Szenarien für Registrierung-bis-Chat sowie Family-Setup-bis-Monitoring hinzugefügt
 - `scripts/create_flutter_project.sh` um `integration_test` erweitert
 - `.gitignore` angepasst, um `integration_test`-Verzeichnis einzubinden
+
+### Phase 1: Performance Testing und Profiling - 2025-08-08
+- Integrationstest `performance_test.dart` misst Startzeit, Navigation und Speicherverbrauch
+- Skript `run_performance_tests.sh` erzeugt Performance-Reports automatisch
+- Roadmap und Prompt aktualisiert
