@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Basic Content Moderation`
+# Nächster Schritt: Phase 1 – `Learning Progress Analytics`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -46,6 +46,7 @@
 - Learning Session Management implementiert ✓
 - AI Tutoring BLoC State Management implementiert ✓
 - Voice Input Integration implementiert ✓
+- Basic Content Moderation implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -53,18 +54,18 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Basic Content Moderation`
+## Nächste Aufgabe: `Learning Progress Analytics`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- Client-side-Content-Filtering für Schülernachrichten vor dem Senden.
-- Keyword-Listen für Profanity, Gewalt und Adult-Content implementieren.
-- AI-Antworten auf pädagogische Angemessenheit prüfen.
-- Eltern-Benachrichtigungen bei Verstößen auslösen.
-- Prozess zur Anfechtung falscher Positivmeldungen vorsehen.
-- Moderationsprotokolle zur Nachverfolgung speichern.
+- Analytics-Engine für Learning-Progress-Tracking erstellen.
+- Metriken berechnen: Time-Spent-per-Subject, Questions-per-Session, Learning-Velocity.
+- Difficulty-Progression und Concept-Mastery über die Zeit verfolgen.
+- Fortschritt mit Charts und Trend-Lines visualisieren.
+- Achievement-System mit Learning-Milestones implementieren.
+- Progress-Reports für Eltern mit Insights und Empfehlungen generieren.
 
 ### Validierung
 - `dart format` auf geänderten Dateien ausführen.

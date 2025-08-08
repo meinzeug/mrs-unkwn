@@ -257,7 +257,7 @@ Details: Erstelle `tutoring_bloc.dart` mit Events: `SendMessageRequested`, `Load
 [x] Voice Input Integration:
 Details: Add `speech_to_text` Package für Voice-Input-Support. Implement Voice-Recording-UI mit Visual-Feedback (Waveform, Recording-Timer). Handle Speech-to-Text-Conversion mit Error-Handling für unclear Speech. Implement Language-Detection für Multi-language-Support (German, English). Add Voice-Commands für Navigation (Send-Message, Clear-Chat). Handle Microphone-Permissions und Audio-Recording-Privacy.
 
-[ ] Basic Content Moderation:
+[x] Basic Content Moderation:
 Details: Implement Client-side-Content-Filtering für Student-Messages vor AI-Submission. Create Inappropriate-Content-Detection mit Keyword-Lists: Profanity, Violence, Adult-Content. Implement AI-Response-Filtering für Educational-Appropriateness. Handle Content-Violation-Cases mit Parent-Notifications. Create Content-Appeal-Process für False-Positives. Store Moderation-Logs für Compliance und Improvement.
 
 [ ] Learning Progress Analytics:

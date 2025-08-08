@@ -223,3 +223,8 @@
 - `VoiceInputService` mit Sprach-zu-Text und Sprach­erkennung für Deutsch/Englisch erstellt
 - `chat_page.dart` um Aufnahme-Timer, Wellenform und Sprachbefehle zum Senden oder Leeren ergänzt
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Basic Content Moderation - 2025-08-08
+- `ContentModerationService` mit Keyword-Listen für Profanity, Gewalt und Adult-Content erstellt
+- `TutoringBloc` prüft Nachrichten und AI-Antworten, speichert Moderations-Logs und benachrichtigt Eltern
+- Roadmap und Prompt aktualisiert
