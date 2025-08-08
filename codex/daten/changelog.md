@@ -357,3 +357,8 @@
 - `ApiKeyRepository`, `ApiKeyService`, Middleware und externe Routen implementiert
 - Dokumentation `backend/third_party_api.md` erstellt
 - Roadmap und Prompt aktualisiert
+
+### Phase 4: Developer-Portal & Rate-Limiting - 2025-08-10
+- Developer-Portal mit HTML-Oberfläche und API-Routen zur Verwaltung von Schlüsseln erstellt
+- Rate-Limiting für externe Endpunkte mit `express-rate-limit` hinzugefügt
+- Test für Rate-Limiting und Dokumentation erweitert

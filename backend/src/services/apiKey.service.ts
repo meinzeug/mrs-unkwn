@@ -16,6 +16,10 @@ class ApiKeyService {
   async revokeKey(key: string): Promise<void> {
     await apiKeyRepository.revoke(key);
   }
+
+  async listKeys() {
+    return apiKeyRepository.listAll();
+  }
 }
 
 export const apiKeyService = new ApiKeyService();
