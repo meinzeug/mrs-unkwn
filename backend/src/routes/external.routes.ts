@@ -1,8 +1,11 @@
 import { Router } from 'express';
 import { verifyApiKey } from '../middleware/apiKey.middleware';
+import { externalRateLimiter } from '../middleware/rateLimit.middleware';
 import { userRepository } from '../repositories/user.repository';
 
 const router = Router();
+
+router.use(externalRateLimiter);
 
 router.get('/health', verifyApiKey, (_req, res) => {
   res.success({ status: 'ok' });

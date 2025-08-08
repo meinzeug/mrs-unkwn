@@ -27,6 +27,17 @@ export class ApiKeyRepository {
   async revoke(key: string): Promise<void> {
     await db<ApiKey>('api_keys').where({ key }).update({ revoked: true });
   }
+
+  async listAll(): Promise<ApiKey[]> {
+    return db<ApiKey>('api_keys').select(
+      'id',
+      'key',
+      'partner_name',
+      'revoked',
+      'created_at',
+      'updated_at',
+    );
+  }
 }
 
 export const apiKeyRepository = new ApiKeyRepository();

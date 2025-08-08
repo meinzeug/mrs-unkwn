@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 4 – Developer-Portal & Rate-Limiting
+# Nächster Schritt: Phase 4 – API-Dokumentation & Beispielskripte
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -15,21 +15,22 @@
 - `/codex/AGENTS.md`
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
+- `backend/third_party_api.md`
 
 ## Nächste Aufgabe
-Developer-Portal und Rate-Limiting implementieren.
+API-Dokumentation für Drittanbieter erweitern und Beispielskript zur Nutzung des Developer-Portals erstellen.
 
 ### Vorbereitungen
-- Bestehenden API-Key-Service und externe Routen analysieren.
-- Recherche zu `express-rate-limit`.
+- Bestehende Dokumentation prüfen.
+- Anforderungen für Beispielskript sammeln.
 
 ### Implementierungsschritte
-- Developer-Portal zur Verwaltung von API-Schlüsseln aufsetzen.
-- Rate-Limiting für externe Endpunkte hinzufügen.
+- `backend/third_party_api.md` um detaillierte Anleitung erweitern.
+- Skript `scripts/example_api_client.ts` erstellen, das API-Key generiert und Abfrage durchführt.
 
 ### Validierung
 - `python -m py_compile` auf geänderten Python-Dateien ausführen.
-- `flutter test` und `npm test` ausführen (falls vorhanden).
+- `npm test` und `flutter test` ausführen (falls vorhanden).
 
 ### Selbstgenerierung
 - Nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md` schreiben.
