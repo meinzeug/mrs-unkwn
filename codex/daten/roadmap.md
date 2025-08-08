@@ -107,7 +107,7 @@ Details: Erstelle `lib/features/auth/presentation/pages/login_page.dart`. Implem
 [x] Login Form Validation implementieren:
 Details: In `LoginPage`, erstelle `GlobalKey<FormState> _formKey`. Wrappen Sie Form-Fields in `Form` Widget mit `key: _formKey`. Für Email-Field: Validation-Function die Email-Format prüft mit RegExp. Für Password-Field: Validation für minimum 6 Zeichen, required Field. Implementiere `obscureText: true` für Password-Field mit Toggle-Icon. Erstelle `_validateAndSubmit()` Methode die `_formKey.currentState?.validate()` aufruft.
 
-[ ] Login BLoC State Management:
+[x] Login BLoC State Management:
 Details: Erstelle `lib/features/auth/presentation/bloc/auth_bloc.dart`. Definiere `AuthEvent` Klasse mit `LoginRequested(email, password)`, `LogoutRequested`, `AuthStatusChanged` Events. Definiere `AuthState` mit `AuthInitial`, `AuthLoading`, `AuthSuccess(User)`, `AuthFailure(String message)` States. Implementiere `AuthBloc` die Events handled und entsprechende States emittiert. Verwende Repository-Pattern für API-Calls.
 
 [ ] Login API Integration:

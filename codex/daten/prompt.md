@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Login BLoC State Management`
+# Nächster Schritt: Phase 1 – `Login API Integration`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -30,6 +30,7 @@
 - API Response Standardization implementiert ✓
 - Login Screen UI Layout erstellt ✓
 - Login Form Validation implementiert ✓
+- Login BLoC State Management implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -37,19 +38,20 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Login BLoC State Management`
+## Nächste Aufgabe: `Login API Integration`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/`.
 
 ### Implementierungsschritte
-- Datei `lib/features/auth/presentation/bloc/auth_bloc.dart` erstellen.
-- `AuthEvent` mit `LoginRequested(email, password)`, `LogoutRequested`, `AuthStatusChanged` definieren.
-- `AuthState` mit `AuthInitial`, `AuthLoading`, `AuthSuccess(User)`, `AuthFailure(String message)` implementieren.
-- `AuthBloc` mit Event-Handling und Repository-Aufrufen implementieren.
+- Datei `lib/features/auth/data/repositories/auth_repository_impl.dart` erstellen.
+- `login(String email, String password)` Methode implementieren.
+- POST-Request zu `/api/auth/login` mit Email/Password im Body senden.
+- Erfolgsantwort parsen, Tokens in `SecureStorageService` speichern.
+- Fehlerantworten abfangen und passende Exception mit Fehlermeldung werfen.
 
 ### Validierung
-- `dart format lib/features/auth/presentation/bloc/auth_bloc.dart`.
+- `dart format lib/features/auth/data/repositories/auth_repository_impl.dart`.
 - `flutter analyze`.
 
 ### Selbstgenerierung
