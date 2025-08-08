@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Registration API Integration`
+# Nächster Schritt: Phase 1 – `Password Strength Indicator`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -35,6 +35,7 @@
 - Login Loading States UI implementiert ✓
 - Register Screen UI Layout implementiert ✓
 - Registration BLoC Events/States implementiert ✓
+- Registration API Integration implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -42,18 +43,19 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Registration API Integration`
+## Nächste Aufgabe: `Password Strength Indicator`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/`.
 
 ### Implementierungsschritte
-- In `AuthRepositoryImpl` Methode `register` hinzufügen.
-- POST-Request zu `/api/auth/register` mit notwendigen Feldern senden.
-- API-Responses und Fehlerfälle handhaben.
+- `lib/shared/widgets/password_strength_indicator.dart` erstellen.
+- Passwortstärke basierend auf Länge, Groß-/Kleinbuchstaben, Zahlen und Sonderzeichen berechnen.
+- Farbliche Anzeige (Rot/Orange/Grün) und Verbesserungsvorschläge integrieren.
+- Echtzeit-Aktualisierung während der Eingabe implementieren.
 
 ### Validierung
-- `dart format lib/features/auth/data/repositories/auth_repository_impl.dart`.
+- `dart format lib/shared/widgets/password_strength_indicator.dart`.
 - `flutter analyze`.
 
 ### Selbstgenerierung

@@ -166,3 +166,9 @@
 - `AuthBloc` um Handler `_onRegisterRequested` erweitert
 - `AuthRepository` um `register` Methode ergänzt
 - Roadmap aktualisiert
+
+### Phase 1: Registration API Integration - 2025-08-08
+- `AuthRepositoryImpl` mit `register` Methode für `/api/auth/register` erweitert
+- Tokens aus API-Response gespeichert und Fehlerfälle behandelt
+- `dart format` und `flutter analyze` ausgeführt (Werkzeuge nicht verfügbar)
+- Roadmap aktualisiert
