@@ -3,6 +3,7 @@ import authRoutes from './auth.routes';
 import userRoutes from './user.routes';
 import homeworkRoutes from './homework.routes';
 import schoolRoutes from './school.routes';
+import organizationRoutes from './organization.routes';
 
 const router = Router();
 
@@ -10,5 +11,6 @@ router.use('/auth', authRoutes);
 router.use('/user', userRoutes);
 router.use('/homework', homeworkRoutes);
 router.use('/school', schoolRoutes);
+router.use('/organizations', organizationRoutes);
 
 export default router;

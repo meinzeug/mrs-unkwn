@@ -343,5 +343,5 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 
 ### Milestone 4: B2B Features
 
-- [ ] Organisations-Accounts und Rollenverwaltung einführen
-- [ ] Skript `scripts/create_sample_organizations.sh` legt Beispiel-Organisationen an
+- [x] Organisations-Accounts und Rollenverwaltung einführen
+- [x] Skript `scripts/create_sample_organizations.sh` legt Beispiel-Organisationen an
