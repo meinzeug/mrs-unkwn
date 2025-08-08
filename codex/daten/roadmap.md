@@ -104,7 +104,7 @@ Details: Erstelle `src/utils/response.util.ts`. Implementiere Helper-Functions: 
  [x] Login Screen UI Layout erstellen:
 Details: Erstelle `lib/features/auth/presentation/pages/login_page.dart`. Implementiere `LoginPage` als `StatefulWidget`. Erstelle UI-Layout mit `Scaffold`, `AppBar(title: 'Login')`, `SingleChildScrollView` Body. Füge Logo-Container hinzu (150x150), Titel-Text "Willkommen bei Mrs-Unkwn". Implementiere zwei `TextFormField` für Email und Password mit entsprechenden `InputDecoration`. Füge `ElevatedButton` für Login und `TextButton` für "Registrieren" Link hinzu.
 
-[ ] Login Form Validation implementieren:
+[x] Login Form Validation implementieren:
 Details: In `LoginPage`, erstelle `GlobalKey<FormState> _formKey`. Wrappen Sie Form-Fields in `Form` Widget mit `key: _formKey`. Für Email-Field: Validation-Function die Email-Format prüft mit RegExp. Für Password-Field: Validation für minimum 6 Zeichen, required Field. Implementiere `obscureText: true` für Password-Field mit Toggle-Icon. Erstelle `_validateAndSubmit()` Methode die `_formKey.currentState?.validate()` aufruft.
 
 [ ] Login BLoC State Management:
