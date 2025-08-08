@@ -333,8 +333,8 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 
 ### Milestone 2: Schul-Integrationen
 
-- [ ] Schnittstellen zu Schulverwaltungssystemen (z.B. LDAP, SSO) implementieren
-- [ ] Skript `scripts/setup_school_integrations.sh` erstellt benötigte Konnektoren
+- [x] Schnittstellen zu Schulverwaltungssystemen (z.B. LDAP, SSO) implementieren
+- [x] Skript `scripts/setup_school_integrations.sh` erstellt benötigte Konnektoren
 
 ### Milestone 3: Advanced Analytics Dashboard
 

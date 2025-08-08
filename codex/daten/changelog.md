@@ -335,3 +335,8 @@
 - Backend um Spracheinstellungen inkl. Migration und API-Updates ergänzt
 - Skript `scripts/generate_translations.sh` zur automatischen Generierung von Übersetzungsdateien erstellt
 - Roadmap und Prompt aktualisiert
+
+### Phase 3: Schul-Integrationen - 2025-08-09
+- LDAP- und SSO-Schnittstellen im Backend hinzugefügt
+- Skript `scripts/setup_school_integrations.sh` erzeugt benötigte Konfigurationsdatei und installiert Abhängigkeiten
+- Roadmap und Prompt aktualisiert
