@@ -46,3 +46,6 @@ __pycache__/
 
 # Manual testing generated files
 codex/tests/manual/generated/
+
+# Generated badge assets
+flutter_app/mrs_unkwn_app/assets/badges/

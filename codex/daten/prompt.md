@@ -20,17 +20,18 @@
 - `/codex/AGENTS.md`
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
+- `/codex/daten/gamification_engine.md`
 - `backend/third_party_api.md`
 
 ## Nächste Aufgabe
-Phase 5 Milestone 1: Gamification Engine. Implementierung vorbereiten und Skript `scripts/generate_badge_assets.sh` für automatische Badge-Erstellung entwerfen.
+Phase 5 Milestone 1: Gamification Engine. Grundlegende Engine implementieren und Integration vorbereiten.
 
 ### Vorbereitungen
 - Roadmap-Eintrag zu Phase 5 Milestone 1 prüfen.
 
 ### Implementierungsschritte
-- Gamification-Engine konzipieren.
-- Skript `scripts/generate_badge_assets.sh` erstellen, das Badge-Icons generiert.
+- Basisklassen für Punkte-, Level- und Badge-Management anlegen.
+- Skript `scripts/generate_badge_assets.sh` in Dokumentation verlinken.
 
 ### Validierung
 - Keine.

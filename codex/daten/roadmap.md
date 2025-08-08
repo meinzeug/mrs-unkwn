@@ -372,7 +372,7 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 
 ### Milestone 1: Gamification Engine
 - [ ] Gamification-Engine zur Motivation der Lernenden implementieren
-- [ ] Skript `scripts/generate_badge_assets.sh` erzeugt Badge-Icons automatisch
+- [x] Skript `scripts/generate_badge_assets.sh` erzeugt Badge-Icons automatisch
 
 ### Milestone 2: Adaptive Learning Paths
 - [ ] KI-gestützte Lernpfade basierend auf Nutzerleistung entwickeln
