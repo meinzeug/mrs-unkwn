@@ -1,10 +1,11 @@
-# Nächster Schritt: Phase 2 – Modell-Evaluierung & Feedback
+# Nächster Schritt: Phase 2 – Modell-Retraining mit Feedback-Daten
 
 ## Status
 - Phase 0 abgeschlossen ✓
 - Phase 1 abgeschlossen ✓
 - Phase 2 gestartet: Basissystem implementiert ✓
 - Phase 2: ML-Modell integriert ✓
+- Phase 2: Modell-Evaluierung & Feedback ✓
 
 ## Referenzen
 - `/README.md`
@@ -13,18 +14,19 @@
 - `/codex/daten/changelog.md`
 - `backend/src/services/homework.service.ts`
 - `backend/tests/homework.test.ts`
+- `scripts/setup_homework_detection.sh`
 
 ## Nächste Aufgabe
-Bewerte die Genauigkeit des HomeworkDetectionService anhand von Testdaten und implementiere einen Feedback-Mechanismus zur Verbesserung.
+Nutze gesammelte Feedback-Daten zur Aktualisierung des Modells und automatisiere das Retraining.
 
 ### Vorbereitungen
-- Repräsentative Testdatensätze definieren.
-- Logging für Fehlklassifikationen vorbereiten.
+- Feedback-Logdateien analysieren.
+- Skript oder Routine für Modelltraining vorbereiten.
 
 ### Implementierungsschritte
-- Evaluationsfunktion erstellen, die die Erkennungsgenauigkeit berechnet.
-- Feedback-Mechanismus ergänzen (z. B. Logging oder Endpoint).
-- Tests und Validierungen erweitern.
+- Trainingsskript erstellen, das Feedback-Daten einbezieht.
+- Modell nach Training als Datei generieren.
+- Tests und Dokumentation anpassen.
 
 ### Validierung
 - `bash -n scripts/setup_homework_detection.sh`
