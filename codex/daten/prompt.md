@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Register Screen UI Layout`
+# Nächster Schritt: Phase 1 – `Registration BLoC Events/States`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -33,6 +33,7 @@
 - Login BLoC State Management implementiert ✓
 - Login API Integration implementiert ✓
 - Login Loading States UI implementiert ✓
+- Register Screen UI Layout implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -40,20 +41,18 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Register Screen UI Layout`
+## Nächste Aufgabe: `Registration BLoC Events/States`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/`.
 
 ### Implementierungsschritte
-- Neue Datei `lib/features/auth/presentation/pages/register_page.dart` erstellen.
-- Layout analog zur `LoginPage` mit zusätzlichen Feldern `firstName`, `lastName`, `confirmPassword`.
-- `DropdownButtonFormField` für User-Role (Parent/Child) einfügen.
-- Checkbox für Terms-Acceptance mit Link zur Terms-Page hinzufügen.
-- Validierung: Password-Bestätigung und Terms-Akzeptanz müssen erfüllt sein.
+- `AuthEvent` um `RegisterRequested(firstName, lastName, email, password, role)` erweitern.
+- `AuthState` um `RegisterSuccess` und `RegisterFailure` ergänzen.
+- In `AuthBloc` Handler `_onRegisterRequested` implementieren.
 
 ### Validierung
-- `dart format lib/features/auth/presentation/pages/register_page.dart`.
+- `dart format lib/features/auth/presentation/bloc/auth_bloc.dart`.
 - `flutter analyze`.
 
 ### Selbstgenerierung

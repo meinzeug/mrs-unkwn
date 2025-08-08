@@ -154,3 +154,8 @@
 - UI in `login_page.dart` mit `BlocConsumer` um BLoC-Stati erweitert
 - Navigation bei Erfolg und SnackBar bei Fehler implementiert
 - Login-Button zeigt Ladeindikator und ist während Loading deaktiviert
+
+### Phase 1: Register Screen UI Layout - 2025-08-08
+- `register_page.dart` mit Feldern für Vorname, Nachname, Email, Passwortbestätigung und Rollenwahl erstellt
+- Checkbox für Nutzungsbedingungen mit Validierung hinzugefügt
+- Roadmap aktualisiert
