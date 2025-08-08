@@ -386,3 +386,8 @@
 ### Phase 5: Roadmap Planung - 2025-08-10
 - Phase 5 mit Gamification- und Adaptive-Learning-Zielen in `roadmap.md` ergänzt
 - `prompt.md` für nächsten Schritt angepasst
+
+### Phase 5: Gamification Badge Script - 2025-08-10
+- Konzeptdokument `codex/daten/gamification_engine.md` hinzugefügt
+- Skript `scripts/generate_badge_assets.sh` erstellt, das Platzhalter-Badge-Icons generiert
+- Roadmap und Prompt aktualisiert
