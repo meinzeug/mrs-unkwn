@@ -321,3 +321,27 @@ Details: NPM-Skript, GitHub Action und Modellversionierung eingeführt.
 
 [x] API-Endpunkt für Modellversion und Retrain-Datum:
 Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
+
+# Mrs-Unkwn Entwicklungsroadmap - Phase 3 (Monate 13-18)
+
+## Phase 3: Market Expansion & Integrationen
+
+### Milestone 1: Multi-Language Support
+
+- [ ] UI- und Backend-Lokalisierung für Deutsch und Englisch
+- [ ] Skript `scripts/generate_translations.sh` erzeugt Übersetzungsdateien automatisch
+
+### Milestone 2: Schul-Integrationen
+
+- [ ] Schnittstellen zu Schulverwaltungssystemen (z.B. LDAP, SSO) implementieren
+- [ ] Skript `scripts/setup_school_integrations.sh` erstellt benötigte Konnektoren
+
+### Milestone 3: Advanced Analytics Dashboard
+
+- [ ] Dashboard mit aggregierten Lernmetriken und Exportfunktion
+- [ ] Skript `scripts/generate_analytics_data.sh` erstellt Demo-Datensätze
+
+### Milestone 4: B2B Features
+
+- [ ] Organisations-Accounts und Rollenverwaltung einführen
+- [ ] Skript `scripts/create_sample_organizations.sh` legt Beispiel-Organisationen an

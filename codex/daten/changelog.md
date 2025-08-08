@@ -325,3 +325,7 @@
 - Endpoint `/homework/model` liefert aktuelle Modellversion und letztes Retrain-Datum.
 - Service speichert `lastRetrained` in `model_version.json`.
 - Tests, Skripte und Dokumentation aktualisiert.
+
+### Phase 3: Roadmap Planung - 2025-08-09
+- Phase-3-Ziele mit Meilensteinen (Multi-Language, Schul-Integrationen, Analytics, B2B) zur `roadmap.md` hinzugefügt
+- `prompt.md` auf nächsten Schritt aktualisiert
