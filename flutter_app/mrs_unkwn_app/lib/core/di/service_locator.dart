@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import '../services/openai_service.dart';
+import '../../features/tutoring/data/services/ai_response_service.dart';
 
 final sl = GetIt.instance;
 
@@ -15,6 +16,9 @@ void _registerCore() {
 
 void _registerFeatures() {
   // Register feature-specific services here
+  sl.registerLazySingleton<AIResponseService>(
+    () => AIResponseService(openAI: sl()),
+  );
 }
 
 void _registerExternal() {

@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `AI Response Generation Service`
+# Nächster Schritt: Phase 1 – `Subject Classification System`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -41,6 +41,7 @@
 - Chat Message Model und Serialization implementiert ✓
 - AI Prompt Engineering für Sokratische Methode implementiert ✓
 - Chat UI Interface Implementation implementiert ✓
+- AI Response Generation Service implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -48,21 +49,20 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `AI Response Generation Service`
+## Nächste Aufgabe: `Subject Classification System`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- `lib/features/tutoring/data/services/ai_response_service.dart` erstellen.
-- OpenAI-API-Requests mit Gesprächskontext und System-Prompts aufbauen.
-- Streaming-Responses für Echtzeit-Anzeige handhaben.
-- Content-Filtering für unangemessene Antworten implementieren.
-- Response-Caching für ähnliche Fragen hinzufügen.
-- Benutzerfreundliche Fehlerbehandlung integrieren.
+- `lib/features/tutoring/data/services/subject_classification_service.dart` erstellen.
+- Schlüsselwortbasierte Fachklassifikation implementieren.
+- Platzhalter für ML-basierte Klassifikation einfügen.
+- Subject-History-Tracking vorbereiten.
+- Multi-Subject-Fragen und Fachwechsel behandeln.
 
 ### Validierung
-- `dart format lib/features/tutoring/data/services/ai_response_service.dart`.
+- `dart format lib/features/tutoring/data/services/subject_classification_service.dart`.
 - `flutter analyze`.
 
 ### Selbstgenerierung
