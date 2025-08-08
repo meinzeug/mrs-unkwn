@@ -109,3 +109,8 @@
 - `validateRequest` Middleware mit feldspezifischem Fehlerformat erstellt
 - Validierungsschemas für Registrierung und Login hinzugefügt
 - Roadmap aktualisiert
+
+### Phase 1: Authentication Middleware implementiert - 2025-08-08
+- `auth.middleware.ts` mit Token-Verifizierung, Rollen- und Optional-Auth-Funktionen erstellt
+- Express `Request` Typ um `user` Feld erweitert
+- Roadmap aktualisiert
