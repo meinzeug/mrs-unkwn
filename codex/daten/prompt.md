@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Login Screen UI Layout`
+# Nächster Schritt: Phase 1 – `Login Form Validation`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -28,6 +28,7 @@
 - Basic API Routes Setup implementiert ✓
 - Error Handling Middleware implementiert ✓
 - API Response Standardization implementiert ✓
+- Login Screen UI Layout erstellt ✓
 
 ## Referenzen
 - `/README.md`
@@ -35,17 +36,17 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Login Screen UI Layout`
+## Nächste Aufgabe: `Login Form Validation`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/`.
 
 ### Implementierungsschritte
-- `lib/features/auth/presentation/pages/login_page.dart` erstellen.
-- `LoginPage` als `StatefulWidget` mit `Scaffold` und `AppBar(title: 'Login')` implementieren.
-- Body als `SingleChildScrollView` mit Logo-Container (150x150), Titel "Willkommen bei Mrs-Unkwn".
-- Zwei `TextFormField` für Email und Password mit `InputDecoration`.
-- `ElevatedButton` zum Login und `TextButton` für "Registrieren".
+- In `lib/features/auth/presentation/pages/login_page.dart` `GlobalKey<FormState> _formKey` definieren.
+- `TextFormField`s in ein `Form` Widget mit `key: _formKey` einbetten.
+- Email-Feld: Validierungsfunktion für korrektes Email-Format.
+- Passwort-Feld: Validierung für mindestens 6 Zeichen, `obscureText` mit Toggle-Icon.
+- Methode `_validateAndSubmit()` erstellen, die `_formKey.currentState?.validate()` aufruft.
 
 ### Validierung
 - `flutter format lib/features/auth/presentation/pages/login_page.dart`.
