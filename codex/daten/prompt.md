@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 5 Milestone 2 – Adaptive Learning Paths
+# Nächster Schritt: Phase 5 Milestone 2 – Adaptive Learning Paths Algorithm & API
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -13,28 +13,30 @@
 - Phase 4 Milestone 3 abgeschlossen ✓
 - Phase 4 Milestone 4 abgeschlossen ✓
 - Phase 5 Milestone 1 abgeschlossen ✓
-- Phase 5 Milestone 2 offen ☐
+- Phase 5 Milestone 2 in Arbeit ☐
 
 ## Referenzen
 - `/README.md`
 - `/codex/AGENTS.md`
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
-- `/codex/daten/gamification_engine.md`
+- `/codex/daten/adaptive_learning_paths.md`
+- `scripts/train_adaptive_model.sh`
 - `backend/third_party_api.md`
 
 ## Nächste Aufgabe
-Phase 5 Milestone 2: Adaptive Learning Paths. KI-gestützte Lernpfade vorbereiten.
+Phase 5 Milestone 2 fortsetzen: Algorithmus zur dynamischen Lernpfad-Berechnung implementieren und Backend-Endpunkte für Fortschritt & Pfadabfrage anlegen.
 
 ### Vorbereitungen
 - Roadmap-Eintrag zu Phase 5 Milestone 2 prüfen.
 
 ### Implementierungsschritte
-- Modell- und Service-Struktur für adaptive Lernpfade entwerfen.
-- Platzhalter-Skript `scripts/train_adaptive_model.sh` in Dokumentation verlinken.
+- Logik entwickeln, die basierend auf Nutzerfortschritt den nächsten Lernabschnitt ermittelt.
+- REST-Route (z.B. `POST /api/adaptive/progress`) erstellen, die Ergebnis speichert und nächsten Abschnitt liefert.
+- `scripts/train_adaptive_model.sh` um Trainingsplatzhalter erweitern.
 
 ### Validierung
-- Keine.
+- Unit-Tests für AdaptivePathService und neue Route schreiben.
 
 ### Selbstgenerierung
 - Nach Umsetzung Prompt aktualisieren.
