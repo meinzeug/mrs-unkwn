@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 5 Milestone 2 – Adaptive Learning Paths Algorithm & API
+# Nächster Schritt: Projektabschluss – Review & Feinschliff
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -13,7 +13,7 @@
 - Phase 4 Milestone 3 abgeschlossen ✓
 - Phase 4 Milestone 4 abgeschlossen ✓
 - Phase 5 Milestone 1 abgeschlossen ✓
-- Phase 5 Milestone 2 in Arbeit ☐
+- Phase 5 Milestone 2 abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
@@ -25,20 +25,19 @@
 - `backend/third_party_api.md`
 
 ## Nächste Aufgabe
-Phase 5 Milestone 2 fortsetzen: Algorithmus zur dynamischen Lernpfad-Berechnung implementieren und Backend-Endpunkte für Fortschritt & Pfadabfrage anlegen.
+Gesamtes Projekt überprüfen, letzte Dokumentations- und Code-Checks durchführen.
 
 ### Vorbereitungen
 - Roadmap-Eintrag zu Phase 5 Milestone 2 prüfen.
 
 ### Implementierungsschritte
-- Logik entwickeln, die basierend auf Nutzerfortschritt den nächsten Lernabschnitt ermittelt.
-- REST-Route (z.B. `POST /api/adaptive/progress`) erstellen, die Ergebnis speichert und nächsten Abschnitt liefert.
-- `scripts/train_adaptive_model.sh` um Trainingsplatzhalter erweitern.
+- Dokumentation prüfen und ggf. korrigieren.
+- Offene Punkte oder TODOs identifizieren und abschließen.
 
 ### Validierung
-- Unit-Tests für AdaptivePathService und neue Route schreiben.
+- `npm test` im Backend ausführen.
 
 ### Selbstgenerierung
-- Nach Umsetzung Prompt aktualisieren.
+- Nach Abschluss finalen Prompt erstellen.
 
 *Hinweis: Codex kann keine Binärdateien mergen. Benötigte Dateien werden durch Skripte generiert. Halte den Codeumfang dieses Sprints unter 500 Zeilen.*

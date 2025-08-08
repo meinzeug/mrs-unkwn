@@ -402,3 +402,10 @@
 - Konzeptdokument `adaptive_learning_paths.md` ergänzt
 - Skript `scripts/train_adaptive_model.sh` erzeugt Modellgewichte automatisch
 - Roadmap und Prompt aktualisiert
+
+### Phase 5: Adaptive Learning Paths Algorithm & API - 2025-08-11
+- Algorithmus zur Pfadberechnung basierend auf Nutzerfortschritt erweitert
+- REST-Route `POST /api/adaptive/progress` implementiert
+- Tests für Service und Route ergänzt und `package.json` aktualisiert
+- `scripts/train_adaptive_model.sh` erzeugt nun Platzhalter-Datensatz
+- Dokumentation, Roadmap und Prompt aktualisiert

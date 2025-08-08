@@ -6,6 +6,7 @@ import schoolRoutes from './school.routes';
 import organizationRoutes from './organization.routes';
 import externalRoutes from './external.routes';
 import developerRoutes from './developer.routes';
+import adaptiveRoutes from './adaptive.routes';
 
 const router = Router();
 
@@ -16,5 +17,6 @@ router.use('/school', schoolRoutes);
 router.use('/organizations', organizationRoutes);
 router.use('/external', externalRoutes);
 router.use('/developer', developerRoutes);
+router.use('/adaptive', adaptiveRoutes);
 
 export default router;
