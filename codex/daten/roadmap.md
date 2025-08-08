@@ -119,7 +119,7 @@ Details: In `LoginPage`, wrappen Sie gesamte UI in `BlocConsumer<AuthBloc, AuthS
 [x] Register Screen UI erstellen:
 Details: Erstelle `lib/features/auth/presentation/pages/register_page.dart`. Implementiere ähnliches Layout wie Login mit zusätzlichen Fields: `firstName`, `lastName`, `confirmPassword`. Füge `DropdownButtonFormField` für User-Role (Parent/Child) hinzu. Implementiere Checkbox für Terms-Acceptance mit Link zu Terms-Page. Erstelle komplexere Validation-Logic: Password-Confirmation-Match, Terms-Acceptance-Required.
 
-[ ] Registration BLoC Events/States:
+[x] Registration BLoC Events/States:
 Details: Erweitere `AuthEvent` um `RegisterRequested(firstName, lastName, email, password, role)` Event. Erweitere `AuthState` um `RegisterSuccess`, `RegisterFailure` States. In `AuthBloc`, implementiere `_onRegisterRequested` Handler der Registration-API aufruft. Handle verschiedene Error-Cases: Email-bereits-verwendet, Invalid-Input, Network-Error. Emittiere entsprechende States mit Error-Messages.
 
 [ ] Registration API Integration:

@@ -22,6 +22,22 @@ class AuthStatusChanged extends AuthEvent {
   final User? user;
 }
 
+class RegisterRequested extends AuthEvent {
+  RegisterRequested(
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.password,
+    this.role,
+  );
+
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String password;
+  final String role;
+}
+
 // States
 abstract class AuthState {}
 
@@ -39,10 +55,27 @@ class AuthFailure extends AuthState {
   final String message;
 }
 
+class RegisterSuccess extends AuthState {
+  RegisterSuccess(this.user);
+  final User user;
+}
+
+class RegisterFailure extends AuthState {
+  RegisterFailure(this.message);
+  final String message;
+}
+
 // Repository interface
 abstract class AuthRepository {
   Future<User> login(String email, String password);
   Future<void> logout();
+  Future<User> register(
+    String firstName,
+    String lastName,
+    String email,
+    String password,
+    String role,
+  );
 }
 
 // Bloc
@@ -51,6 +84,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<LoginRequested>(_onLoginRequested);
     on<LogoutRequested>(_onLogoutRequested);
     on<AuthStatusChanged>(_onAuthStatusChanged);
+    on<RegisterRequested>(_onRegisterRequested);
   }
 
   final AuthRepository _repository;
@@ -90,6 +124,25 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthSuccess(user));
     } else {
       emit(AuthInitial());
+    }
+  }
+
+  Future<void> _onRegisterRequested(
+    RegisterRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(AuthLoading());
+    try {
+      final user = await _repository.register(
+        event.firstName,
+        event.lastName,
+        event.email,
+        event.password,
+        event.role,
+      );
+      emit(RegisterSuccess(user));
+    } catch (e) {
+      emit(RegisterFailure(e.toString()));
     }
   }
 }
