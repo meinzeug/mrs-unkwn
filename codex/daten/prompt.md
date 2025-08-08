@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `API Integration Testing`
+# Nächster Schritt: Phase 1 – `E2E Testing mit Integration Tests`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -52,6 +52,7 @@
 - Unit Testing Setup für Flutter implementiert ✓
 - Widget Testing für UI Components implementiert ✓
 - BLoC Testing Implementation implementiert ✓
+- API Integration Testing implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -59,17 +60,17 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `API Integration Testing`
+## Nächste Aufgabe: `E2E Testing mit Integration Tests`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- Testumgebung mit Mock-HTTP-Server (`mockito`) aufsetzen.
-- API-Test-Szenarien für Erfolgs-, Fehler- und Netzwerkfälle schreiben.
-- Authentifizierungs-Flow (Login, Token-Refresh, Logout) testen.
-- Family-Management-APIs (Create, Update, Delete, Member-Management) abdecken.
-- API-Contract-Tests zur Sicherstellung der Backend-Kompatibilität hinzufügen.
+- `integration_test` Paket einrichten.
+- E2E-Szenarien für Registrierung-bis-Chat und Family-Setup-bis-Monitoring erstellen.
+- Plattformübergreifende Tests (Android, iOS, Web) durchführen.
+- Testdaten-Setup und Cleanup-Prozesse implementieren.
+- Test-Environment-Konfiguration und Backend-Mocking handhaben.
 
 ### Validierung
 - `dart format` auf geänderten Dateien ausführen.

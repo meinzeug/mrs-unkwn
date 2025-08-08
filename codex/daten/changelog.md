@@ -259,3 +259,8 @@
 - Repository-Abhängigkeiten mit `mocktail` gemockt und Fehlerfälle abgedeckt
 - `dart format`, `flutter analyze` und `flutter test` ausgeführt (Werkzeuge nicht verfügbar)
 - Roadmap und Prompt aktualisiert
+### Phase 1: API Integration Testing - 2025-08-08
+- `scripts/create_flutter_project.sh` um `mockito` ergänzt
+- `AuthRepositoryImpl` um Token-Refresh erweitert
+- `FamilyRepository` und API-Integrationstests mit `mockito` hinzugefügt
+- Roadmap und Prompt aktualisiert
