@@ -264,3 +264,7 @@
 - `AuthRepositoryImpl` um Token-Refresh erweitert
 - `FamilyRepository` und API-Integrationstests mit `mockito` hinzugefügt
 - Roadmap und Prompt aktualisiert
+### Phase 1: E2E Testing mit Integration Tests - 2025-08-08
+- `integration_test` Paket konfiguriert und E2E-Szenarien für Registrierung-bis-Chat sowie Family-Setup-bis-Monitoring hinzugefügt
+- `scripts/create_flutter_project.sh` um `integration_test` erweitert
+- `.gitignore` angepasst, um `integration_test`-Verzeichnis einzubinden

@@ -280,7 +280,7 @@ Details: Use `bloc_test` Package für BLoC-Unit-Testing. Test alle BLoC-Events u
 [x] API Integration Testing:
 Details: Setup Test-Environment mit Mock-HTTP-Server using `mockito`. Create API-Test-Scenarios: Success-Responses, Error-Responses, Network-Failures. Test Authentication-Flow: Login, Token-Refresh, Logout. Test Family-Management-APIs: Create, Update, Delete, Member-Management. Implement API-Contract-Testing für Backend-Compatibility.
 
-[ ] E2E Testing mit Integration Tests:
+[x] E2E Testing mit Integration Tests:
 Details: Setup `integration_test` Package für End-to-End-Testing. Create E2E-Test-Scenarios: User-Registration-to-Chat-Flow, Family-Setup-to-Monitoring-Flow. Test Cross-Platform-Compatibility (Android, iOS, Web). Implement Test-Data-Setup und Cleanup-Procedures. Handle Test-Environment-Configuration und Backend-Mocking.
 
 [ ] Performance Testing und Profiling:

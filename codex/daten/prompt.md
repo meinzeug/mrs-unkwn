@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `E2E Testing mit Integration Tests`
+# Nächster Schritt: Phase 1 – `Performance Testing und Profiling`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -53,6 +53,7 @@
 - Widget Testing für UI Components implementiert ✓
 - BLoC Testing Implementation implementiert ✓
 - API Integration Testing implementiert ✓
+- E2E Testing mit Integration Tests implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -60,17 +61,19 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `E2E Testing mit Integration Tests`
+## Nächste Aufgabe: `Performance Testing und Profiling`
+
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- `integration_test` Paket einrichten.
-- E2E-Szenarien für Registrierung-bis-Chat und Family-Setup-bis-Monitoring erstellen.
-- Plattformübergreifende Tests (Android, iOS, Web) durchführen.
-- Testdaten-Setup und Cleanup-Prozesse implementieren.
-- Test-Environment-Konfiguration und Backend-Mocking handhaben.
+- Performance-Benchmarks für kritische App-Flows einrichten.
+- Speicherverbrauch während Chat-Sessions und großer Datenladungen messen.
+- Batterieverbrauch für Background-Monitoring-Services profilieren.
+- App-Startup-Time und Navigations-Performance testen.
+- Performance-Regression-Tests in die CI/CD-Pipeline integrieren.
+- Flutter-DevTools zur Performance-Analyse verwenden.
 
 ### Validierung
 - `dart format` auf geänderten Dateien ausführen.
