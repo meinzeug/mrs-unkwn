@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 2 – Modell-Retraining mit Feedback-Daten
+# Nächster Schritt: Phase 2 – Automatisierte Modell-Bereitstellung
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -6,6 +6,7 @@
 - Phase 2 gestartet: Basissystem implementiert ✓
 - Phase 2: ML-Modell integriert ✓
 - Phase 2: Modell-Evaluierung & Feedback ✓
+- Phase 2: Modell-Retraining automatisiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -15,18 +16,19 @@
 - `backend/src/services/homework.service.ts`
 - `backend/tests/homework.test.ts`
 - `scripts/setup_homework_detection.sh`
+- `scripts/retrain_homework_model.ts`
 
 ## Nächste Aufgabe
-Nutze gesammelte Feedback-Daten zur Aktualisierung des Modells und automatisiere das Retraining.
+Automatisiere das Deployment des retrainierten Modells und plane regelmäßige Trainingsläufe.
 
 ### Vorbereitungen
-- Feedback-Logdateien analysieren.
-- Skript oder Routine für Modelltraining vorbereiten.
+- Zeitplan für regelmäßiges Retraining definieren.
+- Mechanismus zur Modellversionierung entwerfen.
 
 ### Implementierungsschritte
-- Trainingsskript erstellen, das Feedback-Daten einbezieht.
-- Modell nach Training als Datei generieren.
-- Tests und Dokumentation anpassen.
+- NPM-Skript oder CI-Job anlegen, der `retrain_homework_model.ts` periodisch ausführt.
+- Modellversions-Tracking in Datenordner integrieren.
+- Dokumentation aktualisieren.
 
 ### Validierung
 - `bash -n scripts/setup_homework_detection.sh`

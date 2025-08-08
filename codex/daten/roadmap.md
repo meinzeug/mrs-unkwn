@@ -312,3 +312,6 @@ Details: Echtes ML-Modell eingebunden und heuristische Erkennung ersetzt.
 
 [x] Modell-Evaluierung und Feedback-Mechanismus:
 Details: Genauigkeit mit Testdaten prüfen und Verbesserungsfeedback sammeln.
+
+[x] Automatisiertes Modell-Retraining mit Feedback-Daten:
+Details: Trainingsskript liest Feedback-Logs ein, aktualisiert Modellgewichte und erzeugt die Modell-Datei.

@@ -85,3 +85,34 @@ function logFeedback(text: string, expected: boolean, predicted: boolean): void 
   };
   fs.appendFileSync(FEEDBACK_LOG_PATH, JSON.stringify(entry) + '\n');
 }
+
+export async function retrainModel(): Promise<void> {
+  if (!fs.existsSync(FEEDBACK_LOG_PATH)) {
+    return;
+  }
+  const raw = fs.readFileSync(FEEDBACK_LOG_PATH, 'utf8').trim();
+  if (!raw) {
+    fs.unlinkSync(FEEDBACK_LOG_PATH);
+    return;
+  }
+  const model = loadModel();
+  const lr = 0.1;
+  for (const line of raw.split('\n')) {
+    const { text, expected } = JSON.parse(line) as {
+      text: string;
+      expected: boolean;
+    };
+    const tokens = text.toLowerCase().split(/\W+/);
+    const score = tokens.reduce((s, t) => s + (model.weights[t] || 0), model.bias);
+    const prob = 1 / (1 + Math.exp(-score));
+    const error = (expected ? 1 : 0) - prob;
+    for (const token of tokens) {
+      if (!token) continue;
+      model.weights[token] = (model.weights[token] || 0) + lr * error;
+    }
+    model.bias += lr * error;
+  }
+  fs.writeFileSync(MODEL_PATH, JSON.stringify(model));
+  fs.unlinkSync(FEEDBACK_LOG_PATH);
+  cachedModel = model;
+}

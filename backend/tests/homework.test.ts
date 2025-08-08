@@ -2,6 +2,7 @@ import {
   detectAIContent,
   evaluateModel,
   submitFeedback,
+  retrainModel,
 } from '../src/services/homework.service';
 import fs from 'fs';
 import path from 'path';
@@ -41,6 +42,16 @@ async function run() {
   const lines = fs.readFileSync(feedbackFile, 'utf8').trim().split('\n');
   if (lines.length !== 1) {
     throw new Error('Expected one feedback entry');
+  }
+
+  const before = JSON.parse(fs.readFileSync(modelFile, 'utf8')).weights.chatgpt;
+  await retrainModel();
+  const after = JSON.parse(fs.readFileSync(modelFile, 'utf8')).weights.chatgpt;
+  if (before === after) {
+    throw new Error('Expected model weight to change after retraining');
+  }
+  if (fs.existsSync(feedbackFile)) {
+    throw new Error('Expected feedback log to be removed after retraining');
   }
 
   console.log('homework.test.ts passed');
