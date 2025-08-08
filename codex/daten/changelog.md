@@ -283,3 +283,7 @@
 - GitHub Actions Workflow `flutter_ci.yml` mit Testmatrix für mehrere Flutter-Versionen und Plattformen hinzugefügt
 - Retry-Logik für flackernde Tests sowie Coverage-Upload zu Codecov implementiert
 - Artefakt-Upload und Fehlbenachrichtigung bei Testfehlschlägen konfiguriert
+### Phase 1: Manual Testing Procedures - 2025-08-08
+- Verzeichnis `codex/tests/manual` mit Checklisten, UAT-Szenarien, Beta-Programm, Bug-Reporting, Usability-Plan sowie Qualitäts-Gates erstellt
+- Skript `scripts/generate_manual_testing_assets.sh` generiert CSV-Vorlagen für Checkliste und Bug-Reports
+- Roadmap und Prompt aktualisiert

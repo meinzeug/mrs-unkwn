@@ -40,3 +40,6 @@ __pycache__/
 .idea/
 .vscode/
 .DS_Store
+
+# Manual testing generated files
+codex/tests/manual/generated/
