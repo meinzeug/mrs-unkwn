@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 4 – API-Dokumentation & Beispielskripte
+# Nächster Schritt: Phase 4 – Automatisierte API-Tests
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -9,6 +9,7 @@
 - Phase 3 Milestone 3 abgeschlossen ✓
 - Phase 3 Milestone 4 abgeschlossen ✓
 - Phase 4 Milestone 1 abgeschlossen ✓
+- Phase 4 Milestone 2 abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
@@ -16,17 +17,18 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 - `backend/third_party_api.md`
+- `scripts/example_api_client.ts`
 
 ## Nächste Aufgabe
-API-Dokumentation für Drittanbieter erweitern und Beispielskript zur Nutzung des Developer-Portals erstellen.
+Automatisierte Tests für die Drittanbieter-API hinzufügen.
 
 ### Vorbereitungen
-- Bestehende Dokumentation prüfen.
-- Anforderungen für Beispielskript sammeln.
+- API-Dokumentation und vorhandene Tests prüfen.
+- Testfälle für authentifizierte und nicht authentifizierte Zugriffe definieren.
 
 ### Implementierungsschritte
-- `backend/third_party_api.md` um detaillierte Anleitung erweitern.
-- Skript `scripts/example_api_client.ts` erstellen, das API-Key generiert und Abfrage durchführt.
+- Datei `backend/tests/external_api.test.ts` erstellen und Endpunkte mit gültigem sowie ungültigem API-Key testen.
+- `package.json` im Backend um Skript `test:external` ergänzen, das die neuen Tests ausführt.
 
 ### Validierung
 - `python -m py_compile` auf geänderten Python-Dateien ausführen.
@@ -36,3 +38,4 @@ API-Dokumentation für Drittanbieter erweitern und Beispielskript zur Nutzung de
 - Nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md` schreiben.
 
 *Hinweis: Codex kann keine Binärdateien mergen. Benötigte Dateien werden durch Skripte generiert. Halte den Codeumfang dieses Sprints unter 500 Zeilen.*
+

@@ -354,3 +354,7 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 - [x] Öffentliche API-Endpunkte und Authentifizierung mit API-Schlüsseln
 - [x] Developer-Portal und Rate-Limiting implementieren
 
+### Milestone 2: API-Dokumentation & Beispielskripte
+- [x] Dokumentation der Drittanbieter-API erweitern
+- [x] Beispielskript zur Nutzung des Developer-Portals erstellen
+
