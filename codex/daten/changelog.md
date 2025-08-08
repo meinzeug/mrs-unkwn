@@ -367,3 +367,8 @@
 - Dokumentation `backend/third_party_api.md` um Authentifizierungsbeispiele, Fehlercodes und Nutzungshinweise erweitert
 - Skript `scripts/example_api_client.ts` demonstriert API-Key-Erstellung und API-Abfragen
 - Roadmap und Prompt aktualisiert
+
+### Phase 4: Automatisierte API-Tests - 2025-08-10
+- Testdatei `backend/tests/external_api.test.ts` prüft externe Endpunkte mit gültigem und ungültigem API-Key
+- NPM-Skript `test:external` zum Ausführen der externen API-Tests hinzugefügt
+- Roadmap und Prompt aktualisiert

@@ -358,3 +358,11 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 - [x] Dokumentation der Drittanbieter-API erweitern
 - [x] Beispielskript zur Nutzung des Developer-Portals erstellen
 
+### Milestone 3: Automatisierte API-Tests
+- [x] Tests der externen Endpunkte mit gültigem und ungültigem API-Key
+- [x] NPM-Skript `test:external` zum Ausführen der Tests hinzufügen
+
+### Milestone 4: Client-SDK für Drittanbieter-API
+- [ ] JavaScript-SDK mit Beispielaufrufen bereitstellen
+- [ ] TypeScript-Typdefinitionen veröffentlichen
+
