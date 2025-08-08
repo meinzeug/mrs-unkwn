@@ -8,6 +8,7 @@ import '../../data/models/learning_session.dart';
 import '../../data/prompts/socratic_prompts.dart';
 import '../../data/services/ai_response_service.dart';
 import '../../data/services/subject_classification_service.dart';
+import '../../data/services/content_moderation_service.dart';
 
 /// Events
 abstract class TutoringEvent extends BaseEvent {
@@ -69,8 +70,14 @@ class TutoringBloc extends BaseBloc<TutoringEvent, TutoringState> {
   TutoringBloc({
     AIResponseService? aiService,
     SubjectClassificationService? classifier,
+    ContentModerationService? moderator,
+    ModerationLogService? logService,
+    ParentNotificationService? notifier,
   })  : _aiService = aiService ?? AIResponseService(),
         _classifier = classifier ?? SubjectClassificationService(),
+        _moderator = moderator ?? ContentModerationService(),
+        _logService = logService ?? ModerationLogService(),
+        _notifier = notifier ?? ParentNotificationService(),
         super(const TutoringInitial()) {
     on<SendMessageRequested>(_onSendMessageRequested);
     on<LoadChatHistoryRequested>(_onLoadChatHistoryRequested);
@@ -80,6 +87,9 @@ class TutoringBloc extends BaseBloc<TutoringEvent, TutoringState> {
 
   final AIResponseService _aiService;
   final SubjectClassificationService _classifier;
+  final ContentModerationService _moderator;
+  final ModerationLogService _logService;
+  final ParentNotificationService _notifier;
   final List<ChatMessage> _history = [];
   LearningSession? _session;
 
@@ -110,6 +120,17 @@ class TutoringBloc extends BaseBloc<TutoringEvent, TutoringState> {
     SendMessageRequested event,
     Emitter<TutoringState> emit,
   ) async {
+    final moderation = _moderator.check(event.message);
+    if (!moderation.isClean) {
+      _logService.add(event.message, moderation.categories);
+      await _notifier.notify(
+        message: event.message,
+        categories: moderation.categories,
+      );
+      emit(const TutoringError('Message contains inappropriate content.'));
+      return;
+    }
+
     final userMessage = ChatMessage(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       role: ChatRole.user,
@@ -136,11 +157,31 @@ class TutoringBloc extends BaseBloc<TutoringEvent, TutoringState> {
         buffer.write('$chunk ');
       }
 
+      final responseText = buffer.toString().trim();
+      final aiModeration = _moderator.check(responseText);
+      if (!aiModeration.isClean) {
+        _logService.add(responseText, aiModeration.categories);
+        await _notifier.notify(
+          message: 'AI response',
+          categories: aiModeration.categories,
+        );
+        final aiMessage = ChatMessage(
+          id: DateTime.now().millisecondsSinceEpoch.toString(),
+          role: ChatRole.assistant,
+          type: ChatMessageType.text,
+          content: '[Content removed]',
+          timestamp: DateTime.now(),
+        );
+        _history.add(aiMessage);
+        emit(MessageSent(List.unmodifiable(_history)));
+        return;
+      }
+
       final aiMessage = ChatMessage(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
         role: ChatRole.assistant,
         type: ChatMessageType.text,
-        content: buffer.toString().trim(),
+        content: responseText,
         timestamp: DateTime.now(),
       );
       _history.add(aiMessage);
