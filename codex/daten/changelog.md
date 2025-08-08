@@ -134,3 +134,9 @@
 ### Phase 1: Login Screen UI Layout - 2025-08-08
 - Login-Layout in `lib/features/auth/presentation/pages/login_page.dart` erstellt
 - Roadmap aktualisiert
+
+### Phase 1: Login Form Validation implementieren - 2025-08-08
+- Formularvalidierung mit `GlobalKey<FormState>` und RegExp für Email umgesetzt
+- Passwortfeld mit Mindestlänge und Toggle für Sichtbarkeit ergänzt
+- `_validateAndSubmit()` Methode hinzugefügt
+- `dart format` und `flutter analyze` (Dependencies fehlen) ausgeführt

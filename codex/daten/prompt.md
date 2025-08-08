@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Login Form Validation`
+# Nächster Schritt: Phase 1 – `Login BLoC State Management`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -29,6 +29,7 @@
 - Error Handling Middleware implementiert ✓
 - API Response Standardization implementiert ✓
 - Login Screen UI Layout erstellt ✓
+- Login Form Validation implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -36,23 +37,23 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Login Form Validation`
+## Nächste Aufgabe: `Login BLoC State Management`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/`.
 
 ### Implementierungsschritte
-- In `lib/features/auth/presentation/pages/login_page.dart` `GlobalKey<FormState> _formKey` definieren.
-- `TextFormField`s in ein `Form` Widget mit `key: _formKey` einbetten.
-- Email-Feld: Validierungsfunktion für korrektes Email-Format.
-- Passwort-Feld: Validierung für mindestens 6 Zeichen, `obscureText` mit Toggle-Icon.
-- Methode `_validateAndSubmit()` erstellen, die `_formKey.currentState?.validate()` aufruft.
+- Datei `lib/features/auth/presentation/bloc/auth_bloc.dart` erstellen.
+- `AuthEvent` mit `LoginRequested(email, password)`, `LogoutRequested`, `AuthStatusChanged` definieren.
+- `AuthState` mit `AuthInitial`, `AuthLoading`, `AuthSuccess(User)`, `AuthFailure(String message)` implementieren.
+- `AuthBloc` mit Event-Handling und Repository-Aufrufen implementieren.
 
 ### Validierung
-- `flutter format lib/features/auth/presentation/pages/login_page.dart`.
+- `dart format lib/features/auth/presentation/bloc/auth_bloc.dart`.
 - `flutter analyze`.
 
 ### Selbstgenerierung
 - Nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md` schreiben.
 
 *Hinweis: Codex kann keine Binärdateien mergen. Benötigte Dateien müssen durch Skripte generiert werden. Halte den Codeumfang dieses Sprints unter 500 Zeilen.*
+
