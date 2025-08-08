@@ -345,3 +345,12 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 
 - [x] Organisations-Accounts und Rollenverwaltung einführen
 - [x] Skript `scripts/create_sample_organizations.sh` legt Beispiel-Organisationen an
+
+# Mrs-Unkwn Entwicklungsroadmap - Phase 4 (Monate 19-24)
+
+## Phase 4: Platform Evolution
+
+### Milestone 1: Drittanbieter-API
+- [x] Öffentliche API-Endpunkte und Authentifizierung mit API-Schlüsseln
+- [ ] Developer-Portal und Rate-Limiting implementieren
+

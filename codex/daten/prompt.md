@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 4 – API für Drittanbieter vorbereiten
+# Nächster Schritt: Phase 4 – Developer-Portal & Rate-Limiting
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -8,6 +8,7 @@
 - Phase 3 Milestone 2 abgeschlossen ✓
 - Phase 3 Milestone 3 abgeschlossen ✓
 - Phase 3 Milestone 4 abgeschlossen ✓
+- Phase 4 Milestone 1 abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
@@ -16,14 +17,15 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-API für Drittanbieter vorbereiten.
+Developer-Portal und Rate-Limiting implementieren.
 
 ### Vorbereitungen
-- Analyse bestehender API-Struktur im Backend.
+- Bestehenden API-Key-Service und externe Routen analysieren.
+- Recherche zu `express-rate-limit`.
 
 ### Implementierungsschritte
-- Öffentliche API-Endpunkte für Drittanbieter definieren und dokumentieren.
-- Authentifizierungsmechanismus mit API-Schlüsseln einführen.
+- Developer-Portal zur Verwaltung von API-Schlüsseln aufsetzen.
+- Rate-Limiting für externe Endpunkte hinzufügen.
 
 ### Validierung
 - `python -m py_compile` auf geänderten Python-Dateien ausführen.

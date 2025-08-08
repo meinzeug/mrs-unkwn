@@ -351,3 +351,9 @@
 - Skript `scripts/create_sample_organizations.sh` erstellt Beispiel-Organisationen
 - Backend-Migration, Repositories, Services und Routen für Organisationen hinzugefügt
 - Flutter-Service und Modell zur Organisationsverwaltung erstellt
+
+### Phase 4: Drittanbieter API vorbereitet - 2025-08-10
+- Tabelle `api_keys` mit Migration hinzugefügt
+- `ApiKeyRepository`, `ApiKeyService`, Middleware und externe Routen implementiert
+- Dokumentation `backend/third_party_api.md` erstellt
+- Roadmap und Prompt aktualisiert
