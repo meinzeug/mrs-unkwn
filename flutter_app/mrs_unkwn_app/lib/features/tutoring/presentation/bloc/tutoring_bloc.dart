@@ -9,6 +9,8 @@ import '../../data/prompts/socratic_prompts.dart';
 import '../../data/services/ai_response_service.dart';
 import '../../data/services/subject_classification_service.dart';
 import '../../data/services/content_moderation_service.dart';
+import '../../../analytics/data/services/learning_analytics_service.dart';
+import '../../../../core/di/service_locator.dart';
 
 /// Events
 abstract class TutoringEvent extends BaseEvent {
@@ -73,11 +75,13 @@ class TutoringBloc extends BaseBloc<TutoringEvent, TutoringState> {
     ContentModerationService? moderator,
     ModerationLogService? logService,
     ParentNotificationService? notifier,
+    LearningAnalyticsService? analytics,
   })  : _aiService = aiService ?? AIResponseService(),
-        _classifier = classifier ?? SubjectClassificationService(),
-        _moderator = moderator ?? ContentModerationService(),
-        _logService = logService ?? ModerationLogService(),
-        _notifier = notifier ?? ParentNotificationService(),
+       _classifier = classifier ?? SubjectClassificationService(),
+       _moderator = moderator ?? ContentModerationService(),
+       _logService = logService ?? ModerationLogService(),
+       _notifier = notifier ?? ParentNotificationService(),
+       _analytics = analytics ?? sl<LearningAnalyticsService>(),
         super(const TutoringInitial()) {
     on<SendMessageRequested>(_onSendMessageRequested);
     on<LoadChatHistoryRequested>(_onLoadChatHistoryRequested);
@@ -90,6 +94,7 @@ class TutoringBloc extends BaseBloc<TutoringEvent, TutoringState> {
   final ContentModerationService _moderator;
   final ModerationLogService _logService;
   final ParentNotificationService _notifier;
+  final LearningAnalyticsService _analytics;
   final List<ChatMessage> _history = [];
   LearningSession? _session;
 
@@ -114,6 +119,9 @@ class TutoringBloc extends BaseBloc<TutoringEvent, TutoringState> {
     Emitter<TutoringState> emit,
   ) async {
     _session = _session?.end();
+    if (_session != null) {
+      _analytics.trackSession(_session!);
+    }
   }
 
   Future<void> _onSendMessageRequested(

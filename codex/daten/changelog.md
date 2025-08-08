@@ -228,3 +228,9 @@
 - `ContentModerationService` mit Keyword-Listen für Profanity, Gewalt und Adult-Content erstellt
 - `TutoringBloc` prüft Nachrichten und AI-Antworten, speichert Moderations-Logs und benachrichtigt Eltern
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Learning Progress Analytics - 2025-08-08
+- `LearningAnalyticsService` zur Aggregation von Sitzungen und Metrikberechnung implementiert
+- `ProgressPage` und `ProgressChart` zur Visualisierung des Lernfortschritts erstellt
+- `TutoringBloc` überträgt beendete Sitzungen an den Analytics-Service
+- Roadmap und Prompt aktualisiert

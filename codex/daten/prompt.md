@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Learning Progress Analytics`
+# Nächster Schritt: Phase 1 – `Chat History und Persistence`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -47,6 +47,7 @@
 - AI Tutoring BLoC State Management implementiert ✓
 - Voice Input Integration implementiert ✓
 - Basic Content Moderation implementiert ✓
+- Learning Progress Analytics implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -54,18 +55,18 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Learning Progress Analytics`
+## Nächste Aufgabe: `Chat History und Persistence`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/mrs_unkwn_app`.
 
 ### Implementierungsschritte
-- Analytics-Engine für Learning-Progress-Tracking erstellen.
-- Metriken berechnen: Time-Spent-per-Subject, Questions-per-Session, Learning-Velocity.
-- Difficulty-Progression und Concept-Mastery über die Zeit verfolgen.
-- Fortschritt mit Charts und Trend-Lines visualisieren.
-- Achievement-System mit Learning-Milestones implementieren.
-- Progress-Reports für Eltern mit Insights und Empfehlungen generieren.
+- Chat-History-Storage mit Hive-Datenbank für Offline-Zugriff implementieren.
+- Chat-Export-Funktion für Eltern-Review bereitstellen.
+- Suchfunktion für Chat-History mit Keyword- und Datumsfiltern integrieren.
+- Chat-Datenverschlüsselung zur Wahrung der Privatsphäre einführen.
+- Automatischen Chat-Cleanup nach definierter Aufbewahrungsfrist implementieren.
+- Backup- und Restore-Funktionalität für Chats erstellen.
 
 ### Validierung
 - `dart format` auf geänderten Dateien ausführen.
