@@ -144,3 +144,8 @@
 ### Phase 1: Login BLoC State Management - 2025-08-08
 - `auth_bloc.dart` mit Events, States und AuthBloc implementiert
 - Roadmap aktualisiert
+
+### Phase 1: Login API Integration - 2025-08-08
+- `auth_repository_impl.dart` mit Login- und Logout-Logik erstellt
+- Tokens werden nach erfolgreichem Login sicher gespeichert
+- `dart format` und `flutter analyze` (Werkzeuge nicht verfügbar) ausgeführt

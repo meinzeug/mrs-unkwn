@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Login API Integration`
+# Nächster Schritt: Phase 1 – `Login Loading States UI`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -31,6 +31,7 @@
 - Login Screen UI Layout erstellt ✓
 - Login Form Validation implementiert ✓
 - Login BLoC State Management implementiert ✓
+- Login API Integration implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -38,20 +39,21 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Login API Integration`
+## Nächste Aufgabe: `Login Loading States UI`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/`.
 
 ### Implementierungsschritte
-- Datei `lib/features/auth/data/repositories/auth_repository_impl.dart` erstellen.
-- `login(String email, String password)` Methode implementieren.
-- POST-Request zu `/api/auth/login` mit Email/Password im Body senden.
-- Erfolgsantwort parsen, Tokens in `SecureStorageService` speichern.
-- Fehlerantworten abfangen und passende Exception mit Fehlermeldung werfen.
+- Datei `lib/features/auth/presentation/pages/login_page.dart` anpassen.
+- Gesamte UI in `BlocConsumer<AuthBloc, AuthState>` wrappen.
+- Im `listener` `AuthSuccess` (Navigation zu Home) und `AuthFailure` (SnackBar) behandeln.
+- Im `builder` bei `AuthLoading` Ladeanzeige anzeigen.
+- Login-Button während Loading deaktivieren.
+- Im Loading-State `ElevatedButton`-Child durch `CircularProgressIndicator()` ersetzen.
 
 ### Validierung
-- `dart format lib/features/auth/data/repositories/auth_repository_impl.dart`.
+- `dart format lib/features/auth/presentation/pages/login_page.dart`.
 - `flutter analyze`.
 
 ### Selbstgenerierung
