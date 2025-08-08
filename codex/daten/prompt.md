@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Password Hashing Service`
+# Nächster Schritt: Phase 1 – `User Repository Pattern`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -21,6 +21,7 @@
 - User-Tabelle Migration erstellt ✓
 - Family-Tabellen Migration erstellt ✓
 - JWT Authentication Service implementiert ✓
+- Password Hashing Service implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -28,16 +29,15 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Password Hashing Service`
+## Nächste Aufgabe: `User Repository Pattern`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `backend/`.
 
 ### Implementierungsschritte
-- `src/services/password.service.ts` erstellen.
-- `PasswordService` mit statischen Methoden `hashPassword(password: string): Promise<string>` und `comparePassword(password: string, hash: string): Promise<boolean>` implementieren.
-- `bcrypt` verwenden mit 12 Runden.
-- Passwort-Strength-Validation: mindestens 8 Zeichen, je 1 Großbuchstabe, Kleinbuchstabe, Zahl und Sonderzeichen.
+- `src/repositories/user.repository.ts` erstellen.
+- `UserRepository` Klasse mit Methoden `create`, `findByEmail`, `findById`, `update`, `delete` implementieren.
+- Knex Query-Builder verwenden.
 
 ### Validierung
 - `npx tsc --noEmit`.
