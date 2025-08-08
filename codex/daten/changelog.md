@@ -383,3 +383,6 @@
 - `ThirdPartyApiClient.healthCheck` liefert typisierten `HealthResponse`
 - Dokumentation zu `backend/third_party_api.md` um Hinweis auf SDK-Build erweitert
 - Roadmap und Prompt aktualisiert
+### Phase 5: Roadmap Planung - 2025-08-10
+- Phase 5 mit Gamification- und Adaptive-Learning-Zielen in `roadmap.md` ergänzt
+- `prompt.md` für nächsten Schritt angepasst

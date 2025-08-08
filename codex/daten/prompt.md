@@ -1,4 +1,4 @@
-# Nächster Schritt: Roadmap abgeschlossen – neue Anforderungen ausstehend
+# Nächster Schritt: Phase 5 Milestone 1 – Gamification Engine
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -12,6 +12,8 @@
 - Phase 4 Milestone 2 abgeschlossen ✓
 - Phase 4 Milestone 3 abgeschlossen ✓
 - Phase 4 Milestone 4 abgeschlossen ✓
+- Phase 5 Milestone 1 offen ☐
+- Phase 5 Milestone 2 offen ☐
 
 ## Referenzen
 - `/README.md`
@@ -21,18 +23,19 @@
 - `backend/third_party_api.md`
 
 ## Nächste Aufgabe
-Keine weiteren Aufgaben definiert. Bitte neue Anforderungen in der Roadmap ergänzen.
+Phase 5 Milestone 1: Gamification Engine. Implementierung vorbereiten und Skript `scripts/generate_badge_assets.sh` für automatische Badge-Erstellung entwerfen.
 
 ### Vorbereitungen
-- Roadmap auf kommende Meilensteine prüfen.
+- Roadmap-Eintrag zu Phase 5 Milestone 1 prüfen.
 
 ### Implementierungsschritte
-- Auf neue Aufgaben warten.
+- Gamification-Engine konzipieren.
+- Skript `scripts/generate_badge_assets.sh` erstellen, das Badge-Icons generiert.
 
 ### Validierung
 - Keine.
 
 ### Selbstgenerierung
-- Nach Ergänzung neuer Aufgaben diesen Prompt aktualisieren.
+- Nach Umsetzung Prompt aktualisieren.
 
 *Hinweis: Codex kann keine Binärdateien mergen. Benötigte Dateien werden durch Skripte generiert. Halte den Codeumfang dieses Sprints unter 500 Zeilen.*
