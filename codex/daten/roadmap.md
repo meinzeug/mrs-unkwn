@@ -75,7 +75,7 @@ Details: Führe `npx knex migrate:make create_users_table` aus. In der generiert
 [x] Family-Tabellen Migration erstellen:
 Details: Erstelle Migration für `families` Tabelle: `id` (UUID), `name` (string), `created_by` (UUID, foreign key zu users), `subscription_tier` (string), `created_at`, `updated_at`. Erstelle `family_members` Junction-Tabelle: `id` (UUID), `family_id` (UUID, foreign key), `user_id` (UUID, foreign key), `role` (string), `permissions` (JSON), `joined_at` (timestamp). Definiere Foreign-Key-Constraints und Indexes.
 
-[ ] JWT Authentication Service implementieren:
+[x] JWT Authentication Service implementieren:
 Details: Erstelle `src/services/auth.service.ts`. Implementiere `AuthService` Klasse mit Methoden: `generateTokens(userId: string)`, `verifyAccessToken(token: string)`, `verifyRefreshToken(token: string)`, `refreshTokens(refreshToken: string)`. Verwende `jsonwebtoken` Library. Konfiguriere Token-Expiry: Access-Token 15min, Refresh-Token 7 Tage. Implementiere Token-Blacklisting-Logic.
 
 [ ] Password Hashing Service:

@@ -90,3 +90,8 @@
 - Migration für `families` und `family_members` Tabellen implementiert
 - Spalten, Fremdschlüssel-Constraints und Indexe hinzugefügt
 - `knex migrate:latest` und `knex migrate:rollback` ausgeführt (fehlgeschlagen: Unable to acquire a connection)
+
+### Phase 1: JWT Authentication Service implementieren - 2025-08-08
+- `AuthService` mit Token-Erstellung, Verifikation, Refresh und Blacklisting erstellt
+- `types.d.ts` um Deklaration für `jsonwebtoken` erweitert
+- Roadmap aktualisiert

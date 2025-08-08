@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `JWT Authentication Service implementieren`
+# Nächster Schritt: Phase 1 – `Password Hashing Service`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -20,6 +20,7 @@
 - Database Connection Setup mit PostgreSQL ✓
 - User-Tabelle Migration erstellt ✓
 - Family-Tabellen Migration erstellt ✓
+- JWT Authentication Service implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -27,17 +28,16 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `JWT Authentication Service implementieren`
+## Nächste Aufgabe: `Password Hashing Service`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `backend/`.
 
 ### Implementierungsschritte
-- `src/services/auth.service.ts` erstellen.
-- `AuthService` Klasse mit Methoden `generateTokens(userId: string)`, `verifyAccessToken(token: string)`, `verifyRefreshToken(token: string)`, `refreshTokens(refreshToken: string)` implementieren.
-- `jsonwebtoken` für Token-Erstellung und -Validierung verwenden.
-- Ablaufzeiten: Access-Token 15 Minuten, Refresh-Token 7 Tage.
-- Token-Blacklisting-Logik vorbereiten.
+- `src/services/password.service.ts` erstellen.
+- `PasswordService` mit statischen Methoden `hashPassword(password: string): Promise<string>` und `comparePassword(password: string, hash: string): Promise<boolean>` implementieren.
+- `bcrypt` verwenden mit 12 Runden.
+- Passwort-Strength-Validation: mindestens 8 Zeichen, je 1 Großbuchstabe, Kleinbuchstabe, Zahl und Sonderzeichen.
 
 ### Validierung
 - `npx tsc --noEmit`.
