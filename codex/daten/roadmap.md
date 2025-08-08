@@ -81,7 +81,7 @@ Details: Erstelle `src/services/auth.service.ts`. Implementiere `AuthService` Kl
 [x] Password Hashing Service:
 Details: Erstelle `src/services/password.service.ts`. Implementiere `PasswordService` mit static methods: `async hashPassword(password: string): Promise<string>` mit `bcrypt.hash()` und salt-rounds 12. Implementiere `async comparePassword(password: string, hash: string): Promise<boolean>` mit `bcrypt.compare()`. Füge Password-Strength-Validation hinzu: mindestens 8 Zeichen, 1 Uppercase, 1 Lowercase, 1 Number, 1 Special-Character.
 
-[ ] User Repository Pattern implementieren:
+[x] User Repository Pattern implementieren:
 Details: Erstelle `src/repositories/user.repository.ts`. Implementiere `UserRepository` Klasse mit Database-Abstraction-Layer. Methoden: `async create(userData: CreateUserDTO): Promise<User>`, `async findByEmail(email: string): Promise<User | null>`, `async findById(id: string): Promise<User | null>`, `async update(id: string, data: UpdateUserDTO): Promise<User>`, `async delete(id: string): Promise<void>`. Verwende Knex Query-Builder.
 
 [ ] Request Validation Middleware:
