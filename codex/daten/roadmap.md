@@ -310,5 +310,5 @@ Details: Service und Route implementiert, um AI-generierte Inhalte in Hausaufgab
 [x] ML-Modell-Integration für präzisere Erkennung:
 Details: Echtes ML-Modell eingebunden und heuristische Erkennung ersetzt.
 
-[ ] Modell-Evaluierung und Feedback-Mechanismus:
+[x] Modell-Evaluierung und Feedback-Mechanismus:
 Details: Genauigkeit mit Testdaten prüfen und Verbesserungsfeedback sammeln.

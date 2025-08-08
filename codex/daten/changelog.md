@@ -304,3 +304,8 @@
 - HomeworkDetectionService lädt Modellgewichte und ersetzt heuristische Erkennung.
 - Tests angepasst, um Modellinferenz zu validieren.
 - Roadmap und Prompt aktualisiert.
+
+### Phase 2: Modell-Evaluierung & Feedback - 2025-08-09
+- Evaluationsfunktion zur Genauigkeitsberechnung und Feedback-Logging implementiert.
+- Feedback-Endpoint `/homework/feedback` ergänzt und Tests erweitert.
+- Roadmap und Prompt aktualisiert.
