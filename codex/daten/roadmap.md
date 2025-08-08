@@ -251,7 +251,7 @@ Details: Implementiere Subject-Detection-Algorithm für Student-Questions. Creat
 [x] Learning Session Management:
 Details: Erstelle `learning_session.dart` Model für Session-Tracking. Implement Session-Start/End-Logic mit Duration-Calculation. Track Learning-Metrics: Questions-Asked, Topics-Covered, AI-Interactions-Count. Store Session-Data in Local-Database mit Sync-to-Backend. Implement Session-Goals und Progress-Tracking. Handle Session-Interruptions und Resume-Functionality.
 
-[ ] AI Tutoring BLoC State Management:
+[x] AI Tutoring BLoC State Management:
 Details: Erstelle `tutoring_bloc.dart` mit Events: `SendMessageRequested`, `LoadChatHistoryRequested`, `StartLearningSessionRequested`, `EndLearningSessionRequested`. Define States: `TutoringInitial`, `TutoringLoading`, `MessagesLoaded`, `MessageSent`, `TutoringError`. Implement Event-Handlers für AI-API-Integration und Local-Data-Management. Handle Optimistic-UI-Updates für Better-User-Experience.
 
 [ ] Voice Input Integration:

@@ -211,3 +211,9 @@
 - Metriken für Fragen, Themen und AI-Interaktionen hinzugefügt
 - Platzhalter für lokale Speicherung und Backend-Sync implementiert
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: AI Tutoring BLoC State Management - 2025-08-08
+- `TutoringBloc` mit Events für Nachrichten, Sitzungsstart und -ende implementiert
+- AI-Integration über `AIResponseService` und Fachklassifikation via `SubjectClassificationService`
+- Optimistische UI-Updates und Sitzungsmetriken integriert
+- Roadmap und Prompt aktualisiert
