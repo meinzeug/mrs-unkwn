@@ -253,3 +253,9 @@
 - Golden-Tests hinzugefügt und Skript `generate_goldens.sh` zum Erstellen der Assets erstellt
 - `.gitignore` erweitert, um generierte Golden-Dateien auszuschließen
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: BLoC Testing Implementation - 2025-08-08
+- BLoC-Tests für Auth- und Tutoring-BLoCs mit `bloc_test` hinzugefügt
+- Repository-Abhängigkeiten mit `mocktail` gemockt und Fehlerfälle abgedeckt
+- `dart format`, `flutter analyze` und `flutter test` ausgeführt (Werkzeuge nicht verfügbar)
+- Roadmap und Prompt aktualisiert
