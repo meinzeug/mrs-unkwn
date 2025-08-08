@@ -287,3 +287,9 @@
 - Verzeichnis `codex/tests/manual` mit Checklisten, UAT-Szenarien, Beta-Programm, Bug-Reporting, Usability-Plan sowie Qualitäts-Gates erstellt
 - Skript `scripts/generate_manual_testing_assets.sh` generiert CSV-Vorlagen für Checkliste und Bug-Reports
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Monitoring und Crash Reporting - 2025-08-08
+- `MonitoringService` mit Firebase Crashlytics und Performance integriert
+- `MonitoringDashboardPage` mit Feedback-Funktion erstellt
+- Skript `setup_firebase_config.sh` generiert benötigte Firebase-Konfigurationsdateien
+- Roadmap und Prompt aktualisiert

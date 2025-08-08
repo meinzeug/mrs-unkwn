@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import '../services/openai_service.dart';
+import '../services/monitoring_service.dart';
 import '../../features/tutoring/data/services/ai_response_service.dart';
 import '../../features/tutoring/data/services/subject_classification_service.dart';
 import '../../features/tutoring/data/services/content_moderation_service.dart';
@@ -18,6 +19,7 @@ Future<void> configureDependencies() async {
 void _registerCore() {
   // Register core services here
   sl.registerLazySingleton<SecureStorageService>(() => SecureStorageService());
+  sl.registerLazySingleton<MonitoringService>(() => MonitoringService());
 }
 
 void _registerFeatures() {
