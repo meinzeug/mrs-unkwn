@@ -340,3 +340,8 @@
 - LDAP- und SSO-Schnittstellen im Backend hinzugefügt
 - Skript `scripts/setup_school_integrations.sh` erzeugt benötigte Konfigurationsdatei und installiert Abhängigkeiten
 - Roadmap und Prompt aktualisiert
+
+### Phase 3: Advanced Analytics Dashboard - 2025-08-09
+- `AnalyticsDashboardPage` visualisiert aggregierte Lernmetriken und ermöglicht CSV-Export
+- Skript `scripts/generate_analytics_data.sh` generiert Demo-Datensätze
+- Roadmap und Prompt aktualisiert

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../storage/secure_storage_service.dart';
 import 'route_constants.dart';
 import '../../features/monitoring/presentation/pages/monitoring_dashboard_page.dart';
+import '../../features/analytics/presentation/pages/analytics_dashboard_page.dart';
 
 /// Central application router using [GoRouter].
 class AppRouter {
@@ -33,6 +34,11 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.monitoring,
         builder: (context, state) => const MonitoringDashboardPage(),
+        redirect: _authGuard,
+      ),
+      GoRoute(
+        path: RouteConstants.analytics,
+        builder: (context, state) => const AnalyticsDashboardPage(),
         redirect: _authGuard,
       ),
     ],

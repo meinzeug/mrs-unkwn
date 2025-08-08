@@ -4,4 +4,5 @@ class RouteConstants {
   static const String home = '/home';
   static const String familySetup = '/family-setup';
   static const String monitoring = '/monitoring';
+  static const String analytics = '/analytics';
 }

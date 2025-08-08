@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 3 – Advanced Analytics Dashboard implementieren
+# Nächster Schritt: Phase 3 – B2B Features implementieren
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -6,6 +6,7 @@
 - Phase 2 abgeschlossen ✓
 - Phase 3 Milestone 1 abgeschlossen ✓
 - Phase 3 Milestone 2 abgeschlossen ✓
+- Phase 3 Milestone 3 abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
@@ -14,14 +15,14 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Implementiere ein Dashboard mit aggregierten Lernmetriken und Exportfunktion.
+Organisations-Accounts und Rollenverwaltung einführen.
 
 ### Vorbereitungen
-- Bestehende Flutter-App und Backend-APIs analysieren.
+- Backend- und Flutter-Strukturen für Nutzerverwaltung prüfen.
 
 ### Implementierungsschritte
-- Dashboard mit aggregierten Lernmetriken und Exportfunktion erstellen.
-- Skript `scripts/generate_analytics_data.sh` erstellen, das Demo-Datensätze generiert.
+- Organisations-Accounts und Rollenverwaltung einführen.
+- Skript `scripts/create_sample_organizations.sh` erstellen, das Beispiel-Organisationen anlegt.
 
 ### Validierung
 - `python -m py_compile` auf geänderten Python-Dateien ausführen.
@@ -31,4 +32,3 @@ Implementiere ein Dashboard mit aggregierten Lernmetriken und Exportfunktion.
 - Nach Abschluss dieses Schrittes automatisch den nächsten Prompt in `/codex/daten/prompt.md` schreiben.
 
 *Hinweis: Codex kann keine Binärdateien mergen. Benötigte Dateien werden durch Skripte generiert. Halte den Codeumfang dieses Sprints unter 500 Zeilen.*
-

@@ -338,8 +338,8 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 
 ### Milestone 3: Advanced Analytics Dashboard
 
-- [ ] Dashboard mit aggregierten Lernmetriken und Exportfunktion
-- [ ] Skript `scripts/generate_analytics_data.sh` erstellt Demo-Datensätze
+ - [x] Dashboard mit aggregierten Lernmetriken und Exportfunktion
+ - [x] Skript `scripts/generate_analytics_data.sh` erstellt Demo-Datensätze
 
 ### Milestone 4: B2B Features
 

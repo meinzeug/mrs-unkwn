@@ -5,6 +5,7 @@ import '../../features/tutoring/data/services/ai_response_service.dart';
 import '../../features/tutoring/data/services/subject_classification_service.dart';
 import '../../features/tutoring/data/services/content_moderation_service.dart';
 import '../../features/analytics/data/services/learning_analytics_service.dart';
+import '../../features/analytics/data/services/analytics_export_service.dart';
 import '../storage/secure_storage_service.dart';
 import '../../features/tutoring/data/services/chat_history_service.dart';
 
@@ -41,6 +42,9 @@ void _registerFeatures() {
   );
   sl.registerLazySingleton<LearningAnalyticsService>(
     () => LearningAnalyticsService(),
+  );
+  sl.registerLazySingleton<AnalyticsExportService>(
+    () => AnalyticsExportService(),
   );
   sl.registerLazySingleton<ChatHistoryService>(
     () => ChatHistoryService(sl()),
