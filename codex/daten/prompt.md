@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 – `Login Loading States UI`
+# Nächster Schritt: Phase 1 – `Register Screen UI Layout`
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -32,6 +32,7 @@
 - Login Form Validation implementiert ✓
 - Login BLoC State Management implementiert ✓
 - Login API Integration implementiert ✓
+- Login Loading States UI implementiert ✓
 
 ## Referenzen
 - `/README.md`
@@ -39,21 +40,20 @@
 - `/codex/daten/roadmap.md`
 - `/codex/daten/changelog.md`
 
-## Nächste Aufgabe: `Login Loading States UI`
+## Nächste Aufgabe: `Register Screen UI Layout`
 
 ### Vorbereitungen
 - Navigiere zum Projekt-Root `flutter_app/`.
 
 ### Implementierungsschritte
-- Datei `lib/features/auth/presentation/pages/login_page.dart` anpassen.
-- Gesamte UI in `BlocConsumer<AuthBloc, AuthState>` wrappen.
-- Im `listener` `AuthSuccess` (Navigation zu Home) und `AuthFailure` (SnackBar) behandeln.
-- Im `builder` bei `AuthLoading` Ladeanzeige anzeigen.
-- Login-Button während Loading deaktivieren.
-- Im Loading-State `ElevatedButton`-Child durch `CircularProgressIndicator()` ersetzen.
+- Neue Datei `lib/features/auth/presentation/pages/register_page.dart` erstellen.
+- Layout analog zur `LoginPage` mit zusätzlichen Feldern `firstName`, `lastName`, `confirmPassword`.
+- `DropdownButtonFormField` für User-Role (Parent/Child) einfügen.
+- Checkbox für Terms-Acceptance mit Link zur Terms-Page hinzufügen.
+- Validierung: Password-Bestätigung und Terms-Akzeptanz müssen erfüllt sein.
 
 ### Validierung
-- `dart format lib/features/auth/presentation/pages/login_page.dart`.
+- `dart format lib/features/auth/presentation/pages/register_page.dart`.
 - `flutter analyze`.
 
 ### Selbstgenerierung
