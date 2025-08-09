@@ -16,6 +16,7 @@ import '../../features/auth/presentation/bloc/auth_bloc.dart';
 import '../../features/family/data/repositories/family_repository_impl.dart';
 import '../../features/family/data/repositories/family_repository.dart';
 import '../../features/family/presentation/bloc/family_bloc.dart';
+import '../../features/family/data/services/family_service.dart';
 
 final sl = GetIt.instance;
 
@@ -63,7 +64,8 @@ void _registerFeatures() {
     () => OrganizationService(DioClient()),
   );
   sl.registerLazySingleton<FamilyRepository>(() => FamilyRepositoryImpl());
-  sl.registerFactory<FamilyBloc>(() => FamilyBloc(sl()));
+  sl.registerLazySingleton<FamilyService>(() => FamilyService());
+  sl.registerFactory<FamilyBloc>(() => FamilyBloc(sl(), sl()));
 }
 
 void _registerExternal() {

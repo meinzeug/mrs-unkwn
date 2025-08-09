@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'dart:async';
 
 import '../../../../core/permissions/family_permissions.dart';
 import '../../../../core/routing/route_constants.dart';
+import '../../../../core/di/service_locator.dart';
 import '../../data/models/family.dart';
+import '../../data/services/family_service.dart';
 import '../bloc/family_bloc.dart';
 import 'family_members_page.dart';
 import 'family_settings_page.dart';
@@ -25,10 +28,30 @@ class FamilyDashboardPage extends StatefulWidget {
 }
 
 class _FamilyDashboardPageState extends State<FamilyDashboardPage> {
+  late final FamilyService _familyService;
+  StreamSubscription? _subscription;
+
   @override
   void initState() {
     super.initState();
+    _familyService = sl<FamilyService>();
     context.read<FamilyBloc>().add(LoadFamilyRequested(widget.familyId));
+    _familyService.getCachedFamily(widget.familyId).then((cached) {
+      if (cached != null) {
+        context.read<FamilyBloc>().add(FamilySynced(cached));
+      }
+    });
+    _familyService.connect(widget.familyId);
+    _subscription = _familyService.familyStream.listen(
+      (family) => context.read<FamilyBloc>().add(FamilySynced(family)),
+    );
+  }
+
+  @override
+  void dispose() {
+    _subscription?.cancel();
+    _familyService.disconnect();
+    super.dispose();
   }
 
   Future<void> _refresh() async {
@@ -38,7 +61,25 @@ class _FamilyDashboardPageState extends State<FamilyDashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Family Dashboard')),
+      appBar: AppBar(
+        title: const Text('Family Dashboard'),
+        actions: [
+          ValueListenableBuilder<bool>(
+            valueListenable: _familyService.isSyncing,
+            builder: (_, syncing, __) {
+              if (!syncing) return const SizedBox.shrink();
+              return const Padding(
+                padding: EdgeInsets.all(12),
+                child: SizedBox(
+                  width: 16,
+                  height: 16,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
       body: BlocBuilder<FamilyBloc, FamilyState>(
         builder: (context, state) {
           if (state is FamilyLoading || state is FamilyInitial) {
