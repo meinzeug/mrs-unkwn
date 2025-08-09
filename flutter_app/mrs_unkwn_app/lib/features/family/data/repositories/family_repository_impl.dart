@@ -2,14 +2,16 @@ import '../../../../core/network/dio_client.dart';
 import '../models/family.dart';
 import '../models/create_family_request.dart';
 import '../models/update_family_request.dart';
+import 'family_repository.dart';
 
 /// Repository for family management API calls.
-class FamilyRepositoryImpl {
+class FamilyRepositoryImpl implements FamilyRepository {
   FamilyRepositoryImpl({DioClient? dioClient}) : _dio = dioClient ?? DioClient();
 
   final DioClient _dio;
 
   /// Creates a new family using [request] data.
+  @override
   Future<Family> createFamily(CreateFamilyRequest request) async {
     try {
       final response = await _dio.post<Map<String, dynamic>>(
@@ -27,6 +29,7 @@ class FamilyRepositoryImpl {
   }
 
   /// Retrieves a family by its [familyId].
+  @override
   Future<Family> getFamily(String familyId) async {
     try {
       final response = await _dio.get<Map<String, dynamic>>(
@@ -43,6 +46,7 @@ class FamilyRepositoryImpl {
   }
 
   /// Updates an existing family with [familyId] using [request].
+  @override
   Future<Family> updateFamily(
     String familyId,
     UpdateFamilyRequest request,
@@ -63,6 +67,7 @@ class FamilyRepositoryImpl {
   }
 
   /// Deletes the family with [familyId].
+  @override
   Future<void> deleteFamily(String familyId) async {
     try {
       await _dio.delete<void>('/api/families/$familyId');

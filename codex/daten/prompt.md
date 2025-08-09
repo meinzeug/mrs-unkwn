@@ -1,11 +1,12 @@
-# Nächster Schritt: Family BLoC State Management
+# Nächster Schritt: Family Member Invitation System
 
 ## Status
 - Phase 0 abgeschlossen ✓
 - Phase 1 Milestone 4: Family Creation UI Screen abgeschlossen ✓
 - Phase 1 Milestone 4: Family Model und Data Classes abgeschlossen ✓
 - Phase 1 Milestone 4: Family Repository Implementation abgeschlossen ✓
-- Phase 1 Milestone 4: Family BLoC State Management offen ✗
+- Phase 1 Milestone 4: Family BLoC State Management abgeschlossen ✓
+- Phase 1 Milestone 4: Family Member Invitation System offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -14,17 +15,18 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Family BLoC zur Verwaltung von Familienzuständen implementieren.
+Einladungssystem für Familienmitglieder implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Datei `family_bloc.dart` erstellen.
-- Events implementieren: `CreateFamilyRequested`, `LoadFamilyRequested`, `UpdateFamilyRequested`, `DeleteFamilyRequested`.
-- States implementieren: `FamilyInitial`, `FamilyLoading`, `FamilyLoaded(Family)`, `FamilyCreated`, `FamilyError(String)`.
-- Event-Handler schreiben, die Repository-Methoden nutzen und passende States emittieren.
-- Optimistic Updates für bessere UX berücksichtigen.
+- Datei `invite_member_page.dart` mit Email-Input und Rollenwahl erstellen.
+- `InviteMemberRequested` Event im `FamilyBloc` ergänzen und Handler implementieren.
+- Backend-Endpoint `/api/family/invite` in Repository integrieren.
+- Invitation-Token mit 24h-Gültigkeit generieren und E-Mail-Versand auslösen.
+- Flow zum Annehmen der Einladung mit Token-Validierung implementieren.
+- Familienmitgliederliste nach erfolgreicher Einladung aktualisieren.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.

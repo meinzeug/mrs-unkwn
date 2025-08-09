@@ -151,7 +151,7 @@ Details: Erstelle `lib/features/family/data/models/family.dart`. Implementiere `
 [x] Family Repository Implementation:
 Details: Erstelle `lib/features/family/data/repositories/family_repository_impl.dart`. Implementiere `createFamily(CreateFamilyRequest)` Methode mit POST-API-Call. Implementiere `getFamily(String familyId)` mit GET-API-Call. Implementiere `updateFamily(String familyId, UpdateFamilyRequest)` mit PUT-Call. Implementiere `deleteFamily(String familyId)` mit DELETE-Call. Handle alle HTTP-Error-Cases und Netzwerk-Exceptions.
 
-[ ] Family BLoC State Management:
+[x] Family BLoC State Management:
 Details: Erstelle `family_bloc.dart` mit Events: `CreateFamilyRequested`, `LoadFamilyRequested`, `UpdateFamilyRequested`, `DeleteFamilyRequested`. Definiere States: `FamilyInitial`, `FamilyLoading`, `FamilyLoaded(Family)`, `FamilyCreated`, `FamilyError(String)`. Implementiere Event-Handlers die Repository-Calls machen und entsprechende States emittieren. Handle optimistic Updates für bessere UX.
 
 [ ] Family Member Invitation System:
