@@ -1,4 +1,4 @@
-# Nächster Schritt: Family Dashboard Overview
+# Nächster Schritt: Family Role-Based Permissions
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -10,7 +10,8 @@
 - Phase 1 Milestone 4: QR Code Invitation Feature abgeschlossen ✓
 - Phase 1 Milestone 4: Family Settings Management abgeschlossen ✓
 - Phase 1 Milestone 4: Family Member Management UI abgeschlossen ✓
-- Phase 1 Milestone 4: Family Dashboard Overview offen ✗
+- Phase 1 Milestone 4: Family Dashboard Overview abgeschlossen ✓
+- Phase 1 Milestone 4: Family Role-Based Permissions offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -19,15 +20,15 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Family Dashboard Overview als Hauptscreen umsetzen.
+Family Role-Based Permissions definieren und integrieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `family_dashboard_page.dart` mit Statistik-Karten, Quick-Actions und Activity-Feed erstellen.
-- Familien-Progress-Charts für Lernziele integrieren.
-- Pull-to-Refresh für Datenaktualisierung hinzufügen.
+- `lib/core/permissions/family_permissions.dart` mit Permission-Enums erstellen.
+- `hasPermission(FamilyRole, Permission)` Funktionen implementieren.
+- Permission-Checks in UI integrieren.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.

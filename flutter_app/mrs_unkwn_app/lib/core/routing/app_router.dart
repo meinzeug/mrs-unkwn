@@ -1,8 +1,10 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../storage/secure_storage_service.dart';
 import 'route_constants.dart';
+import '../di/service_locator.dart';
 import '../../features/monitoring/presentation/pages/monitoring_dashboard_page.dart';
 import '../../features/analytics/presentation/pages/analytics_dashboard_page.dart';
 import '../../features/auth/presentation/pages/home_page.dart';
@@ -13,6 +15,8 @@ import '../../features/auth/presentation/pages/reset_password_page.dart';
 import '../../features/family/presentation/pages/create_family_page.dart';
 import '../../features/family/presentation/pages/family_settings_page.dart';
 import '../../features/family/presentation/pages/family_members_page.dart';
+import '../../features/family/presentation/pages/family_dashboard_page.dart';
+import '../../features/family/presentation/bloc/family_bloc.dart';
 import '../../features/family/data/models/family.dart';
 
 /// Central application router using [GoRouter].
@@ -48,6 +52,16 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.familySetup,
         builder: (context, state) => const CreateFamilyPage(),
+        redirect: _authGuard,
+      ),
+      GoRoute(
+        path: RouteConstants.familyDashboard,
+        builder: (context, state) => BlocProvider(
+          create: (_) => FamilyBloc(sl()),
+          child: FamilyDashboardPage(
+            familyId: state.uri.queryParameters['id'] ?? '',
+          ),
+        ),
         redirect: _authGuard,
       ),
       GoRoute(
