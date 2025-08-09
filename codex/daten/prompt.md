@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 Milestone 6 – OpenAI API Integration Setup
+# Nächster Schritt: Phase 1 Milestone 6 – Chat Message Model und Serialization
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -31,11 +31,13 @@
 - Phase 1 Milestone 5: Monitoring Alerts und Notifications abgeschlossen ✓
 - Phase 1 Milestone 5: Privacy und DSGVO Compliance für Monitoring abgeschlossen ✓
 - Phase 1 Milestone 5: Monitoring Performance Optimization abgeschlossen ✓
+- Phase 1 Milestone 6: OpenAI API Integration Setup abgeschlossen ✓
 - Wartungscheck am 2025-09-15 durchgeführt (npm test erfolgreich, pytest keine Tests, flutter test fehlgeschlagen)
 - Wartungscheck am 2025-09-16 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
 - Wartungscheck am 2025-09-17 durchgeführt (npm test fehlgeschlagen: ts-node nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Kompilationsfehler)
 - Wartungscheck am 2025-09-18 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: MissingPluginException und fehlende Abhängigkeiten)
 - Wartungscheck am 2025-09-19 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
+- Wartungscheck am 2025-10-03 durchgeführt (npm test fehlgeschlagen: ts-node not found, pytest codex/tests keine Tests, flutter test fehlgeschlagen: fehlende Firebase-Pakete)
 
 ## Referenzen
 - `/README.md`
@@ -44,19 +46,17 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Phase 1 Milestone 6: OpenAI API Integration Setup implementieren.
+Phase 1 Milestone 6: Chat Message Model und Serialization implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
-- Sicherstellen, dass `http` als Dependency in `pubspec.yaml` vorhanden ist.
 
 ### Implementierungsschritte
-- Datei `lib/core/services/openai_service.dart` anlegen.
-- Klasse `OpenAIService` implementieren, die HTTP-Anfragen an die OpenAI-API sendet.
-- API-Key über Environment-Konfiguration laden und Requests mit Timeout (30s) sowie Exponential-Backoff bei Rate-Limits ausführen.
-- Methode `Future<String> sendChatRequest(String message, List<ChatMessage> context)` implementieren.
-- Service in `lib/core/di/service_locator.dart` registrieren.
-- Unit-Test `openai_service_test.dart` mit Mock HTTP-Client anlegen.
+- Datei `lib/features/tutoring/data/models/chat_message.dart` anlegen.
+- `ChatMessage` Modell mit Feldern `id`, `role`, `content`, `timestamp` und `metadata` sowie `ChatMessageType` implementieren.
+- `@JsonSerializable()` nutzen und `fromJson()`/`toJson()` Methoden generieren.
+- Typen `text`, `image` und `file` unterstützen und Message-Threading für Multi-Turn-Konversationen berücksichtigen.
+- Unit-Test `chat_message_test.dart` mit Beispielserialisierung hinzufügen.
 
 ### Validierung
 - `npm test` ausführen.

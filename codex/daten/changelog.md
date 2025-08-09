@@ -777,6 +777,12 @@
 - Upload-Batch dekomprimiert Daten vor Übertragung
 - Roadmap und Prompt aktualisiert
 
+### Phase 1: OpenAI API Integration Tests - 2025-10-03
+- `OpenAIService` sendet Chat-Anfragen an OpenAI mit Timeout und Exponential-Backoff
+- Service im `service_locator.dart` registriert und HTTP Dependency bestätigt
+- Unit-Test `openai_service_test.dart` mit Mock HTTP-Client hinzugefügt
+- Roadmap und Prompt aktualisiert
+
 ### Wartungscheck - 2025-09-15
 - `npm test` erfolgreich
 - `pytest codex/tests` ausgeführt: keine Tests gefunden

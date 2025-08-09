@@ -423,3 +423,5 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 - [x] Wartungscheck am 2025-09-18: Tests (`npm test` fehlgeschlagen: package.json nicht gefunden, `pytest codex/tests` keine Tests gefunden, `flutter test` fehlgeschlagen: MissingPluginException und fehlende Abhängigkeiten)
 
 - [x] Wartungscheck am 2025-09-19: Tests (`npm test` fehlgeschlagen: package.json nicht gefunden, `pytest codex/tests` keine Tests gefunden, `flutter test` fehlgeschlagen: Testverzeichnis nicht gefunden)
+
+- [x] Wartungscheck am 2025-10-03: Tests (`npm test` fehlgeschlagen: ts-node not found, `pytest codex/tests` keine Tests gefunden, `flutter test` fehlgeschlagen: fehlende Firebase-Pakete)
