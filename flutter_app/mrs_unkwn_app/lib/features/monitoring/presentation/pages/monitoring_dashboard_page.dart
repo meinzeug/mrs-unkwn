@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/routing/route_constants.dart';
 
 import '../../../monitoring/data/services/activity_monitoring_service.dart';
 import '../../../monitoring/data/services/monitoring_sync_service.dart';
@@ -15,7 +17,8 @@ class MonitoringDashboardPage extends StatefulWidget {
   const MonitoringDashboardPage({super.key});
 
   @override
-  State<MonitoringDashboardPage> createState() => _MonitoringDashboardPageState();
+  State<MonitoringDashboardPage> createState() =>
+      _MonitoringDashboardPageState();
 }
 
 class _MonitoringDashboardPageState extends State<MonitoringDashboardPage> {
@@ -38,7 +41,8 @@ class _MonitoringDashboardPageState extends State<MonitoringDashboardPage> {
 
   void _handleSyncStatus() {
     if (_sync.status.value == SyncState.error) {
-      _alerts.value = List.from(_alerts.value)..add('Synchronisation fehlgeschlagen');
+      _alerts.value = List.from(_alerts.value)
+        ..add('Synchronisation fehlgeschlagen');
     }
   }
 
@@ -71,9 +75,12 @@ class _MonitoringDashboardPageState extends State<MonitoringDashboardPage> {
           content: DropdownButton<Duration>(
             value: temp,
             items: const [
-              DropdownMenuItem(value: Duration(minutes: 30), child: Text('30 Minuten')),
-              DropdownMenuItem(value: Duration(hours: 1), child: Text('1 Stunde')),
-              DropdownMenuItem(value: Duration(hours: 2), child: Text('2 Stunden')),
+              DropdownMenuItem(
+                  value: Duration(minutes: 30), child: Text('30 Minuten')),
+              DropdownMenuItem(
+                  value: Duration(hours: 1), child: Text('1 Stunde')),
+              DropdownMenuItem(
+                  value: Duration(hours: 2), child: Text('2 Stunden')),
             ],
             onChanged: (val) => temp = val ?? temp,
           ),
@@ -94,7 +101,8 @@ class _MonitoringDashboardPageState extends State<MonitoringDashboardPage> {
       _alerts.value = List.from(_alerts.value)
         ..add('Limit für $pkg: ${limit.inMinutes} min');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Limit gesetzt: ${limit.inMinutes} min')),);
+        SnackBar(content: Text('Limit gesetzt: ${limit.inMinutes} min')),
+      );
     }
   }
 
@@ -125,7 +133,8 @@ class _MonitoringDashboardPageState extends State<MonitoringDashboardPage> {
     if (msg != null && msg.isNotEmpty) {
       _alerts.value = List.from(_alerts.value)..add('Nachricht gesendet: $msg');
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Nachricht gesendet')),);
+        const SnackBar(content: Text('Nachricht gesendet')),
+      );
     }
   }
 
@@ -135,6 +144,11 @@ class _MonitoringDashboardPageState extends State<MonitoringDashboardPage> {
       appBar: AppBar(
         title: const Text('Monitoring Dashboard'),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.privacy_tip),
+            onPressed: () => context.go(RouteConstants.monitoringPrivacy),
+            tooltip: 'Privatsphäre',
+          ),
           IconButton(
             icon: const Icon(Icons.message),
             onPressed: _sendMessage,
@@ -165,8 +179,10 @@ class _MonitoringDashboardPageState extends State<MonitoringDashboardPage> {
                             }
                           },
                           itemBuilder: (context) => const [
-                            PopupMenuItem(value: 'block', child: Text('Blockieren')),
-                            PopupMenuItem(value: 'limit', child: Text('Zeitlimit')),
+                            PopupMenuItem(
+                                value: 'block', child: Text('Blockieren')),
+                            PopupMenuItem(
+                                value: 'limit', child: Text('Zeitlimit')),
                           ],
                         ),
                       );

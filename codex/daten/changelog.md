@@ -764,3 +764,9 @@
 - `ScreenTimeTracker` nutzt den Alert-Service für Limit-Überschreitungen
 - Service Locator und Tests (`monitoring_alert_service_test.dart`, angepasstes `screen_time_tracker_test.dart`) ergänzt
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Privacy und DSGVO Compliance für Monitoring - 2025-10-01
+- `MonitoringPrivacyService` eingeführt mit Consent-Verwaltung, Datenexport und Aufbewahrungslogik
+- `PrivacySettingsPage` erlaubt Eltern Zustimmung, Export und Löschung der Daten
+- `MonitoringDashboardPage`, Router und Service Locator entsprechend erweitert
+- Roadmap und Prompt aktualisiert

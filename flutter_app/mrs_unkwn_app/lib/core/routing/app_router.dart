@@ -6,6 +6,7 @@ import '../storage/secure_storage_service.dart';
 import 'route_constants.dart';
 import '../di/service_locator.dart';
 import '../../features/monitoring/presentation/pages/monitoring_dashboard_page.dart';
+import '../../features/monitoring/presentation/pages/privacy_settings_page.dart';
 import '../../features/analytics/presentation/pages/analytics_dashboard_page.dart';
 import '../../features/auth/presentation/pages/home_page.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
@@ -98,6 +99,11 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.monitoring,
         builder: (context, state) => const MonitoringDashboardPage(),
+        redirect: _authGuard,
+      ),
+      GoRoute(
+        path: RouteConstants.monitoringPrivacy,
+        builder: (context, state) => const PrivacySettingsPage(),
         redirect: _authGuard,
       ),
       GoRoute(
