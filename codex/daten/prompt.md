@@ -1,4 +1,4 @@
-# Nächster Schritt: Wartungscheck am 2025-09-16
+# Nächster Schritt: Wartungscheck am 2025-09-17
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -32,6 +32,7 @@
 - Phase 1 Milestone 5: Privacy und DSGVO Compliance für Monitoring abgeschlossen ✓
 - Phase 1 Milestone 5: Monitoring Performance Optimization abgeschlossen ✓
 - Wartungscheck am 2025-09-15 durchgeführt (npm test erfolgreich, pytest keine Tests, flutter test fehlgeschlagen)
+- Wartungscheck am 2025-09-16 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
 
 ## Referenzen
 - `/README.md`
