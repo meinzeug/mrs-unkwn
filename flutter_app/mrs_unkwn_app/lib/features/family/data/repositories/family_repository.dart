@@ -29,4 +29,21 @@ abstract class FamilyRepository {
 
   /// Updates settings for the family with [familyId].
   Future<FamilySettings> updateSettings(String familyId, FamilySettings settings);
+
+  /// Updates the role of a member identified by [userId] in [familyId].
+  Future<Family> updateMemberRole(
+    String familyId,
+    String userId,
+    FamilyRole role,
+  );
+
+  /// Updates permissions for a member identified by [userId] in [familyId].
+  Future<Family> updateMemberPermissions(
+    String familyId,
+    String userId,
+    List<String> permissions,
+  );
+
+  /// Removes a member identified by [userId] from [familyId].
+  Future<Family> removeMember(String familyId, String userId);
 }
