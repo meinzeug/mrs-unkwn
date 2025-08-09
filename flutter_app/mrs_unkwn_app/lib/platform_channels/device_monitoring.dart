@@ -47,6 +47,11 @@ abstract class DeviceMonitoring {
   /// Returns a list of installed applications from the native platform.
   Future<List<Map<String, dynamic>>> getInstalledApps();
 
+  /// Returns network usage statistics per application from the native platform.
+  /// Each entry contains package name and byte counts split by
+  /// mobile/wifi and upload/download.
+  Future<List<Map<String, dynamic>>> getNetworkUsageStats();
+
   /// Stream of app installation and removal events.
   Stream<AppChangeEvent> get onAppChange;
 }
@@ -156,6 +161,24 @@ class MethodChannelDeviceMonitoring implements DeviceMonitoring {
   }
 
   @override
+  Future<List<Map<String, dynamic>>> getNetworkUsageStats() async {
+    try {
+      final result =
+          await _channel.invokeMethod<List<dynamic>>('getNetworkUsageStats');
+      return (result ?? <dynamic>[])
+          .cast<Map<dynamic, dynamic>>()
+          .map((e) => e.cast<String, dynamic>())
+          .toList();
+    } on PlatformException catch (e, stack) {
+      Logger.error('getNetworkUsageStats failed: ${e.message}', e, stack);
+      return [];
+    } on MissingPluginException {
+      Logger.warning('getNetworkUsageStats not implemented on this platform');
+      return [];
+    }
+  }
+
+  @override
   Stream<AppChangeEvent> get onAppChange => _eventChannel
           .receiveBroadcastStream()
           .where((event) => event is Map)
@@ -189,6 +212,9 @@ class MockDeviceMonitoring implements DeviceMonitoring {
 
   @override
   Future<List<Map<String, dynamic>>> getInstalledApps() async => [];
+
+  @override
+  Future<List<Map<String, dynamic>>> getNetworkUsageStats() async => [];
 
   @override
   Stream<AppChangeEvent> get onAppChange => _controller.stream;

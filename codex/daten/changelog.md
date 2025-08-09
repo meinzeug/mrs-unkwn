@@ -734,3 +734,10 @@
 - Service Locator und Skript `create_flutter_project.sh` erweitert
 - Unit-Test `device_info_service_test.dart` erstellt
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Network Activity Monitoring - 2025-09-26
+- MethodChannel und Android-Plugin um Netzwerkstatistiken erweitert
+- `NetworkActivityService` speichert Daten getrennt nach Mobilfunk und WLAN
+- Ungewöhnliche Datennutzung löst Elternbenachrichtigung aus
+- Service Locator und Unit-Test `network_activity_service_test.dart` ergänzt
+- Roadmap und Prompt aktualisiert

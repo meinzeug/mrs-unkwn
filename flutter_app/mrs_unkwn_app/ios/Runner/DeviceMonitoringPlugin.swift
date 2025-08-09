@@ -35,6 +35,8 @@ class DeviceMonitoringPlugin: NSObject, FlutterPlugin {
             Task {
                 await self.getAppUsageStats(result: result)
             }
+        case "getNetworkUsageStats":
+            result([]) // Not implemented on iOS yet
         case "startMonitoring", "stopMonitoring", "getInstalledApps":
             result(nil)
         default:
