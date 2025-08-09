@@ -781,3 +781,7 @@
 - `npm test` erfolgreich
 - `pytest codex/tests` ausgeführt: keine Tests gefunden
 - `flutter test` fehlgeschlagen: fehlende Pakete und Implementierungen
+### Wartungscheck - 2025-09-16
+- `npm test` fehlgeschlagen: package.json nicht gefunden
+- `pytest codex/tests` ausgeführt: keine Tests gefunden
+- `flutter test` fehlgeschlagen: Testverzeichnis nicht gefunden
