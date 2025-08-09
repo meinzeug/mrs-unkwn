@@ -417,4 +417,4 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 - [x] Wartungscheck am 2025-09-12: Tests (`npm test`, `pytest codex/tests`) erfolgreich
 - [x] Wartungscheck am 2025-09-13: Tests (`npm test`, `pytest codex/tests`) erfolgreich
 - [x] Wartungscheck am 2025-09-14: Tests (`npm test`, `pytest codex/tests`, `flutter test`) erfolgreich
-- [ ] Wartungscheck am 2025-09-15: Tests (`npm test` fehlgeschlagen: package.json fehlt, `pytest codex/tests` ohne Tests, `flutter test` fehlgeschlagen: fehlende Pakete)
+- [x] Wartungscheck am 2025-09-15: Tests (`npm test` erfolgreich, `pytest codex/tests` keine Tests gefunden, `flutter test` fehlgeschlagen: fehlende Pakete und Implementierungen)

@@ -778,6 +778,6 @@
 - Roadmap und Prompt aktualisiert
 
 ### Wartungscheck - 2025-09-15
-- `npm test` fehlgeschlagen: package.json nicht gefunden
+- `npm test` erfolgreich
 - `pytest codex/tests` ausgeführt: keine Tests gefunden
-- `flutter test` fehlgeschlagen: fehlende Pakete
+- `flutter test` fehlgeschlagen: fehlende Pakete und Implementierungen
