@@ -112,8 +112,8 @@ class FamilyBloc extends BaseBloc<FamilyEvent, FamilyState> {
   ) async {
     emit(const FamilyLoading());
     try {
-      await _repository.inviteMember(event.request);
-      emit(const FamilyInvitationSent());
+      final token = await _repository.inviteMember(event.request);
+      emit(FamilyInvitationSent(token));
     } catch (e) {
       emit(FamilyError(e.toString()));
     }

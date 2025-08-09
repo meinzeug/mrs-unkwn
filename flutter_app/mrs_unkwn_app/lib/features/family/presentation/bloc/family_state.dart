@@ -40,7 +40,13 @@ class FamilyCreated extends FamilyState {
 
 /// State emitted after an invitation was sent.
 class FamilyInvitationSent extends FamilyState {
-  const FamilyInvitationSent();
+  const FamilyInvitationSent(this.token);
+
+  /// Invitation token to be shared, e.g., via QR code.
+  final String token;
+
+  @override
+  List<Object?> get props => [token];
 }
 
 /// Error state with message.

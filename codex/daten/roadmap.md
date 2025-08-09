@@ -157,7 +157,7 @@ Details: Erstelle `family_bloc.dart` mit Events: `CreateFamilyRequested`, `LoadF
 [x] Family Member Invitation System:
 Details: Erstelle `invite_member_page.dart` mit Email-Input und Role-Selection. Implementiere `InviteMemberRequested` Event in FamilyBloc. Erstelle Backend-API für `/api/family/invite` endpoint. Generate Invitation-Token mit Expiry-Date (24h). Send Invitation-Email mit Deep-Link zur App. Implementiere Invitation-Acceptance-Flow mit Token-Validation. Update Family-Members-List nach successful Invitation-Acceptance.
 
-[ ] QR Code Invitation Feature:
+[x] QR Code Invitation Feature:
 Details: Füge `qr_flutter: ^4.1.0` und `qr_code_scanner: ^1.0.1` zu Dependencies hinzu. Erstelle QR-Code-Generation-Feature in Invite-Member-Screen. QR-Code enthält Invitation-Token und Family-Information. Implementiere QR-Scanner-Screen für Invitation-Acceptance. Handle Camera-Permissions und Scanner-Errors. Validate gescannten QR-Code und process Invitation automatisch.
 
 [ ] Family Settings Management:
