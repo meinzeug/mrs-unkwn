@@ -1,9 +1,10 @@
-# Nächster Schritt: Logout Functionality
+# Nächster Schritt: Forgot Password Flow
 
 ## Status
 - Phase 0 abgeschlossen ✓
 - Phase 1 Milestone 3: Auto-Login auf App-Start abgeschlossen ✓
-- Phase 1 Milestone 3: Logout Functionality offen ✗
+- Phase 1 Milestone 3: Logout Functionality abgeschlossen ✓
+- Phase 1 Milestone 3: Forgot Password Flow offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -12,19 +13,19 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Logout-Funktion implementieren.
+Forgot-Password-Flow implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `LogoutRequested` Event in `AuthBloc` mit Server-Invalidation erweitern.
-- Lokale Tokens und Nutzerinformationen entfernen.
-- Nutzer nach Bestätigung zum Login umleiten.
-- Netzwerkfehler abfangen und dennoch lokalen Logout durchführen.
+- `forgot_password_page.dart` mit Email-Input erstellen.
+- `ForgotPasswordRequested` Event und States im AuthBloc ergänzen.
+- Backend-API `/api/auth/forgot-password` ansprechen.
+- Erfolgs- und Fehlermeldungen darstellen.
 
 ### Validierung
-- Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`) ausführen.
+- Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.
 
 ### Selbstgenerierung
 - Nach jeder Wartungsaufgabe neuen Prompt erstellen.
