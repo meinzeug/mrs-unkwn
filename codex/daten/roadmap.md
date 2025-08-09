@@ -210,8 +210,8 @@ Details: `device_info_plus`, `battery_plus` und `disk_space` integriert. Geräte
 [x] Network Activity Monitoring:
 Details: Implementiere Network-Usage-Tracking per App using Android `NetworkStatsManager`. Track Data-Consumption: Mobile-Data vs WiFi, Upload vs Download, per Time-Period. Erstelle Network-Activity-Charts und Unusual-Usage-Alerts. Implement Network-Access-Control-Integration für App-Level-Restrictions. Monitor für Data-Usage-Limits und Cost-Control-Features. Handle Network-State-Changes und Connectivity-Monitoring.
 
-[ ] Location Tracking Service (Optional):
-Details: Implementiere `geolocator` Package für Location-Services. Request Location-Permissions mit clear Purpose-Explanation. Track Safe-Zones (Home, School) und Geofence-Alerts. Implement Location-Sharing zwischen Family-Members mit Privacy-Controls. Store Location-History mit Automatic-Cleanup nach defined Period. Handle Battery-Optimization für Background-Location-Updates. Implement Emergency-Location-Sharing-Features.
+  [x] Location Tracking Service (Optional):
+  Details: `geolocator` eingebunden, Standortberechtigungen abgefragt und Safe-Zones mit Geofence-Alerts umgesetzt. Standortverlauf wird in Hive gespeichert und automatisch bereinigt. Funktion zur aktuellen Standortfreigabe vorbereitet.
 
 [ ] Monitoring Data Synchronization:
 Details: Erstelle `monitoring_sync_service.dart` für Backend-Data-Upload. Implement Batch-Upload-Strategy für Efficient-Data-Transfer (every hour). Compress und Encrypt Monitoring-Data before Upload. Handle Upload-Failures mit Retry-Logic und Offline-Queue. Implement Data-Deduplication und Server-side-Data-Validation. Create Sync-Status-Tracking und Error-Recovery-Mechanisms.

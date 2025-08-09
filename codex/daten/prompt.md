@@ -1,4 +1,4 @@
-# Nächster Schritt: Location Tracking Service (Optional)
+# Nächster Schritt: Monitoring Data Synchronization
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -25,6 +25,7 @@
  - Phase 1 Milestone 5: Basic Screen Time Tracking Implementation abgeschlossen ✓
  - Phase 1 Milestone 5: Device Information Collection abgeschlossen ✓
  - Phase 1 Milestone 5: Network Activity Monitoring abgeschlossen ✓
+ - Phase 1 Milestone 5: Location Tracking Service (Optional) abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
@@ -33,16 +34,17 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Location Tracking Service (Optional) implementieren.
+Monitoring Data Synchronization implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `geolocator` Package einbinden und Berechtigungen abfragen.
-- Safe-Zones (z. B. Zuhause, Schule) definieren und überwachen.
-- Standortverlauf speichern und regelmäßig bereinigen.
-- Geofence-Alerts und Notfall-Standortfreigabe vorbereiten.
+- `monitoring_sync_service.dart` erstellen.
+- Batch-Upload der Monitoring-Daten stündlich durchführen.
+- Daten vor dem Upload komprimieren und verschlüsseln.
+- Retry-Logik und Offline-Queue für fehlgeschlagene Uploads implementieren.
+- Sync-Status verfolgen und Fehlerbehandlung ergänzen.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.

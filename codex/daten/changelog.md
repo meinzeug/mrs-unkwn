@@ -741,3 +741,9 @@
 - Ungewöhnliche Datennutzung löst Elternbenachrichtigung aus
 - Service Locator und Unit-Test `network_activity_service_test.dart` ergänzt
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Location Tracking Service (Optional) - 2025-09-27
+- `geolocator` als Dependency und `LocationTrackingService` mit Safe-Zones umgesetzt
+- Standortverlauf in Hive gespeichert und automatische Bereinigung ergänzt
+- Service Locator und Skript `create_flutter_project.sh` erweitert
+- Roadmap und Prompt aktualisiert
