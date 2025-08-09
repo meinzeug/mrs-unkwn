@@ -216,7 +216,7 @@ Details: Implementiere Network-Usage-Tracking per App using Android `NetworkStat
 [x] Monitoring Data Synchronization:
 Details: Erstelle `monitoring_sync_service.dart` für Backend-Data-Upload. Implement Batch-Upload-Strategy für Efficient-Data-Transfer (every hour). Compress und Encrypt Monitoring-Data before Upload. Handle Upload-Failures mit Retry-Logic und Offline-Queue. Implement Data-Deduplication und Server-side-Data-Validation. Create Sync-Status-Tracking und Error-Recovery-Mechanisms.
 
-[ ] Parent Dashboard für Monitoring Data:
+[x] Parent Dashboard für Monitoring Data:
 Details: Erstelle `monitoring_dashboard_page.dart` mit Real-time-Monitoring-Overview. Display Active-Children-Status, Current-App-Usage, Screen-Time-Today. Implement Live-Updates using WebSocket-Connection oder Polling. Zeige Quick-Actions: Block-App, Send-Message, Set-Time-Limit. Create Alert-Center für Important-Notifications und Required-Actions. Implement Dashboard-Customization für Different-Parent-Preferences.
 
 [ ] Monitoring Alerts und Notifications:
