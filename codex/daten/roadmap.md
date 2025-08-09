@@ -180,7 +180,7 @@ Details: Implementiert Real-time-Data-Sync für Family-Updates via WebSocket-Ver
 
 ### Milestone 5: Basic Device Monitoring Foundation
 
-[ ] Platform Channel Setup für Device Monitoring:
+[x] Platform Channel Setup für Device Monitoring:
 Details: Erstelle `platform_channels/device_monitoring.dart`. Definiere `MethodChannel('com.mrsunkwn/device_monitoring')`. Implementiere Flutter-Methods: `startMonitoring()`, `stopMonitoring()`, `getAppUsageStats()`, `getInstalledApps()`. Handle Platform-specific-Errors und Missing-Method-Implementations. Erstelle Mock-Implementation für Development-Testing ohne native Code.
 
 [ ] Android Native Code für App Usage Tracking:

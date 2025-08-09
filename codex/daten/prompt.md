@@ -1,4 +1,4 @@
-# Nächster Schritt: Platform Channel Setup für Device Monitoring
+# Nächster Schritt: Android Native Code für App Usage Tracking
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -14,7 +14,8 @@
 - Phase 1 Milestone 4: Family Role-Based Permissions abgeschlossen ✓
 - Phase 1 Milestone 4: Family Subscription Management abgeschlossen ✓
 - Phase 1 Milestone 4: Family Data Synchronization abgeschlossen ✓
-- Phase 1 Milestone 5: Platform Channel Setup für Device Monitoring offen ✗
+- Phase 1 Milestone 5: Platform Channel Setup für Device Monitoring abgeschlossen ✓
+- Phase 1 Milestone 5: Android Native Code für App Usage Tracking offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -23,15 +24,15 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Platform Channel Setup für Device Monitoring implementieren.
+Android Native Code für App Usage Tracking implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `platform_channels/device_monitoring.dart` mit MethodChannel `com.mrsunkwn/device_monitoring` anlegen.
-- Methoden `startMonitoring()`, `stopMonitoring()`, `getAppUsageStats()` und `getInstalledApps()` definieren.
-- Plattform-spezifische Fehler abfangen und Mock-Implementierung für Tests bereitstellen.
+- `android/app/src/main/kotlin/DeviceMonitoringPlugin.kt` erstellen.
+- `PACKAGE_USAGE_STATS` Berechtigung anfordern und `UsageStatsManager` nutzen.
+- JSON-formatierte Nutzungsdaten an Flutter zurückgeben und Fehlerfälle behandeln.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.

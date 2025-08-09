@@ -683,3 +683,7 @@
 - `FamilyService` mit WebSocket-Verbindung und Hive-Caching implementiert
 - `family_dashboard_page.dart` zeigt Sync-Status an und lädt Updates automatisch
 - `service_locator.dart`, `family_bloc.dart` und `pubspec.yaml` entsprechend erweitert
+
+### Phase 1: Platform Channel Setup für Device Monitoring - 2025-09-16
+- `device_monitoring.dart` mit MethodChannel und Mock-Implementierung angelegt
+- Roadmap und Prompt aktualisiert
