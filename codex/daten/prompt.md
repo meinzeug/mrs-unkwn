@@ -1,4 +1,4 @@
-# Nächster Schritt: Monitoring Performance Optimization
+# Nächster Schritt: Wartungscheck am 2025-09-15
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -30,6 +30,7 @@
 - Phase 1 Milestone 5: Parent Dashboard für Monitoring Data abgeschlossen ✓
 - Phase 1 Milestone 5: Monitoring Alerts und Notifications abgeschlossen ✓
 - Phase 1 Milestone 5: Privacy und DSGVO Compliance für Monitoring abgeschlossen ✓
+- Phase 1 Milestone 5: Monitoring Performance Optimization abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
@@ -38,16 +39,15 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Monitoring Performance Optimization umsetzen.
+Wartungscheck am 2025-09-15 durchführen.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Background-Service für minimalen Akkuverbrauch optimieren.
-- Intelligente Monitoring-Intervalle basierend auf Nutzungsmustern einführen.
-- Datenkompression und Caching für effiziente Übertragung implementieren.
-- Speicher- und Datenbankabfragen optimieren.
+- `npm test` ausführen.
+- `pytest codex/tests` ausführen.
+- `flutter test` ausführen.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.
