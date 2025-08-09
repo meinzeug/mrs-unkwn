@@ -13,6 +13,7 @@ import '../../features/tutoring/data/services/chat_history_service.dart';
 import '../../features/organization/data/organization_service.dart';
 import '../../features/auth/data/repositories/auth_repository_impl.dart';
 import '../../features/auth/presentation/bloc/auth_bloc.dart';
+import '../../features/family/data/repositories/family_repository_impl.dart';
 
 final sl = GetIt.instance;
 
@@ -59,6 +60,7 @@ void _registerFeatures() {
   sl.registerLazySingleton<OrganizationService>(
     () => OrganizationService(DioClient()),
   );
+  sl.registerLazySingleton<FamilyRepository>(() => FamilyRepository());
 }
 
 void _registerExternal() {
