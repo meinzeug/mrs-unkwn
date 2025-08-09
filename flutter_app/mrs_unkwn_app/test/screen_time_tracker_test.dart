@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mrs_unkwn_app/features/monitoring/data/services/screen_time_tracker.dart';
 import 'package:mrs_unkwn_app/platform_channels/device_monitoring.dart';
-import 'package:mrs_unkwn_app/features/tutoring/data/services/content_moderation_service.dart';
+import 'package:mrs_unkwn_app/features/monitoring/data/services/monitoring_alert_service.dart';
 
 class _FakeDeviceMonitoring implements DeviceMonitoring {
   int _minutes = 0;
@@ -34,15 +34,12 @@ class _FakeDeviceMonitoring implements DeviceMonitoring {
   Future<List<Map<String, dynamic>>> getInstalledApps() async => [];
 }
 
-class _FakeNotifier extends ParentNotificationService {
-  final List<String> messages = [];
+class _FakeAlertService extends MonitoringAlertService {
+  final List<MonitoringAlert> received = [];
 
   @override
-  Future<void> notify({
-    required String message,
-    required List<ModerationCategory> categories,
-  }) async {
-    messages.add(message);
+  Future<void> deliver(MonitoringAlert alert) async {
+    received.add(alert);
   }
 }
 
@@ -52,14 +49,14 @@ void main() {
   test('tracks usage and triggers limit notification', () async {
     await Hive.initFlutter();
     await Hive.deleteBoxFromDisk('screen_time');
-    final notifier = _FakeNotifier();
-    final tracker = ScreenTimeTracker(_FakeDeviceMonitoring(), notifier);
+    final alerts = _FakeAlertService();
+    final tracker = ScreenTimeTracker(_FakeDeviceMonitoring(), alerts);
     tracker.setLimits(total: 8);
     await tracker.init();
     await tracker.collect();
     await tracker.collect();
     final report = await tracker.dailyReport(DateTime.now());
     expect(report['total'], 10);
-    expect(notifier.messages.length, 1);
+    expect(alerts.received.length, 1);
   });
 }

@@ -4,14 +4,14 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../../core/utils/logger.dart';
 import '../../../../platform_channels/device_monitoring.dart';
-import '../../../tutoring/data/services/content_moderation_service.dart';
+import 'monitoring_alert_service.dart';
 
 /// Tracks daily screen time per app and notifies parents when limits are exceeded.
 class ScreenTimeTracker {
-  ScreenTimeTracker(this._deviceMonitoring, this._notifier);
+  ScreenTimeTracker(this._deviceMonitoring, this._alerts);
 
   final DeviceMonitoring _deviceMonitoring;
-  final ParentNotificationService _notifier;
+  final MonitoringAlertService _alerts;
 
   static const _boxName = 'screen_time';
   static bool _initialized = false;
@@ -109,9 +109,9 @@ class ScreenTimeTracker {
   void _checkLimits(int total) {
     if (_totalLimit != null && total > _totalLimit! && !_totalLimitNotified) {
       _totalLimitNotified = true;
-      _notifier.notify(
+      _alerts.trigger(
+        MonitoringAlertType.screenTimeLimitExceeded,
         message: 'Tägliches Bildschirmzeitlimit überschritten',
-        categories: const [],
       );
     }
     _todayUsage.forEach((pkg, minutes) {
@@ -120,9 +120,9 @@ class ScreenTimeTracker {
           minutes > limit &&
           !_appLimitNotified.contains(pkg)) {
         _appLimitNotified.add(pkg);
-        _notifier.notify(
+        _alerts.trigger(
+          MonitoringAlertType.screenTimeLimitExceeded,
           message: 'Bildschirmzeitlimit für $pkg überschritten',
-          categories: const [],
         );
       }
     });

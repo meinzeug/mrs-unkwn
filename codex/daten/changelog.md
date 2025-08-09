@@ -758,3 +758,9 @@
 - `monitoring_dashboard_page.dart` mit Echtzeit-App-Nutzungsübersicht erstellt
 - Polling-basierte Live-Updates und Schnellaktionen zum Blockieren, Nachricht senden und Limit setzen implementiert
 - Alert-Center integriert, Roadmap und Prompt aktualisiert
+
+### Phase 1: Monitoring Alerts und Notifications - 2025-09-30
+- `MonitoringAlertService` mit Schwellenwerten, Cooldowns und Alert-Historie erstellt
+- `ScreenTimeTracker` nutzt den Alert-Service für Limit-Überschreitungen
+- Service Locator und Tests (`monitoring_alert_service_test.dart`, angepasstes `screen_time_tracker_test.dart`) ergänzt
+- Roadmap und Prompt aktualisiert

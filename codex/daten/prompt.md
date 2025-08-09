@@ -1,4 +1,4 @@
-# Nächster Schritt: Monitoring Alerts und Notifications
+# Nächster Schritt: Privacy und DSGVO Compliance für Monitoring
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -28,6 +28,7 @@
 - Phase 1 Milestone 5: Location Tracking Service (Optional) abgeschlossen ✓
 - Phase 1 Milestone 5: Monitoring Data Synchronization abgeschlossen ✓
 - Phase 1 Milestone 5: Parent Dashboard für Monitoring Data abgeschlossen ✓
+- Phase 1 Milestone 5: Monitoring Alerts und Notifications abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
@@ -36,16 +37,16 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Monitoring Alerts und Notifications implementieren.
+Privacy und DSGVO Compliance für Monitoring implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Alert-System für Monitoring-Ereignisse aufsetzen.
-- Regeln und Schwellenwerte konfigurierbar machen.
-- Push-/E-Mail-/SMS-Benachrichtigungen als Platzhalter integrieren.
-- Alert-Historie und Reaktions-Tracking erstellen.
+- Datenminimierung für erfasste Monitoring-Daten umsetzen.
+- Transparente Privacy-Kontrollen und Consent-Management hinzufügen.
+- Datenaufbewahrungs- und Löschrichtlinien definieren.
+- Export- und Auskunftsfunktionen für Eltern einbauen.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.
