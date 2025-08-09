@@ -608,3 +608,9 @@
 - `HomePage` mit Logout-Button und Bestätigungsdialog ergänzt
 - Unit-Tests für Logout-Szenarien hinzugefügt
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Forgot Password Flow - 2025-09-14
+- `forgot_password_page.dart` mit Email-Formular erstellt
+- `AuthBloc` um `ForgotPasswordRequested` und `ResetPasswordRequested` Events erweitert
+- Repository-Methoden für `/api/auth/forgot-password` und `/api/auth/reset-password` implementiert
+- Routing, Tests und UI für Passwort-Zurücksetzen hinzugefügt

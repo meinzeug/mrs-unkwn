@@ -146,6 +146,10 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {},
                     child: const Text('Registrieren'),
                   ),
+                  TextButton(
+                    onPressed: () => context.go(RouteConstants.forgotPassword),
+                    child: const Text('Passwort vergessen?'),
+                  ),
                 ],
               ),
             ),

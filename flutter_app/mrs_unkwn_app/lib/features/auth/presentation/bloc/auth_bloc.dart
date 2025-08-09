@@ -40,6 +40,17 @@ class RegisterRequested extends AuthEvent {
   final String role;
 }
 
+class ForgotPasswordRequested extends AuthEvent {
+  ForgotPasswordRequested(this.email);
+  final String email;
+}
+
+class ResetPasswordRequested extends AuthEvent {
+  ResetPasswordRequested(this.token, this.newPassword);
+  final String token;
+  final String newPassword;
+}
+
 // States
 abstract class AuthState {}
 
@@ -67,6 +78,9 @@ class RegisterFailure extends AuthState {
   final String message;
 }
 
+class ForgotPasswordEmailSent extends AuthState {}
+
+
 // Repository interface
 abstract class AuthRepository {
   Future<User> login(String email, String password);
@@ -80,6 +94,8 @@ abstract class AuthRepository {
     String password,
     String role,
   );
+  Future<void> forgotPassword(String email);
+  Future<User> resetPassword(String token, String newPassword);
 }
 
 // Bloc
@@ -90,6 +106,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthStatusChanged>(_onAuthStatusChanged);
     on<AppStartEvent>(_onAppStarted);
     on<RegisterRequested>(_onRegisterRequested);
+    on<ForgotPasswordRequested>(_onForgotPasswordRequested);
+    on<ResetPasswordRequested>(_onResetPasswordRequested);
   }
 
   final AuthRepository _repository;
@@ -165,6 +183,35 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(RegisterSuccess(user));
     } catch (e) {
       emit(RegisterFailure(e.toString()));
+    }
+  }
+
+  Future<void> _onForgotPasswordRequested(
+    ForgotPasswordRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(AuthLoading());
+    try {
+      await _repository.forgotPassword(event.email);
+      emit(ForgotPasswordEmailSent());
+    } catch (e) {
+      emit(AuthFailure(e.toString()));
+    }
+  }
+
+  Future<void> _onResetPasswordRequested(
+    ResetPasswordRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(AuthLoading());
+    try {
+      final user = await _repository.resetPassword(
+        event.token,
+        event.newPassword,
+      );
+      emit(AuthSuccess(user));
+    } catch (e) {
+      emit(AuthFailure(e.toString()));
     }
   }
 }

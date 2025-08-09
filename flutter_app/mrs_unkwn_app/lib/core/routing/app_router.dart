@@ -6,6 +6,10 @@ import 'route_constants.dart';
 import '../../features/monitoring/presentation/pages/monitoring_dashboard_page.dart';
 import '../../features/analytics/presentation/pages/analytics_dashboard_page.dart';
 import '../../features/auth/presentation/pages/home_page.dart';
+import '../../features/auth/presentation/pages/login_page.dart';
+import '../../features/auth/presentation/pages/register_page.dart';
+import '../../features/auth/presentation/pages/forgot_password_page.dart';
+import '../../features/auth/presentation/pages/reset_password_page.dart';
 
 /// Central application router using [GoRouter].
 class AppRouter {
@@ -16,16 +20,26 @@ class AppRouter {
     routes: <GoRoute>[
       GoRoute(
         path: RouteConstants.login,
-        builder: (context, state) => const Placeholder(),
+        builder: (context, state) => const LoginPage(),
       ),
       GoRoute(
         path: RouteConstants.register,
-        builder: (context, state) => const Placeholder(),
+        builder: (context, state) => const RegisterPage(),
       ),
       GoRoute(
         path: RouteConstants.home,
         builder: (context, state) => const HomePage(),
         redirect: _authGuard,
+      ),
+      GoRoute(
+        path: RouteConstants.forgotPassword,
+        builder: (context, state) => const ForgotPasswordPage(),
+      ),
+      GoRoute(
+        path: RouteConstants.resetPassword,
+        builder: (context, state) => ResetPasswordPage(
+          token: state.uri.queryParameters['token'] ?? '',
+        ),
       ),
       GoRoute(
         path: RouteConstants.familySetup,

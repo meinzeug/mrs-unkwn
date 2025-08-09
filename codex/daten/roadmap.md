@@ -137,7 +137,7 @@ Details: Erstelle `AppStartEvent` in AuthBloc. In Main-App-Widget, dispatch AppS
 [x] Logout Functionality:
 Details: Implementiere `LogoutRequested` Event-Handler in AuthBloc. Erstelle Logout-API-Call der Server-side-Token-Invalidation durchführt. Clear alle lokalen Storage-Data: Access-Token, Refresh-Token, User-Data, App-Settings. Reset alle BLoCs zu Initial-State. Navigate zurück zu Login-Screen. Zeige Confirmation-Dialog vor Logout-Action. Handle Network-Errors gracefully (Logout auch bei offline).
 
-[ ] Forgot Password Flow:
+[x] Forgot Password Flow:
 Details: Erstelle `forgot_password_page.dart` mit Email-Input-Field. Implementiere `ForgotPasswordRequested` Event und entsprechende States. Erstelle Backend-API-Call zu `/api/auth/forgot-password` endpoint. Zeige Success-Message mit "Email gesendet" Confirmation. Implementiere Password-Reset-Page für Deep-Link-Handling. Validate Reset-Token und ermögliche neues Password-Setzen. Update Password über API und auto-login.
 
 ### Milestone 4: Familie Management System

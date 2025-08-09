@@ -77,4 +77,27 @@ void main() {
     act: (bloc) => bloc.add(LogoutRequested()),
     expect: () => [isA<AuthLoading>(), isA<AuthInitial>()],
   );
+
+  blocTest<AuthBloc, AuthState>(
+    'emits [AuthLoading, ForgotPasswordEmailSent] on forgot password',
+    build: () {
+      when(() => repository.forgotPassword(any()))
+          .thenAnswer((_) async {});
+      return AuthBloc(repository);
+    },
+    act: (bloc) => bloc.add(ForgotPasswordRequested('a@b.com')),
+    expect: () => [isA<AuthLoading>(), isA<ForgotPasswordEmailSent>()],
+  );
+
+  blocTest<AuthBloc, AuthState>(
+    'emits [AuthLoading, AuthSuccess] on reset password',
+    build: () {
+      when(() => repository.resetPassword(any(), any()))
+          .thenAnswer((_) async => const User(id: '1'));
+      return AuthBloc(repository);
+    },
+    act: (bloc) =>
+        bloc.add(ResetPasswordRequested('token', 'newPass123')),
+    expect: () => [isA<AuthLoading>(), isA<AuthSuccess>()],
+  );
 }

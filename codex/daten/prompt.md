@@ -1,10 +1,9 @@
-# Nächster Schritt: Forgot Password Flow
+# Nächster Schritt: Family Creation UI Screen
 
 ## Status
 - Phase 0 abgeschlossen ✓
-- Phase 1 Milestone 3: Auto-Login auf App-Start abgeschlossen ✓
-- Phase 1 Milestone 3: Logout Functionality abgeschlossen ✓
-- Phase 1 Milestone 3: Forgot Password Flow offen ✗
+- Phase 1 Milestone 3: Forgot Password Flow abgeschlossen ✓
+- Phase 1 Milestone 4: Family Creation UI Screen offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -13,16 +12,15 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Forgot-Password-Flow implementieren.
+Family-Creation-UI implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `forgot_password_page.dart` mit Email-Input erstellen.
-- `ForgotPasswordRequested` Event und States im AuthBloc ergänzen.
-- Backend-API `/api/auth/forgot-password` ansprechen.
-- Erfolgs- und Fehlermeldungen darstellen.
+- `create_family_page.dart` mit Multi-Step-Wizard (Name, Regeln, Plan, Übersicht) erstellen.
+- Navigations-Buttons und Form-Validierung implementieren.
+- Erfolgs- und Fehlermeldungen anzeigen.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.

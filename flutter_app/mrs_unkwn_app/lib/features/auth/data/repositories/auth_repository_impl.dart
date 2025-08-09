@@ -147,4 +147,45 @@ class AuthRepositoryImpl implements AuthRepository {
       await _storage.deleteAll();
     }
   }
+
+  @override
+  Future<void> forgotPassword(String email) async {
+    try {
+      await _dio.post(
+        '/api/auth/forgot-password',
+        data: {'email': email},
+      );
+    } catch (e) {
+      throw Exception('Forgot password failed: $e');
+    }
+  }
+
+  @override
+  Future<User> resetPassword(String token, String newPassword) async {
+    try {
+      final response = await _dio.post<Map<String, dynamic>>(
+        '/api/auth/reset-password',
+        data: {
+          'token': token,
+          'password': newPassword,
+        },
+      );
+      final data = response.data?['data'] as Map<String, dynamic>?;
+      if (data == null) {
+        throw Exception('Invalid response format');
+      }
+      final tokens = data['tokens'] as Map<String, dynamic>;
+      await _storage.store(
+        SecureStorageService.tokenKey,
+        tokens['accessToken'] as String,
+      );
+      await _storage.store(
+        SecureStorageService.refreshTokenKey,
+        tokens['refreshToken'] as String,
+      );
+      return const User(id: 'temporary');
+    } catch (e) {
+      throw Exception('Password reset failed: $e');
+    }
+  }
 }
