@@ -589,3 +589,8 @@
 - Repository auf neue Issues geprüft
 - `npm test` (im `backend/`) und `pytest codex/tests` ausgeführt – keine Fehler gefunden
 - Keine Binärdateien versioniert; notwendige Artefakte werden über Skripte erzeugt
+
+### Phase 1: Biometric Authentication Setup - 2025-09-14
+- `local_auth` Dependency in `pubspec.yaml` aufgenommen
+- `BiometricService` implementiert und im Service Locator registriert
+- Login-Screen zeigt biometrischen Login bei unterstützten Geräten

@@ -1,22 +1,9 @@
-# Nächster Schritt: Wartungsmodus – Fehlerbehebungen & Updates
+# Nächster Schritt: Auto-Login auf App-Start
 
 ## Status
 - Phase 0 abgeschlossen ✓
-- Phase 1 abgeschlossen ✓
-- Phase 2 abgeschlossen ✓
-- Phase 3 Milestone 1 abgeschlossen ✓
-- Phase 3 Milestone 2 abgeschlossen ✓
-- Phase 3 Milestone 3 abgeschlossen ✓
-- Phase 3 Milestone 4 abgeschlossen ✓
-- Phase 4 Milestone 1 abgeschlossen ✓
-- Phase 4 Milestone 2 abgeschlossen ✓
-- Phase 4 Milestone 3 abgeschlossen ✓
-- Phase 4 Milestone 4 abgeschlossen ✓
-- Phase 5 Milestone 1 abgeschlossen ✓
-- Phase 5 Milestone 2 abgeschlossen ✓
-- Phase 5 Milestone 3 abgeschlossen ✓
-
- - Letzter Wartungscheck am 2025-09-13 – keine offenen Issues
+- Phase 1 Milestone 3: Biometric Authentication Setup abgeschlossen ✓
+- Phase 1 Milestone 3: Auto-Login auf App-Start offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -25,13 +12,15 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Projekt im Wartungsmodus halten, Fehlerberichte beobachten und bei Bedarf Bugfixes oder Updates durchführen.
+Auto-Login beim Start der App implementieren.
 
 ### Vorbereitungen
-- Repository auf neue Issues oder Fehlerhinweise prüfen.
+- `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Bei Bedarf Fehler beheben oder Aktualisierungen vornehmen.
+- `AppStartEvent` in `AuthBloc` hinzufügen und beim App-Start dispatchen.
+- Gespeicherte Tokens auslesen und mit Backend validieren.
+- Bei gültigen Tokens Nutzer automatisch einloggen, sonst Logout.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`) ausführen.
