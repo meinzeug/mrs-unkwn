@@ -687,3 +687,7 @@
 ### Phase 1: Platform Channel Setup für Device Monitoring - 2025-09-16
 - `device_monitoring.dart` mit MethodChannel und Mock-Implementierung angelegt
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Android Native Code für App Usage Tracking - 2025-09-17
+- `DeviceMonitoringPlugin.kt` erstellt, nutzt `UsageStatsManager` und fordert `PACKAGE_USAGE_STATS` Berechtigung an
+- Roadmap und Prompt aktualisiert

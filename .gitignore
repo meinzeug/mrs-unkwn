@@ -25,6 +25,12 @@ flutter_app/mrs_unkwn_app/*
 flutter_app/mrs_unkwn_app/test/goldens/
 !flutter_app/mrs_unkwn_app/integration_test/
 !flutter_app/mrs_unkwn_app/integration_test/**
+!flutter_app/mrs_unkwn_app/android/
+!flutter_app/mrs_unkwn_app/android/app/
+!flutter_app/mrs_unkwn_app/android/app/src/
+!flutter_app/mrs_unkwn_app/android/app/src/main/
+!flutter_app/mrs_unkwn_app/android/app/src/main/kotlin/
+!flutter_app/mrs_unkwn_app/android/app/src/main/kotlin/DeviceMonitoringPlugin.kt
 
 # Node.js
 node_modules/
