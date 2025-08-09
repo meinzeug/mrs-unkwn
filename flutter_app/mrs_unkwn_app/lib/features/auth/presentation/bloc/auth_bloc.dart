@@ -17,6 +17,8 @@ class LoginRequested extends AuthEvent {
 
 class LogoutRequested extends AuthEvent {}
 
+class AppStartEvent extends AuthEvent {}
+
 class AuthStatusChanged extends AuthEvent {
   AuthStatusChanged(this.user);
   final User? user;
@@ -70,6 +72,7 @@ abstract class AuthRepository {
   Future<User> login(String email, String password);
   Future<void> refreshToken();
   Future<void> logout();
+  Future<User?> getCurrentUser();
   Future<User> register(
     String firstName,
     String lastName,
@@ -85,6 +88,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<LoginRequested>(_onLoginRequested);
     on<LogoutRequested>(_onLogoutRequested);
     on<AuthStatusChanged>(_onAuthStatusChanged);
+    on<AppStartEvent>(_onAppStarted);
     on<RegisterRequested>(_onRegisterRequested);
   }
 
@@ -100,6 +104,23 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthSuccess(user));
     } catch (e) {
       emit(AuthFailure(e.toString()));
+    }
+  }
+
+  Future<void> _onAppStarted(
+    AppStartEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(AuthLoading());
+    try {
+      final user = await _repository.getCurrentUser();
+      if (user != null) {
+        emit(AuthSuccess(user));
+      } else {
+        emit(AuthInitial());
+      }
+    } catch (_) {
+      emit(AuthInitial());
     }
   }
 

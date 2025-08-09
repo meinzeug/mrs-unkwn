@@ -1,9 +1,9 @@
-# Nächster Schritt: Auto-Login auf App-Start
+# Nächster Schritt: Logout Functionality
 
 ## Status
 - Phase 0 abgeschlossen ✓
-- Phase 1 Milestone 3: Biometric Authentication Setup abgeschlossen ✓
-- Phase 1 Milestone 3: Auto-Login auf App-Start offen ✗
+- Phase 1 Milestone 3: Auto-Login auf App-Start abgeschlossen ✓
+- Phase 1 Milestone 3: Logout Functionality offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -12,15 +12,16 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Auto-Login beim Start der App implementieren.
+Logout-Funktion implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `AppStartEvent` in `AuthBloc` hinzufügen und beim App-Start dispatchen.
-- Gespeicherte Tokens auslesen und mit Backend validieren.
-- Bei gültigen Tokens Nutzer automatisch einloggen, sonst Logout.
+- `LogoutRequested` Event in `AuthBloc` mit Server-Invalidation erweitern.
+- Lokale Tokens und Nutzerinformationen entfernen.
+- Nutzer nach Bestätigung zum Login umleiten.
+- Netzwerkfehler abfangen und dennoch lokalen Logout durchführen.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`) ausführen.
