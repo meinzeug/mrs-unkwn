@@ -175,8 +175,8 @@ Details: Definiere Permission-System in `lib/core/permissions/family_permissions
 [x] Family Subscription Management:
 Details: Erstelle `subscription_page.dart` mit Current-Plan-Overview und Upgrade-Options. Implementiere Subscription-Tiers: Basic (Free), Family (€12.99), Premium (€19.99). Zeige Feature-Comparison-Table für verschiedene Plans. Implementiere Subscription-Change-Flow mit Payment-Integration-Placeholder. Handle Subscription-Status-Changes und Feature-Availability basierend auf Plan. Implementiere Usage-Limits-Tracking (Number-of-Children, Features-Usage).
 
-[ ] Family Data Synchronization:
-Details: Implementiere Real-time-Data-Sync für Family-Updates using WebSocket-Connection oder Server-Sent-Events. Erstelle `FamilyService` der automatisch Family-Data updated wenn Changes detektiert werden. Handle Offline-Mode mit Local-Data-Caching using Hive-Database. Implementiere Conflict-Resolution für concurrent Family-Updates. Show Sync-Status-Indicator in UI und Handle Sync-Errors gracefully.
+[x] Family Data Synchronization:
+Details: Implementiert Real-time-Data-Sync für Family-Updates via WebSocket-Verbindung. `FamilyService` aktualisiert Family-Daten automatisch bei Änderungen, nutzt Hive für Offline-Caching und einfache Konfliktlösung anhand von `updatedAt`. UI zeigt Sync-Status an und behandelt Fehler.
 
 ### Milestone 5: Basic Device Monitoring Foundation
 

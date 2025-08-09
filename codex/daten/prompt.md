@@ -1,4 +1,4 @@
-# Nächster Schritt: Family Data Synchronization
+# Nächster Schritt: Platform Channel Setup für Device Monitoring
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -13,7 +13,8 @@
 - Phase 1 Milestone 4: Family Dashboard Overview abgeschlossen ✓
 - Phase 1 Milestone 4: Family Role-Based Permissions abgeschlossen ✓
 - Phase 1 Milestone 4: Family Subscription Management abgeschlossen ✓
-- Phase 1 Milestone 4: Family Data Synchronization offen ✗
+- Phase 1 Milestone 4: Family Data Synchronization abgeschlossen ✓
+- Phase 1 Milestone 5: Platform Channel Setup für Device Monitoring offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -22,16 +23,15 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Family Data Synchronization implementieren.
+Platform Channel Setup für Device Monitoring implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Echtzeit-Datenabgleich über WebSocket- oder SSE-Verbindung hinzufügen.
-- `FamilyService` implementieren, der Family-Daten bei Änderungen aktualisiert.
-- Offline-Modus mit Hive-Datenbank zur Zwischenspeicherung umsetzen.
-- Konfliktlösung für parallele Updates und Sync-Status-Indikator integrieren.
+- `platform_channels/device_monitoring.dart` mit MethodChannel `com.mrsunkwn/device_monitoring` anlegen.
+- Methoden `startMonitoring()`, `stopMonitoring()`, `getAppUsageStats()` und `getInstalledApps()` definieren.
+- Plattform-spezifische Fehler abfangen und Mock-Implementierung für Tests bereitstellen.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.

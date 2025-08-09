@@ -10,13 +10,14 @@ import '../../data/models/create_family_request.dart';
 import '../../data/models/update_family_request.dart';
 import '../../data/models/invite_member_request.dart';
 import '../../data/models/family_settings.dart';
+import '../../data/services/family_service.dart';
 
 part 'family_event.dart';
 part 'family_state.dart';
 
 /// Bloc for handling family related actions and state.
 class FamilyBloc extends BaseBloc<FamilyEvent, FamilyState> {
-  FamilyBloc(this._repository) : super(const FamilyInitial()) {
+  FamilyBloc(this._repository, this._service) : super(const FamilyInitial()) {
     on<CreateFamilyRequested>(_onCreateFamilyRequested);
     on<LoadFamilyRequested>(_onLoadFamilyRequested);
     on<UpdateFamilyRequested>(_onUpdateFamilyRequested);
@@ -28,9 +29,15 @@ class FamilyBloc extends BaseBloc<FamilyEvent, FamilyState> {
     on<ChangeMemberRoleRequested>(_onChangeMemberRoleRequested);
     on<UpdateMemberPermissionsRequested>(_onUpdateMemberPermissionsRequested);
     on<RemoveMemberRequested>(_onRemoveMemberRequested);
+    on<FamilySynced>(_onFamilySynced);
+
+    _service.familyStream.listen((family) {
+      add(FamilySynced(family));
+    });
   }
 
   final FamilyRepository _repository;
+  final FamilyService _service;
 
   Future<void> _onCreateFamilyRequested(
     CreateFamilyRequested event,
@@ -224,5 +231,9 @@ class FamilyBloc extends BaseBloc<FamilyEvent, FamilyState> {
     } catch (e) {
       emit(FamilyError(e.toString()));
     }
+  }
+
+  void _onFamilySynced(FamilySynced event, Emitter<FamilyState> emit) {
+    emit(FamilyLoaded(event.family));
   }
 }

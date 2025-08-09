@@ -92,3 +92,10 @@ class RemoveMemberRequested extends FamilyEvent {
   final String familyId;
   final String userId;
 }
+
+/// Event emitted when synced family data is received.
+class FamilySynced extends FamilyEvent {
+  const FamilySynced(this.family);
+
+  final Family family;
+}

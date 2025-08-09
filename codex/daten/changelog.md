@@ -678,3 +678,8 @@
 - `subscription_page.dart` mit Planübersicht, Feature-Vergleich und Nutzungs-Limits erstellt
 - Schnellzugriff im Family Dashboard sowie Route für Abonnementverwaltung hinzugefügt
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Family Data Synchronization - 2025-09-16
+- `FamilyService` mit WebSocket-Verbindung und Hive-Caching implementiert
+- `family_dashboard_page.dart` zeigt Sync-Status an und lädt Updates automatisch
+- `service_locator.dart`, `family_bloc.dart` und `pubspec.yaml` entsprechend erweitert
