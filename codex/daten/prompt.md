@@ -1,4 +1,4 @@
-# Nächster Schritt: Wartungscheck am 2025-09-18
+# Nächster Schritt: Wartungscheck am 2025-09-19
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -34,6 +34,7 @@
 - Wartungscheck am 2025-09-15 durchgeführt (npm test erfolgreich, pytest keine Tests, flutter test fehlgeschlagen)
 - Wartungscheck am 2025-09-16 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
 - Wartungscheck am 2025-09-17 durchgeführt (npm test fehlgeschlagen: ts-node nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Kompilationsfehler)
+- Wartungscheck am 2025-09-18 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: MissingPluginException und fehlende Abhängigkeiten)
 
 ## Referenzen
 - `/README.md`

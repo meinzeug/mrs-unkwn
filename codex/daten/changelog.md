@@ -789,3 +789,7 @@
 - `npm test` fehlgeschlagen: ts-node nicht gefunden
 - `pytest codex/tests` ausgeführt: keine Tests gefunden
 - `flutter test` fehlgeschlagen: Kompilationsfehler und fehlende Pakete
+### Wartungscheck - 2025-09-18
+- `npm test` fehlgeschlagen: package.json nicht gefunden
+- `pytest codex/tests` ausgeführt: keine Tests gefunden
+- `flutter test` fehlgeschlagen: MissingPluginException und fehlende Abhängigkeiten
