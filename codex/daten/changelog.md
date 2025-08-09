@@ -793,3 +793,8 @@
 - `npm test` fehlgeschlagen: package.json nicht gefunden
 - `pytest codex/tests` ausgeführt: keine Tests gefunden
 - `flutter test` fehlgeschlagen: MissingPluginException und fehlende Abhängigkeiten
+
+### Wartungscheck - 2025-09-19
+- `npm test` fehlgeschlagen: package.json nicht gefunden
+- `pytest codex/tests` ausgeführt: keine Tests gefunden
+- `flutter test` fehlgeschlagen: Testverzeichnis nicht gefunden

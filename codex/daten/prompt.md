@@ -1,4 +1,4 @@
-# Nächster Schritt: Wartungscheck am 2025-09-19
+# Nächster Schritt: Phase 1 Milestone 6 – OpenAI API Integration Setup
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -35,6 +35,7 @@
 - Wartungscheck am 2025-09-16 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
 - Wartungscheck am 2025-09-17 durchgeführt (npm test fehlgeschlagen: ts-node nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Kompilationsfehler)
 - Wartungscheck am 2025-09-18 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: MissingPluginException und fehlende Abhängigkeiten)
+- Wartungscheck am 2025-09-19 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
 
 ## Referenzen
 - `/README.md`
@@ -43,18 +44,24 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Tests (`npm test`, `pytest codex/tests`, `flutter test`) erneut ausführen.
+Phase 1 Milestone 6: OpenAI API Integration Setup implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
+- Sicherstellen, dass `http` als Dependency in `pubspec.yaml` vorhanden ist.
 
 ### Implementierungsschritte
-- `npm test` ausführen.
-- `pytest codex/tests` ausführen.
-- `flutter test` ausführen und Fehler protokollieren.
+- Datei `lib/core/services/openai_service.dart` anlegen.
+- Klasse `OpenAIService` implementieren, die HTTP-Anfragen an die OpenAI-API sendet.
+- API-Key über Environment-Konfiguration laden und Requests mit Timeout (30s) sowie Exponential-Backoff bei Rate-Limits ausführen.
+- Methode `Future<String> sendChatRequest(String message, List<ChatMessage> context)` implementieren.
+- Service in `lib/core/di/service_locator.dart` registrieren.
+- Unit-Test `openai_service_test.dart` mit Mock HTTP-Client anlegen.
 
 ### Validierung
-- Testergebnisse festhalten.
+- `npm test` ausführen.
+- `pytest codex/tests` ausführen.
+- `flutter test` ausführen und Ergebnisse dokumentieren.
 
 ### Selbstgenerierung
 - Nach Abschluss neuen Prompt erstellen.
