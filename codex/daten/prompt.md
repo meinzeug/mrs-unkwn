@@ -1,4 +1,4 @@
-# Nächster Schritt: Family Subscription Management
+# Nächster Schritt: Family Data Synchronization
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -12,7 +12,8 @@
 - Phase 1 Milestone 4: Family Member Management UI abgeschlossen ✓
 - Phase 1 Milestone 4: Family Dashboard Overview abgeschlossen ✓
 - Phase 1 Milestone 4: Family Role-Based Permissions abgeschlossen ✓
-- Phase 1 Milestone 4: Family Subscription Management offen ✗
+- Phase 1 Milestone 4: Family Subscription Management abgeschlossen ✓
+- Phase 1 Milestone 4: Family Data Synchronization offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -21,16 +22,16 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Family Subscription Management implementieren.
+Family Data Synchronization implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `subscription_page.dart` mit Planübersicht und Upgrade-Flow erstellen.
-- Subscription-Tiers und Feature-Comparison darstellen.
-- Placeholder für Payment-Integration einfügen.
-- Subscription-Status verwalten und Nutzungslimits prüfen.
+- Echtzeit-Datenabgleich über WebSocket- oder SSE-Verbindung hinzufügen.
+- `FamilyService` implementieren, der Family-Daten bei Änderungen aktualisiert.
+- Offline-Modus mit Hive-Datenbank zur Zwischenspeicherung umsetzen.
+- Konfliktlösung für parallele Updates und Sync-Status-Indikator integrieren.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.
