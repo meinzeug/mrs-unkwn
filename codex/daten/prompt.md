@@ -20,6 +20,7 @@
 - Phase 1 Milestone 5: Permission Request Flow für Device Monitoring abgeschlossen ✓
 - Phase 1 Milestone 5: App Usage Statistics UI Display abgeschlossen ✓
 - Phase 1 Milestone 5: Real-time Activity Monitoring Service abgeschlossen ✓
+- Phase 1 Milestone 5: Android MainActivity Manifest Configuration abgeschlossen ✓
 - Phase 1 Milestone 5: App Installation/Uninstallation Detection offen ✗
 
 ## Referenzen
