@@ -776,3 +776,8 @@
 - Tages- und Wochenstatistiken werden gecached und Datenbankgröße begrenzt
 - Upload-Batch dekomprimiert Daten vor Übertragung
 - Roadmap und Prompt aktualisiert
+
+### Wartungscheck - 2025-09-15
+- `npm test` fehlgeschlagen: package.json nicht gefunden
+- `pytest codex/tests` ausgeführt: keine Tests gefunden
+- `flutter test` fehlgeschlagen: fehlende Pakete
