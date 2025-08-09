@@ -1,4 +1,4 @@
-# Nächster Schritt: Monitoring Data Synchronization
+# Nächster Schritt: Parent Dashboard für Monitoring Data
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -24,8 +24,9 @@
  - Phase 1 Milestone 5: App Installation/Uninstallation Detection abgeschlossen ✓
  - Phase 1 Milestone 5: Basic Screen Time Tracking Implementation abgeschlossen ✓
  - Phase 1 Milestone 5: Device Information Collection abgeschlossen ✓
- - Phase 1 Milestone 5: Network Activity Monitoring abgeschlossen ✓
- - Phase 1 Milestone 5: Location Tracking Service (Optional) abgeschlossen ✓
+- Phase 1 Milestone 5: Network Activity Monitoring abgeschlossen ✓
+- Phase 1 Milestone 5: Location Tracking Service (Optional) abgeschlossen ✓
+- Phase 1 Milestone 5: Monitoring Data Synchronization abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
@@ -34,17 +35,17 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Monitoring Data Synchronization implementieren.
+Parent Dashboard für Monitoring Data implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `monitoring_sync_service.dart` erstellen.
-- Batch-Upload der Monitoring-Daten stündlich durchführen.
-- Daten vor dem Upload komprimieren und verschlüsseln.
-- Retry-Logik und Offline-Queue für fehlgeschlagene Uploads implementieren.
-- Sync-Status verfolgen und Fehlerbehandlung ergänzen.
+- `monitoring_dashboard_page.dart` erstellen.
+- Echtzeit-Übersicht über Monitoring-Daten anzeigen.
+- Live-Updates via WebSocket oder Polling integrieren.
+- Quick-Actions (App blockieren, Nachricht senden, Limit setzen) hinzufügen.
+- Alert-Center für wichtige Benachrichtigungen bereitstellen.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.
