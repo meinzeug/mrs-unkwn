@@ -3,12 +3,32 @@ name: Flutter CI
 on:
   push:
     paths:
-      - 'flutter_app/**'
-      - '.github/workflows/flutter_ci.yml'
+      - 'flutter_app/**/*.dart'
+      - 'flutter_app/**/pubspec.yaml'
+      - 'flutter_app/**/pubspec.lock'
+      - 'flutter_app/**/analysis_options.yaml'
+      - 'flutter_app/**/android/**'
+      - 'flutter_app/**/ios/**'
+      - 'flutter_app/**/web/**'
+      - 'flutter_app/**/lib/**'
+      - 'flutter_app/**/test/**'
+      - 'flutter_app/**/integration_test/**'
+      - 'flutter_app/**/assets/**'
+      - 'flutter_app/**/fonts/**'
   pull_request:
     paths:
-      - 'flutter_app/**'
-      - '.github/workflows/flutter_ci.yml'
+      - 'flutter_app/**/*.dart'
+      - 'flutter_app/**/pubspec.yaml'
+      - 'flutter_app/**/pubspec.lock'
+      - 'flutter_app/**/analysis_options.yaml'
+      - 'flutter_app/**/android/**'
+      - 'flutter_app/**/ios/**'
+      - 'flutter_app/**/web/**'
+      - 'flutter_app/**/lib/**'
+      - 'flutter_app/**/test/**'
+      - 'flutter_app/**/integration_test/**'
+      - 'flutter_app/**/assets/**'
+      - 'flutter_app/**/fonts/**'
 
 jobs:
   test-android-web:
@@ -67,6 +87,22 @@ jobs:
             
             mv pubspec_fixed.yaml pubspec.yaml
             echo "Fixed pubspec.yaml:"
+            cat pubspec.yaml
+          fi
+          
+          # Fix intl version conflict
+          if grep -q "intl:" pubspec.yaml; then
+            echo "Fixing intl version conflict..."
+            if ! cp pubspec.yaml pubspec.yaml.backup 2>/dev/null; then
+              cp pubspec.yaml pubspec.yaml.backup.2
+            fi
+            
+            # Update intl to compatible version (0.19.0)
+            sed -i.bak 's/intl: \^0\.18\.0/intl: ^0.19.0/' pubspec.yaml
+            sed -i.bak 's/intl: 0\.18\.[0-9]*/intl: ^0.19.0/' pubspec.yaml
+            sed -i.bak 's/intl: \^0\.17\.[0-9]*/intl: ^0.19.0/' pubspec.yaml
+            
+            echo "Updated intl version in pubspec.yaml"
             cat pubspec.yaml
           fi
           
