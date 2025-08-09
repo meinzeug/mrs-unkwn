@@ -3,7 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/di/service_locator.dart';
-import '../../data/repositories/family_repository_impl.dart';
+import '../../data/repositories/family_repository.dart';
+import '../../data/models/create_family_request.dart';
 
 /// Multi-step wizard for creating a new family.
 class CreateFamilyPage extends StatefulWidget {
@@ -44,7 +45,9 @@ class _CreateFamilyPageState extends State<CreateFamilyPage> {
     setState(() => _isSubmitting = true);
     try {
       final repo = sl<FamilyRepository>();
-      await repo.createFamily(_nameCtrl.text);
+      await repo.createFamily(
+        CreateFamilyRequest(name: _nameCtrl.text),
+      );
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Familie erfolgreich erstellt')),

@@ -629,3 +629,9 @@
 - `FamilyRepositoryImpl` mit Methoden für Erstellen, Abrufen, Aktualisieren und Löschen von Familien implementiert
 - Request-Modelle `CreateFamilyRequest` und `UpdateFamilyRequest` hinzugefügt
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Family BLoC State Management - 2025-09-14
+- `FamilyBloc` mit Events und States zur Verwaltung von Familienzuständen erstellt
+- Optimistic Updates für Aktualisieren und Löschen umgesetzt
+- `FamilyRepository` Interface eingeführt und Service Locator angepasst
+- Roadmap und Prompt aktualisiert
