@@ -3,6 +3,8 @@ import '../services/openai_service.dart';
 import '../services/monitoring_service.dart';
 import '../services/biometric_service.dart';
 import '../network/dio_client.dart';
+import '../../platform_channels/device_monitoring.dart';
+import '../../features/monitoring/data/services/activity_monitoring_service.dart';
 import '../../features/tutoring/data/services/ai_response_service.dart';
 import '../../features/tutoring/data/services/subject_classification_service.dart';
 import '../../features/tutoring/data/services/content_moderation_service.dart';
@@ -31,6 +33,8 @@ void _registerCore() {
   sl.registerLazySingleton<SecureStorageService>(() => SecureStorageService());
   sl.registerLazySingleton<MonitoringService>(() => MonitoringService());
   sl.registerLazySingleton<BiometricService>(() => BiometricService());
+  sl.registerLazySingleton<DeviceMonitoring>(
+      () => const MethodChannelDeviceMonitoring());
   sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl());
 }
 
@@ -65,6 +69,9 @@ void _registerFeatures() {
   );
   sl.registerLazySingleton<FamilyRepository>(() => FamilyRepositoryImpl());
   sl.registerLazySingleton<FamilyService>(() => FamilyService());
+  sl.registerLazySingleton<ActivityMonitoringService>(
+    () => ActivityMonitoringService(sl(), DioClient()),
+  );
   sl.registerFactory<FamilyBloc>(() => FamilyBloc(sl(), sl()));
 }
 
