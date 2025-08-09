@@ -213,18 +213,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         
-      - name: Download coverage
+      - name: Download coverage artifacts
         uses: actions/download-artifact@v4
         with:
-          pattern: coverage-*
+          name: coverage-report
+          path: ./coverage
+        continue-on-error: true
           
       - name: Upload to Codecov
         uses: codecov/codecov-action@v4
         with:
-          files: flutter_app/mrs_unkwn_app/coverage/lcov.info
+          files: ./coverage/lcov.info
           flags: flutter
           name: flutter-coverage
-          fail_ci_if_error: falseos: [ubuntu-latest, macos-latest, windows-latest]
+          fail_ci_if_error: false
+        continue-on-error: trueos: [ubuntu-latest, macos-latest, windows-latest]
         flutter: ['3.24.3', '3.19.0']  # Aktualisiert auf neuere stabile Versionen
     
     steps:
