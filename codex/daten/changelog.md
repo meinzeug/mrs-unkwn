@@ -702,3 +702,8 @@
 - `DeviceMonitoring` MethodChannel um Berechtigungsfunktionen erweitert
 - Android- und iOS-Plugins unterstützen `hasPermission` und `requestPermission`
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: App Usage Statistics UI Display - 2025-09-20
+- `app_usage_page.dart` mit Balken-, Linien- und Kreisdiagrammen erstellt
+- `fl_chart` als Dependency in `pubspec.yaml` aufgenommen
+- Roadmap und Prompt aktualisiert

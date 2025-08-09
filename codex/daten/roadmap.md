@@ -192,7 +192,7 @@ Details: Erstelle `ios/Runner/DeviceMonitoringPlugin.swift`. Implementiere Flutt
 [x] Permission Request Flow für Device Monitoring:
 Details: Erstelle `device_permissions_page.dart` mit Step-by-Step-Permission-Explanation. Implementiere Platform-specific-Permission-Requests: Android Usage-Access, iOS Screen-Time-Access. Zeige Permission-Rationale mit Feature-Benefits-Explanation. Handle Permission-Denial-Cases mit Fallback-Options. Implementiere Settings-Deep-Link für manual Permission-Grant. Track Permission-Status und disable Features wenn nicht granted.
 
-[ ] App Usage Statistics UI Display:
+[x] App Usage Statistics UI Display:
 Details: Erstelle `app_usage_page.dart` mit Statistics-Overview. Implementiere Charts mit `fl_chart` Package: Daily-Usage-Bar-Chart, App-Category-Pie-Chart, Weekly-Usage-Trend-Line-Chart. Zeige Top-Used-Apps-List mit Usage-Time und Percentage. Implementiere Time-Range-Filter (Today, Week, Month). Handle Data-Loading-States und Empty-Data-Cases. Add Export-Functionality für Usage-Reports.
 
 [ ] Real-time Activity Monitoring Service:
