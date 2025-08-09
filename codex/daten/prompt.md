@@ -1,4 +1,4 @@
-# Nächster Schritt: Parent Dashboard für Monitoring Data
+# Nächster Schritt: Monitoring Alerts und Notifications
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -21,12 +21,13 @@
 - Phase 1 Milestone 5: App Usage Statistics UI Display abgeschlossen ✓
 - Phase 1 Milestone 5: Real-time Activity Monitoring Service abgeschlossen ✓
 - Phase 1 Milestone 5: Android MainActivity Manifest Configuration abgeschlossen ✓
- - Phase 1 Milestone 5: App Installation/Uninstallation Detection abgeschlossen ✓
- - Phase 1 Milestone 5: Basic Screen Time Tracking Implementation abgeschlossen ✓
- - Phase 1 Milestone 5: Device Information Collection abgeschlossen ✓
+- Phase 1 Milestone 5: App Installation/Uninstallation Detection abgeschlossen ✓
+- Phase 1 Milestone 5: Basic Screen Time Tracking Implementation abgeschlossen ✓
+- Phase 1 Milestone 5: Device Information Collection abgeschlossen ✓
 - Phase 1 Milestone 5: Network Activity Monitoring abgeschlossen ✓
 - Phase 1 Milestone 5: Location Tracking Service (Optional) abgeschlossen ✓
 - Phase 1 Milestone 5: Monitoring Data Synchronization abgeschlossen ✓
+- Phase 1 Milestone 5: Parent Dashboard für Monitoring Data abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
@@ -35,17 +36,16 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Parent Dashboard für Monitoring Data implementieren.
+Monitoring Alerts und Notifications implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `monitoring_dashboard_page.dart` erstellen.
-- Echtzeit-Übersicht über Monitoring-Daten anzeigen.
-- Live-Updates via WebSocket oder Polling integrieren.
-- Quick-Actions (App blockieren, Nachricht senden, Limit setzen) hinzufügen.
-- Alert-Center für wichtige Benachrichtigungen bereitstellen.
+- Alert-System für Monitoring-Ereignisse aufsetzen.
+- Regeln und Schwellenwerte konfigurierbar machen.
+- Push-/E-Mail-/SMS-Benachrichtigungen als Platzhalter integrieren.
+- Alert-Historie und Reaktions-Tracking erstellen.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.
