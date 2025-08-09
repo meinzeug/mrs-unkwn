@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/permissions/family_permissions.dart';
 
 import '../../data/models/family.dart';
 import '../bloc/family_bloc.dart';
@@ -15,9 +16,7 @@ class FamilyMembersPage extends StatelessWidget {
   final String familyId;
   final FamilyRole currentUserRole;
 
-  bool get _canManage =>
-      currentUserRole == FamilyRole.parent ||
-      currentUserRole == FamilyRole.admin;
+  bool get _canManage => FamilyPermissions.hasPermission(currentUserRole, FamilyPermission.manageMembers);
 
   @override
   Widget build(BuildContext context) {

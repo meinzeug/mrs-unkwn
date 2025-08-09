@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { body } from 'express-validator';
 import { authenticateToken } from '../middleware/auth.middleware';
+import { authorizeFamilyPermission } from '../middleware/permissions.middleware';
 import { validateRequest } from '../middleware/validation.middleware';
 import { familyService } from '../services/family.service';
 
@@ -9,6 +10,7 @@ const router = Router();
 router.post(
   '/invite',
   authenticateToken,
+  authorizeFamilyPermission('MANAGE_MEMBERS'),
   [
     body('familyId').isUUID(),
     body('email').isEmail(),

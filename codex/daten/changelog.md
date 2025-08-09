@@ -666,3 +666,10 @@
 - `family_dashboard_page.dart` als Übersichtsseite mit Statistiken und Quick-Actions erstellt
 - Routen- und Navigationslogik für Family Dashboard ergänzt
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Family Role-Based Permissions - 2025-09-16
+- `family_permissions.dart` mit Permission-Enums und `hasPermission` Funktion erstellt
+- UI-Elemente in `family_dashboard_page.dart` und `family_members_page.dart` nutzen Berechtigungsprüfungen
+- Backend-Middleware `authorizeFamilyPermission` schützt `/api/family/invite`
+- Unit-Test `family_permissions_test.dart` hinzugefügt
+- Roadmap und Prompt aktualisiert
