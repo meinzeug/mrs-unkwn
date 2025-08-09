@@ -33,6 +33,11 @@ class DeviceMonitoringPlugin : FlutterPlugin, MethodCallHandler {
 
     override fun onMethodCall(call: MethodCall, result: Result) {
         when (call.method) {
+            "hasPermission" -> result.success(hasUsagePermission())
+            "requestPermission", "openPermissionSettings" -> {
+                requestUsagePermission()
+                result.success(null)
+            }
             "getAppUsageStats" -> result.success(getAppUsageStats())
             "startMonitoring", "stopMonitoring", "getInstalledApps" -> result.success(null)
             else -> result.notImplemented()

@@ -696,3 +696,9 @@
 - `DeviceMonitoringPlugin.swift` hinzugefügt mit AuthorizationCenter und Platzhalter für Screen-Time-Daten
 - `.gitignore` angepasst, um Swift-Datei zu versionieren
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Permission Request Flow für Device Monitoring - 2025-09-19
+- `device_permissions_page.dart` mit Berechtigungsanfrage und Deep-Link zu Einstellungen erstellt
+- `DeviceMonitoring` MethodChannel um Berechtigungsfunktionen erweitert
+- Android- und iOS-Plugins unterstützen `hasPermission` und `requestPermission`
+- Roadmap und Prompt aktualisiert

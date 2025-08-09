@@ -189,7 +189,7 @@ Details: Erstelle `android/app/src/main/kotlin/DeviceMonitoringPlugin.kt`. Imple
 [x] iOS Native Code für Screen Time Integration:
 Details: Erstelle `ios/Runner/DeviceMonitoringPlugin.swift`. Implementiere FlutterMethodCallHandler. Request Family-Controls-Framework-Permissions. Implementiere Screen-Time-API-Integration mit `FamilyControls` Framework. Query Device-Activity-Data und App-Usage-Statistics. Convert Native-Data to JSON-Format für Flutter-Consumption. Handle iOS-Version-Compatibility und Permission-Requirements.
 
-[ ] Permission Request Flow für Device Monitoring:
+[x] Permission Request Flow für Device Monitoring:
 Details: Erstelle `device_permissions_page.dart` mit Step-by-Step-Permission-Explanation. Implementiere Platform-specific-Permission-Requests: Android Usage-Access, iOS Screen-Time-Access. Zeige Permission-Rationale mit Feature-Benefits-Explanation. Handle Permission-Denial-Cases mit Fallback-Options. Implementiere Settings-Deep-Link für manual Permission-Grant. Track Permission-Status und disable Features wenn nicht granted.
 
 [ ] App Usage Statistics UI Display:

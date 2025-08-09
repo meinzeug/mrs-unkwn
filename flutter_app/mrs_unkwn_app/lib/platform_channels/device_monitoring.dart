@@ -5,6 +5,15 @@ import '../core/utils/logger.dart';
 /// Provides an interface to native device monitoring features via
 /// a [MethodChannel].
 abstract class DeviceMonitoring {
+  /// Checks if the required permission for device monitoring is granted.
+  Future<bool> hasPermission();
+
+  /// Requests the necessary permission for device monitoring.
+  Future<void> requestPermission();
+
+  /// Opens the system settings so the user can grant the permission manually.
+  Future<void> openPermissionSettings();
+
   /// Starts background monitoring on the native platform.
   Future<void> startMonitoring();
 
@@ -25,6 +34,42 @@ class MethodChannelDeviceMonitoring implements DeviceMonitoring {
 
   static const MethodChannel _channel =
       MethodChannel('com.mrsunkwn/device_monitoring');
+
+  @override
+  Future<bool> hasPermission() async {
+    try {
+      final result = await _channel.invokeMethod<bool>('hasPermission');
+      return result ?? false;
+    } on PlatformException catch (e, stack) {
+      Logger.error('hasPermission failed: ${e.message}', e, stack);
+      return false;
+    } on MissingPluginException {
+      Logger.warning('hasPermission not implemented on this platform');
+      return false;
+    }
+  }
+
+  @override
+  Future<void> requestPermission() async {
+    try {
+      await _channel.invokeMethod('requestPermission');
+    } on PlatformException catch (e, stack) {
+      Logger.error('requestPermission failed: ${e.message}', e, stack);
+    } on MissingPluginException {
+      Logger.warning('requestPermission not implemented on this platform');
+    }
+  }
+
+  @override
+  Future<void> openPermissionSettings() async {
+    try {
+      await _channel.invokeMethod('openPermissionSettings');
+    } on PlatformException catch (e, stack) {
+      Logger.error('openPermissionSettings failed: ${e.message}', e, stack);
+    } on MissingPluginException {
+      Logger.warning('openPermissionSettings not implemented on this platform');
+    }
+  }
 
   @override
   Future<void> startMonitoring() async {
@@ -87,6 +132,15 @@ class MethodChannelDeviceMonitoring implements DeviceMonitoring {
 
 /// Mock implementation used for development and tests without native code.
 class MockDeviceMonitoring implements DeviceMonitoring {
+  @override
+  Future<bool> hasPermission() async => true;
+
+  @override
+  Future<void> requestPermission() async {}
+
+  @override
+  Future<void> openPermissionSettings() async {}
+
   @override
   Future<void> startMonitoring() async {}
 
