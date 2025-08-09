@@ -1,4 +1,4 @@
-# Nächster Schritt: iOS Native Code für Screen Time Integration
+# Nächster Schritt: Permission Request Flow für Device Monitoring
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -16,7 +16,8 @@
 - Phase 1 Milestone 4: Family Data Synchronization abgeschlossen ✓
 - Phase 1 Milestone 5: Platform Channel Setup für Device Monitoring abgeschlossen ✓
 - Phase 1 Milestone 5: Android Native Code für App Usage Tracking abgeschlossen ✓
-- Phase 1 Milestone 5: iOS Native Code für Screen Time Integration offen ✗
+- Phase 1 Milestone 5: iOS Native Code für Screen Time Integration abgeschlossen ✓
+- Phase 1 Milestone 5: Permission Request Flow für Device Monitoring offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -25,15 +26,15 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-iOS Native Code für Screen Time Integration implementieren.
+Permission Request Flow für Device Monitoring implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `ios/Runner/DeviceMonitoringPlugin.swift` erstellen.
-- FamilyControls-Framework-Berechtigungen anfordern.
-- Screen-Time-API nutzen und Daten als JSON an Flutter liefern.
+- `device_permissions_page.dart` erstellen.
+- Android Usage-Access und iOS Screen-Time-Permission anfordern.
+- Settings-Deep-Link für manuelles Gewähren implementieren.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.

@@ -691,3 +691,8 @@
 ### Phase 1: Android Native Code für App Usage Tracking - 2025-09-17
 - `DeviceMonitoringPlugin.kt` erstellt, nutzt `UsageStatsManager` und fordert `PACKAGE_USAGE_STATS` Berechtigung an
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: iOS Native Code für Screen Time Integration - 2025-09-18
+- `DeviceMonitoringPlugin.swift` hinzugefügt mit AuthorizationCenter und Platzhalter für Screen-Time-Daten
+- `.gitignore` angepasst, um Swift-Datei zu versionieren
+- Roadmap und Prompt aktualisiert
