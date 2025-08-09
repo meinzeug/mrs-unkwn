@@ -707,3 +707,9 @@
 - `app_usage_page.dart` mit Balken-, Linien- und Kreisdiagrammen erstellt
 - `fl_chart` als Dependency in `pubspec.yaml` aufgenommen
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Real-time Activity Monitoring Service - 2025-09-21
+- Hintergrunddienst sammelt alle 15 Minuten App-Nutzungsdaten in Hive
+- Tages- und Wochenaggregation sowie Batch-Upload zum Backend implementiert
+- `ActivityMonitoringService` im Service Locator registriert
+- Roadmap und Prompt aktualisiert

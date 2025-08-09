@@ -195,7 +195,7 @@ Details: Erstelle `device_permissions_page.dart` mit Step-by-Step-Permission-Exp
 [x] App Usage Statistics UI Display:
 Details: Erstelle `app_usage_page.dart` mit Statistics-Overview. Implementiere Charts mit `fl_chart` Package: Daily-Usage-Bar-Chart, App-Category-Pie-Chart, Weekly-Usage-Trend-Line-Chart. Zeige Top-Used-Apps-List mit Usage-Time und Percentage. Implementiere Time-Range-Filter (Today, Week, Month). Handle Data-Loading-States und Empty-Data-Cases. Add Export-Functionality für Usage-Reports.
 
-[ ] Real-time Activity Monitoring Service:
+[x] Real-time Activity Monitoring Service:
 Details: Erstelle Background-Service für continuous App-Usage-Monitoring. Implementiere `MonitoringService` der periodically Usage-Data collected (every 15 minutes). Store collected Data in local Hive-Database with Timestamp. Implement Data-Aggregation-Logic für Daily/Weekly-Summaries. Handle Service-Lifecycle und Battery-Optimization-Exemptions. Implementiere Data-Upload zu Backend in Batches.
 
 [ ] App Installation/Uninstallation Detection:

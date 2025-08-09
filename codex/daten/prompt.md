@@ -1,4 +1,4 @@
-# Nächster Schritt: Real-time Activity Monitoring Service
+# Nächster Schritt: App Installation/Uninstallation Detection
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -19,7 +19,8 @@
 - Phase 1 Milestone 5: iOS Native Code für Screen Time Integration abgeschlossen ✓
 - Phase 1 Milestone 5: Permission Request Flow für Device Monitoring abgeschlossen ✓
 - Phase 1 Milestone 5: App Usage Statistics UI Display abgeschlossen ✓
-- Phase 1 Milestone 5: Real-time Activity Monitoring Service offen ✗
+- Phase 1 Milestone 5: Real-time Activity Monitoring Service abgeschlossen ✓
+- Phase 1 Milestone 5: App Installation/Uninstallation Detection offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -28,16 +29,16 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Real-time Activity Monitoring Service implementieren.
+App Installation/Uninstallation Detection implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `MonitoringService` als Hintergrunddienst erstellen.
-- Alle 15 Minuten Nutzungsdaten erfassen und in Hive speichern.
-- Tages- und Wochenzusammenfassungen aggregieren.
-- Batch-Upload der Daten ans Backend implementieren.
+- Listener für Installations- und Deinstallationsereignisse implementieren.
+- Historie der App-Installationen in lokaler Datenbank speichern.
+- Benachrichtigungen über neue Installationen senden.
+- App-Approval-Workflow für eingeschränkte Accounts integrieren.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.
