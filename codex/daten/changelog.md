@@ -713,3 +713,7 @@
 - Tages- und Wochenaggregation sowie Batch-Upload zum Backend implementiert
 - `ActivityMonitoringService` im Service Locator registriert
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Android MainActivity Manifest Configuration - 2025-09-22
+- AndroidManifest in `flutter_app/mrs_unkwn_app` um MainActivity mit `singleTop`, `exported` und Theme-Metadaten erweitert
+- Prompt aktualisiert
