@@ -183,7 +183,7 @@ Details: Implementiert Real-time-Data-Sync für Family-Updates via WebSocket-Ver
 [x] Platform Channel Setup für Device Monitoring:
 Details: Erstelle `platform_channels/device_monitoring.dart`. Definiere `MethodChannel('com.mrsunkwn/device_monitoring')`. Implementiere Flutter-Methods: `startMonitoring()`, `stopMonitoring()`, `getAppUsageStats()`, `getInstalledApps()`. Handle Platform-specific-Errors und Missing-Method-Implementations. Erstelle Mock-Implementation für Development-Testing ohne native Code.
 
-[ ] Android Native Code für App Usage Tracking:
+[x] Android Native Code für App Usage Tracking:
 Details: Erstelle `android/app/src/main/kotlin/DeviceMonitoringPlugin.kt`. Implementiere MethodCallHandler für Flutter-Method-Channel. Request `PACKAGE_USAGE_STATS` Permission. Implementiere `getAppUsageStats()` mit `UsageStatsManager`. Query Usage-Statistics für specified Time-Range. Return JSON-formatted Usage-Data zu Flutter. Handle Permission-Denials und API-Availability-Checks.
 
 [ ] iOS Native Code für Screen Time Integration:

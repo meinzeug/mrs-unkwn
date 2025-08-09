@@ -1,4 +1,4 @@
-# Nächster Schritt: Android Native Code für App Usage Tracking
+# Nächster Schritt: iOS Native Code für Screen Time Integration
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -15,7 +15,8 @@
 - Phase 1 Milestone 4: Family Subscription Management abgeschlossen ✓
 - Phase 1 Milestone 4: Family Data Synchronization abgeschlossen ✓
 - Phase 1 Milestone 5: Platform Channel Setup für Device Monitoring abgeschlossen ✓
-- Phase 1 Milestone 5: Android Native Code für App Usage Tracking offen ✗
+- Phase 1 Milestone 5: Android Native Code für App Usage Tracking abgeschlossen ✓
+- Phase 1 Milestone 5: iOS Native Code für Screen Time Integration offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -24,15 +25,15 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Android Native Code für App Usage Tracking implementieren.
+iOS Native Code für Screen Time Integration implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `android/app/src/main/kotlin/DeviceMonitoringPlugin.kt` erstellen.
-- `PACKAGE_USAGE_STATS` Berechtigung anfordern und `UsageStatsManager` nutzen.
-- JSON-formatierte Nutzungsdaten an Flutter zurückgeben und Fehlerfälle behandeln.
+- `ios/Runner/DeviceMonitoringPlugin.swift` erstellen.
+- FamilyControls-Framework-Berechtigungen anfordern.
+- Screen-Time-API nutzen und Daten als JSON an Flutter liefern.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.
