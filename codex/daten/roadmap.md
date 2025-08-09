@@ -419,3 +419,4 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 - [x] Wartungscheck am 2025-09-14: Tests (`npm test`, `pytest codex/tests`, `flutter test`) erfolgreich
 - [x] Wartungscheck am 2025-09-15: Tests (`npm test` erfolgreich, `pytest codex/tests` keine Tests gefunden, `flutter test` fehlgeschlagen: fehlende Pakete und Implementierungen)
 - [x] Wartungscheck am 2025-09-16: Tests (`npm test` fehlgeschlagen: package.json nicht gefunden, `pytest codex/tests` keine Tests gefunden, `flutter test` fehlgeschlagen: Testverzeichnis nicht gefunden)
+- [x] Wartungscheck am 2025-09-17: Tests (`npm test` fehlgeschlagen: ts-node nicht gefunden, `pytest codex/tests` keine Tests gefunden, `flutter test` fehlgeschlagen: Kompilationsfehler)
