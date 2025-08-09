@@ -16,7 +16,7 @@
 - Phase 5 Milestone 2 abgeschlossen ✓
 - Phase 5 Milestone 3 abgeschlossen ✓
 
- - Letzter Wartungscheck am 2025-09-01 – keine offenen Issues
+ - Letzter Wartungscheck am 2025-09-02 – keine offenen Issues
 
 ## Referenzen
 - `/README.md`
