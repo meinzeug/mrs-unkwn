@@ -11,4 +11,5 @@ class RouteConstants {
   static const String analytics = '/analytics';
   static const String forgotPassword = '/forgot-password';
   static const String resetPassword = '/reset-password';
+  static const String monitoringPrivacy = '/monitoring-privacy';
 }

@@ -222,8 +222,8 @@ Details: Erstelle `monitoring_dashboard_page.dart` mit Real-time-Monitoring-Over
 [x] Monitoring Alerts und Notifications:
 Details: Implement Alert-System für verschiedene Monitoring-Events: Screen-Time-Limit-Exceeded, Inappropriate-App-Used, Device-Tampering-Detected. Create Alert-Rules-Engine mit Configurable-Thresholds und Conditions. Implement Alert-Delivery-Channels: Push-Notifications, Email, SMS-Integration. Handle Alert-Prioritization und Spam-Prevention. Create Alert-History und Response-Tracking für Parents.
 
-[ ] Privacy und DSGVO Compliance für Monitoring:
-Details: Implement Data-Minimization-Principles für Monitoring-Data-Collection. Create Transparent-Privacy-Controls für Parents und Children. Implement Data-Retention-Policies mit Automatic-Deletion nach defined Periods. Handle Data-Portability-Requests und Right-to-be-Forgotten. Create Privacy-Dashboard für Data-Usage-Transparency. Implement Consent-Management für verschiedene Monitoring-Features.
+ [x] Privacy und DSGVO Compliance für Monitoring:
+ Details: Implement Data-Minimization-Principles für Monitoring-Data-Collection. Create Transparent-Privacy-Controls für Parents und Children. Implement Data-Retention-Policies mit Automatic-Deletion nach defined Periods. Handle Data-Portability-Requests und Right-to-be-Forgotten. Create Privacy-Dashboard für Data-Usage-Transparency. Implement Consent-Management für verschiedene Monitoring-Features.
 
 [ ] Monitoring Performance Optimization:
 Details: Optimize Background-Service für Minimal-Battery-Impact using JobScheduler/WorkManager. Implement Smart-Monitoring-Intervals basierend auf Usage-Patterns. Create Data-Compression-Strategies für Storage und Network-Efficiency. Implement Caching-Mechanisms für Frequently-Accessed-Monitoring-Data. Handle Memory-Management für Large-Dataset-Processing. Optimize Database-Queries mit proper Indexing-Strategies.

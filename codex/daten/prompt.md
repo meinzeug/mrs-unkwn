@@ -1,4 +1,4 @@
-# Nächster Schritt: Privacy und DSGVO Compliance für Monitoring
+# Nächster Schritt: Monitoring Performance Optimization
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -29,6 +29,7 @@
 - Phase 1 Milestone 5: Monitoring Data Synchronization abgeschlossen ✓
 - Phase 1 Milestone 5: Parent Dashboard für Monitoring Data abgeschlossen ✓
 - Phase 1 Milestone 5: Monitoring Alerts und Notifications abgeschlossen ✓
+- Phase 1 Milestone 5: Privacy und DSGVO Compliance für Monitoring abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
@@ -37,16 +38,16 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Privacy und DSGVO Compliance für Monitoring implementieren.
+Monitoring Performance Optimization umsetzen.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Datenminimierung für erfasste Monitoring-Daten umsetzen.
-- Transparente Privacy-Kontrollen und Consent-Management hinzufügen.
-- Datenaufbewahrungs- und Löschrichtlinien definieren.
-- Export- und Auskunftsfunktionen für Eltern einbauen.
+- Background-Service für minimalen Akkuverbrauch optimieren.
+- Intelligente Monitoring-Intervalle basierend auf Nutzungsmustern einführen.
+- Datenkompression und Caching für effiziente Übertragung implementieren.
+- Speicher- und Datenbankabfragen optimieren.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.
