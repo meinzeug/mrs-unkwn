@@ -777,6 +777,11 @@
 - Upload-Batch dekomprimiert Daten vor Übertragung
 - Roadmap und Prompt aktualisiert
 
+### Phase 1: OpenAI API Integration Setup - 2025-10-03
+- `openai_service.dart` mit Timeout, Exponential-Backoff und Usage-Tracking implementiert
+- Service Locator um `OpenAIService` registriert
+- Unit-Test `openai_service_test.dart` mit Mock-HTTP-Client hinzugefügt
+
 ### Wartungscheck - 2025-09-15
 - `npm test` erfolgreich
 - `pytest codex/tests` ausgeführt: keine Tests gefunden

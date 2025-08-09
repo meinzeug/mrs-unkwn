@@ -231,7 +231,7 @@ Details: Optimize Background-Service für Minimal-Battery-Impact using JobSchedu
 ### Milestone 6: Basic AI Tutoring Foundation
 
 [x] OpenAI API Integration Setup:
-Details: Installiere `http` Package für API-Requests. Erstelle `lib/core/services/openai_service.dart`. Implementiere `OpenAIService` Klasse mit API-Key aus Environment-Variables. Create Methods: `sendChatRequest(String message, List<ChatMessage> context)`. Handle API-Rate-Limiting mit Exponential-Backoff-Retry. Implement Request-Timeout-Handling (30 seconds). Store API-Usage-Statistics für Cost-Tracking.
+Details: Installiere `http` Package für API-Requests. Erstelle `lib/core/services/openai_service.dart`. Implementiere `OpenAIService` Klasse mit API-Key aus Environment-Variables. Create Methods: `sendChatRequest(String message, List<ChatMessage> context)`. Handle API-Rate-Limiting mit Exponential-Backoff-Retry. Implement Request-Timeout-Handling (30 seconds). Store API-Usage-Statistics für Cost-Tracking. Unit-Test `openai_service_test.dart` mit Mock-Client erstellen.
 
 [x] Chat Message Model und Serialization:
 Details: Erstelle `lib/features/tutoring/data/models/chat_message.dart`. Implementiere `ChatMessage` Model mit Properties: `id`, `role` (user/assistant/system), `content`, `timestamp`, `metadata`. Add `@JsonSerializable()` für Serialization. Implement `fromJson()` und `toJson()` Methods. Create Message-Types: Text, Image, File-Attachment. Handle Message-Threading für Multi-turn-Conversations.
