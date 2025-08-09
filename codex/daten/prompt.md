@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 Milestone 6 - OpenAI API Integration Setup
+# Nächster Schritt: Wartungscheck am 2025-09-16
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -31,7 +31,7 @@
 - Phase 1 Milestone 5: Monitoring Alerts und Notifications abgeschlossen ✓
 - Phase 1 Milestone 5: Privacy und DSGVO Compliance für Monitoring abgeschlossen ✓
 - Phase 1 Milestone 5: Monitoring Performance Optimization abgeschlossen ✓
-- Wartungscheck am 2025-09-15 durchgeführt (Tests teils fehlgeschlagen)
+- Wartungscheck am 2025-09-15 durchgeführt (npm test erfolgreich, pytest keine Tests, flutter test fehlgeschlagen)
 
 ## Referenzen
 - `/README.md`
@@ -40,20 +40,18 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-OpenAI API Integration vorbereiten.
+Tests (`npm test`, `pytest codex/tests`, `flutter test`) erneut ausführen.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Dependency `http` in `pubspec.yaml` hinzufügen.
-- Datei `lib/core/services/openai_service.dart` erstellen.
-- `OpenAIService` mit API-Key aus Umgebungsvariablen und Methode `sendChatRequest` anlegen.
-- Retry-Logik mit Exponential Backoff und Timeout von 30s implementieren.
-- API-Nutzungsstatistiken zur Kostenverfolgung speichern.
+- `npm test` ausführen.
+- `pytest codex/tests` ausführen.
+- `flutter test` ausführen und Fehler protokollieren.
 
 ### Validierung
-- `flutter test` ausführen.
+- Testergebnisse festhalten.
 
 ### Selbstgenerierung
 - Nach Abschluss neuen Prompt erstellen.

@@ -28,6 +28,7 @@ dependencies:
   disk_space: ^0.2.1
   geolocator: ^10.1.0
   encrypt: ^5.0.1
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:
