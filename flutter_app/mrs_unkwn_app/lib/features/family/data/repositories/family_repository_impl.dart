@@ -1,51 +1,73 @@
 import '../../../../core/network/dio_client.dart';
+import '../models/family.dart';
+import '../models/create_family_request.dart';
+import '../models/update_family_request.dart';
 
 /// Repository for family management API calls.
-class FamilyRepository {
-  FamilyRepository({DioClient? dioClient}) : _dio = dioClient ?? DioClient();
+class FamilyRepositoryImpl {
+  FamilyRepositoryImpl({DioClient? dioClient}) : _dio = dioClient ?? DioClient();
 
   final DioClient _dio;
 
-  Future<Map<String, dynamic>> createFamily(String name) async {
+  /// Creates a new family using [request] data.
+  Future<Family> createFamily(CreateFamilyRequest request) async {
     try {
       final response = await _dio.post<Map<String, dynamic>>(
         '/api/families',
-        data: {'name': name},
+        data: request.toJson(),
       );
-      return response.data?['data'] as Map<String, dynamic>;
+      final data = response.data?['data'] as Map<String, dynamic>?;
+      if (data == null) {
+        throw Exception('Invalid response format');
+      }
+      return Family.fromJson(data);
     } catch (e) {
       throw Exception('Create family failed: $e');
     }
   }
 
-  Future<Map<String, dynamic>> updateFamily(String id, String name) async {
+  /// Retrieves a family by its [familyId].
+  Future<Family> getFamily(String familyId) async {
+    try {
+      final response = await _dio.get<Map<String, dynamic>>(
+        '/api/families/$familyId',
+      );
+      final data = response.data?['data'] as Map<String, dynamic>?;
+      if (data == null) {
+        throw Exception('Invalid response format');
+      }
+      return Family.fromJson(data);
+    } catch (e) {
+      throw Exception('Get family failed: $e');
+    }
+  }
+
+  /// Updates an existing family with [familyId] using [request].
+  Future<Family> updateFamily(
+    String familyId,
+    UpdateFamilyRequest request,
+  ) async {
     try {
       final response = await _dio.put<Map<String, dynamic>>(
-        '/api/families/$id',
-        data: {'name': name},
+        '/api/families/$familyId',
+        data: request.toJson(),
       );
-      return response.data?['data'] as Map<String, dynamic>;
+      final data = response.data?['data'] as Map<String, dynamic>?;
+      if (data == null) {
+        throw Exception('Invalid response format');
+      }
+      return Family.fromJson(data);
     } catch (e) {
       throw Exception('Update family failed: $e');
     }
   }
 
-  Future<void> deleteFamily(String id) async {
+  /// Deletes the family with [familyId].
+  Future<void> deleteFamily(String familyId) async {
     try {
-      await _dio.delete<void>('/api/families/$id');
+      await _dio.delete<void>('/api/families/$familyId');
     } catch (e) {
       throw Exception('Delete family failed: $e');
-    }
-  }
-
-  Future<void> addMember(String familyId, String userId) async {
-    try {
-      await _dio.post<void>(
-        '/api/families/$familyId/members',
-        data: {'userId': userId},
-      );
-    } catch (e) {
-      throw Exception('Add member failed: $e');
     }
   }
 }

@@ -148,7 +148,7 @@ Details: Erstelle `lib/features/family/presentation/pages/create_family_page.dar
 [x] Family Model und Data Classes:
 Details: Erstelle `lib/features/family/data/models/family.dart`. Implementiere `Family` Model-Klasse mit `@JsonSerializable()` Annotation. Properties: `id`, `name`, `createdBy`, `subscriptionTier`, `settings`, `createdAt`, `updatedAt`. Erstelle `FamilyMember` Model mit `userId`, `role`, `permissions`, `joinedAt`. Implementiere `fromJson()` und `toJson()` Methoden. Definiere Enums für `FamilyRole` und `SubscriptionTier`.
 
-[ ] Family Repository Implementation:
+[x] Family Repository Implementation:
 Details: Erstelle `lib/features/family/data/repositories/family_repository_impl.dart`. Implementiere `createFamily(CreateFamilyRequest)` Methode mit POST-API-Call. Implementiere `getFamily(String familyId)` mit GET-API-Call. Implementiere `updateFamily(String familyId, UpdateFamilyRequest)` mit PUT-Call. Implementiere `deleteFamily(String familyId)` mit DELETE-Call. Handle alle HTTP-Error-Cases und Netzwerk-Exceptions.
 
 [ ] Family BLoC State Management:

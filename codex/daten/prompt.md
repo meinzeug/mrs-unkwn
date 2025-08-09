@@ -1,10 +1,11 @@
-# Nächster Schritt: Family Repository Implementation
+# Nächster Schritt: Family BLoC State Management
 
 ## Status
 - Phase 0 abgeschlossen ✓
 - Phase 1 Milestone 4: Family Creation UI Screen abgeschlossen ✓
 - Phase 1 Milestone 4: Family Model und Data Classes abgeschlossen ✓
-- Phase 1 Milestone 4: Family Repository Implementation offen ✗
+- Phase 1 Milestone 4: Family Repository Implementation abgeschlossen ✓
+- Phase 1 Milestone 4: Family BLoC State Management offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -13,18 +14,17 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Family Repository für API-Aufrufe implementieren.
+Family BLoC zur Verwaltung von Familienzuständen implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Datei `lib/features/family/data/repositories/family_repository_impl.dart` erstellen.
-- `createFamily(CreateFamilyRequest)` mit POST-API-Call implementieren.
-- `getFamily(String familyId)` mit GET-API-Call implementieren.
-- `updateFamily(String familyId, UpdateFamilyRequest)` mit PUT-API-Call implementieren.
-- `deleteFamily(String familyId)` mit DELETE-API-Call implementieren.
-- HTTP- und Netzwerkfehler angemessen behandeln.
+- Datei `family_bloc.dart` erstellen.
+- Events implementieren: `CreateFamilyRequested`, `LoadFamilyRequested`, `UpdateFamilyRequested`, `DeleteFamilyRequested`.
+- States implementieren: `FamilyInitial`, `FamilyLoading`, `FamilyLoaded(Family)`, `FamilyCreated`, `FamilyError(String)`.
+- Event-Handler schreiben, die Repository-Methoden nutzen und passende States emittieren.
+- Optimistic Updates für bessere UX berücksichtigen.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.
