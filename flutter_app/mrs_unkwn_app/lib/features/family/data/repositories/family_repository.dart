@@ -2,6 +2,7 @@ import '../models/family.dart';
 import '../models/create_family_request.dart';
 import '../models/update_family_request.dart';
 import '../models/invite_member_request.dart';
+import '../models/family_settings.dart';
 
 /// Abstract contract for family data operations.
 abstract class FamilyRepository {
@@ -22,4 +23,10 @@ abstract class FamilyRepository {
 
   /// Accepts an invitation token and returns the updated family.
   Future<Family> acceptInvitation(String token);
+
+  /// Retrieves settings for the family with [familyId].
+  Future<FamilySettings> getSettings(String familyId);
+
+  /// Updates settings for the family with [familyId].
+  Future<FamilySettings> updateSettings(String familyId, FamilySettings settings);
 }

@@ -49,6 +49,16 @@ class FamilyInvitationSent extends FamilyState {
   List<Object?> get props => [token];
 }
 
+/// State emitted when family settings are loaded or updated.
+class FamilySettingsLoaded extends FamilyState {
+  const FamilySettingsLoaded(this.settings);
+
+  final FamilySettings settings;
+
+  @override
+  List<Object?> get props => [settings];
+}
+
 /// Error state with message.
 class FamilyError extends FamilyState {
   const FamilyError(this.message);

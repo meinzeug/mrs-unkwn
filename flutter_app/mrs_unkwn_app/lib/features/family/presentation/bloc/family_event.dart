@@ -47,3 +47,18 @@ class AcceptInvitationRequested extends FamilyEvent {
 
   final String token;
 }
+
+/// Event to load settings for a family.
+class LoadFamilySettingsRequested extends FamilyEvent {
+  const LoadFamilySettingsRequested(this.familyId);
+
+  final String familyId;
+}
+
+/// Event to update settings for a family.
+class UpdateFamilySettingsRequested extends FamilyEvent {
+  const UpdateFamilySettingsRequested(this.familyId, this.settings);
+
+  final String familyId;
+  final FamilySettings settings;
+}

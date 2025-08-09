@@ -3,6 +3,7 @@ import '../models/family.dart';
 import '../models/create_family_request.dart';
 import '../models/update_family_request.dart';
 import '../models/invite_member_request.dart';
+import '../models/family_settings.dart';
 import 'family_repository.dart';
 
 /// Repository for family management API calls.
@@ -110,6 +111,44 @@ class FamilyRepositoryImpl implements FamilyRepository {
       return Family.fromJson(data);
     } catch (e) {
       throw Exception('Accept invitation failed: $e');
+    }
+  }
+
+  /// Retrieves family settings by [familyId].
+  @override
+  Future<FamilySettings> getSettings(String familyId) async {
+    try {
+      final response = await _dio.get<Map<String, dynamic>>(
+        '/api/families/$familyId/settings',
+      );
+      final data = response.data?['data'] as Map<String, dynamic>?;
+      if (data == null) {
+        throw Exception('Invalid response format');
+      }
+      return FamilySettings.fromJson(data);
+    } catch (e) {
+      throw Exception('Get settings failed: $e');
+    }
+  }
+
+  /// Updates family settings for [familyId].
+  @override
+  Future<FamilySettings> updateSettings(
+    String familyId,
+    FamilySettings settings,
+  ) async {
+    try {
+      final response = await _dio.put<Map<String, dynamic>>(
+        '/api/families/$familyId/settings',
+        data: settings.toJson(),
+      );
+      final data = response.data?['data'] as Map<String, dynamic>?;
+      if (data == null) {
+        throw Exception('Invalid response format');
+      }
+      return FamilySettings.fromJson(data);
+    } catch (e) {
+      throw Exception('Update settings failed: $e');
     }
   }
 }

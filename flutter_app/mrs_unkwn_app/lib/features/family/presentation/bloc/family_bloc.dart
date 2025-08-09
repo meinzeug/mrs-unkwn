@@ -9,6 +9,7 @@ import '../../data/models/family.dart';
 import '../../data/models/create_family_request.dart';
 import '../../data/models/update_family_request.dart';
 import '../../data/models/invite_member_request.dart';
+import '../../data/models/family_settings.dart';
 
 part 'family_event.dart';
 part 'family_state.dart';
@@ -22,6 +23,8 @@ class FamilyBloc extends BaseBloc<FamilyEvent, FamilyState> {
     on<DeleteFamilyRequested>(_onDeleteFamilyRequested);
     on<InviteMemberRequested>(_onInviteMemberRequested);
     on<AcceptInvitationRequested>(_onAcceptInvitationRequested);
+    on<LoadFamilySettingsRequested>(_onLoadFamilySettingsRequested);
+    on<UpdateFamilySettingsRequested>(_onUpdateFamilySettingsRequested);
   }
 
   final FamilyRepository _repository;
@@ -128,6 +131,44 @@ class FamilyBloc extends BaseBloc<FamilyEvent, FamilyState> {
       final family = await _repository.acceptInvitation(event.token);
       emit(FamilyLoaded(family));
     } catch (e) {
+      emit(FamilyError(e.toString()));
+    }
+  }
+
+  Future<void> _onLoadFamilySettingsRequested(
+    LoadFamilySettingsRequested event,
+    Emitter<FamilyState> emit,
+  ) async {
+    emit(const FamilyLoading());
+    try {
+      final settings = await _repository.getSettings(event.familyId);
+      emit(FamilySettingsLoaded(settings));
+    } catch (e) {
+      emit(FamilyError(e.toString()));
+    }
+  }
+
+  Future<void> _onUpdateFamilySettingsRequested(
+    UpdateFamilySettingsRequested event,
+    Emitter<FamilyState> emit,
+  ) async {
+    FamilySettings? previous;
+    if (state is FamilySettingsLoaded) {
+      previous = (state as FamilySettingsLoaded).settings;
+      emit(FamilySettingsLoaded(event.settings));
+    } else {
+      emit(const FamilyLoading());
+    }
+    try {
+      final updated = await _repository.updateSettings(
+        event.familyId,
+        event.settings,
+      );
+      emit(FamilySettingsLoaded(updated));
+    } catch (e) {
+      if (previous != null) {
+        emit(FamilySettingsLoaded(previous));
+      }
       emit(FamilyError(e.toString()));
     }
   }

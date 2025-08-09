@@ -648,3 +648,10 @@
 - QR-Code-Generierung im Einladungsscreen implementiert
 - QR-Scanner-Seite zur automatischen Einladungsannahme erstellt
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Family Settings Management - 2025-09-15
+- `family_settings_page.dart` mit UI-Elementen für Studienregeln, Bildschirmzeit, Schlafenszeit und App-Beschränkungen erstellt
+- `FamilySettings` Modell sowie Repository-Methoden zum Laden und Aktualisieren der Einstellungen implementiert
+- `FamilyBloc` um Events und States zur Verwaltung der Einstellungen erweitert
+- Routen und Navigation für `FamilySettingsPage` ergänzt
+- Roadmap und Prompt aktualisiert

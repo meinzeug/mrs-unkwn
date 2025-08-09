@@ -160,7 +160,7 @@ Details: Erstelle `invite_member_page.dart` mit Email-Input und Role-Selection. 
 [x] QR Code Invitation Feature:
 Details: Füge `qr_flutter: ^4.1.0` und `qr_code_scanner: ^1.0.1` zu Dependencies hinzu. Erstelle QR-Code-Generation-Feature in Invite-Member-Screen. QR-Code enthält Invitation-Token und Family-Information. Implementiere QR-Scanner-Screen für Invitation-Acceptance. Handle Camera-Permissions und Scanner-Errors. Validate gescannten QR-Code und process Invitation automatisch.
 
-[ ] Family Settings Management:
+[x] Family Settings Management:
 Details: Erstelle `family_settings_page.dart` mit verschiedenen Setting-Categories: Study-Rules, Screen-Time-Limits, Bedtime-Schedule, App-Restrictions. Implementiere Toggle-Switches, Sliders, und Time-Pickers für verschiedene Settings. Erstelle `FamilySettings` Model-Klasse mit Serialization. Implementiere Settings-Update-API-Calls mit Optimistic-Updates. Handle Settings-Inheritance (Family-Level vs Individual-Member-Level).
 
 [ ] Family Member Management UI:
