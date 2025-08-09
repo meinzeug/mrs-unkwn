@@ -201,7 +201,7 @@ Details: Erstelle Background-Service für continuous App-Usage-Monitoring. Imple
  [x] App Installation/Uninstallation Detection:
  Details: BroadcastReceiver für `ACTION_PACKAGE_ADDED` und `ACTION_PACKAGE_REMOVED` implementiert, EventChannel angebunden und Installationshistorie in Hive gespeichert. Benachrichtigt Eltern über neue Apps und bereitet Approval-Workflow vor.
 
-[ ] Basic Screen Time Tracking Implementation:
+[x] Basic Screen Time Tracking Implementation:
 Details: Erstelle `screen_time_tracker.dart` Service. Implementiere Screen-Time-Calculation basierend auf App-Foreground-Time. Track Daily-Screen-Time per App und gesamt. Store Screen-Time-Data in Hive-Database mit Daily-Buckets. Implementiere Screen-Time-Limits-Checking und Warning-Notifications. Handle App-Switching-Events und Accurate-Time-Calculation. Erstelle Screen-Time-Summary-Reports für Parents.
 
 [ ] Device Information Collection:

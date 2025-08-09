@@ -1,4 +1,4 @@
-# Nächster Schritt: Basic Screen Time Tracking Implementation
+# Nächster Schritt: Device Information Collection
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -22,7 +22,8 @@
 - Phase 1 Milestone 5: Real-time Activity Monitoring Service abgeschlossen ✓
 - Phase 1 Milestone 5: Android MainActivity Manifest Configuration abgeschlossen ✓
  - Phase 1 Milestone 5: App Installation/Uninstallation Detection abgeschlossen ✓
- - Phase 1 Milestone 5: Basic Screen Time Tracking Implementation offen ✗
+ - Phase 1 Milestone 5: Basic Screen Time Tracking Implementation abgeschlossen ✓
+ - Phase 1 Milestone 5: Device Information Collection offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -31,16 +32,16 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Basic Screen Time Tracking Implementation umsetzen.
+Device Information Collection umsetzen.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `screen_time_tracker.dart` Service erstellen.
-- Foreground-Zeit pro App erfassen und täglich speichern.
-- Screen-Time-Limits prüfen und Warnungen auslösen.
-- Zusammenfassungen für Eltern generieren.
+- `device_info_plus` integrieren.
+- Hardware- und Betriebssysteminformationen erfassen.
+- Nutzungs- und Zustandsdaten (Speicher, Akku) speichern.
+- Daten für Parent-Dashboard aufbereiten.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.
