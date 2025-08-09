@@ -154,7 +154,7 @@ Details: Erstelle `lib/features/family/data/repositories/family_repository_impl.
 [x] Family BLoC State Management:
 Details: Erstelle `family_bloc.dart` mit Events: `CreateFamilyRequested`, `LoadFamilyRequested`, `UpdateFamilyRequested`, `DeleteFamilyRequested`. Definiere States: `FamilyInitial`, `FamilyLoading`, `FamilyLoaded(Family)`, `FamilyCreated`, `FamilyError(String)`. Implementiere Event-Handlers die Repository-Calls machen und entsprechende States emittieren. Handle optimistic Updates für bessere UX.
 
-[ ] Family Member Invitation System:
+[x] Family Member Invitation System:
 Details: Erstelle `invite_member_page.dart` mit Email-Input und Role-Selection. Implementiere `InviteMemberRequested` Event in FamilyBloc. Erstelle Backend-API für `/api/family/invite` endpoint. Generate Invitation-Token mit Expiry-Date (24h). Send Invitation-Email mit Deep-Link zur App. Implementiere Invitation-Acceptance-Flow mit Token-Validation. Update Family-Members-List nach successful Invitation-Acceptance.
 
 [ ] QR Code Invitation Feature:

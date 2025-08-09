@@ -1,6 +1,7 @@
 import '../models/family.dart';
 import '../models/create_family_request.dart';
 import '../models/update_family_request.dart';
+import '../models/invite_member_request.dart';
 
 /// Abstract contract for family data operations.
 abstract class FamilyRepository {
@@ -15,4 +16,10 @@ abstract class FamilyRepository {
 
   /// Deletes the family with [familyId].
   Future<void> deleteFamily(String familyId);
+
+  /// Sends an invitation to join a family.
+  Future<void> inviteMember(InviteMemberRequest request);
+
+  /// Accepts an invitation token and returns the updated family.
+  Future<Family> acceptInvitation(String token);
 }
