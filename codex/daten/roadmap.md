@@ -186,7 +186,7 @@ Details: Erstelle `platform_channels/device_monitoring.dart`. Definiere `MethodC
 [x] Android Native Code für App Usage Tracking:
 Details: Erstelle `android/app/src/main/kotlin/DeviceMonitoringPlugin.kt`. Implementiere MethodCallHandler für Flutter-Method-Channel. Request `PACKAGE_USAGE_STATS` Permission. Implementiere `getAppUsageStats()` mit `UsageStatsManager`. Query Usage-Statistics für specified Time-Range. Return JSON-formatted Usage-Data zu Flutter. Handle Permission-Denials und API-Availability-Checks.
 
-[ ] iOS Native Code für Screen Time Integration:
+[x] iOS Native Code für Screen Time Integration:
 Details: Erstelle `ios/Runner/DeviceMonitoringPlugin.swift`. Implementiere FlutterMethodCallHandler. Request Family-Controls-Framework-Permissions. Implementiere Screen-Time-API-Integration mit `FamilyControls` Framework. Query Device-Activity-Data und App-Usage-Statistics. Convert Native-Data to JSON-Format für Flutter-Consumption. Handle iOS-Version-Compatibility und Permission-Requirements.
 
 [ ] Permission Request Flow für Device Monitoring:
