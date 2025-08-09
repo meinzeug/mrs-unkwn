@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import '../services/openai_service.dart';
 import '../services/monitoring_service.dart';
+import '../services/biometric_service.dart';
 import '../network/dio_client.dart';
 import '../../features/tutoring/data/services/ai_response_service.dart';
 import '../../features/tutoring/data/services/subject_classification_service.dart';
@@ -23,6 +24,7 @@ void _registerCore() {
   // Register core services here
   sl.registerLazySingleton<SecureStorageService>(() => SecureStorageService());
   sl.registerLazySingleton<MonitoringService>(() => MonitoringService());
+  sl.registerLazySingleton<BiometricService>(() => BiometricService());
 }
 
 void _registerFeatures() {

@@ -128,7 +128,7 @@ Details: In `AuthRepositoryImpl`, implementiere `register()` Methode. Erstelle P
 [x] Password Strength Indicator:
 Details: Erstelle `lib/shared/widgets/password_strength_indicator.dart` Widget. Implementiere Password-Strength-Calculation basierend auf: Length (>8), Uppercase-Letters, Lowercase-Letters, Numbers, Special-Characters. Zeige visuellen Strength-Indicator mit Colors: Red (Weak), Orange (Medium), Green (Strong). Update Indicator in Real-time während User-Typing. Zeige Improvement-Suggestions unter dem Indicator.
 
-[ ] Biometric Authentication Setup:
+[x] Biometric Authentication Setup:
 Details: Füge `local_auth: ^2.1.6` zu pubspec.yaml hinzu. Erstelle `lib/core/services/biometric_service.dart`. Implementiere `isBiometricAvailable()`, `authenticateWithBiometric()`, `getBiometricTypes()` Methoden. In Login-Screen, zeige Biometric-Login-Option nur wenn Available. Implementiere Biometric-Authentication-Flow: Check-Availability, Prompt-User, Handle-Success/Failure, Auto-Login bei Success.
 
 [ ] Auto-Login auf App-Start:

@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 
 import '../bloc/auth_bloc.dart';
 import '../../../../core/routing/route_constants.dart';
+import '../../../../core/di/service_locator.dart';
+import '../../../../core/services/biometric_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -15,6 +17,36 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _obscurePassword = true;
+  bool _biometricAvailable = false;
+  late final BiometricService _biometric;
+
+  @override
+  void initState() {
+    super.initState();
+    _biometric = sl<BiometricService>();
+    _checkBiometric();
+  }
+
+  Future<void> _checkBiometric() async {
+    final available = await _biometric.isBiometricAvailable();
+    if (mounted) {
+      setState(() {
+        _biometricAvailable = available;
+      });
+    }
+  }
+
+  Future<void> _loginWithBiometric() async {
+    final success = await _biometric.authenticateWithBiometric();
+    if (!mounted) return;
+    if (success) {
+      context.read<AuthBloc>().add(AuthStatusChanged(const User(id: 'biometric')));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Biometrische Authentifizierung fehlgeschlagen')),
+      );
+    }
+  }
 
   void _validateAndSubmit() {
     if (_formKey.currentState?.validate() ?? false) {
@@ -102,6 +134,14 @@ class _LoginPageState extends State<LoginPage> {
                           )
                         : const Text('Login'),
                   ),
+                  if (_biometricAvailable) ...[
+                    const SizedBox(height: 16),
+                    ElevatedButton.icon(
+                      onPressed: isLoading ? null : _loginWithBiometric,
+                      icon: const Icon(Icons.fingerprint),
+                      label: const Text('Biometrisch einloggen'),
+                    ),
+                  ],
                   TextButton(
                     onPressed: () {},
                     child: const Text('Registrieren'),

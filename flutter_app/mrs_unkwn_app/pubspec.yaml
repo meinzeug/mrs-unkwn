@@ -9,6 +9,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.18.0
+  local_auth: ^2.1.6
 
 flutter:
   uses-material-design: true
