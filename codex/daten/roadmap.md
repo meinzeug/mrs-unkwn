@@ -219,7 +219,7 @@ Details: Erstelle `monitoring_sync_service.dart` für Backend-Data-Upload. Imple
 [x] Parent Dashboard für Monitoring Data:
 Details: Erstelle `monitoring_dashboard_page.dart` mit Real-time-Monitoring-Overview. Display Active-Children-Status, Current-App-Usage, Screen-Time-Today. Implement Live-Updates using WebSocket-Connection oder Polling. Zeige Quick-Actions: Block-App, Send-Message, Set-Time-Limit. Create Alert-Center für Important-Notifications und Required-Actions. Implement Dashboard-Customization für Different-Parent-Preferences.
 
-[ ] Monitoring Alerts und Notifications:
+[x] Monitoring Alerts und Notifications:
 Details: Implement Alert-System für verschiedene Monitoring-Events: Screen-Time-Limit-Exceeded, Inappropriate-App-Used, Device-Tampering-Detected. Create Alert-Rules-Engine mit Configurable-Thresholds und Conditions. Implement Alert-Delivery-Channels: Push-Notifications, Email, SMS-Integration. Handle Alert-Prioritization und Spam-Prevention. Create Alert-History und Response-Tracking für Parents.
 
 [ ] Privacy und DSGVO Compliance für Monitoring:

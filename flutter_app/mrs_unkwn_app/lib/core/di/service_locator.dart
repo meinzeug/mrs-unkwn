@@ -11,6 +11,7 @@ import '../../features/monitoring/data/services/device_info_service.dart';
 import '../../features/monitoring/data/services/network_activity_service.dart';
 import '../../features/monitoring/data/services/location_tracking_service.dart';
 import '../../features/monitoring/data/services/monitoring_sync_service.dart';
+import '../../features/monitoring/data/services/monitoring_alert_service.dart';
 import '../../features/tutoring/data/services/ai_response_service.dart';
 import '../../features/tutoring/data/services/subject_classification_service.dart';
 import '../../features/tutoring/data/services/content_moderation_service.dart';
@@ -77,6 +78,9 @@ void _registerFeatures() {
   sl.registerLazySingleton<FamilyService>(() => FamilyService());
   sl.registerLazySingleton<ActivityMonitoringService>(
     () => ActivityMonitoringService(sl(), DioClient()),
+  );
+  sl.registerLazySingleton<MonitoringAlertService>(
+    () => MonitoringAlertService(),
   );
   sl.registerLazySingleton<NetworkActivityService>(
     () => NetworkActivityService(sl(), sl()),
