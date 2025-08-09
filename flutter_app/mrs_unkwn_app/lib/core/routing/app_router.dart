@@ -60,6 +60,9 @@ class AppRouter {
           create: (_) => FamilyBloc(sl()),
           child: FamilyDashboardPage(
             familyId: state.uri.queryParameters['id'] ?? '',
+            currentUserRole: FamilyRole.values.byName(
+              state.uri.queryParameters['role'] ?? 'parent',
+            ),
           ),
         ),
         redirect: _authGuard,

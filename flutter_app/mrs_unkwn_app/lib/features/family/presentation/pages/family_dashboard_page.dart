@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/permissions/family_permissions.dart';
 import '../../../../core/routing/route_constants.dart';
 import '../../data/models/family.dart';
 import '../bloc/family_bloc.dart';
@@ -11,7 +12,10 @@ import 'invite_member_page.dart';
 
 /// Main overview screen for a family with statistics and quick actions.
 class FamilyDashboardPage extends StatefulWidget {
-  const FamilyDashboardPage({super.key, required this.familyId});
+  const FamilyDashboardPage({super.key, required this.familyId, required this.currentUserRole});
+
+  final FamilyRole currentUserRole;
+
 
   final String familyId;
 
@@ -52,8 +56,6 @@ class _FamilyDashboardPageState extends State<FamilyDashboardPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildStatsCard(members.length, activeMembers),
-                    const SizedBox(height: 16),
                     _buildQuickActions(family.id),
                     const SizedBox(height: 16),
                     _buildProgressCharts(),
@@ -73,77 +75,69 @@ class _FamilyDashboardPageState extends State<FamilyDashboardPage> {
     );
   }
 
-  Widget _buildStatsCard(int totalMembers, int activeMembers) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _buildStatItem('Mitglieder', '$totalMembers'),
-            _buildStatItem('Aktiv', '$activeMembers'),
-            _buildStatItem('Lernzeit', '0h'),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildStatItem(String label, String value) {
-    return Column(
-      children: [
-        Text(value, style: Theme.of(context).textTheme.headlineSmall),
-        Text(label),
-      ],
-    );
-  }
-
   Widget _buildQuickActions(String familyId) {
+    final role = widget.currentUserRole;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => BlocProvider.value(
-                  value: context.read<FamilyBloc>(),
-                  child: InviteMemberPage(familyId: familyId),
-                ),
-              ),
-            );
-          },
-          child: const Text('Einladen'),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => BlocProvider.value(
-                  value: context.read<FamilyBloc>(),
-                  child: FamilyMembersPage(
-                    familyId: familyId,
-                    currentUserRole: FamilyRole.parent,
+        if (FamilyPermissions.hasPermission(
+          role,
+          FamilyPermission.manageMembers,
+        ))
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => BlocProvider.value(
+                    value: context.read<FamilyBloc>(),
+                    child: InviteMemberPage(familyId: familyId),
                   ),
                 ),
-              ),
-            );
-          },
-          child: const Text('Mitglieder'),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => BlocProvider.value(
-                  value: context.read<FamilyBloc>(),
-                  child: FamilySettingsPage(familyId: familyId),
+              );
+            },
+            child: const Text('Einladen'),
+          ),
+        if (FamilyPermissions.hasPermission(
+              role,
+              FamilyPermission.manageMembers,
+            ) ||
+            FamilyPermissions.hasPermission(
+              role,
+              FamilyPermission.viewActivity,
+            ))
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => BlocProvider.value(
+                    value: context.read<FamilyBloc>(),
+                    child: FamilyMembersPage(
+                      familyId: familyId,
+                      currentUserRole: role,
+                    ),
+                  ),
                 ),
-              ),
-            );
-          },
-          child: const Text('Einstellungen'),
-        ),
+              );
+            },
+            child: const Text('Mitglieder'),
+          ),
+        if (FamilyPermissions.hasPermission(
+          role,
+          FamilyPermission.editSettings,
+        ))
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => BlocProvider.value(
+                    value: context.read<FamilyBloc>(),
+                    child: FamilySettingsPage(familyId: familyId),
+                  ),
+                ),
+              );
+            },
+            child: const Text('Einstellungen'),
+          ),
       ],
     );
   }

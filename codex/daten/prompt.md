@@ -1,4 +1,4 @@
-# Nächster Schritt: Family Role-Based Permissions
+# Nächster Schritt: Family Subscription Management
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -11,7 +11,8 @@
 - Phase 1 Milestone 4: Family Settings Management abgeschlossen ✓
 - Phase 1 Milestone 4: Family Member Management UI abgeschlossen ✓
 - Phase 1 Milestone 4: Family Dashboard Overview abgeschlossen ✓
-- Phase 1 Milestone 4: Family Role-Based Permissions offen ✗
+- Phase 1 Milestone 4: Family Role-Based Permissions abgeschlossen ✓
+- Phase 1 Milestone 4: Family Subscription Management offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -20,15 +21,16 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Family Role-Based Permissions definieren und integrieren.
+Family Subscription Management implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `lib/core/permissions/family_permissions.dart` mit Permission-Enums erstellen.
-- `hasPermission(FamilyRole, Permission)` Funktionen implementieren.
-- Permission-Checks in UI integrieren.
+- `subscription_page.dart` mit Planübersicht und Upgrade-Flow erstellen.
+- Subscription-Tiers und Feature-Comparison darstellen.
+- Placeholder für Payment-Integration einfügen.
+- Subscription-Status verwalten und Nutzungslimits prüfen.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.

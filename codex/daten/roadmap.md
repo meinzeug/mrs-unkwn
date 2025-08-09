@@ -169,7 +169,7 @@ Details: Erstelle `family_members_page.dart` mit Member-List-View. Zeige Member-
 [x] Family Dashboard Overview:
 Details: Erstelle `family_dashboard_page.dart` als Main-Family-Screen. Implementiere Cards-Layout mit Family-Statistics: Total-Members, Active-Members, Study-Time-Summary. Zeige Quick-Actions: Invite-Member, View-Activity, Manage-Settings. Implementiere Recent-Activity-Feed mit Member-Activities. Add Family-Progress-Charts mit Study-Goals und Achievements. Implementiere Pull-to-Refresh für Data-Updates.
 
-[ ] Family Role-Based Permissions:
+[x] Family Role-Based Permissions:
 Details: Definiere Permission-System in `lib/core/permissions/family_permissions.dart`. Erstelle Enums für verschiedene Permissions: `MANAGE_MEMBERS`, `VIEW_ACTIVITY`, `EDIT_SETTINGS`, `DELETE_FAMILY`. Implementiere Permission-Check-Functions: `hasPermission(FamilyRole, Permission)`. Integrate Permission-Checks in UI (Hide/Show-Buttons basierend auf Role). Implementiere Backend-Permission-Validation für alle Family-APIs.
 
 [ ] Family Subscription Management:
