@@ -1,4 +1,4 @@
-# Nächster Schritt: App Installation/Uninstallation Detection
+# Nächster Schritt: Basic Screen Time Tracking Implementation
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -21,7 +21,8 @@
 - Phase 1 Milestone 5: App Usage Statistics UI Display abgeschlossen ✓
 - Phase 1 Milestone 5: Real-time Activity Monitoring Service abgeschlossen ✓
 - Phase 1 Milestone 5: Android MainActivity Manifest Configuration abgeschlossen ✓
-- Phase 1 Milestone 5: App Installation/Uninstallation Detection offen ✗
+ - Phase 1 Milestone 5: App Installation/Uninstallation Detection abgeschlossen ✓
+ - Phase 1 Milestone 5: Basic Screen Time Tracking Implementation offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -30,16 +31,16 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-App Installation/Uninstallation Detection implementieren.
+Basic Screen Time Tracking Implementation umsetzen.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Listener für Installations- und Deinstallationsereignisse implementieren.
-- Historie der App-Installationen in lokaler Datenbank speichern.
-- Benachrichtigungen über neue Installationen senden.
-- App-Approval-Workflow für eingeschränkte Accounts integrieren.
+- `screen_time_tracker.dart` Service erstellen.
+- Foreground-Zeit pro App erfassen und täglich speichern.
+- Screen-Time-Limits prüfen und Warnungen auslösen.
+- Zusammenfassungen für Eltern generieren.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.
