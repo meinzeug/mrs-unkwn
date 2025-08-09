@@ -1,4 +1,4 @@
-# Nächster Schritt: Network Activity Monitoring
+# Nächster Schritt: Location Tracking Service (Optional)
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -24,7 +24,7 @@
  - Phase 1 Milestone 5: App Installation/Uninstallation Detection abgeschlossen ✓
  - Phase 1 Milestone 5: Basic Screen Time Tracking Implementation abgeschlossen ✓
  - Phase 1 Milestone 5: Device Information Collection abgeschlossen ✓
- - Phase 1 Milestone 5: Network Activity Monitoring offen ✗
+ - Phase 1 Milestone 5: Network Activity Monitoring abgeschlossen ✓
 
 ## Referenzen
 - `/README.md`
@@ -33,16 +33,16 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Network Activity Monitoring umsetzen.
+Location Tracking Service (Optional) implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Netzwerkdaten pro App erfassen.
-- Mobile Daten und WLAN getrennt ausweisen.
-- Upload- und Downloadmengen speichern und aggregieren.
-- Alerts für ungewöhnliche Nutzung vorbereiten.
+- `geolocator` Package einbinden und Berechtigungen abfragen.
+- Safe-Zones (z. B. Zuhause, Schule) definieren und überwachen.
+- Standortverlauf speichern und regelmäßig bereinigen.
+- Geofence-Alerts und Notfall-Standortfreigabe vorbereiten.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.

@@ -207,7 +207,7 @@ Details: Erstelle `screen_time_tracker.dart` Service. Implementiere Screen-Time-
 [x] Device Information Collection:
 Details: `device_info_plus`, `battery_plus` und `disk_space` integriert. Gerätedaten, Speicher- und Akkustatus werden erfasst und in Hive gespeichert. Service `DeviceInfoService` stellt Snapshots für das Parent-Dashboard bereit.
 
-[ ] Network Activity Monitoring:
+[x] Network Activity Monitoring:
 Details: Implementiere Network-Usage-Tracking per App using Android `NetworkStatsManager`. Track Data-Consumption: Mobile-Data vs WiFi, Upload vs Download, per Time-Period. Erstelle Network-Activity-Charts und Unusual-Usage-Alerts. Implement Network-Access-Control-Integration für App-Level-Restrictions. Monitor für Data-Usage-Limits und Cost-Control-Features. Handle Network-State-Changes und Connectivity-Monitoring.
 
 [ ] Location Tracking Service (Optional):

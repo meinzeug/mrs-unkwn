@@ -2,6 +2,9 @@ package com.mrsunkwn.mrs_unkwn_app
 
 import android.app.AppOpsManager
 import android.app.usage.UsageStatsManager
+import android.app.usage.NetworkStats
+import android.app.usage.NetworkStatsManager
+import android.net.ConnectivityManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -69,6 +72,7 @@ class DeviceMonitoringPlugin : FlutterPlugin, MethodCallHandler, StreamHandler {
                 result.success(null)
             }
             "getAppUsageStats" -> result.success(getAppUsageStats())
+            "getNetworkUsageStats" -> result.success(getNetworkUsageStats())
             "startMonitoring", "stopMonitoring", "getInstalledApps" -> result.success(null)
             else -> result.notImplemented()
         }
@@ -129,5 +133,72 @@ class DeviceMonitoringPlugin : FlutterPlugin, MethodCallHandler, StreamHandler {
                 "totalTimeForeground" to it.totalTimeInForeground
             )
         } ?: emptyList()
+    }
+
+    private fun getNetworkUsageStats(): List<Map<String, Any>> {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return emptyList()
+        }
+        if (!hasUsagePermission()) {
+            requestUsagePermission()
+            return emptyList()
+        }
+        val manager =
+            context.getSystemService(Context.NETWORK_STATS_SERVICE) as NetworkStatsManager
+        val pm = context.packageManager
+        val apps = pm.getInstalledApplications(0)
+        val end = System.currentTimeMillis()
+        val start = end - 24L * 60 * 60 * 1000 // last 24 hours
+        val results = mutableListOf<Map<String, Any>>()
+        val bucket = NetworkStats.Bucket()
+        for (app in apps) {
+            val uid = app.uid
+            var mobileRx = 0L
+            var mobileTx = 0L
+            var wifiRx = 0L
+            var wifiTx = 0L
+            try {
+                val mobile = manager.queryDetailsForUid(
+                    ConnectivityManager.TYPE_MOBILE,
+                    null,
+                    start,
+                    end,
+                    uid
+                )
+                while (mobile.hasNextBucket()) {
+                    mobile.getNextBucket(bucket)
+                    mobileRx += bucket.rxBytes
+                    mobileTx += bucket.txBytes
+                }
+                mobile.close()
+            } catch (_: Exception) {
+            }
+            try {
+                val wifi = manager.queryDetailsForUid(
+                    ConnectivityManager.TYPE_WIFI,
+                    null,
+                    start,
+                    end,
+                    uid
+                )
+                while (wifi.hasNextBucket()) {
+                    wifi.getNextBucket(bucket)
+                    wifiRx += bucket.rxBytes
+                    wifiTx += bucket.txBytes
+                }
+                wifi.close()
+            } catch (_: Exception) {
+            }
+            results.add(
+                mapOf(
+                    "packageName" to app.packageName,
+                    "mobileRx" to mobileRx,
+                    "mobileTx" to mobileTx,
+                    "wifiRx" to wifiRx,
+                    "wifiTx" to wifiTx
+                )
+            )
+        }
+        return results
     }
 }
