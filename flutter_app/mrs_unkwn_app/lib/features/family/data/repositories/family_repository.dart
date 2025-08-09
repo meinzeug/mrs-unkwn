@@ -17,8 +17,8 @@ abstract class FamilyRepository {
   /// Deletes the family with [familyId].
   Future<void> deleteFamily(String familyId);
 
-  /// Sends an invitation to join a family.
-  Future<void> inviteMember(InviteMemberRequest request);
+  /// Sends an invitation to join a family and returns the invitation token.
+  Future<String> inviteMember(InviteMemberRequest request);
 
   /// Accepts an invitation token and returns the updated family.
   Future<Family> acceptInvitation(String token);

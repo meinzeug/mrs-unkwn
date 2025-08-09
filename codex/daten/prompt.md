@@ -1,4 +1,4 @@
-# Nächster Schritt: QR Code Invitation Feature
+# Nächster Schritt: Family Settings Management
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -7,7 +7,8 @@
 - Phase 1 Milestone 4: Family Repository Implementation abgeschlossen ✓
 - Phase 1 Milestone 4: Family BLoC State Management abgeschlossen ✓
 - Phase 1 Milestone 4: Family Member Invitation System abgeschlossen ✓
-- Phase 1 Milestone 4: QR Code Invitation Feature offen ✗
+- Phase 1 Milestone 4: QR Code Invitation Feature abgeschlossen ✓
+- Phase 1 Milestone 4: Family Settings Management offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -16,17 +17,17 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-QR-Code-Einladungsfunktion implementieren.
+Familien-Einstellungen-Verwaltung implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Dependencies `qr_flutter` und `qr_code_scanner` hinzufügen.
-- QR-Code im Invite-Member-Screen erzeugen, der den Einladungstoken enthält.
-- QR-Scanner-Screen für Einladungsannahme implementieren.
-- Kamera-Berechtigungen und Scanner-Fehler behandeln.
-- Gescannten QR-Code validieren und Einladung automatisch verarbeiten.
+- `family_settings_page.dart` mit Kategorien (Study-Rules, Screen-Time-Limits, Bedtime-Schedule, App-Restrictions) erstellen.
+- Toggle-Switches, Sliders und Time-Picker für verschiedene Settings einbauen.
+- `FamilySettings` Model-Klasse mit Serialization implementieren.
+- Settings-Update-API-Calls mit Optimistic-Updates umsetzen.
+- Settings-Vererbung zwischen Family-Level und Member-Level behandeln.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.

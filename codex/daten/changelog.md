@@ -642,3 +642,9 @@
 - `FamilyRepository` und Backend-Routen für `/api/family/invite` und `/invite/accept` implementiert
 - Einladungs-Tokens mit 24h-Gültigkeit generiert und Annahme-Flow ergänzt
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: QR Code Invitation Feature - 2025-09-14
+- Dependencies `qr_flutter` und `qr_code_scanner` hinzugefügt
+- QR-Code-Generierung im Einladungsscreen implementiert
+- QR-Scanner-Seite zur automatischen Einladungsannahme erstellt
+- Roadmap und Prompt aktualisiert

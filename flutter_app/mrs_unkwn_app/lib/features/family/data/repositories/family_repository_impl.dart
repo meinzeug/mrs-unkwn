@@ -77,14 +77,19 @@ class FamilyRepositoryImpl implements FamilyRepository {
     }
   }
 
-  /// Sends an invitation to join a family.
+  /// Sends an invitation to join a family and returns the invitation token.
   @override
-  Future<void> inviteMember(InviteMemberRequest request) async {
+  Future<String> inviteMember(InviteMemberRequest request) async {
     try {
-      await _dio.post<void>(
+      final response = await _dio.post<Map<String, dynamic>>(
         '/api/family/invite',
         data: request.toJson(),
       );
+      final token = response.data?['data']?['token'] as String?;
+      if (token == null) {
+        throw Exception('Invalid response format');
+      }
+      return token;
     } catch (e) {
       throw Exception('Invite member failed: $e');
     }
