@@ -33,3 +33,17 @@ class DeleteFamilyRequested extends FamilyEvent {
 
   final String familyId;
 }
+
+/// Event to invite a new member to a family.
+class InviteMemberRequested extends FamilyEvent {
+  const InviteMemberRequested(this.request);
+
+  final InviteMemberRequest request;
+}
+
+/// Event to accept an invitation token.
+class AcceptInvitationRequested extends FamilyEvent {
+  const AcceptInvitationRequested(this.token);
+
+  final String token;
+}

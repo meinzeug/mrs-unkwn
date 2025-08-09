@@ -8,6 +8,7 @@ import '../../data/repositories/family_repository.dart';
 import '../../data/models/family.dart';
 import '../../data/models/create_family_request.dart';
 import '../../data/models/update_family_request.dart';
+import '../../data/models/invite_member_request.dart';
 
 part 'family_event.dart';
 part 'family_state.dart';
@@ -19,6 +20,8 @@ class FamilyBloc extends BaseBloc<FamilyEvent, FamilyState> {
     on<LoadFamilyRequested>(_onLoadFamilyRequested);
     on<UpdateFamilyRequested>(_onUpdateFamilyRequested);
     on<DeleteFamilyRequested>(_onDeleteFamilyRequested);
+    on<InviteMemberRequested>(_onInviteMemberRequested);
+    on<AcceptInvitationRequested>(_onAcceptInvitationRequested);
   }
 
   final FamilyRepository _repository;
@@ -99,6 +102,32 @@ class FamilyBloc extends BaseBloc<FamilyEvent, FamilyState> {
       if (previous != null) {
         emit(FamilyLoaded(previous));
       }
+      emit(FamilyError(e.toString()));
+    }
+  }
+
+  Future<void> _onInviteMemberRequested(
+    InviteMemberRequested event,
+    Emitter<FamilyState> emit,
+  ) async {
+    emit(const FamilyLoading());
+    try {
+      await _repository.inviteMember(event.request);
+      emit(const FamilyInvitationSent());
+    } catch (e) {
+      emit(FamilyError(e.toString()));
+    }
+  }
+
+  Future<void> _onAcceptInvitationRequested(
+    AcceptInvitationRequested event,
+    Emitter<FamilyState> emit,
+  ) async {
+    emit(const FamilyLoading());
+    try {
+      final family = await _repository.acceptInvitation(event.token);
+      emit(FamilyLoaded(family));
+    } catch (e) {
       emit(FamilyError(e.toString()));
     }
   }

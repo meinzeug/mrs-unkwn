@@ -1,4 +1,4 @@
-# Nächster Schritt: Family Member Invitation System
+# Nächster Schritt: QR Code Invitation Feature
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -6,7 +6,8 @@
 - Phase 1 Milestone 4: Family Model und Data Classes abgeschlossen ✓
 - Phase 1 Milestone 4: Family Repository Implementation abgeschlossen ✓
 - Phase 1 Milestone 4: Family BLoC State Management abgeschlossen ✓
-- Phase 1 Milestone 4: Family Member Invitation System offen ✗
+- Phase 1 Milestone 4: Family Member Invitation System abgeschlossen ✓
+- Phase 1 Milestone 4: QR Code Invitation Feature offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -15,18 +16,17 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Einladungssystem für Familienmitglieder implementieren.
+QR-Code-Einladungsfunktion implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Datei `invite_member_page.dart` mit Email-Input und Rollenwahl erstellen.
-- `InviteMemberRequested` Event im `FamilyBloc` ergänzen und Handler implementieren.
-- Backend-Endpoint `/api/family/invite` in Repository integrieren.
-- Invitation-Token mit 24h-Gültigkeit generieren und E-Mail-Versand auslösen.
-- Flow zum Annehmen der Einladung mit Token-Validierung implementieren.
-- Familienmitgliederliste nach erfolgreicher Einladung aktualisieren.
+- Dependencies `qr_flutter` und `qr_code_scanner` hinzufügen.
+- QR-Code im Invite-Member-Screen erzeugen, der den Einladungstoken enthält.
+- QR-Scanner-Screen für Einladungsannahme implementieren.
+- Kamera-Berechtigungen und Scanner-Fehler behandeln.
+- Gescannten QR-Code validieren und Einladung automatisch verarbeiten.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.

@@ -38,6 +38,11 @@ class FamilyCreated extends FamilyState {
   List<Object?> get props => [family];
 }
 
+/// State emitted after an invitation was sent.
+class FamilyInvitationSent extends FamilyState {
+  const FamilyInvitationSent();
+}
+
 /// Error state with message.
 class FamilyError extends FamilyState {
   const FamilyError(this.message);

@@ -635,3 +635,10 @@
 - Optimistic Updates für Aktualisieren und Löschen umgesetzt
 - `FamilyRepository` Interface eingeführt und Service Locator angepasst
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Family Member Invitation System - 2025-09-14
+- `invite_member_page.dart` mit Formular für E-Mail und Rolle erstellt
+- `FamilyBloc` um `InviteMemberRequested` und `AcceptInvitationRequested` erweitert
+- `FamilyRepository` und Backend-Routen für `/api/family/invite` und `/invite/accept` implementiert
+- Einladungs-Tokens mit 24h-Gültigkeit generiert und Annahme-Flow ergänzt
+- Roadmap und Prompt aktualisiert

@@ -2,6 +2,7 @@ import '../../../../core/network/dio_client.dart';
 import '../models/family.dart';
 import '../models/create_family_request.dart';
 import '../models/update_family_request.dart';
+import '../models/invite_member_request.dart';
 import 'family_repository.dart';
 
 /// Repository for family management API calls.
@@ -73,6 +74,37 @@ class FamilyRepositoryImpl implements FamilyRepository {
       await _dio.delete<void>('/api/families/$familyId');
     } catch (e) {
       throw Exception('Delete family failed: $e');
+    }
+  }
+
+  /// Sends an invitation to join a family.
+  @override
+  Future<void> inviteMember(InviteMemberRequest request) async {
+    try {
+      await _dio.post<void>(
+        '/api/family/invite',
+        data: request.toJson(),
+      );
+    } catch (e) {
+      throw Exception('Invite member failed: $e');
+    }
+  }
+
+  /// Accepts an invitation token and returns the updated family.
+  @override
+  Future<Family> acceptInvitation(String token) async {
+    try {
+      final response = await _dio.post<Map<String, dynamic>>(
+        '/api/family/invite/accept',
+        data: {'token': token},
+      );
+      final data = response.data?['data'] as Map<String, dynamic>?;
+      if (data == null) {
+        throw Exception('Invalid response format');
+      }
+      return Family.fromJson(data);
+    } catch (e) {
+      throw Exception('Accept invitation failed: $e');
     }
   }
 }
