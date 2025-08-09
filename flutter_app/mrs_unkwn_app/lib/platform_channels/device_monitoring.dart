@@ -1,6 +1,27 @@
+import 'dart:async';
+
 import 'package:flutter/services.dart';
 
 import '../core/utils/logger.dart';
+
+/// Describes an app installation or removal event.
+class AppChangeEvent {
+  AppChangeEvent({
+    required this.packageName,
+    required this.type,
+    this.replacing = false,
+  });
+
+  final String packageName;
+  final String type; // 'added' or 'removed'
+  final bool replacing;
+
+  factory AppChangeEvent.fromMap(Map<dynamic, dynamic> map) => AppChangeEvent(
+        packageName: map['packageName'] as String? ?? '',
+        type: map['type'] as String? ?? '',
+        replacing: map['replacing'] as bool? ?? false,
+      );
+}
 
 /// Provides an interface to native device monitoring features via
 /// a [MethodChannel].
@@ -25,6 +46,9 @@ abstract class DeviceMonitoring {
 
   /// Returns a list of installed applications from the native platform.
   Future<List<Map<String, dynamic>>> getInstalledApps();
+
+  /// Stream of app installation and removal events.
+  Stream<AppChangeEvent> get onAppChange;
 }
 
 /// Default implementation of [DeviceMonitoring] using a
@@ -34,6 +58,8 @@ class MethodChannelDeviceMonitoring implements DeviceMonitoring {
 
   static const MethodChannel _channel =
       MethodChannel('com.mrsunkwn/device_monitoring');
+  static const EventChannel _eventChannel =
+      EventChannel('com.mrsunkwn/device_monitoring/events');
 
   @override
   Future<bool> hasPermission() async {
@@ -128,10 +154,21 @@ class MethodChannelDeviceMonitoring implements DeviceMonitoring {
       return [];
     }
   }
+
+  @override
+  Stream<AppChangeEvent> get onAppChange => _eventChannel
+          .receiveBroadcastStream()
+          .where((event) => event is Map)
+          .map((event) =>
+              AppChangeEvent.fromMap(event as Map<dynamic, dynamic>))
+      // ignore: unnecessary_lambdas
+      ;
 }
 
 /// Mock implementation used for development and tests without native code.
 class MockDeviceMonitoring implements DeviceMonitoring {
+  final _controller = StreamController<AppChangeEvent>.broadcast();
+
   @override
   Future<bool> hasPermission() async => true;
 
@@ -152,5 +189,11 @@ class MockDeviceMonitoring implements DeviceMonitoring {
 
   @override
   Future<List<Map<String, dynamic>>> getInstalledApps() async => [];
+
+  @override
+  Stream<AppChangeEvent> get onAppChange => _controller.stream;
+
+  /// Helper to emit fake events in tests.
+  void emitAppChange(AppChangeEvent event) => _controller.add(event);
 }
 

@@ -198,8 +198,8 @@ Details: Erstelle `app_usage_page.dart` mit Statistics-Overview. Implementiere C
 [x] Real-time Activity Monitoring Service:
 Details: Erstelle Background-Service für continuous App-Usage-Monitoring. Implementiere `MonitoringService` der periodically Usage-Data collected (every 15 minutes). Store collected Data in local Hive-Database with Timestamp. Implement Data-Aggregation-Logic für Daily/Weekly-Summaries. Handle Service-Lifecycle und Battery-Optimization-Exemptions. Implementiere Data-Upload zu Backend in Batches.
 
-[ ] App Installation/Uninstallation Detection:
-Details: Implementiere `PackageManager.EXTRA_REPLACING` Listener für Android App-Installation-Events. Erstelle Broadcast-Receiver für `ACTION_PACKAGE_ADDED`, `ACTION_PACKAGE_REMOVED` Intents. Store App-Installation-History mit Timestamp in lokaler Database. Für iOS: Implementiere App-Discovery durch periodic Installed-Apps-Comparison. Notify Parents über neue App-Installations mit Push-Notifications. Implementiere App-Approval-Workflow für restricted Children-Accounts.
+ [x] App Installation/Uninstallation Detection:
+ Details: BroadcastReceiver für `ACTION_PACKAGE_ADDED` und `ACTION_PACKAGE_REMOVED` implementiert, EventChannel angebunden und Installationshistorie in Hive gespeichert. Benachrichtigt Eltern über neue Apps und bereitet Approval-Workflow vor.
 
 [ ] Basic Screen Time Tracking Implementation:
 Details: Erstelle `screen_time_tracker.dart` Service. Implementiere Screen-Time-Calculation basierend auf App-Foreground-Time. Track Daily-Screen-Time per App und gesamt. Store Screen-Time-Data in Hive-Database mit Daily-Buckets. Implementiere Screen-Time-Limits-Checking und Warning-Notifications. Handle App-Switching-Events und Accurate-Time-Calculation. Erstelle Screen-Time-Summary-Reports für Parents.

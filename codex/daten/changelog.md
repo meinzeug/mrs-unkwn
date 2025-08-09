@@ -717,3 +717,8 @@
 ### Phase 1: Android MainActivity Manifest Configuration - 2025-09-22
 - AndroidManifest in `flutter_app/mrs_unkwn_app` um MainActivity mit `singleTop`, `exported` und Theme-Metadaten erweitert
 - Prompt aktualisiert
+
+### Phase 1: App Installation/Uninstallation Detection - 2025-09-23
+- BroadcastReceiver und EventChannel für Installations- und Deinstallationsereignisse hinzugefügt
+- `InstallMonitoringService` speichert Historie in Hive und informiert Eltern bei neuen Apps
+- Roadmap und Prompt aktualisiert
