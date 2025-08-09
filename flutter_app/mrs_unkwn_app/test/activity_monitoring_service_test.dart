@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mrs_unkwn_app/core/network/dio_client.dart';
@@ -41,5 +44,20 @@ void main() {
     await service.collectOnce();
     final summary = await service.dailySummary(DateTime.now());
     expect(summary.first['minutes'], 10);
+  });
+
+  test('data is stored compressed', () async {
+    await Hive.initFlutter();
+    await Hive.deleteBoxFromDisk('app_usage_records');
+    final service =
+        ActivityMonitoringService(_FakeDeviceMonitoring(), DioClient());
+    await service.init();
+    await service.collectOnce();
+    final box = Hive.box('app_usage_records');
+    final record = Map<String, dynamic>.from(box.getAt(0) as Map);
+    final encoded = record['stats'] as String;
+    final decoded =
+        jsonDecode(utf8.decode(gzip.decode(base64Decode(encoded)))) as List;
+    expect(decoded.first['minutes'], 10);
   });
 }
