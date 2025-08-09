@@ -1,4 +1,4 @@
-# Nächster Schritt: App Usage Statistics UI Display
+# Nächster Schritt: Real-time Activity Monitoring Service
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -18,7 +18,8 @@
 - Phase 1 Milestone 5: Android Native Code für App Usage Tracking abgeschlossen ✓
 - Phase 1 Milestone 5: iOS Native Code für Screen Time Integration abgeschlossen ✓
 - Phase 1 Milestone 5: Permission Request Flow für Device Monitoring abgeschlossen ✓
-- Phase 1 Milestone 5: App Usage Statistics UI Display offen ✗
+- Phase 1 Milestone 5: App Usage Statistics UI Display abgeschlossen ✓
+- Phase 1 Milestone 5: Real-time Activity Monitoring Service offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -27,15 +28,16 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-App Usage Statistics UI Display implementieren.
+Real-time Activity Monitoring Service implementieren.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `app_usage_page.dart` erstellen.
-- Charts für tägliche Nutzung, Kategorien und Wochenverlauf einbinden.
-- Daten-Filter und Export-Funktion implementieren.
+- `MonitoringService` als Hintergrunddienst erstellen.
+- Alle 15 Minuten Nutzungsdaten erfassen und in Hive speichern.
+- Tages- und Wochenzusammenfassungen aggregieren.
+- Batch-Upload der Daten ans Backend implementieren.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.
