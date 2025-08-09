@@ -9,6 +9,7 @@ import '../bloc/family_bloc.dart';
 import 'family_members_page.dart';
 import 'family_settings_page.dart';
 import 'invite_member_page.dart';
+import 'subscription_page.dart';
 
 /// Main overview screen for a family with statistics and quick actions.
 class FamilyDashboardPage extends StatefulWidget {
@@ -137,6 +138,23 @@ class _FamilyDashboardPageState extends State<FamilyDashboardPage> {
               );
             },
             child: const Text('Einstellungen'),
+          ),
+        if (FamilyPermissions.hasPermission(
+          role,
+          FamilyPermission.editSettings,
+        ))
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => BlocProvider.value(
+                    value: context.read<FamilyBloc>(),
+                    child: SubscriptionPage(familyId: familyId),
+                  ),
+                ),
+              );
+            },
+            child: const Text('Abonnement'),
           ),
       ],
     );

@@ -172,7 +172,7 @@ Details: Erstelle `family_dashboard_page.dart` als Main-Family-Screen. Implement
 [x] Family Role-Based Permissions:
 Details: Definiere Permission-System in `lib/core/permissions/family_permissions.dart`. Erstelle Enums für verschiedene Permissions: `MANAGE_MEMBERS`, `VIEW_ACTIVITY`, `EDIT_SETTINGS`, `DELETE_FAMILY`. Implementiere Permission-Check-Functions: `hasPermission(FamilyRole, Permission)`. Integrate Permission-Checks in UI (Hide/Show-Buttons basierend auf Role). Implementiere Backend-Permission-Validation für alle Family-APIs.
 
-[ ] Family Subscription Management:
+[x] Family Subscription Management:
 Details: Erstelle `subscription_page.dart` mit Current-Plan-Overview und Upgrade-Options. Implementiere Subscription-Tiers: Basic (Free), Family (€12.99), Premium (€19.99). Zeige Feature-Comparison-Table für verschiedene Plans. Implementiere Subscription-Change-Flow mit Payment-Integration-Placeholder. Handle Subscription-Status-Changes und Feature-Availability basierend auf Plan. Implementiere Usage-Limits-Tracking (Number-of-Children, Features-Usage).
 
 [ ] Family Data Synchronization:

@@ -16,6 +16,7 @@ import '../../features/family/presentation/pages/create_family_page.dart';
 import '../../features/family/presentation/pages/family_settings_page.dart';
 import '../../features/family/presentation/pages/family_members_page.dart';
 import '../../features/family/presentation/pages/family_dashboard_page.dart';
+import '../../features/family/presentation/pages/subscription_page.dart';
 import '../../features/family/presentation/bloc/family_bloc.dart';
 import '../../features/family/data/models/family.dart';
 
@@ -80,6 +81,16 @@ class AppRouter {
           familyId: state.uri.queryParameters['id'] ?? '',
           currentUserRole: FamilyRole.values.byName(
             state.uri.queryParameters['role'] ?? 'parent',
+          ),
+        ),
+        redirect: _authGuard,
+      ),
+      GoRoute(
+        path: RouteConstants.familySubscription,
+        builder: (context, state) => BlocProvider(
+          create: (_) => FamilyBloc(sl()),
+          child: SubscriptionPage(
+            familyId: state.uri.queryParameters['id'] ?? '',
           ),
         ),
         redirect: _authGuard,

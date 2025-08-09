@@ -673,3 +673,8 @@
 - Backend-Middleware `authorizeFamilyPermission` schützt `/api/family/invite`
 - Unit-Test `family_permissions_test.dart` hinzugefügt
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Family Subscription Management - 2025-09-16
+- `subscription_page.dart` mit Planübersicht, Feature-Vergleich und Nutzungs-Limits erstellt
+- Schnellzugriff im Family Dashboard sowie Route für Abonnementverwaltung hinzugefügt
+- Roadmap und Prompt aktualisiert
