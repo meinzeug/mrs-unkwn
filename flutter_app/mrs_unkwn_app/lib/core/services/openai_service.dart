@@ -12,11 +12,13 @@ class ChatMessage {
 
 /// Service for interacting with the OpenAI Chat Completion API.
 class OpenAIService {
-  OpenAIService({http.Client? client})
+  OpenAIService({http.Client? client, Future<void> Function(Duration)? wait})
       : _client = client ?? http.Client(),
+        _wait = wait ?? Future.delayed,
         _apiKey = const String.fromEnvironment('OPENAI_API_KEY');
 
   final http.Client _client;
+  final Future<void> Function(Duration) _wait;
   final String _apiKey;
   final String _endpoint = 'https://api.openai.com/v1/chat/completions';
   final Duration _timeout = const Duration(seconds: 30);
@@ -28,7 +30,8 @@ class OpenAIService {
   int totalTokens = 0;
 
   /// Sends a chat request to the OpenAI API and returns the response content.
-  Future<String> sendChatRequest(String message, List<ChatMessage> context) async {
+  Future<String> sendChatRequest(
+      String message, List<ChatMessage> context) async {
     final messages = [
       for (final m in context) {'role': m.role, 'content': m.content},
       {'role': 'user', 'content': message},
@@ -64,16 +67,17 @@ class OpenAIService {
         }
 
         if (response.statusCode == 429 && retries < 3) {
-          await Future.delayed(delay);
+          await _wait(delay);
           delay *= 2;
           retries++;
           continue;
         }
 
-        throw Exception('OpenAI request failed with status: ${response.statusCode}');
+        throw Exception(
+            'OpenAI request failed with status: ${response.statusCode}');
       } on TimeoutException {
         if (retries < 3) {
-          await Future.delayed(delay);
+          await _wait(delay);
           delay *= 2;
           retries++;
           continue;
@@ -83,4 +87,3 @@ class OpenAIService {
     }
   }
 }
-
