@@ -62,3 +62,33 @@ class UpdateFamilySettingsRequested extends FamilyEvent {
   final String familyId;
   final FamilySettings settings;
 }
+
+/// Event to change the role of a family member.
+class ChangeMemberRoleRequested extends FamilyEvent {
+  const ChangeMemberRoleRequested(this.familyId, this.userId, this.role);
+
+  final String familyId;
+  final String userId;
+  final FamilyRole role;
+}
+
+/// Event to update permissions of a family member.
+class UpdateMemberPermissionsRequested extends FamilyEvent {
+  const UpdateMemberPermissionsRequested(
+    this.familyId,
+    this.userId,
+    this.permissions,
+  );
+
+  final String familyId;
+  final String userId;
+  final List<String> permissions;
+}
+
+/// Event to remove a member from the family.
+class RemoveMemberRequested extends FamilyEvent {
+  const RemoveMemberRequested(this.familyId, this.userId);
+
+  final String familyId;
+  final String userId;
+}

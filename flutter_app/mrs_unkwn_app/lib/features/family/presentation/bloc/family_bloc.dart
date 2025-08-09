@@ -25,6 +25,9 @@ class FamilyBloc extends BaseBloc<FamilyEvent, FamilyState> {
     on<AcceptInvitationRequested>(_onAcceptInvitationRequested);
     on<LoadFamilySettingsRequested>(_onLoadFamilySettingsRequested);
     on<UpdateFamilySettingsRequested>(_onUpdateFamilySettingsRequested);
+    on<ChangeMemberRoleRequested>(_onChangeMemberRoleRequested);
+    on<UpdateMemberPermissionsRequested>(_onUpdateMemberPermissionsRequested);
+    on<RemoveMemberRequested>(_onRemoveMemberRequested);
   }
 
   final FamilyRepository _repository;
@@ -169,6 +172,56 @@ class FamilyBloc extends BaseBloc<FamilyEvent, FamilyState> {
       if (previous != null) {
         emit(FamilySettingsLoaded(previous));
       }
+      emit(FamilyError(e.toString()));
+    }
+  }
+
+  Future<void> _onChangeMemberRoleRequested(
+    ChangeMemberRoleRequested event,
+    Emitter<FamilyState> emit,
+  ) async {
+    emit(const FamilyLoading());
+    try {
+      final family = await _repository.updateMemberRole(
+        event.familyId,
+        event.userId,
+        event.role,
+      );
+      emit(FamilyLoaded(family));
+    } catch (e) {
+      emit(FamilyError(e.toString()));
+    }
+  }
+
+  Future<void> _onUpdateMemberPermissionsRequested(
+    UpdateMemberPermissionsRequested event,
+    Emitter<FamilyState> emit,
+  ) async {
+    emit(const FamilyLoading());
+    try {
+      final family = await _repository.updateMemberPermissions(
+        event.familyId,
+        event.userId,
+        event.permissions,
+      );
+      emit(FamilyLoaded(family));
+    } catch (e) {
+      emit(FamilyError(e.toString()));
+    }
+  }
+
+  Future<void> _onRemoveMemberRequested(
+    RemoveMemberRequested event,
+    Emitter<FamilyState> emit,
+  ) async {
+    emit(const FamilyLoading());
+    try {
+      final family = await _repository.removeMember(
+        event.familyId,
+        event.userId,
+      );
+      emit(FamilyLoaded(family));
+    } catch (e) {
       emit(FamilyError(e.toString()));
     }
   }

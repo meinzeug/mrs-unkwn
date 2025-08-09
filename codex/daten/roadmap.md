@@ -163,7 +163,7 @@ Details: Füge `qr_flutter: ^4.1.0` und `qr_code_scanner: ^1.0.1` zu Dependencie
 [x] Family Settings Management:
 Details: Erstelle `family_settings_page.dart` mit verschiedenen Setting-Categories: Study-Rules, Screen-Time-Limits, Bedtime-Schedule, App-Restrictions. Implementiere Toggle-Switches, Sliders, und Time-Pickers für verschiedene Settings. Erstelle `FamilySettings` Model-Klasse mit Serialization. Implementiere Settings-Update-API-Calls mit Optimistic-Updates. Handle Settings-Inheritance (Family-Level vs Individual-Member-Level).
 
-[ ] Family Member Management UI:
+[x] Family Member Management UI:
 Details: Erstelle `family_members_page.dart` mit Member-List-View. Zeige Member-Avatar, Name, Role, Last-Active-Status. Implementiere Member-Details-Modal mit Role-Change, Permissions-Edit, Remove-Member-Options. Erstelle Role-Based-UI: Parents können alle Members verwalten, Children können nur eigenes Profil sehen. Implementiere Confirmation-Dialogs für destructive Actions (Remove-Member). Handle real-time Member-Status-Updates.
 
 [ ] Family Dashboard Overview:

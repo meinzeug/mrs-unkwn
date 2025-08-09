@@ -12,6 +12,8 @@ import '../../features/auth/presentation/pages/forgot_password_page.dart';
 import '../../features/auth/presentation/pages/reset_password_page.dart';
 import '../../features/family/presentation/pages/create_family_page.dart';
 import '../../features/family/presentation/pages/family_settings_page.dart';
+import '../../features/family/presentation/pages/family_members_page.dart';
+import '../../features/family/data/models/family.dart';
 
 /// Central application router using [GoRouter].
 class AppRouter {
@@ -52,6 +54,16 @@ class AppRouter {
         path: RouteConstants.familySettings,
         builder: (context, state) => FamilySettingsPage(
           familyId: state.uri.queryParameters['id'] ?? '',
+        ),
+        redirect: _authGuard,
+      ),
+      GoRoute(
+        path: RouteConstants.familyMembers,
+        builder: (context, state) => FamilyMembersPage(
+          familyId: state.uri.queryParameters['id'] ?? '',
+          currentUserRole: FamilyRole.values.byName(
+            state.uri.queryParameters['role'] ?? 'parent',
+          ),
         ),
         redirect: _authGuard,
       ),

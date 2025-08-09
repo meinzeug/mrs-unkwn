@@ -655,3 +655,9 @@
 - `FamilyBloc` um Events und States zur Verwaltung der Einstellungen erweitert
 - Routen und Navigation für `FamilySettingsPage` ergänzt
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Family Member Management UI - 2025-09-15
+- `family_members_page.dart` erstellt mit Liste, Rollen- und Rechteverwaltung sowie Entfernen von Mitgliedern
+- `FamilyRepository` und `FamilyBloc` um Member-Management-Funktionen erweitert
+- Routing und Konstanten für `FamilyMembersPage` hinzugefügt
+- Roadmap und Prompt aktualisiert

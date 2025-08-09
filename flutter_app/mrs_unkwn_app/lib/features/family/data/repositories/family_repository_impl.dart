@@ -151,4 +151,65 @@ class FamilyRepositoryImpl implements FamilyRepository {
       throw Exception('Update settings failed: $e');
     }
   }
+
+  /// Updates the role of a member within a family.
+  @override
+  Future<Family> updateMemberRole(
+    String familyId,
+    String userId,
+    FamilyRole role,
+  ) async {
+    try {
+      final response = await _dio.put<Map<String, dynamic>>(
+        '/api/families/$familyId/members/$userId/role',
+        data: {'role': role.name},
+      );
+      final data = response.data?['data'] as Map<String, dynamic>?;
+      if (data == null) {
+        throw Exception('Invalid response format');
+      }
+      return Family.fromJson(data);
+    } catch (e) {
+      throw Exception('Update member role failed: $e');
+    }
+  }
+
+  /// Updates permissions of a member within a family.
+  @override
+  Future<Family> updateMemberPermissions(
+    String familyId,
+    String userId,
+    List<String> permissions,
+  ) async {
+    try {
+      final response = await _dio.put<Map<String, dynamic>>(
+        '/api/families/$familyId/members/$userId/permissions',
+        data: {'permissions': permissions},
+      );
+      final data = response.data?['data'] as Map<String, dynamic>?;
+      if (data == null) {
+        throw Exception('Invalid response format');
+      }
+      return Family.fromJson(data);
+    } catch (e) {
+      throw Exception('Update permissions failed: $e');
+    }
+  }
+
+  /// Removes a member from the family.
+  @override
+  Future<Family> removeMember(String familyId, String userId) async {
+    try {
+      final response = await _dio.delete<Map<String, dynamic>>(
+        '/api/families/$familyId/members/$userId',
+      );
+      final data = response.data?['data'] as Map<String, dynamic>?;
+      if (data == null) {
+        throw Exception('Invalid response format');
+      }
+      return Family.fromJson(data);
+    } catch (e) {
+      throw Exception('Remove member failed: $e');
+    }
+  }
 }
