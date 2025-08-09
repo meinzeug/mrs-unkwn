@@ -21,7 +21,7 @@ if [ -f "$PUBSPEC" ]; then
   perl -0pi -e 's/sdk: ">=([0-9]+\.[0-9]+\.[0-9]+)/sdk: ">=3.16.0/' "$PUBSPEC"
 
   if ! grep -q "dio:" "$PUBSPEC"; then
-    perl -0pi -e 's/dependencies:\n/dependencies:\n  dio: ^5.3.0\n  flutter_bloc: ^8.1.3\n  get_it: ^7.6.0\n  flutter_secure_storage: ^9.0.0\n  go_router: ^12.0.0\n  hive: ^2.2.3\n  hive_flutter: ^1.1.0\n  json_annotation: ^4.8.1\n  speech_to_text: ^6.6.1\n  device_info_plus: ^9.0.2\n  battery_plus: ^5.0.1\n  disk_space: ^0.2.1\n/' "$PUBSPEC"
+    perl -0pi -e 's/dependencies:\n/dependencies:\n  dio: ^5.3.0\n  flutter_bloc: ^8.1.3\n  get_it: ^7.6.0\n  flutter_secure_storage: ^9.0.0\n  go_router: ^12.0.0\n  hive: ^2.2.3\n  hive_flutter: ^1.1.0\n  json_annotation: ^4.8.1\n  speech_to_text: ^6.6.1\n  device_info_plus: ^9.0.2\n  battery_plus: ^5.0.1\n  disk_space: ^0.2.1\n  geolocator: ^10.1.0\n/' "$PUBSPEC"
   elif ! grep -q "speech_to_text:" "$PUBSPEC"; then
     perl -0pi -e 's/dependencies:\n/dependencies:\n  speech_to_text: ^6.6.1\n/' "$PUBSPEC"
   elif ! grep -q "device_info_plus:" "$PUBSPEC"; then
@@ -30,6 +30,8 @@ if [ -f "$PUBSPEC" ]; then
     perl -0pi -e 's/dependencies:\n/dependencies:\n  battery_plus: ^5.0.1\n/' "$PUBSPEC"
   elif ! grep -q "disk_space:" "$PUBSPEC"; then
     perl -0pi -e 's/dependencies:\n/dependencies:\n  disk_space: ^0.2.1\n/' "$PUBSPEC"
+  elif ! grep -q "geolocator:" "$PUBSPEC"; then
+    perl -0pi -e 's/dependencies:\n/dependencies:\n  geolocator: ^10.1.0\n/' "$PUBSPEC"
   fi
   if ! grep -q "firebase_crashlytics:" "$PUBSPEC"; then
     perl -0pi -e 's/dependencies:\n/dependencies:\n  firebase_core: ^2.27.0\n  firebase_crashlytics: ^3.4.4\n  firebase_performance: ^0.10.0+7\n/' "$PUBSPEC"

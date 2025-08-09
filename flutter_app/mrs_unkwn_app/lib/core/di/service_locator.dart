@@ -9,6 +9,7 @@ import '../../features/monitoring/data/services/install_monitoring_service.dart'
 import '../../features/monitoring/data/services/screen_time_tracker.dart';
 import '../../features/monitoring/data/services/device_info_service.dart';
 import '../../features/monitoring/data/services/network_activity_service.dart';
+import '../../features/monitoring/data/services/location_tracking_service.dart';
 import '../../features/tutoring/data/services/ai_response_service.dart';
 import '../../features/tutoring/data/services/subject_classification_service.dart';
 import '../../features/tutoring/data/services/content_moderation_service.dart';
@@ -87,6 +88,9 @@ void _registerFeatures() {
   );
   sl.registerLazySingleton<DeviceInfoService>(
     () => DeviceInfoService(),
+  );
+  sl.registerLazySingleton<LocationTrackingService>(
+    () => LocationTrackingService(),
   );
   sl.registerFactory<FamilyBloc>(() => FamilyBloc(sl(), sl()));
 }
