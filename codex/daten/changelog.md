@@ -727,3 +727,10 @@
 - `ScreenTimeTracker` Dienst berechnet tägliche Bildschirmzeit pro App und Gesamt
 - Limits mit Elternbenachrichtigung bei Überschreitung umgesetzt
 - Service Locator und Tests ergänzt
+
+### Phase 1: Device Information Collection - 2025-09-25
+- `device_info_plus`, `battery_plus` und `disk_space` als Dependencies hinzugefügt
+- `DeviceInfoService` sammelt Geräte-, Speicher- und Akkudaten in Hive
+- Service Locator und Skript `create_flutter_project.sh` erweitert
+- Unit-Test `device_info_service_test.dart` erstellt
+- Roadmap und Prompt aktualisiert

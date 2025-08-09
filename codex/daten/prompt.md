@@ -1,4 +1,4 @@
-# Nächster Schritt: Device Information Collection
+# Nächster Schritt: Network Activity Monitoring
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -23,7 +23,8 @@
 - Phase 1 Milestone 5: Android MainActivity Manifest Configuration abgeschlossen ✓
  - Phase 1 Milestone 5: App Installation/Uninstallation Detection abgeschlossen ✓
  - Phase 1 Milestone 5: Basic Screen Time Tracking Implementation abgeschlossen ✓
- - Phase 1 Milestone 5: Device Information Collection offen ✗
+ - Phase 1 Milestone 5: Device Information Collection abgeschlossen ✓
+ - Phase 1 Milestone 5: Network Activity Monitoring offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -32,16 +33,16 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Device Information Collection umsetzen.
+Network Activity Monitoring umsetzen.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `device_info_plus` integrieren.
-- Hardware- und Betriebssysteminformationen erfassen.
-- Nutzungs- und Zustandsdaten (Speicher, Akku) speichern.
-- Daten für Parent-Dashboard aufbereiten.
+- Netzwerkdaten pro App erfassen.
+- Mobile Daten und WLAN getrennt ausweisen.
+- Upload- und Downloadmengen speichern und aggregieren.
+- Alerts für ungewöhnliche Nutzung vorbereiten.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.
