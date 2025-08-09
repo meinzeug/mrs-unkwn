@@ -38,9 +38,21 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Home')),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () => _confirmLogout(context),
-          child: const Text('Logout'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () => context.go(
+                '${RouteConstants.familyDashboard}?id=demo',
+              ),
+              child: const Text('Family Dashboard'),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () => _confirmLogout(context),
+              child: const Text('Logout'),
+            ),
+          ],
         ),
       ),
     );

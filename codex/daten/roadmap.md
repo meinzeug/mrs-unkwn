@@ -166,7 +166,7 @@ Details: Erstelle `family_settings_page.dart` mit verschiedenen Setting-Categori
 [x] Family Member Management UI:
 Details: Erstelle `family_members_page.dart` mit Member-List-View. Zeige Member-Avatar, Name, Role, Last-Active-Status. Implementiere Member-Details-Modal mit Role-Change, Permissions-Edit, Remove-Member-Options. Erstelle Role-Based-UI: Parents können alle Members verwalten, Children können nur eigenes Profil sehen. Implementiere Confirmation-Dialogs für destructive Actions (Remove-Member). Handle real-time Member-Status-Updates.
 
-[ ] Family Dashboard Overview:
+[x] Family Dashboard Overview:
 Details: Erstelle `family_dashboard_page.dart` als Main-Family-Screen. Implementiere Cards-Layout mit Family-Statistics: Total-Members, Active-Members, Study-Time-Summary. Zeige Quick-Actions: Invite-Member, View-Activity, Manage-Settings. Implementiere Recent-Activity-Feed mit Member-Activities. Add Family-Progress-Charts mit Study-Goals und Achievements. Implementiere Pull-to-Refresh für Data-Updates.
 
 [ ] Family Role-Based Permissions:

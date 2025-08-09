@@ -3,6 +3,7 @@ class RouteConstants {
   static const String register = '/register';
   static const String home = '/home';
   static const String familySetup = '/family-setup';
+  static const String familyDashboard = '/family-dashboard';
   static const String familySettings = '/family-settings';
   static const String familyMembers = '/family-members';
   static const String monitoring = '/monitoring';

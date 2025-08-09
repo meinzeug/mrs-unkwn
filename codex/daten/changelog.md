@@ -661,3 +661,8 @@
 - `FamilyRepository` und `FamilyBloc` um Member-Management-Funktionen erweitert
 - Routing und Konstanten für `FamilyMembersPage` hinzugefügt
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Family Dashboard Overview - 2025-09-16
+- `family_dashboard_page.dart` als Übersichtsseite mit Statistiken und Quick-Actions erstellt
+- Routen- und Navigationslogik für Family Dashboard ergänzt
+- Roadmap und Prompt aktualisiert
