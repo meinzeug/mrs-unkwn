@@ -131,7 +131,7 @@ Details: Erstelle `lib/shared/widgets/password_strength_indicator.dart` Widget. 
 [x] Biometric Authentication Setup:
 Details: Füge `local_auth: ^2.1.6` zu pubspec.yaml hinzu. Erstelle `lib/core/services/biometric_service.dart`. Implementiere `isBiometricAvailable()`, `authenticateWithBiometric()`, `getBiometricTypes()` Methoden. In Login-Screen, zeige Biometric-Login-Option nur wenn Available. Implementiere Biometric-Authentication-Flow: Check-Availability, Prompt-User, Handle-Success/Failure, Auto-Login bei Success.
 
-[ ] Auto-Login auf App-Start:
+[x] Auto-Login auf App-Start:
 Details: Erstelle `AppStartEvent` in AuthBloc. In Main-App-Widget, dispatch AppStartEvent beim App-Start. Implementiere `_onAppStarted` Handler in AuthBloc: Check für gespeicherte Tokens, Validate Token mit Backend, Auto-Login wenn Token gültig. Handle Token-Refresh wenn Access-Token expired aber Refresh-Token gültig. Navigate automatisch zu entsprechender Screen basierend auf Auth-Status.
 
 [ ] Logout Functionality:

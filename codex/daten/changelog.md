@@ -594,3 +594,10 @@
 - `local_auth` Dependency in `pubspec.yaml` aufgenommen
 - `BiometricService` implementiert und im Service Locator registriert
 - Login-Screen zeigt biometrischen Login bei unterstützten Geräten
+
+### Phase 1: Auto-Login auf App-Start - 2025-09-14
+- `AppStartEvent` im `AuthBloc` hinzugefügt und Sessionprüfung integriert
+- `AuthRepositoryImpl` validiert und erneuert Tokens automatisch
+- `service_locator.dart` und `app.dart` für automatischen Login-Check erweitert
+- Unit-Tests für Auto-Login in `auth_bloc_test.dart` ergänzt
+- Roadmap und Prompt aktualisiert

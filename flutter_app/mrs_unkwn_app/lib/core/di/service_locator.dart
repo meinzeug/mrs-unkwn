@@ -11,6 +11,8 @@ import '../../features/analytics/data/services/analytics_export_service.dart';
 import '../storage/secure_storage_service.dart';
 import '../../features/tutoring/data/services/chat_history_service.dart';
 import '../../features/organization/data/organization_service.dart';
+import '../../features/auth/data/repositories/auth_repository_impl.dart';
+import '../../features/auth/presentation/bloc/auth_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -25,6 +27,7 @@ void _registerCore() {
   sl.registerLazySingleton<SecureStorageService>(() => SecureStorageService());
   sl.registerLazySingleton<MonitoringService>(() => MonitoringService());
   sl.registerLazySingleton<BiometricService>(() => BiometricService());
+  sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl());
 }
 
 void _registerFeatures() {

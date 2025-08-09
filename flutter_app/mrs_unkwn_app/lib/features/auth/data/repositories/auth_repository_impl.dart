@@ -84,6 +84,36 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<User?> getCurrentUser() async {
+    final token = await _storage.read(SecureStorageService.tokenKey);
+    final refresh = await _storage.read(SecureStorageService.refreshTokenKey);
+    if (token == null || refresh == null) {
+      return null;
+    }
+    try {
+      final response = await _dio.get<Map<String, dynamic>>('/api/auth/me');
+      final data = response.data?['data'] as Map<String, dynamic>?;
+      if (data == null) {
+        return null;
+      }
+      return const User(id: 'temporary');
+    } catch (_) {
+      try {
+        await refreshToken();
+        final response = await _dio.get<Map<String, dynamic>>('/api/auth/me');
+        final data = response.data?['data'] as Map<String, dynamic>?;
+        if (data == null) {
+          return null;
+        }
+        return const User(id: 'temporary');
+      } catch (_) {
+        await logout();
+        return null;
+      }
+    }
+  }
+
+  @override
   Future<void> refreshToken() async {
     try {
       final response = await _dio.post<Map<String, dynamic>>(

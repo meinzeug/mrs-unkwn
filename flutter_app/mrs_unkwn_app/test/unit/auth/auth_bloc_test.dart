@@ -34,4 +34,26 @@ void main() {
     act: (bloc) => bloc.add(LoginRequested('a@b.com', 'pass')),
     expect: () => [isA<AuthLoading>(), isA<AuthFailure>()],
   );
+
+  blocTest<AuthBloc, AuthState>(
+    'emits [AuthLoading, AuthSuccess] on AppStartEvent with valid session',
+    build: () {
+      when(() => repository.getCurrentUser())
+          .thenAnswer((_) async => const User(id: '1'));
+      return AuthBloc(repository);
+    },
+    act: (bloc) => bloc.add(AppStartEvent()),
+    expect: () => [isA<AuthLoading>(), isA<AuthSuccess>()],
+  );
+
+  blocTest<AuthBloc, AuthState>(
+    'emits [AuthLoading, AuthInitial] on AppStartEvent without session',
+    build: () {
+      when(() => repository.getCurrentUser())
+          .thenAnswer((_) async => null);
+      return AuthBloc(repository);
+    },
+    act: (bloc) => bloc.add(AppStartEvent()),
+    expect: () => [isA<AuthLoading>(), isA<AuthInitial>()],
+  );
 }
