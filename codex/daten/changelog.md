@@ -542,3 +542,7 @@
 - Repository auf neue Issues geprüft
 - `npm test` (im `backend/`) und `pytest codex/tests` ausgeführt – keine Fehler gefunden
 - Keine Binärdateien versioniert; notwendige Artefakte werden über Skripte erzeugt
+### Wartungscheck - 2025-09-03
+- Repository auf neue Issues geprüft
+- `npm test` (im `backend/`) und `pytest codex/tests` ausgeführt – keine Fehler gefunden
+- Keine Binärdateien versioniert; notwendige Artefakte werden über Skripte erzeugt
