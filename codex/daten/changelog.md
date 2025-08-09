@@ -619,3 +619,8 @@
 - `create_family_page.dart` mit Multi-Step-Wizard erstellt
 - Routing über `AppRouter` angebunden und `FamilyRepository` im Service Locator registriert
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Family Model und Data Classes - 2025-09-14
+- `Family` und `FamilyMember` Modelle mit `@JsonSerializable` implementiert
+- Enums `FamilyRole` und `SubscriptionTier` hinzugefügt
+- Roadmap und Prompt aktualisiert
