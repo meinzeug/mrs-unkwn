@@ -785,3 +785,7 @@
 - `npm test` fehlgeschlagen: package.json nicht gefunden
 - `pytest codex/tests` ausgeführt: keine Tests gefunden
 - `flutter test` fehlgeschlagen: Testverzeichnis nicht gefunden
+### Wartungscheck - 2025-09-17
+- `npm test` fehlgeschlagen: ts-node nicht gefunden
+- `pytest codex/tests` ausgeführt: keine Tests gefunden
+- `flutter test` fehlgeschlagen: Kompilationsfehler und fehlende Pakete
