@@ -56,4 +56,25 @@ void main() {
     act: (bloc) => bloc.add(AppStartEvent()),
     expect: () => [isA<AuthLoading>(), isA<AuthInitial>()],
   );
+
+  blocTest<AuthBloc, AuthState>(
+    'emits [AuthLoading, AuthInitial] on logout',
+    build: () {
+      when(() => repository.logout()).thenAnswer((_) async {});
+      return AuthBloc(repository);
+    },
+    act: (bloc) => bloc.add(LogoutRequested()),
+    expect: () => [isA<AuthLoading>(), isA<AuthInitial>()],
+    verify: (_) => verify(() => repository.logout()).called(1),
+  );
+
+  blocTest<AuthBloc, AuthState>(
+    'emits [AuthLoading, AuthInitial] even if logout fails',
+    build: () {
+      when(() => repository.logout()).thenThrow(Exception('fail'));
+      return AuthBloc(repository);
+    },
+    act: (bloc) => bloc.add(LogoutRequested()),
+    expect: () => [isA<AuthLoading>(), isA<AuthInitial>()],
+  );
 }

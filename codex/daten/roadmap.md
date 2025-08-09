@@ -134,7 +134,7 @@ Details: Füge `local_auth: ^2.1.6` zu pubspec.yaml hinzu. Erstelle `lib/core/se
 [x] Auto-Login auf App-Start:
 Details: Erstelle `AppStartEvent` in AuthBloc. In Main-App-Widget, dispatch AppStartEvent beim App-Start. Implementiere `_onAppStarted` Handler in AuthBloc: Check für gespeicherte Tokens, Validate Token mit Backend, Auto-Login wenn Token gültig. Handle Token-Refresh wenn Access-Token expired aber Refresh-Token gültig. Navigate automatisch zu entsprechender Screen basierend auf Auth-Status.
 
-[ ] Logout Functionality:
+[x] Logout Functionality:
 Details: Implementiere `LogoutRequested` Event-Handler in AuthBloc. Erstelle Logout-API-Call der Server-side-Token-Invalidation durchführt. Clear alle lokalen Storage-Data: Access-Token, Refresh-Token, User-Data, App-Settings. Reset alle BLoCs zu Initial-State. Navigate zurück zu Login-Screen. Zeige Confirmation-Dialog vor Logout-Action. Handle Network-Errors gracefully (Logout auch bei offline).
 
 [ ] Forgot Password Flow:

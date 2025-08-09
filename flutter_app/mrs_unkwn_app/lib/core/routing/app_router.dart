@@ -5,6 +5,7 @@ import '../storage/secure_storage_service.dart';
 import 'route_constants.dart';
 import '../../features/monitoring/presentation/pages/monitoring_dashboard_page.dart';
 import '../../features/analytics/presentation/pages/analytics_dashboard_page.dart';
+import '../../features/auth/presentation/pages/home_page.dart';
 
 /// Central application router using [GoRouter].
 class AppRouter {
@@ -23,7 +24,7 @@ class AppRouter {
       ),
       GoRoute(
         path: RouteConstants.home,
-        builder: (context, state) => const Placeholder(),
+        builder: (context, state) => const HomePage(),
         redirect: _authGuard,
       ),
       GoRoute(

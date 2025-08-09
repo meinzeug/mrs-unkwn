@@ -131,10 +131,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(AuthLoading());
     try {
       await _repository.logout();
-      emit(AuthInitial());
-    } catch (e) {
-      emit(AuthFailure(e.toString()));
+    } catch (_) {
+      // Ignore network errors to allow offline logout
     }
+    emit(AuthInitial());
   }
 
   void _onAuthStatusChanged(

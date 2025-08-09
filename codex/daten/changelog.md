@@ -601,3 +601,10 @@
 - `service_locator.dart` und `app.dart` für automatischen Login-Check erweitert
 - Unit-Tests für Auto-Login in `auth_bloc_test.dart` ergänzt
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Logout Functionality - 2025-09-14
+- Server-seitiges Logout mit Token-Invalidation und lokalem Storage-Clear implementiert
+- `AuthBloc` reagiert auf `LogoutRequested` und funktioniert auch offline
+- `HomePage` mit Logout-Button und Bestätigungsdialog ergänzt
+- Unit-Tests für Logout-Szenarien hinzugefügt
+- Roadmap und Prompt aktualisiert
