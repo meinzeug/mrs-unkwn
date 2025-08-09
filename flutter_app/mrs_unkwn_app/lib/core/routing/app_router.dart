@@ -10,6 +10,7 @@ import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/register_page.dart';
 import '../../features/auth/presentation/pages/forgot_password_page.dart';
 import '../../features/auth/presentation/pages/reset_password_page.dart';
+import '../../features/family/presentation/pages/create_family_page.dart';
 
 /// Central application router using [GoRouter].
 class AppRouter {
@@ -43,7 +44,7 @@ class AppRouter {
       ),
       GoRoute(
         path: RouteConstants.familySetup,
-        builder: (context, state) => const Placeholder(),
+        builder: (context, state) => const CreateFamilyPage(),
         redirect: _authGuard,
       ),
       GoRoute(

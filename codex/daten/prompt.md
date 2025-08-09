@@ -1,9 +1,9 @@
-# Nächster Schritt: Family Creation UI Screen
+# Nächster Schritt: Family Model und Data Classes
 
 ## Status
 - Phase 0 abgeschlossen ✓
-- Phase 1 Milestone 3: Forgot Password Flow abgeschlossen ✓
-- Phase 1 Milestone 4: Family Creation UI Screen offen ✗
+- Phase 1 Milestone 4: Family Creation UI Screen abgeschlossen ✓
+- Phase 1 Milestone 4: Family Model und Data Classes offen ✗
 
 ## Referenzen
 - `/README.md`
@@ -12,15 +12,15 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Family-Creation-UI implementieren.
+Family- und FamilyMember-Modelklassen erstellen.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `create_family_page.dart` mit Multi-Step-Wizard (Name, Regeln, Plan, Übersicht) erstellen.
-- Navigations-Buttons und Form-Validierung implementieren.
-- Erfolgs- und Fehlermeldungen anzeigen.
+- Datei `lib/features/family/data/models/family.dart` mit `Family` und `FamilyMember` Klassen erstellen.
+- `@JsonSerializable()` verwenden und `fromJson`/`toJson` implementieren.
+- Enums für `FamilyRole` und `SubscriptionTier` definieren.
 
 ### Validierung
 - Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.

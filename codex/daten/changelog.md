@@ -614,3 +614,8 @@
 - `AuthBloc` um `ForgotPasswordRequested` und `ResetPasswordRequested` Events erweitert
 - Repository-Methoden für `/api/auth/forgot-password` und `/api/auth/reset-password` implementiert
 - Routing, Tests und UI für Passwort-Zurücksetzen hinzugefügt
+
+### Phase 1: Family Creation UI Screen - 2025-09-14
+- `create_family_page.dart` mit Multi-Step-Wizard erstellt
+- Routing über `AppRouter` angebunden und `FamilyRepository` im Service Locator registriert
+- Roadmap und Prompt aktualisiert

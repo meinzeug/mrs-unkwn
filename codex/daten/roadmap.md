@@ -142,7 +142,7 @@ Details: Erstelle `forgot_password_page.dart` mit Email-Input-Field. Implementie
 
 ### Milestone 4: Familie Management System
 
-[ ] Family Creation UI Screen:
+[x] Family Creation UI Screen:
 Details: Erstelle `lib/features/family/presentation/pages/create_family_page.dart`. Implementiere Multi-Step-Wizard mit `PageView` und Step-Indicator. Step 1: Family-Name-Input mit Validation. Step 2: Family-Rules-Setup (Study-Hours, Bedtime, etc.). Step 3: Subscription-Plan-Selection mit Pricing-Cards. Step 4: Summary und Confirmation. Implementiere Navigation-Buttons (Next/Previous) mit Form-Validation vor Next-Step.
 
 [ ] Family Model und Data Classes:
