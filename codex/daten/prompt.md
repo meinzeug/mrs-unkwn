@@ -1,4 +1,4 @@
-# Nächster Schritt: Wartungscheck am 2025-09-15
+# Nächster Schritt: Phase 1 Milestone 6 - OpenAI API Integration Setup
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -31,6 +31,7 @@
 - Phase 1 Milestone 5: Monitoring Alerts und Notifications abgeschlossen ✓
 - Phase 1 Milestone 5: Privacy und DSGVO Compliance für Monitoring abgeschlossen ✓
 - Phase 1 Milestone 5: Monitoring Performance Optimization abgeschlossen ✓
+- Wartungscheck am 2025-09-15 durchgeführt (Tests teils fehlgeschlagen)
 
 ## Referenzen
 - `/README.md`
@@ -39,20 +40,22 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Wartungscheck am 2025-09-15 durchführen.
+OpenAI API Integration vorbereiten.
 
 ### Vorbereitungen
 - `README.md` und Roadmap prüfen.
 
 ### Implementierungsschritte
-- `npm test` ausführen.
-- `pytest codex/tests` ausführen.
-- `flutter test` ausführen.
+- Dependency `http` in `pubspec.yaml` hinzufügen.
+- Datei `lib/core/services/openai_service.dart` erstellen.
+- `OpenAIService` mit API-Key aus Umgebungsvariablen und Methode `sendChatRequest` anlegen.
+- Retry-Logik mit Exponential Backoff und Timeout von 30s implementieren.
+- API-Nutzungsstatistiken zur Kostenverfolgung speichern.
 
 ### Validierung
-- Entsprechende Tests (z. B. `npm test`, `pytest codex/tests`, `flutter test`) ausführen.
+- `flutter test` ausführen.
 
 ### Selbstgenerierung
-- Nach jeder Wartungsaufgabe neuen Prompt erstellen.
+- Nach Abschluss neuen Prompt erstellen.
 
 *Hinweis: Codex kann keine Binärdateien mergen. Benötigte Dateien werden durch Skripte beim Ausführen automatisch erzeugt. Halte den Codeumfang dieses Sprints unter 500 Zeilen.*
