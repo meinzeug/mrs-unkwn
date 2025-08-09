@@ -722,3 +722,8 @@
 - BroadcastReceiver und EventChannel für Installations- und Deinstallationsereignisse hinzugefügt
 - `InstallMonitoringService` speichert Historie in Hive und informiert Eltern bei neuen Apps
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Basic Screen Time Tracking Implementation - 2025-09-24
+- `ScreenTimeTracker` Dienst berechnet tägliche Bildschirmzeit pro App und Gesamt
+- Limits mit Elternbenachrichtigung bei Überschreitung umgesetzt
+- Service Locator und Tests ergänzt
