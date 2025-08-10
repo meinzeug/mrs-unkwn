@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 Milestone 6 – Basic Content Moderation
+# Nächster Schritt: Phase 1 Milestone 6 – Learning Progress Analytics
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -40,6 +40,7 @@
 - Phase 1 Milestone 6: Learning Session Management abgeschlossen ✓
 - Phase 1 Milestone 6: AI Tutoring BLoC State Management abgeschlossen ✓
 - Phase 1 Milestone 6: Voice Input Integration abgeschlossen ✓
+- Phase 1 Milestone 6: Basic Content Moderation abgeschlossen ✓
 - Wartungscheck am 2025-09-15 durchgeführt (npm test erfolgreich, pytest keine Tests, flutter test fehlgeschlagen)
 - Wartungscheck am 2025-09-16 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
 - Wartungscheck am 2025-09-17 durchgeführt (npm test fehlgeschlagen: ts-node nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Kompilationsfehler)
@@ -53,16 +54,17 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Phase 1 Milestone 6: Basic Content Moderation umsetzen.
+Phase 1 Milestone 6: Learning Progress Analytics umsetzen.
 
 ### Vorbereitungen
 - README und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Keyword-Listen (Profanity, Violence, Adult) in `ContentModerationService` integrieren.
-- Nutzereingaben vor dem Senden durch `ContentModerationService` prüfen.
-- Verletzungen protokollieren und `ParentNotificationService` informieren.
-- Unit-Test für Content-Moderation ergänzen.
+- Metriken berechnen: Zeit pro Fach, Fragen pro Sitzung, Lern-Geschwindigkeit.
+- Schwierigkeit und Concept-Mastery über die Zeit verfolgen.
+- Fortschritt mit Charts und Trend-Lines visualisieren.
+- Achievement-System mit Lern-Meilensteinen integrieren.
+- Reports für Eltern mit Insights und Empfehlungen generieren.
 
 ### Validierung
 - `npm test` ausführen.

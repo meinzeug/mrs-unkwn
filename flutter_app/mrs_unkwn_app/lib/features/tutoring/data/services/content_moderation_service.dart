@@ -21,16 +21,25 @@ class ContentModerationService {
     ModerationCategory.profanity: [
       'damn',
       'shit',
+      'fuck',
+      'bitch',
+      'ass',
     ],
     ModerationCategory.violence: [
       'kill',
       'weapon',
       'fight',
+      'attack',
+      'murder',
+      'bomb',
     ],
     ModerationCategory.adult: [
       'sex',
       'nude',
       'porn',
+      'xxx',
+      'adult',
+      'erotic',
     ],
   };
 
