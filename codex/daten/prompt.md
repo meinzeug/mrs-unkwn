@@ -1,4 +1,4 @@
-# Nächster Schritt: Flutter-Projekt mit Multi-Platform-Support erstellen
+# Nächster Schritt: Release-Build mit vollständig geladenen Abhängigkeiten erfolgreich abschließen
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -6,6 +6,7 @@
 - Disk-Space-Plugin ersetzt & Backend-Build-Skripte ergänzt ✓
 - Android namespace Fixer & Release-Build-Skripte hinzugefügt ✓
 - Flutter-Projekt Multi-Platform-Support re-verifiziert – Maven-Repository ergänzt, Release-Build lädt noch Abhängigkeiten ✗
+- Backend Docker-Build korrigiert ✓
 
 ## Referenzen
 - `/README.md`
