@@ -19,7 +19,7 @@ Details: Erstelle ein neues Git-Repository mit `git init`. Füge eine .gitignore
 [x] Flutter SDK installieren und Entwicklungsumgebung einrichten:
 Details: Lade Flutter SDK von flutter.dev herunter. Extrahiere das SDK nach `C:\flutter` (Windows) oder `~/flutter` (macOS/Linux). Füge Flutter-Pfad zur PATH-Umgebungsvariable hinzu. Führe `flutter doctor` aus und behebe alle gemeldeten Probleme. Installiere Android Studio oder VS Code mit Flutter/Dart-Erweiterungen. Konfiguriere Android SDK mit API Level 21+ und iOS Deployment Target 11.0+.
 
-[ ] Flutter-Projekt mit Multi-Platform-Support erstellen <!-- TODO: Gradle 8.7 gesetzt; Release-Build bricht während Abhängigkeitskompilierung ab -->
+[ ] Flutter-Projekt mit Multi-Platform-Support erstellen <!-- TODO: Release-Build scheitert trotz geolocator_patch & AGP 8.6.0 -->
 Details: Navigiere in den `flutter_app/`-Ordner. Führe `flutter create --org com.mrsunkwn --platforms android,ios,web,windows,macos,linux mrs_unkwn_app` aus. Öffne `pubspec.yaml` und setze `flutter` Version auf minimum "3.16.0". Entferne Standard-Demo-Code aus `lib/main.dart`. Erstelle Basis-Ordnerstruktur in `lib/`: `core/`, `features/`, `shared/`, `platform_channels/`.
 
 [x] pubspec.yaml mit erforderlichen Dependencies konfigurieren:
