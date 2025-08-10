@@ -50,21 +50,22 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Setup Android SDK (Platform 35 + Build-Tools 35.0.0)
+      # Wichtig: packages auf '' setzen, wir installieren danach manuell
+      - name: Setup Android SDK (base)
         uses: android-actions/setup-android@v3
         with:
           accept-android-sdk-licenses: true
           log-accepted-android-sdk-licenses: true
-          packages: |
-            cmdline-tools;latest
-            platform-tools
-            platforms;android-35
-            build-tools;35.0.0
+          packages: ''
+
+      - name: Install Android SDK packages (API 35)
+        run: |
+          yes | sdkmanager --install "cmdline-tools;latest"
+          yes | sdkmanager --install "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+          sdkmanager --list | head -n 120 || true
 
       - name: Verify Flutter & Android
-        run: |
-          flutter doctor -v
-          sdkmanager --list | head -n 100 || true
+        run: flutter doctor -v
 
       - name: Install dependencies
         run: |
@@ -72,7 +73,6 @@ jobs:
           flutter pub get
 
       - name: Build debug APK
-        id: build_apk
         run: |
           echo "🤖 Android APK wird erstellt..."
           flutter build apk --debug --target lib/main.dart -v
