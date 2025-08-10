@@ -28,6 +28,7 @@ import '../../features/family/data/repositories/family_repository_impl.dart';
 import '../../features/family/data/repositories/family_repository.dart';
 import '../../features/family/presentation/bloc/family_bloc.dart';
 import '../../features/family/data/services/family_service.dart';
+import '../../features/tutoring/presentation/bloc/tutoring_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -109,6 +110,17 @@ void _registerFeatures() {
     () => MonitoringPrivacyService(),
   );
   sl.registerFactory<FamilyBloc>(() => FamilyBloc(sl(), sl()));
+  sl.registerLazySingleton<TutoringBloc>(
+    () => TutoringBloc(
+      aiService: sl(),
+      classifier: sl(),
+      moderator: sl(),
+      logService: sl(),
+      notifier: sl(),
+      analytics: sl(),
+      history: sl(),
+    ),
+  );
 }
 
 void _registerExternal() {

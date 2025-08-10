@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 Milestone 6 – Voice Input Integration
+# Nächster Schritt: Phase 1 Milestone 6 – Basic Content Moderation
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -39,6 +39,7 @@
 - Phase 1 Milestone 6: Subject Classification System abgeschlossen ✓
 - Phase 1 Milestone 6: Learning Session Management abgeschlossen ✓
 - Phase 1 Milestone 6: AI Tutoring BLoC State Management abgeschlossen ✓
+- Phase 1 Milestone 6: Voice Input Integration abgeschlossen ✓
 - Wartungscheck am 2025-09-15 durchgeführt (npm test erfolgreich, pytest keine Tests, flutter test fehlgeschlagen)
 - Wartungscheck am 2025-09-16 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
 - Wartungscheck am 2025-09-17 durchgeführt (npm test fehlgeschlagen: ts-node nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Kompilationsfehler)
@@ -52,16 +53,16 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Phase 1 Milestone 6: Voice Input Integration umsetzen.
+Phase 1 Milestone 6: Basic Content Moderation umsetzen.
 
 ### Vorbereitungen
 - README und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Dependency `speech_to_text` in `pubspec.yaml` eintragen.
-- Sprachaufnahme-Button in `chat_page.dart` ergänzen.
-- Service `VoiceInputService` für Speech-to-Text-Erkennung implementieren.
-- Erkannten Text in den Nachrichtenfluss des `TutoringBloc` einspeisen.
+- Keyword-Listen (Profanity, Violence, Adult) in `ContentModerationService` integrieren.
+- Nutzereingaben vor dem Senden durch `ContentModerationService` prüfen.
+- Verletzungen protokollieren und `ParentNotificationService` informieren.
+- Unit-Test für Content-Moderation ergänzen.
 
 ### Validierung
 - `npm test` ausführen.

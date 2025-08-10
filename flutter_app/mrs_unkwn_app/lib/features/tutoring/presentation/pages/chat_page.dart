@@ -7,6 +7,7 @@ import '../../data/models/chat_message.dart';
 import '../../data/services/chat_history_service.dart';
 import '../../data/services/voice_input_service.dart';
 import '../../../../core/di/service_locator.dart';
+import '../bloc/tutoring_bloc.dart';
 
 enum MessageStatus { sending, sent, error }
 
@@ -83,6 +84,7 @@ class _ChatPageState extends State<ChatPage> {
     });
     _scrollToBottom();
     unawaited(_historyService.addMessage(message));
+    sl<TutoringBloc>().add(SendMessageRequested(text, age: 14));
 
     Future.delayed(const Duration(milliseconds: 500), () {
       setState(() {
@@ -109,6 +111,7 @@ class _ChatPageState extends State<ChatPage> {
       _clearChat();
     } else {
       setState(() => _controller.text = text);
+      _sendMessage();
     }
   }
 
