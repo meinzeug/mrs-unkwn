@@ -231,6 +231,9 @@ Details: Optimize Background-Service für Minimal-Battery-Impact using JobSchedu
 [x] Android v1 → v2 Fix:
 Details: Update MainActivity and AndroidManifest to use Flutter embedding v2 with flutterEmbedding meta-data.
 
+[x] Android package structure cleanup:
+Details: Remove old Java/Kotlin directories, recreate Kotlin package `com.mrsunkwn.mrs_unkwn_app`, add MainActivity.kt, and enable v2 embedding flag in gradle.properties.
+
 ### Milestone 6: Basic AI Tutoring Foundation
 
 [x] OpenAI API Integration Setup:
