@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 Milestone 6 – AI Response Generation Service
+# Nächster Schritt: Phase 1 Milestone 6 – Subject Classification System
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -35,6 +35,7 @@
 - Phase 1 Milestone 6: Chat Message Model und Serialization abgeschlossen ✓
 - Phase 1 Milestone 6: AI Prompt Engineering für Sokratische Methode abgeschlossen ✓
 - Phase 1 Milestone 6: Chat UI Interface Implementation abgeschlossen ✓
+- Phase 1 Milestone 6: AI Response Generation Service abgeschlossen ✓
 - Wartungscheck am 2025-09-15 durchgeführt (npm test erfolgreich, pytest keine Tests, flutter test fehlgeschlagen)
 - Wartungscheck am 2025-09-16 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
 - Wartungscheck am 2025-09-17 durchgeführt (npm test fehlgeschlagen: ts-node nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Kompilationsfehler)
@@ -48,18 +49,18 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Phase 1 Milestone 6: AI Response Generation Service umsetzen.
+Phase 1 Milestone 6: Subject Classification System umsetzen.
 
 ### Vorbereitungen
 - README und Roadmap prüfen.
-- Sicherstellen, dass `chat_message.dart` und `openai_service.dart` verfügbar sind.
+- Sicherstellen, dass `subject_classification_service.dart` angelegt ist.
 
 ### Implementierungsschritte
-- Datei `lib/features/tutoring/data/services/ai_response_service.dart` erstellen oder erweitern.
-- Request-Building mit Gesprächskontext und System-Prompts implementieren.
-- Streaming-Responses für Echtzeit-Anzeige der Antwort unterstützen.
-- Content-Filtering und Caching für ähnliche Fragen hinzufügen.
-- Fehler robust behandeln und nutzerfreundliche Meldungen liefern.
+- Datei `lib/features/tutoring/data/services/subject_classification_service.dart` erstellen oder erweitern.
+- Keyword-basierte Klassifikation mit Historien-Tracking implementieren.
+- Erkennung von Fachwechseln zwischen aufeinanderfolgenden Fragen hinzufügen.
+- Platzhalter für zukünftiges ML-basiertes Modell einfügen.
+- Öffentliche Methoden mit Unit-Tests absichern.
 
 ### Validierung
 - `npm test` ausführen.

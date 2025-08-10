@@ -817,3 +817,8 @@
 - `chat_page.dart` um Chat-Historie, Scroll-Logik und Ladeindikatoren erweitert
 - Sprachaufnahme- und Sende-Status visualisiert, Nachrichten in `ChatHistoryService` gespeichert
 - Prompt aktualisiert
+
+### Phase 1: AI Response Generation Service - 2025-10-07
+- `ai_response_service.dart` streamt Antworten mit Cache und Inhaltsfilter
+- `openai_service.dart` unterstützt Streaming-Anfragen an die OpenAI API
+- Roadmap und Prompt aktualisiert
