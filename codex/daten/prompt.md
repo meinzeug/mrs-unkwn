@@ -1,12 +1,10 @@
-# Nächster Schritt: Release-Build mit vollständig geladenen Abhängigkeiten erfolgreich abschließen
+# Nächster Schritt: Release-Build nach AGP 8.6.0 Upgrade stabilisieren
 
 ## Status
-- Phase 0 abgeschlossen ✓
-- Produktions-Setup-Skript erstellt ✓
-- Disk-Space-Plugin ersetzt & Backend-Build-Skripte ergänzt ✓
-- Android namespace Fixer & Release-Build-Skripte hinzugefügt ✓
-- Flutter-Projekt Multi-Platform-Support re-verifiziert – Gradle 8.7 gesetzt, Release-Build bricht weiterhin während Abhängigkeitskompilierung ab ✗
-- Backend Docker-Build korrigiert ✓
+- geolocator_android Plugin gepatcht (toARGB32 -> value)
+- build_android_release.sh generiert L10n-Dateien und patcht Plugin
+- Android settings.gradle auf AGP 8.6.0 angehoben
+- Release-Build weiterhin fehlgeschlagen (Abhängigkeits-/Gradle-Probleme)
 
 ## Referenzen
 - `/README.md`
@@ -15,7 +13,7 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Release-Build mit vollständig geladenen Abhängigkeiten erfolgreich abschließen.
+Release-Build erneut ausführen und verbliebene Build-Probleme analysieren.
 
 ### Vorbereitungen
 - README und Roadmap prüfen.
@@ -23,6 +21,9 @@ Release-Build mit vollständig geladenen Abhängigkeiten erfolgreich abschließe
 ### Implementierungsschritte
 - `flutter clean`
 - `flutter pub get`
+- `flutter gen-l10n`
+- `scripts/patch_geolocator_android.sh`
+- `dart run tool/fix_android_namespaces.dart`
 - `flutter build apk --release`
 
 ### Validierung

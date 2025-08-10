@@ -934,3 +934,9 @@
 ### Wartung: Gradle 8.7 Update & Build-Bereinigung - 2025-10-26
 - Gradle Wrapper auf Version 8.7 aktualisiert und veraltete Flags in `android/gradle.properties` entfernt
 - Release-Build erneut gestartet, bricht jedoch weiterhin mit langer Abhängigkeitskompilierung ab
+
+### Phase 1: geolocator patch & AGP update - 2025-10-27
+- Patch script ersetzt toARGB32 durch value im geolocator_android Plugin.
+- build_android_release.sh generiert L10n-Dateien und ruft Patch-Skript auf.
+- Android settings.gradle auf AGP 8.6.0 aktualisiert.
+- Release-Build weiterhin fehlgeschlagen: Dependency erfordert AGP >=8.6, weitere Analyse nötig.
