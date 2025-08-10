@@ -5,7 +5,7 @@
 - Produktions-Setup-Skript erstellt ✓
 - Disk-Space-Plugin ersetzt & Backend-Build-Skripte ergänzt ✓
 - Android namespace Fixer & Release-Build-Skripte hinzugefügt ✓
-- Flutter-Projekt Multi-Platform-Support re-verifiziert – Build schlägt aktuell wegen fehlender Flutter-Maven-Artefakte fehl ✗
+- Flutter-Projekt Multi-Platform-Support re-verifiziert – Maven-Repository ergänzt, Release-Build lädt noch Abhängigkeiten ✗
 
 ## Referenzen
 - `/README.md`
@@ -14,7 +14,7 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Fehlende Flutter-Maven-Artefakte beheben und Release-Build erfolgreich ausführen.
+Release-Build mit vollständig geladenen Abhängigkeiten erfolgreich abschließen.
 
 ### Vorbereitungen
 - README und Roadmap prüfen.
@@ -22,7 +22,6 @@ Fehlende Flutter-Maven-Artefakte beheben und Release-Build erfolgreich ausführe
 ### Implementierungsschritte
 - `flutter clean`
 - `flutter pub get`
-- Fehlende Flutter-Maven-Artefakte (`io.flutter:flutter_embedding_release`) bereitstellen oder Repositories konfigurieren
 - `flutter build apk --release`
 
 ### Validierung

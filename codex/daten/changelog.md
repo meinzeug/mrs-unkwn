@@ -922,3 +922,7 @@
 - `pubspec.yaml` um `flutter: ">=3.16.0"` ergänzt
 - `android/build.gradle` mit `ext.flutter` für SDK-Versionen erweitert
 - `flutter build apk --release` fehlgeschlagen: fehlende Flutter-Maven-Artefakte (`io.flutter:flutter_embedding_release`)
+### Phase 1: Flutter-Projekt mit Multi-Platform-Support – Maven-Repo-Fix - 2025-10-24
+- `android/settings.gradle` um Flutter-Maven-Repository ergänzt
+- `flutter clean`, `flutter pub get` und Namespace-Fixer ausgeführt
+- `flutter build apk --release` gestartet (Abhängigkeiten werden heruntergeladen; Build noch nicht abgeschlossen)
