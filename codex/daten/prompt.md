@@ -1,10 +1,11 @@
-# Nächster Schritt: GitHub Actions für Android-Release-Build einrichten
+# Nächster Schritt: Flutter-Projekt mit Multi-Platform-Support erstellen
 
 ## Status
 - Phase 0 abgeschlossen ✓
 - Produktions-Setup-Skript erstellt ✓
 - Disk-Space-Plugin ersetzt & Backend-Build-Skripte ergänzt ✓
 - Android namespace Fixer & Release-Build-Skripte hinzugefügt ✓
+- Flutter-Projekt Multi-Platform-Support re-verifiziert – Build schlägt aktuell wegen fehlender Flutter-Maven-Artefakte fehl ✗
 
 ## Referenzen
 - `/README.md`
@@ -13,16 +14,16 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-GitHub Actions Workflow erstellen, der `scripts/build_android_release.sh` ausführt und das APK als Artefakt bereitstellt.
+Fehlende Flutter-Maven-Artefakte beheben und Release-Build erfolgreich ausführen.
 
 ### Vorbereitungen
 - README und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Workflow-Datei `.github/workflows/build-android-release.yml` anlegen.
-- Container `cirrusci/flutter:stable` verwenden.
-- `scripts/build_android_release.sh` ausführen.
-- Artefakt `build/app/outputs/flutter-apk/app-release.apk` hochladen.
+- `flutter clean`
+- `flutter pub get`
+- Fehlende Flutter-Maven-Artefakte (`io.flutter:flutter_embedding_release`) bereitstellen oder Repositories konfigurieren
+- `flutter build apk --release`
 
 ### Validierung
 - `npm test`
