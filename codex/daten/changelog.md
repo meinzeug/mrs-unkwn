@@ -926,3 +926,7 @@
 - `android/settings.gradle` um Flutter-Maven-Repository ergänzt
 - `flutter clean`, `flutter pub get` und Namespace-Fixer ausgeführt
 - `flutter build apk --release` gestartet (Abhängigkeiten werden heruntergeladen; Build noch nicht abgeschlossen)
+
+### Wartung: Backend Docker-Build korrigiert - 2025-10-25
+- `Dockerfile` und `Dockerfile.backend` installieren nun Dev-Dependencies, bauen das Projekt und prunen sie anschließend
+- Backend-Container erstellt die `dist/`-Artefakte erfolgreich und startet

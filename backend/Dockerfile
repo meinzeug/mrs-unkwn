@@ -13,22 +13,31 @@ COPY pnpm-lock.yaml . 2>/dev/null || true
 # Corepack aktivieren für yarn/pnpm
 RUN corepack enable
 
-# Install je nach Lockfile
+# Install je nach Lockfile (inkl. Dev-Dependencies für den Build)
 RUN if [ -f pnpm-lock.yaml ]; then \
-      pnpm install --frozen-lockfile --prod; \
+      pnpm install --frozen-lockfile; \
     elif [ -f yarn.lock ]; then \
-      yarn install --production --frozen-lockfile; \
+      yarn install --frozen-lockfile; \
     elif [ -f package-lock.json ]; then \
-      npm ci --omit=dev; \
+      npm ci; \
     else \
-      npm install --omit=dev; \
+      npm install; \
     fi
 
 # Restliche Quellen
 COPY . .
 
-# Build (falls vorhanden)
-RUN npm run build || true
+# Build
+RUN npm run build
+
+# Dev-Dependencies entfernen
+RUN if [ -f pnpm-lock.yaml ]; then \
+      pnpm prune --prod; \
+    elif [ -f yarn.lock ]; then \
+      yarn install --production --frozen-lockfile; \
+    else \
+      npm prune --omit=dev; \
+    fi
 
 # Run stage
 FROM node:20-alpine

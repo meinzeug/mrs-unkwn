@@ -8,14 +8,17 @@ RUN apk add --no-cache python3 make g++  # native deps falls nötig
 COPY package.json ./
 COPY package-lock.json ./
 
-# Install (nutzt Lockfile; fallback auf install)
-RUN npm ci --omit=dev || npm install --omit=dev
+# Install (inkl. Dev-Dependencies für den Build; nutzt Lockfile, ansonsten install)
+RUN npm ci || npm install
 
 # Restliche Quellen
 COPY . .
 
-# Build (falls vorhanden)
-RUN npm run build || true
+# Build
+RUN npm run build
+
+# Dev-Dependencies entfernen für schlankes Image
+RUN npm prune --omit=dev
 
 # Run stage
 FROM node:20-alpine
