@@ -41,7 +41,7 @@ class LearningAnalyticsService {
     }
 
     final velocity = totalDuration.inMinutes == 0
-        ? 0
+        ? 0.0
         : totalQuestions / totalDuration.inMinutes;
 
     return LearningMetrics(

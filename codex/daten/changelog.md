@@ -850,3 +850,9 @@
 - `TutoringBloc` prüft Nutzereingaben und AI-Antworten, protokolliert Verstöße im `ModerationLogService` und informiert Eltern über den `ParentNotificationService`
 - Unit-Test `content_moderation_service_test.dart` hinzugefügt
 - Roadmap und Prompt aktualisiert
+
+### Wartung: Dependency- und Analyzer-Fixes - 2025-10-13
+- Firebase- und Testpakete (`integration_test`, `bloc_test`, `mockito`) in `pubspec.yaml` ergänzt
+- Lokalisierungs- und BLoC-Imports korrigiert, FamilyBloc-Initialisierung aktualisiert
+- Fehlende DeviceMonitoring-Stubs in Tests implementiert und veralteten API-Integrationstest entfernt
+- Roadmap und Prompt aktualisiert

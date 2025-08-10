@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:dio/dio.dart';
 import 'package:mrs_unkwn_app/core/network/dio_client.dart';
 import 'package:mrs_unkwn_app/features/monitoring/data/services/monitoring_sync_service.dart';
 
@@ -13,8 +14,12 @@ void main() {
     await Hive.initFlutter();
     await Hive.deleteBoxFromDisk('monitoring_sync_queue');
     final dio = _MockDioClient();
-    when(() => dio.post(any(), data: any(named: 'data')))
-        .thenAnswer((_) async => {});
+    when(() => dio.post(any(), data: any(named: 'data'))).thenAnswer(
+      (_) async => Response(
+        data: {},
+        requestOptions: RequestOptions(path: ''),
+      ),
+    );
 
     final service = MonitoringSyncService(dio);
     await service.enqueue({'event': 'test'});

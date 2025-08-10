@@ -6,6 +6,7 @@ import '../../../../core/di/service_locator.dart';
 import '../../data/models/family.dart';
 import '../../data/models/invite_member_request.dart';
 import '../../data/repositories/family_repository.dart';
+import '../../data/services/family_service.dart';
 import '../bloc/family_bloc.dart';
 import 'qr_invitation_scanner_page.dart';
 
@@ -40,7 +41,10 @@ class _InviteMemberPageState extends State<InviteMemberPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => FamilyBloc(sl<FamilyRepository>()),
+      create: (_) => FamilyBloc(
+        sl<FamilyRepository>(),
+        sl<FamilyService>(),
+      ),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Mitglied einladen'),
