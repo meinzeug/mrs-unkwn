@@ -219,12 +219,14 @@ jobs:
         with:
           name: android-apk
           path: flutter_app/mrs_unkwn_app/build/app/outputs/flutter-apk/app-debug.apk
+        if: success()
           
       - name: Upload Web Build
         uses: actions/upload-artifact@v4
         with:
           name: web-build
           path: flutter_app/mrs_unkwn_app/build/web/
+        if: success()
 
   test-ios:
     name: Test iOS
@@ -287,58 +289,55 @@ jobs:
             flutter pub get || echo "⚠️  Will proceed with partial dependencies"
           fi
           
-      - name: Install iOS dependencies with proper directory
+      - name: Setup iOS platform and install CocoaPods dependencies
         working-directory: flutter_app/mrs_unkwn_app
         run: |
-          echo "🍎 Setting up iOS dependencies..."
+          echo "🍎 Complete iOS setup and dependency installation..."
           
           # Check if ios directory exists
           if [ -d "ios" ]; then
             echo "✅ iOS directory found"
+            echo "📋 iOS directory contents:"
             ls -la ios/
             
             # Check if Podfile exists
             if [ -f "ios/Podfile" ]; then
-              echo "✅ Podfile found, installing dependencies..."
+              echo "✅ Podfile found at ios/Podfile"
+              echo "📋 Podfile contents:"
+              head -10 ios/Podfile
+              
+              echo "🔧 Installing CocoaPods dependencies..."
               cd ios
-              pod install --repo-update
+              pod repo update || echo "Pod repo update failed, continuing..."
+              pod install
               cd ..
-              echo "✅ Pod install completed"
+              echo "✅ CocoaPods install completed successfully"
             else
-              echo "⚠️  No Podfile found, trying to generate iOS platform..."
+              echo "⚠️  No Podfile found, attempting to create iOS platform..."
+              flutter create --platforms=ios . --project-name mrs_unkwn_app || echo "Flutter create iOS failed"
               
-              # Sometimes Flutter projects don't have iOS generated yet
-              flutter create --platforms=ios . || echo "Create iOS failed"
-              
-              # Try flutter packages get to trigger iOS setup
-              flutter packages get || echo "Flutter packages get failed"
-              
-              # Check if Podfile was created
               if [ -f "ios/Podfile" ]; then
-                echo "✅ Podfile created, installing pods..."
+                echo "✅ iOS platform created, installing pods..."
                 cd ios
-                pod install --repo-update
+                pod install
                 cd ..
               else
-                echo "❌ Could not create Podfile"
-                echo "📋 iOS directory contents:"
-                ls -la ios/ || echo "iOS directory doesn't exist"
-                
-                echo "📋 Let's see what flutter doctor says about iOS:"
-                flutter doctor | grep -A 5 iOS || echo "No iOS info"
+                echo "❌ Could not create iOS platform/Podfile"
+                echo "📋 Flutter doctor iOS status:"
+                flutter doctor | grep -A 10 -B 2 iOS || echo "No iOS in flutter doctor"
               fi
             fi
           else
-            echo "❌ No ios directory found - trying to add iOS platform"
-            flutter create --platforms=ios . || echo "Failed to add iOS platform"
+            echo "❌ No ios directory found, creating iOS platform..."
+            flutter create --platforms=ios . --project-name mrs_unkwn_app || echo "Failed to create iOS platform"
             
-            # Check again
             if [ -d "ios" ] && [ -f "ios/Podfile" ]; then
+              echo "✅ iOS platform created successfully"
               cd ios
-              pod install --repo-update
+              pod install
               cd ..
             else
-              echo "❌ Still no iOS platform available"
+              echo "❌ iOS platform creation failed completely"
             fi
           fi
           
@@ -365,39 +364,22 @@ jobs:
             echo "✅ iOS tests completed"
           }
           
-      - name: Fix Android embedding and build for iOS
+      - name: Build iOS app
         working-directory: flutter_app/mrs_unkwn_app
         run: |
           echo "🍎 Attempting iOS build..."
           
-          # First ensure iOS project is properly configured
           if [ ! -d "ios" ]; then
-            echo "❌ No iOS directory found - Flutter project might not have iOS support"
-            echo "📋 Let's check what platforms are available:"
-            ls -la
+            echo "❌ No iOS directory found - skipping iOS build"
             exit 0
           fi
           
-          # Check if ios project needs to be created
-          if [ ! -f "ios/Runner.xcodeproj/project.pbxproj" ]; then
-            echo "🔧 iOS project seems incomplete, trying to regenerate..."
-            flutter create --platforms=ios .
-          fi
-          
-          # Try the build
           if flutter build ios --no-codesign --debug --target lib/main.dart; then
             echo "✅ iOS build successful!"
           else
             echo "❌ iOS build failed"
-            echo "📊 Checking iOS build logs:"
-            
-            # Show detailed error information
-            echo "Flutter doctor for iOS:"
-            flutter doctor --verbose | grep -A 10 -B 5 iOS || echo "No iOS info in flutter doctor"
-            
-            # Try to get more specific error
-            echo "Attempting verbose iOS build to see specific error:"
-            flutter build ios --no-codesign --debug --target lib/main.dart --verbose 2>&1 | tail -100 || echo "Verbose build also failed"
+            echo "📊 iOS build error details:"
+            flutter build ios --no-codesign --debug --target lib/main.dart --verbose 2>&1 | tail -100
           fi
           
       - name: Upload iOS Build
@@ -405,6 +387,7 @@ jobs:
         with:
           name: ios-build
           path: flutter_app/mrs_unkwn_app/build/ios/
+        if: success()
 
   upload-coverage:
     name: Upload Coverage
