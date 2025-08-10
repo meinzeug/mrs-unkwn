@@ -84,8 +84,8 @@ class DeviceInfoService {
         freeRam = int.tryParse(RegExp(r'\d+').firstMatch(line)?.group(0) ?? '');
       }
     }
-    if (totalRam != null) totalRam = (totalRam! / 1024).round();
-    if (freeRam != null) freeRam = (freeRam! / 1024).round();
+    if (totalRam != null) totalRam = (totalRam / 1024).round();
+    if (freeRam != null) freeRam = (freeRam / 1024).round();
 
     return {
       'timestamp': DateTime.now().toIso8601String(),

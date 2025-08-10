@@ -30,11 +30,13 @@ class VoiceInputService {
     }
     _speech.listen(
       onResult: (res) => onResult(res.recognizedWords),
-      listenMode: stt.ListenMode.dictation,
       onSoundLevelChange: onSoundLevel,
       localeId: await _detectLocale(),
-      cancelOnError: true,
-      partialResults: false,
+      listenOptions: stt.SpeechListenOptions(
+        listenMode: stt.ListenMode.dictation,
+        cancelOnError: true,
+        partialResults: false,
+      ),
     );
   }
 

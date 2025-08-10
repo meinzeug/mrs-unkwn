@@ -1,8 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mrsunkwn.mrs_unkwn_app">
     <application
-        android:label="mrs_unkwn_app"
-        android:name="io.flutter.app.FlutterApplication">
+        android:label="mrs_unkwn_app">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -17,8 +16,5 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data
-            android:name="flutterEmbedding"
-            android:value="2" />
     </application>
 </manifest>

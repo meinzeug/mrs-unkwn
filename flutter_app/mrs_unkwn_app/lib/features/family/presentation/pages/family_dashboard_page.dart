@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'dart:async';
 
 import '../../../../core/permissions/family_permissions.dart';
-import '../../../../core/routing/route_constants.dart';
 import '../../../../core/di/service_locator.dart';
 import '../../data/models/family.dart';
 import '../../data/services/family_service.dart';
@@ -87,9 +85,6 @@ class _FamilyDashboardPageState extends State<FamilyDashboardPage> {
           }
           if (state is FamilyLoaded) {
             final family = state.family;
-            final members = family.members ?? [];
-            final activeMembers = members.length; // Placeholder
-
             return RefreshIndicator(
               onRefresh: _refresh,
               child: SingleChildScrollView(

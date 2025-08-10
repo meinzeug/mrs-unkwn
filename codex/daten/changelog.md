@@ -874,3 +874,8 @@
 - `npm test` erfolgreich
 - `pytest codex/tests` ausgeführt: keine Tests gefunden
 - `flutter test` fehlgeschlagen: Testverzeichnis nicht gefunden
+
+### Wartung: Flutter Analyze Cleanup - 2025-10-17
+- `flutter analyze` ausgeführt und gemeldete Fehler/Warnungen behoben
+- AndroidManifest auf Flutter Embedding v2 bereinigt
+- Roadmap-Eintrag für Multi-Platform-Support wieder geöffnet
