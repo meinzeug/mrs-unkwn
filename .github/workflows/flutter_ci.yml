@@ -287,10 +287,42 @@ jobs:
             flutter pub get || echo "⚠️  Will proceed with partial dependencies"
           fi
           
-      - name: Install iOS dependencies
-        working-directory: flutter_app/mrs_unkwn_app/ios
+      - name: Install iOS dependencies with proper directory
+        working-directory: flutter_app/mrs_unkwn_app
         run: |
-          pod install
+          echo "🍎 Setting up iOS dependencies..."
+          
+          # Check if ios directory exists
+          if [ -d "ios" ]; then
+            echo "✅ iOS directory found"
+            
+            # Check if Podfile exists
+            if [ -f "ios/Podfile" ]; then
+              echo "✅ Podfile found, installing dependencies..."
+              cd ios
+              pod install --repo-update
+              cd ..
+              echo "✅ Pod install completed"
+            else
+              echo "⚠️  No Podfile found, creating one..."
+              cd ios
+              # Initialize pods if needed
+              flutter packages get
+              cd ..
+              # Try again
+              if [ -f "ios/Podfile" ]; then
+                cd ios
+                pod install --repo-update
+                cd ..
+              else
+                echo "❌ Could not create Podfile"
+              fi
+            fi
+          else
+            echo "❌ No ios directory found"
+            echo "This might indicate the Flutter project structure is different"
+            find . -name "ios" -type d || echo "No ios directory anywhere"
+          fi
           
       - name: Run adaptive tests for iOS
         working-directory: flutter_app/mrs_unkwn_app
@@ -319,12 +351,35 @@ jobs:
         working-directory: flutter_app/mrs_unkwn_app
         run: |
           echo "🍎 Attempting iOS build..."
+          
+          # First ensure iOS project is properly configured
+          if [ ! -d "ios" ]; then
+            echo "❌ No iOS directory found - Flutter project might not have iOS support"
+            echo "📋 Let's check what platforms are available:"
+            ls -la
+            exit 0
+          fi
+          
+          # Check if ios project needs to be created
+          if [ ! -f "ios/Runner.xcodeproj/project.pbxproj" ]; then
+            echo "🔧 iOS project seems incomplete, trying to regenerate..."
+            flutter create --platforms=ios .
+          fi
+          
+          # Try the build
           if flutter build ios --no-codesign --debug --target lib/main.dart; then
             echo "✅ iOS build successful!"
           else
             echo "❌ iOS build failed"
-            echo "Let's check what the specific error is:"
-            flutter build ios --no-codesign --debug --target lib/main.dart --verbose 2>&1 | tail -50
+            echo "📊 Checking iOS build logs:"
+            
+            # Show detailed error information
+            echo "Flutter doctor for iOS:"
+            flutter doctor --verbose | grep -A 10 -B 5 iOS || echo "No iOS info in flutter doctor"
+            
+            # Try to get more specific error
+            echo "Attempting verbose iOS build to see specific error:"
+            flutter build ios --no-codesign --debug --target lib/main.dart --verbose 2>&1 | tail -100 || echo "Verbose build also failed"
           fi
           
       - name: Upload iOS Build
