@@ -44,6 +44,7 @@
 - Phase 1 Milestone 6: Basic Content Moderation abgeschlossen ✓
 - Android v1 → v2 Fix abgeschlossen ✓
 - Android package structure cleanup abgeschlossen ✓
+- Android Gradle and manifest overhaul abgeschlossen ✓
 - Wartungscheck am 2025-09-15 durchgeführt (npm test erfolgreich, pytest keine Tests, flutter test fehlgeschlagen)
 - Wartungscheck am 2025-09-16 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
 - Wartungscheck am 2025-09-17 durchgeführt (npm test fehlgeschlagen: ts-node nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Kompilationsfehler)
@@ -55,6 +56,7 @@
 - Wartungscheck am 2025-10-15 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test hängt beim Laden der Tests)
 
 - Wartungscheck am 2025-10-16 durchgeführt (npm test erfolgreich, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
+- Wartungscheck am 2025-10-18 durchgeführt (npm test fehlgeschlagen: ts-node nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: MissingPluginException und weitere Fehler, flutter build apk fehlgeschlagen: Gradle/Java-Version inkompatibel)
 
 ## Referenzen
 - `/README.md`
