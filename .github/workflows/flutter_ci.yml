@@ -54,29 +54,33 @@ jobs:
       - name: Configure Flutter
         run: flutter config --no-analytics
           
-      - name: Android v1 to v2 Migration
+      - name: Force Android v2 Embedding Migration
         working-directory: flutter_app/mrs_unkwn_app
         run: |
-          echo "🚨 Android v1 → v2 Migration..."
+          echo "🚨 FORCE Android v1 → v2 Migration..."
           
-          # Alte MainActivity Dateien entfernen
+          # KRITISCH: Alle v1 Spuren komplett entfernen
           rm -rf android/app/src/main/java/
           rm -rf android/app/src/main/kotlin/
+          rm -rf .flutter-plugins*
+          rm -rf .dart_tool/
+          rm -rf build/
           
           # Neue Kotlin-Struktur erstellen
           mkdir -p android/app/src/main/kotlin/com/mrsunkwn/mrs_unkwn_app
           
-          # MainActivity.kt erstellen
+          # MainActivity.kt mit EXPLIZITER v2 Konfiguration
           cat > android/app/src/main/kotlin/com/mrsunkwn/mrs_unkwn_app/MainActivity.kt << 'EOF'
           package com.mrsunkwn.mrs_unkwn_app
 
           import io.flutter.embedding.android.FlutterActivity
 
           class MainActivity: FlutterActivity() {
+              // Explizit v2 Embedding verwenden
           }
           EOF
 
-          # AndroidManifest.xml aktualisieren
+          # AndroidManifest.xml mit ALLEN v2 Flags
           cat > android/app/src/main/AndroidManifest.xml << 'EOF'
           <manifest xmlns:android="http://schemas.android.com/apk/res/android"
               package="com.mrsunkwn.mrs_unkwn_app">
@@ -85,7 +89,7 @@ jobs:
               
               <application
                   android:label="mrs_unkwn_app"
-                  android:name="io.flutter.app.FlutterApplication"
+                  android:name="${applicationName}"
                   android:icon="@mipmap/ic_launcher">
                   
                   <activity
@@ -105,28 +109,151 @@ jobs:
                       </intent-filter>
                   </activity>
                   
+                  <!-- KRITISCHE v2 Embedding Flags -->
                   <meta-data
                       android:name="flutterEmbedding"
                       android:value="2" />
+                  <meta-data
+                      android:name="io.flutter.embedding.engine.dart.DartExecutor.DartEntrypoint"
+                      android:value="main" />
               </application>
           </manifest>
           EOF
 
-          # gradle.properties mit v2 Embedding Flag
+          # build.gradle (app) komplett neu mit v2 Setup
+          cat > android/app/build.gradle << 'EOF'
+          plugins {
+              id "com.android.application"
+              id "kotlin-android"
+              id "dev.flutter.flutter-gradle-plugin"
+          }
+
+          def localProperties = new Properties()
+          def localPropertiesFile = rootProject.file('local.properties')
+          if (localPropertiesFile.exists()) {
+              localPropertiesFile.withReader('UTF-8') { reader ->
+                  localProperties.load(reader)
+              }
+          }
+
+          def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+          if (flutterVersionCode == null) {
+              flutterVersionCode = '1'
+          }
+
+          def flutterVersionName = localProperties.getProperty('flutter.versionName')
+          if (flutterVersionName == null) {
+              flutterVersionName = '1.0'
+          }
+
+          android {
+              namespace 'com.mrsunkwn.mrs_unkwn_app'
+              compileSdk flutter.compileSdkVersion
+              ndkVersion flutter.ndkVersion
+
+              compileOptions {
+                  sourceCompatibility JavaVersion.VERSION_1_8
+                  targetCompatibility JavaVersion.VERSION_1_8
+              }
+
+              kotlinOptions {
+                  jvmTarget = '1.8'
+              }
+
+              sourceSets {
+                  main.java.srcDirs += 'src/main/kotlin'
+              }
+
+              defaultConfig {
+                  applicationId "com.mrsunkwn.mrs_unkwn_app"
+                  minSdk flutter.minSdkVersion
+                  targetSdk flutter.targetSdkVersion
+                  versionCode flutterVersionCode.toInteger()
+                  versionName flutterVersionName
+              }
+
+              buildTypes {
+                  release {
+                      signingConfig signingConfigs.debug
+                  }
+              }
+          }
+
+          flutter {
+              source '../..'
+          }
+
+          dependencies {
+              implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10"
+          }
+          EOF
+
+          # gradle.properties mit ALLEN v2 Flags
           cat > android/gradle.properties << 'EOF'
-          org.gradle.jvmargs=-Xmx1536M
+          org.gradle.jvmargs=-Xmx4g
           android.useAndroidX=true
           android.enableJetifier=true
           android.enableR8=true
+          # FORCE Flutter v2 Embedding
           flutter.embedding=2
+          android.defaults.buildfeatures.buildconfig=true
+          android.nonTransitiveRClass=false
+          # Disable v1 Embedding komplett
+          flutter.embedding.v1=false
           EOF
 
-          # Cache-Dateien bereinigen
-          rm -f .flutter-plugins
-          rm -f .flutter-plugins-dependencies
-          rm -rf .dart_tool
+          # settings.gradle modernisieren
+          cat > android/settings.gradle << 'EOF'
+          pluginManagement {
+              def flutterSdkPath = {
+                  def properties = new Properties()
+                  file("local.properties").withInputStream { properties.load(it) }
+                  def flutterSdkPath = properties.getProperty("flutter.sdk")
+                  assert flutterSdkPath != null, "flutter.sdk not set in local.properties"
+                  return flutterSdkPath
+              }()
 
-          echo "✅ Android v2 Migration abgeschlossen"
+              includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
+
+              repositories {
+                  google()
+                  mavenCentral()
+                  gradlePluginPortal()
+              }
+          }
+
+          plugins {
+              id "dev.flutter.flutter-plugin-loader" version "1.0.0"
+              id "com.android.application" version "7.4.2" apply false
+              id "org.jetbrains.kotlin.android" version "1.8.10" apply false
+          }
+
+          include ":app"
+          EOF
+
+          # Project-level build.gradle
+          cat > android/build.gradle << 'EOF'
+          allprojects {
+              repositories {
+                  google()
+                  mavenCentral()
+              }
+          }
+
+          rootProject.buildDir = '../build'
+          subprojects {
+              project.buildDir = "${rootProject.buildDir}/${project.name}"
+          }
+          subprojects {
+              project.evaluationDependsOn(':app')
+          }
+
+          tasks.register("clean", Delete) {
+              delete rootProject.buildDir
+          }
+          EOF
+
+          echo "✅ FORCE Android v2 Migration abgeschlossen"
           
       - name: Fix Dependencies
         working-directory: flutter_app/mrs_unkwn_app
@@ -194,19 +321,51 @@ jobs:
             fi
           fi
           
-      - name: Verify Android Configuration
+      - name: Verify Android v2 Configuration
         working-directory: flutter_app/mrs_unkwn_app
         run: |
-          echo "📋 Android-Konfiguration überprüfen..."
+          echo "📋 DETAILLIERTE Android v2 Überprüfung..."
           
-          echo "MainActivity-Datei:"
-          ls -la android/app/src/main/kotlin/com/mrsunkwn/mrs_unkwn_app/ || echo "MainActivity nicht gefunden"
+          echo "=== MainActivity Check ==="
+          if [ -f "android/app/src/main/kotlin/com/mrsunkwn/mrs_unkwn_app/MainActivity.kt" ]; then
+            echo "✅ MainActivity.kt gefunden"
+            cat android/app/src/main/kotlin/com/mrsunkwn/mrs_unkwn_app/MainActivity.kt
+          else
+            echo "❌ MainActivity.kt NICHT gefunden!"
+            find android/ -name "MainActivity.*" -type f
+          fi
           
-          echo "Flutter Embedding Check:"
-          grep "flutterEmbedding" android/app/src/main/AndroidManifest.xml || echo "flutterEmbedding nicht gefunden"
-          grep "flutter.embedding" android/gradle.properties || echo "flutter.embedding=2 nicht gefunden"
+          echo "=== Manifest v2 Flags Check ==="
+          if grep -q "flutterEmbedding" android/app/src/main/AndroidManifest.xml; then
+            echo "✅ flutterEmbedding Flag gefunden:"
+            grep -A2 -B2 "flutterEmbedding" android/app/src/main/AndroidManifest.xml
+          else
+            echo "❌ flutterEmbedding Flag NICHT gefunden!"
+          fi
           
-          echo "✅ Konfiguration überprüft"
+          echo "=== gradle.properties v2 Check ==="
+          if grep -q "flutter.embedding=2" android/gradle.properties; then
+            echo "✅ flutter.embedding=2 gefunden"
+          else
+            echo "❌ flutter.embedding=2 NICHT gefunden!"
+          fi
+          
+          echo "=== Application Name Check ==="
+          grep "applicationName\|FlutterApplication" android/app/src/main/AndroidManifest.xml || echo "Application Name überprüfen"
+          
+          echo "=== V1 Reste Check ==="
+          if find android/ -name "*FlutterActivity*" -type f | grep -v MainActivity; then
+            echo "⚠️ Mögliche v1 Reste gefunden"
+          else
+            echo "✅ Keine v1 Reste gefunden"
+          fi
+          
+          echo "=== Gradle Plugin Check ==="
+          if grep -q "dev.flutter.flutter-gradle-plugin" android/app/build.gradle; then
+            echo "✅ Neues Flutter Gradle Plugin verwendet"
+          else
+            echo "❌ Altes Gradle Plugin Setup"
+          fi
           
       - name: Build Android APK
         working-directory: flutter_app/mrs_unkwn_app
