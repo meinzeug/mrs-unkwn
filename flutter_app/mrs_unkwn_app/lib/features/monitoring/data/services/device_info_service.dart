@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:battery_plus/battery_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:disk_space/disk_space.dart';
+import 'package:disk_space_plus/disk_space_plus.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../../core/utils/logger.dart';

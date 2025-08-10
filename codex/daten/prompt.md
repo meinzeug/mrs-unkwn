@@ -3,6 +3,7 @@
 ## Status
 - Phase 0 abgeschlossen ✓
 - Produktions-Setup-Skript erstellt ✓
+- Disk-Space-Plugin ersetzt & Backend-Build-Skripte ergänzt ✓
 
 ## Referenzen
 - `/README.md`
