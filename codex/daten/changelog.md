@@ -803,3 +803,7 @@
 - `npm test` fehlgeschlagen: package.json nicht gefunden
 - `pytest codex/tests` ausgeführt: keine Tests gefunden
 - `flutter test` fehlgeschlagen: Testverzeichnis nicht gefunden
+
+### Phase 1: Chat Message Model und Serialization - 2025-10-04
+- `chat_message_test.dart` hinzugefügt zur Überprüfung der JSON-Serialisierung
+- Roadmap und Prompt aktualisiert
