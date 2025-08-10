@@ -807,3 +807,8 @@
 ### Phase 1: Chat Message Model und Serialization - 2025-10-04
 - `chat_message_test.dart` hinzugefügt zur Überprüfung der JSON-Serialisierung
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: AI Prompt Engineering für Sokratische Methode - 2025-10-05
+- `socratic_prompts.dart` um altersgerechte System-Prompts und Kontextkürzung erweitert
+- Unit-Test `socratic_prompts_test.dart` zur Überprüfung der Prompt-Generierung hinzugefügt
+- Roadmap und Prompt aktualisiert
