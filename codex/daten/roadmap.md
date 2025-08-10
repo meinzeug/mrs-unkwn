@@ -19,9 +19,8 @@ Details: Erstelle ein neues Git-Repository mit `git init`. Füge eine .gitignore
 [x] Flutter SDK installieren und Entwicklungsumgebung einrichten:
 Details: Lade Flutter SDK von flutter.dev herunter. Extrahiere das SDK nach `C:\flutter` (Windows) oder `~/flutter` (macOS/Linux). Füge Flutter-Pfad zur PATH-Umgebungsvariable hinzu. Führe `flutter doctor` aus und behebe alle gemeldeten Probleme. Installiere Android Studio oder VS Code mit Flutter/Dart-Erweiterungen. Konfiguriere Android SDK mit API Level 21+ und iOS Deployment Target 11.0+.
 
-[ ] Flutter-Projekt mit Multi-Platform-Support erstellen:
+[ ] Flutter-Projekt mit Multi-Platform-Support erstellen <!-- TODO: pubspec SDK-Minimum auf ≥3.16.0 aktualisieren (aktuell Dart 3.5.3); Desktop-Verzeichnisse jetzt vorhanden -->
 Details: Navigiere in den `flutter_app/`-Ordner. Führe `flutter create --org com.mrsunkwn --platforms android,ios,web,windows,macos,linux mrs_unkwn_app` aus. Öffne `pubspec.yaml` und setze `flutter` Version auf minimum "3.16.0". Entferne Standard-Demo-Code aus `lib/main.dart`. Erstelle Basis-Ordnerstruktur in `lib/`: `core/`, `features/`, `shared/`, `platform_channels/`.
-Kommentar: Windows-, macOS- und Linux-Verzeichnisse fehlen noch; `flutter create` mit allen Plattformen erneut ausführen.
 
 [x] pubspec.yaml mit erforderlichen Dependencies konfigurieren:
 Details: Öffne `pubspec.yaml` und füge folgende dependencies hinzu unter `dependencies:`: `dio: ^5.3.0` (HTTP client), `flutter_bloc: ^8.1.3` (State Management), `get_it: ^7.6.0` (Dependency Injection), `flutter_secure_storage: ^9.0.0` (Secure Storage), `go_router: ^12.0.0` (Navigation), `hive: ^2.2.3` (Local Database), `json_annotation: ^4.8.1` (JSON Serialization). Unter `dev_dependencies:` füge hinzu: `build_runner: ^2.4.7`, `json_serializable: ^6.7.1`, `flutter_test:`, `mocktail: ^1.0.0`.

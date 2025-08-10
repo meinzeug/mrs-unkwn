@@ -34,6 +34,12 @@ flutter_app/mrs_unkwn_app/test/goldens/
 !flutter_app/mrs_unkwn_app/ios/
 !flutter_app/mrs_unkwn_app/ios/Runner/
 !flutter_app/mrs_unkwn_app/ios/Runner/DeviceMonitoringPlugin.swift
+!flutter_app/mrs_unkwn_app/windows/
+!flutter_app/mrs_unkwn_app/windows/**
+!flutter_app/mrs_unkwn_app/macos/
+!flutter_app/mrs_unkwn_app/macos/**
+!flutter_app/mrs_unkwn_app/linux/
+!flutter_app/mrs_unkwn_app/linux/**
 
 # Node.js
 node_modules/

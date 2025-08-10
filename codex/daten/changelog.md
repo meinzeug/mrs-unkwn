@@ -889,3 +889,8 @@
 - `pytest codex/tests` ausgeführt: keine Tests gefunden
 - `flutter test` fehlgeschlagen: MissingPluginException und weitere Fehler
 - `flutter build apk` fehlgeschlagen: Gradle/Java-Version inkompatibel
+### Phase 1: Flutter-Projekt mit Multi-Platform-Support re-verifiziert - 2025-08-10
+- `flutter create` ausgeführt; Windows-, macOS- und Linux-Verzeichnisse hinzugefügt
+- `.gitignore` für neue Plattform-Verzeichnisse aktualisiert
+- `pubspec.yaml` SDK-Minimum auf `>=3.16.0 <4.0.0` gesetzt (fehlgeschlagenes `flutter pub get` wegen Dart 3.5.3)
+- Roadmap-Eintrag mit offenem TODO versehen

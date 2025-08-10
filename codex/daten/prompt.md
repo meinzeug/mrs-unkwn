@@ -1,62 +1,11 @@
-# Nächster Schritt: Phase 1 Milestone 6 – Learning Progress Analytics
+# Nächster Schritt: Phase 1 – pubspec.yaml mit erforderlichen Dependencies konfigurieren
 
 ## Status
 - Phase 0 abgeschlossen ✓
-- Flutter-Projekt mit Multi-Platform-Support offen ✗ (Windows/macOS/Linux fehlen)
-- Phase 1 Milestone 4: Family Creation UI Screen abgeschlossen ✓
-- Phase 1 Milestone 4: Family Model und Data Classes abgeschlossen ✓
-- Phase 1 Milestone 4: Family Repository Implementation abgeschlossen ✓
-- Phase 1 Milestone 4: Family BLoC State Management abgeschlossen ✓
-- Phase 1 Milestone 4: Family Member Invitation System abgeschlossen ✓
-- Phase 1 Milestone 4: QR Code Invitation Feature abgeschlossen ✓
-- Phase 1 Milestone 4: Family Settings Management abgeschlossen ✓
-- Phase 1 Milestone 4: Family Member Management UI abgeschlossen ✓
-- Phase 1 Milestone 4: Family Dashboard Overview abgeschlossen ✓
-- Phase 1 Milestone 4: Family Role-Based Permissions abgeschlossen ✓
-- Phase 1 Milestone 4: Family Subscription Management abgeschlossen ✓
-- Phase 1 Milestone 4: Family Data Synchronization abgeschlossen ✓
-- Phase 1 Milestone 5: Platform Channel Setup für Device Monitoring abgeschlossen ✓
-- Phase 1 Milestone 5: Android Native Code für App Usage Tracking abgeschlossen ✓
-- Phase 1 Milestone 5: iOS Native Code für Screen Time Integration abgeschlossen ✓
-- Phase 1 Milestone 5: Permission Request Flow für Device Monitoring abgeschlossen ✓
-- Phase 1 Milestone 5: App Usage Statistics UI Display abgeschlossen ✓
-- Phase 1 Milestone 5: Real-time Activity Monitoring Service abgeschlossen ✓
-- Phase 1 Milestone 5: Android MainActivity Manifest Configuration abgeschlossen ✓
-- Phase 1 Milestone 5: App Installation/Uninstallation Detection abgeschlossen ✓
-- Phase 1 Milestone 5: Basic Screen Time Tracking Implementation abgeschlossen ✓
-- Phase 1 Milestone 5: Device Information Collection abgeschlossen ✓
-- Phase 1 Milestone 5: Network Activity Monitoring abgeschlossen ✓
-- Phase 1 Milestone 5: Location Tracking Service (Optional) abgeschlossen ✓
-- Phase 1 Milestone 5: Monitoring Data Synchronization abgeschlossen ✓
-- Phase 1 Milestone 5: Parent Dashboard für Monitoring Data abgeschlossen ✓
-- Phase 1 Milestone 5: Monitoring Alerts und Notifications abgeschlossen ✓
-- Phase 1 Milestone 5: Privacy und DSGVO Compliance für Monitoring abgeschlossen ✓
-- Phase 1 Milestone 5: Monitoring Performance Optimization abgeschlossen ✓
-- Phase 1 Milestone 6: OpenAI API Integration Setup abgeschlossen ✓
-- Phase 1 Milestone 6: Chat Message Model und Serialization abgeschlossen ✓
-- Phase 1 Milestone 6: AI Prompt Engineering für Sokratische Methode abgeschlossen ✓
-- Phase 1 Milestone 6: Chat UI Interface Implementation abgeschlossen ✓
-- Phase 1 Milestone 6: AI Response Generation Service abgeschlossen ✓
-- Phase 1 Milestone 6: Subject Classification System abgeschlossen ✓
-- Phase 1 Milestone 6: Learning Session Management abgeschlossen ✓
-- Phase 1 Milestone 6: AI Tutoring BLoC State Management abgeschlossen ✓
-- Phase 1 Milestone 6: Voice Input Integration abgeschlossen ✓
-- Phase 1 Milestone 6: Basic Content Moderation abgeschlossen ✓
+- Flutter-Projekt mit Multi-Platform-Support offen ✗ (SDK-Minimum 3.16.0 nicht erfüllt; Desktop-Verzeichnisse hinzugefügt)
 - Android v1 → v2 Fix abgeschlossen ✓
 - Android package structure cleanup abgeschlossen ✓
 - Android Gradle and manifest overhaul abgeschlossen ✓
-- Wartungscheck am 2025-09-15 durchgeführt (npm test erfolgreich, pytest keine Tests, flutter test fehlgeschlagen)
-- Wartungscheck am 2025-09-16 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
-- Wartungscheck am 2025-09-17 durchgeführt (npm test fehlgeschlagen: ts-node nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Kompilationsfehler)
-- Wartungscheck am 2025-09-18 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: MissingPluginException und fehlende Abhängigkeiten)
-- Wartungscheck am 2025-09-19 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
-- Wartungscheck am 2025-09-20 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: fehlende Registrierung und Mock-Konfiguration)
-- Wartungscheck am 2025-10-14 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Befehl nicht gefunden)
-
-- Wartungscheck am 2025-10-15 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test hängt beim Laden der Tests)
-
-- Wartungscheck am 2025-10-16 durchgeführt (npm test erfolgreich, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
-- Wartungscheck am 2025-10-18 durchgeführt (npm test fehlgeschlagen: ts-node nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: MissingPluginException und weitere Fehler, flutter build apk fehlgeschlagen: Gradle/Java-Version inkompatibel)
 
 ## Referenzen
 - `/README.md`
@@ -65,24 +14,19 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Phase 1 Milestone 6: Learning Progress Analytics umsetzen.
+Phase 1: pubspec.yaml mit erforderlichen Dependencies konfigurieren.
 
 ### Vorbereitungen
 - README und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Metriken berechnen: Zeit pro Fach, Fragen pro Sitzung, Lern-Geschwindigkeit.
-- Schwierigkeit und Concept-Mastery über die Zeit verfolgen.
-- Fortschritt mit Charts und Trend-Lines visualisieren.
-- Achievement-System mit Lern-Meilensteinen integrieren.
-- Reports für Eltern mit Insights und Empfehlungen generieren.
+- Dependencies gemäß Roadmap ergänzen.
+- V2-Embedding-Konformität sicherstellen.
 
 ### Validierung
-- `npm test` ausführen.
-- `pytest codex/tests` ausführen.
-- `flutter test` ausführen und Ergebnisse dokumentieren.
+- `npm test`
+- `pytest codex/tests`
+- `flutter test`
 
 ### Selbstgenerierung
 - Nach Abschluss neuen Prompt erstellen.
-
-*Hinweis: Codex kann keine Binärdateien mergen. Benötigte Dateien werden durch Skripte beim Ausführen automatisch erzeugt. Halte den Codeumfang dieses Sprints unter 500 Zeilen.*
