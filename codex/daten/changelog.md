@@ -930,3 +930,7 @@
 ### Wartung: Backend Docker-Build korrigiert - 2025-10-25
 - `Dockerfile` und `Dockerfile.backend` installieren nun Dev-Dependencies, bauen das Projekt und prunen sie anschließend
 - Backend-Container erstellt die `dist/`-Artefakte erfolgreich und startet
+
+### Phase 1: Release-Build-Abhängigkeiten prüfen - 2025-10-26
+- `flutter build apk --release` erneut ausgeführt; Gradle-Task `assembleRelease` hängt weiterhin beim Laden von Android-Abhängigkeiten
+- Roadmap und Prompt aktualisiert

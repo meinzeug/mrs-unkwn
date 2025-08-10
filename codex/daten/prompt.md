@@ -7,6 +7,7 @@
 - Android namespace Fixer & Release-Build-Skripte hinzugefügt ✓
 - Flutter-Projekt Multi-Platform-Support re-verifiziert – Maven-Repository ergänzt, Release-Build lädt noch Abhängigkeiten ✗
 - Backend Docker-Build korrigiert ✓
+- Release-Build erneut gestartet – Gradle-Task `assembleRelease` hängt beim Laden der Android-Abhängigkeiten ✗
 
 ## Referenzen
 - `/README.md`
