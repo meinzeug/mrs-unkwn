@@ -18,7 +18,7 @@ class MrsUnkwnApp extends StatelessWidget {
         title: 'Mrs-Unkwn',
         theme: ThemeData(primarySwatch: Colors.blue),
         routerConfig: AppRouter.router,
-        localizationsDelegates: const [
+        localizationsDelegates: [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,

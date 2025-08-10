@@ -3,7 +3,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'helpers/test_helpers.dart';
-import 'package:mrs_unkwn_app/core/storage/secure_storage_service.dart';
 import 'package:mrs_unkwn_app/features/tutoring/data/services/learning_session_service.dart';
 
 void main() {

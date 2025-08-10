@@ -2,6 +2,7 @@
 
 ## Status
 - Phase 0 abgeschlossen ✓
+- Flutter-Projekt mit Multi-Platform-Support offen ✗ (Windows/macOS/Linux fehlen)
 - Phase 1 Milestone 4: Family Creation UI Screen abgeschlossen ✓
 - Phase 1 Milestone 4: Family Model und Data Classes abgeschlossen ✓
 - Phase 1 Milestone 4: Family Repository Implementation abgeschlossen ✓
