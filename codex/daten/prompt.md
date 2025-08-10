@@ -53,6 +53,8 @@
 
 - Wartungscheck am 2025-10-15 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test hängt beim Laden der Tests)
 
+- Wartungscheck am 2025-10-16 durchgeführt (npm test erfolgreich, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
+
 ## Referenzen
 - `/README.md`
 - `/codex/AGENTS.md`

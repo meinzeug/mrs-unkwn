@@ -1,0 +1,9 @@
+{
+  "name": "mrs-unkwn",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Root configuration for project scripts",
+  "scripts": {
+    "test": "npm --prefix backend test"
+  }
+}

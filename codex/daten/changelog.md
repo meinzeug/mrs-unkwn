@@ -870,3 +870,7 @@
 - `MainActivity.kt` mit korrektem Package hinzugefügt
 - `flutter.embedding=2` in `android/gradle.properties` eingetragen
 - Flutter-Caches bereinigt und `flutter clean` ausgeführt
+### Wartungscheck - 2025-10-16
+- `npm test` erfolgreich
+- `pytest codex/tests` ausgeführt: keine Tests gefunden
+- `flutter test` fehlgeschlagen: Testverzeichnis nicht gefunden
