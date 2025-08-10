@@ -879,3 +879,13 @@
 - `flutter analyze` ausgeführt und gemeldete Fehler/Warnungen behoben
 - AndroidManifest auf Flutter Embedding v2 bereinigt
 - Roadmap-Eintrag für Multi-Platform-Support wieder geöffnet
+### Phase 1: Android Gradle and manifest overhaul - 2025-10-18
+- MainActivity.kt, AndroidManifest.xml, gradle.properties, settings.gradle sowie build.gradle Dateien vollständig ersetzt, um Flutter Embedding v2 zu finalisieren
+- App-level build.gradle auf neue Plugin-Syntax umgestellt und Projekt-build.gradle hinzugefügt
+- Cache-Dateien entfernt und `flutter clean`, `flutter pub get` ausgeführt
+
+### Wartungscheck - 2025-10-18
+- `npm test` fehlgeschlagen: ts-node nicht gefunden
+- `pytest codex/tests` ausgeführt: keine Tests gefunden
+- `flutter test` fehlgeschlagen: MissingPluginException und weitere Fehler
+- `flutter build apk` fehlgeschlagen: Gradle/Java-Version inkompatibel
