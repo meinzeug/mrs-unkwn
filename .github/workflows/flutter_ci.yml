@@ -295,6 +295,7 @@ jobs:
           # Check if ios directory exists
           if [ -d "ios" ]; then
             echo "✅ iOS directory found"
+            ls -la ios/
             
             # Check if Podfile exists
             if [ -f "ios/Podfile" ]; then
@@ -304,24 +305,41 @@ jobs:
               cd ..
               echo "✅ Pod install completed"
             else
-              echo "⚠️  No Podfile found, creating one..."
-              cd ios
-              # Initialize pods if needed
-              flutter packages get
-              cd ..
-              # Try again
+              echo "⚠️  No Podfile found, trying to generate iOS platform..."
+              
+              # Sometimes Flutter projects don't have iOS generated yet
+              flutter create --platforms=ios . || echo "Create iOS failed"
+              
+              # Try flutter packages get to trigger iOS setup
+              flutter packages get || echo "Flutter packages get failed"
+              
+              # Check if Podfile was created
               if [ -f "ios/Podfile" ]; then
+                echo "✅ Podfile created, installing pods..."
                 cd ios
                 pod install --repo-update
                 cd ..
               else
                 echo "❌ Could not create Podfile"
+                echo "📋 iOS directory contents:"
+                ls -la ios/ || echo "iOS directory doesn't exist"
+                
+                echo "📋 Let's see what flutter doctor says about iOS:"
+                flutter doctor | grep -A 5 iOS || echo "No iOS info"
               fi
             fi
           else
-            echo "❌ No ios directory found"
-            echo "This might indicate the Flutter project structure is different"
-            find . -name "ios" -type d || echo "No ios directory anywhere"
+            echo "❌ No ios directory found - trying to add iOS platform"
+            flutter create --platforms=ios . || echo "Failed to add iOS platform"
+            
+            # Check again
+            if [ -d "ios" ] && [ -f "ios/Podfile" ]; then
+              cd ios
+              pod install --repo-update
+              cd ..
+            else
+              echo "❌ Still no iOS platform available"
+            fi
           fi
           
       - name: Run adaptive tests for iOS
