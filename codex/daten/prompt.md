@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 Milestone 6 – Learning Session Management
+# Nächster Schritt: Phase 1 Milestone 6 – Voice Input Integration
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -38,6 +38,7 @@
 - Phase 1 Milestone 6: AI Response Generation Service abgeschlossen ✓
 - Phase 1 Milestone 6: Subject Classification System abgeschlossen ✓
 - Phase 1 Milestone 6: Learning Session Management abgeschlossen ✓
+- Phase 1 Milestone 6: AI Tutoring BLoC State Management abgeschlossen ✓
 - Wartungscheck am 2025-09-15 durchgeführt (npm test erfolgreich, pytest keine Tests, flutter test fehlgeschlagen)
 - Wartungscheck am 2025-09-16 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
 - Wartungscheck am 2025-09-17 durchgeführt (npm test fehlgeschlagen: ts-node nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Kompilationsfehler)
@@ -51,18 +52,16 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Phase 1 Milestone 6: AI Tutoring BLoC State Management umsetzen.
+Phase 1 Milestone 6: Voice Input Integration umsetzen.
 
 ### Vorbereitungen
 - README und Roadmap prüfen.
-- Sicherstellen, dass `tutoring_bloc.dart` angelegt wird.
 
 ### Implementierungsschritte
-- Datei `lib/features/tutoring/presentation/bloc/tutoring_bloc.dart` erstellen.
-- Events `SendMessageRequested`, `LoadChatHistoryRequested`, `StartLearningSessionRequested`, `EndLearningSessionRequested` definieren.
-- States `TutoringInitial`, `TutoringLoading`, `MessagesLoaded`, `MessageSent`, `TutoringError` implementieren.
-- Event-Handler für AI-Integration und lokale Datenspeicherung umsetzen.
-- Optimistic UI Updates für gesendete Nachrichten berücksichtigen.
+- Dependency `speech_to_text` in `pubspec.yaml` eintragen.
+- Sprachaufnahme-Button in `chat_page.dart` ergänzen.
+- Service `VoiceInputService` für Speech-to-Text-Erkennung implementieren.
+- Erkannten Text in den Nachrichtenfluss des `TutoringBloc` einspeisen.
 
 ### Validierung
 - `npm test` ausführen.

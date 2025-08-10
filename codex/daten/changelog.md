@@ -833,3 +833,8 @@
 - Service im `service_locator` registriert
 - Unit-Test `learning_session_service_test.dart` prüft Session-Start, Ende und Sync-Status
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: AI Tutoring BLoC State Management - 2025-10-10
+- `tutoring_bloc.dart` mit Events für Nachrichtenversand und Sitzungssteuerung erstellt
+- Chatverlauf wird lokal gespeichert und optimistisch aktualisiert
+- Roadmap und Prompt aktualisiert
