@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 Milestone 6 – Subject Classification System
+# Nächster Schritt: Phase 1 Milestone 6 – Learning Session Management
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -36,6 +36,7 @@
 - Phase 1 Milestone 6: AI Prompt Engineering für Sokratische Methode abgeschlossen ✓
 - Phase 1 Milestone 6: Chat UI Interface Implementation abgeschlossen ✓
 - Phase 1 Milestone 6: AI Response Generation Service abgeschlossen ✓
+- Phase 1 Milestone 6: Subject Classification System abgeschlossen ✓
 - Wartungscheck am 2025-09-15 durchgeführt (npm test erfolgreich, pytest keine Tests, flutter test fehlgeschlagen)
 - Wartungscheck am 2025-09-16 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
 - Wartungscheck am 2025-09-17 durchgeführt (npm test fehlgeschlagen: ts-node nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Kompilationsfehler)
@@ -49,18 +50,18 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Phase 1 Milestone 6: Subject Classification System umsetzen.
+Phase 1 Milestone 6: Learning Session Management umsetzen.
 
 ### Vorbereitungen
 - README und Roadmap prüfen.
-- Sicherstellen, dass `subject_classification_service.dart` angelegt ist.
+- Sicherstellen, dass `learning_session.dart` Modell existiert.
 
 ### Implementierungsschritte
-- Datei `lib/features/tutoring/data/services/subject_classification_service.dart` erstellen oder erweitern.
-- Keyword-basierte Klassifikation mit Historien-Tracking implementieren.
-- Erkennung von Fachwechseln zwischen aufeinanderfolgenden Fragen hinzufügen.
-- Platzhalter für zukünftiges ML-basiertes Modell einfügen.
-- Öffentliche Methoden mit Unit-Tests absichern.
+- Datei `lib/features/tutoring/data/models/learning_session.dart` erweitern, falls notwendig.
+- Session-Start- und End-Logik mit Dauerberechnung implementieren.
+- Lernmetriken (Fragenanzahl, Themen, AI-Interaktionen) erfassen und lokal speichern.
+- Sync-Mechanismus zum Backend vorbereiten.
+- Unit-Tests für das Session-Tracking hinzufügen.
 
 ### Validierung
 - `npm test` ausführen.
