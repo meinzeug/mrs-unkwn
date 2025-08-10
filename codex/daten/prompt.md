@@ -5,7 +5,7 @@
 - Produktions-Setup-Skript erstellt ✓
 - Disk-Space-Plugin ersetzt & Backend-Build-Skripte ergänzt ✓
 - Android namespace Fixer & Release-Build-Skripte hinzugefügt ✓
-- Flutter-Projekt Multi-Platform-Support re-verifiziert – Maven-Repository ergänzt, Release-Build lädt noch Abhängigkeiten ✗
+- Flutter-Projekt Multi-Platform-Support re-verifiziert – Gradle 8.7 gesetzt, Release-Build bricht weiterhin während Abhängigkeitskompilierung ab ✗
 - Backend Docker-Build korrigiert ✓
 
 ## Referenzen

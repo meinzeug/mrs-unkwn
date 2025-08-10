@@ -930,3 +930,7 @@
 ### Wartung: Backend Docker-Build korrigiert - 2025-10-25
 - `Dockerfile` und `Dockerfile.backend` installieren nun Dev-Dependencies, bauen das Projekt und prunen sie anschließend
 - Backend-Container erstellt die `dist/`-Artefakte erfolgreich und startet
+
+### Wartung: Gradle 8.7 Update & Build-Bereinigung - 2025-10-26
+- Gradle Wrapper auf Version 8.7 aktualisiert und veraltete Flags in `android/gradle.properties` entfernt
+- Release-Build erneut gestartet, bricht jedoch weiterhin mit langer Abhängigkeitskompilierung ab
