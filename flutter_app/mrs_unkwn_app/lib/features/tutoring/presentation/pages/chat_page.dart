@@ -1,9 +1,12 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 
 import '../../data/models/chat_message.dart';
+import '../../data/services/chat_history_service.dart';
 import '../../data/services/voice_input_service.dart';
+import '../../../../core/di/service_locator.dart';
 
 enum MessageStatus { sending, sent, error }
 
@@ -22,15 +25,39 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   final List<UiMessage> _messages = [];
+  final List<ChatMessage> _history = [];
+  static const int _pageSize = 20;
   final TextEditingController _controller = TextEditingController();
   final ScrollController _scrollController = ScrollController();
   bool _isTyping = false;
   bool _isLoadingMore = false;
   final VoiceInputService _voice = VoiceInputService();
+  final ChatHistoryService _historyService = sl<ChatHistoryService>();
   bool _isRecording = false;
   double _soundLevel = 0;
   Timer? _recordTimer;
   int _recordSeconds = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadInitial();
+  }
+
+  Future<void> _loadInitial() async {
+    final stored = await _historyService.getMessages();
+    _history.addAll(stored);
+    final start = max(0, _history.length - _pageSize);
+    final initial = _history.sublist(start);
+    setState(() {
+      _messages.addAll(
+        initial.map(
+          (m) => UiMessage(message: m, status: MessageStatus.sent),
+        ),
+      );
+    });
+    _scrollToBottom();
+  }
 
   @override
   void dispose() {
@@ -55,6 +82,7 @@ class _ChatPageState extends State<ChatPage> {
       _controller.clear();
     });
     _scrollToBottom();
+    unawaited(_historyService.addMessage(message));
 
     Future.delayed(const Duration(milliseconds: 500), () {
       setState(() {
@@ -127,6 +155,7 @@ class _ChatPageState extends State<ChatPage> {
         _isTyping = false;
       });
       _scrollToBottom();
+      unawaited(_historyService.addMessage(response));
     });
   }
 
@@ -144,9 +173,19 @@ class _ChatPageState extends State<ChatPage> {
 
   Future<void> _loadMore() async {
     if (_isLoadingMore) return;
+    final startIndex = _history.length - _messages.length;
+    if (startIndex <= 0) return;
     setState(() => _isLoadingMore = true);
-    await Future.delayed(const Duration(milliseconds: 500));
-    setState(() => _isLoadingMore = false);
+    await Future.delayed(const Duration(milliseconds: 300));
+    final newStart = max(0, startIndex - _pageSize);
+    final older = _history.sublist(newStart, startIndex);
+    setState(() {
+      _messages.insertAll(
+        0,
+        older.map((m) => UiMessage(message: m, status: MessageStatus.sent)),
+      );
+      _isLoadingMore = false;
+    });
   }
 
   @override
@@ -166,15 +205,23 @@ class _ChatPageState extends State<ChatPage> {
               },
               child: ListView.builder(
                 controller: _scrollController,
-                itemCount: _messages.length + (_isTyping ? 1 : 0),
+                itemCount:
+                    _messages.length + (_isTyping ? 1 : 0) + (_isLoadingMore ? 1 : 0),
                 itemBuilder: (context, index) {
-                  if (_isTyping && index == _messages.length) {
+                  if (_isLoadingMore && index == 0) {
+                    return const Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  }
+                  final msgIndex = index - (_isLoadingMore ? 1 : 0);
+                  if (_isTyping && msgIndex == _messages.length) {
                     return const Padding(
                       padding: EdgeInsets.all(8),
                       child: Text('AI is typing...'),
                     );
                   }
-                  final uiMessage = _messages[index];
+                  final uiMessage = _messages[msgIndex];
                   return _ChatBubble(message: uiMessage);
                 },
               ),
