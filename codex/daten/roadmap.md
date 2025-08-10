@@ -441,3 +441,4 @@ Details: Endpoint liefert aktuelle Modellversion und letztes Trainingsdatum.
 
 - [x] Wartungscheck am 2025-09-19: Tests (`npm test` fehlgeschlagen: package.json nicht gefunden, `pytest codex/tests` keine Tests gefunden, `flutter test` fehlgeschlagen: Testverzeichnis nicht gefunden)
 - [x] Wartungscheck am 2025-10-16: Tests (`npm test` erfolgreich, `pytest codex/tests` keine Tests gefunden, `flutter test` fehlgeschlagen: Testverzeichnis nicht gefunden)
+- [ ] Wartungscheck am 2025-10-19: Tests (`npm test` fehlgeschlagen: ts-node nicht gefunden, `pytest codex/tests` keine Tests gefunden, `flutter test` fehlgeschlagen: geolocator_android Compile-Fehler, `flutter build apk --debug` fehlgeschlagen: Gradle 8.7 erforderlich)
