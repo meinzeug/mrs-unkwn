@@ -838,3 +838,9 @@
 - `tutoring_bloc.dart` mit Events für Nachrichtenversand und Sitzungssteuerung erstellt
 - Chatverlauf wird lokal gespeichert und optimistisch aktualisiert
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Voice Input Integration - 2025-10-11
+- `speech_to_text` als Dependency in `pubspec.yaml` hinzugefügt
+- `VoiceInputService` und `chat_page.dart` leiten erkannte Sprache an den `TutoringBloc` weiter
+- Service Locator um Registrierung des `TutoringBloc` erweitert
+- Roadmap und Prompt aktualisiert
