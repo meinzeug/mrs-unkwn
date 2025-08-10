@@ -913,3 +913,8 @@
 - `disk_space` durch `disk_space_plus` (0.2.2) ersetzt und `DeviceInfoService` angepasst
 - `flutter pub get` ausgeführt (intl via `dependency_overrides` auf 0.20.2 gesetzt)
 - Backend `package.json` um `build`- und `start`-Skripte erweitert
+### Phase 1: Android namespace fixer & Release-Build-Skripte - 2025-10-22
+- `tool/fix_android_namespaces.dart` erstellt, ergänzt fehlende `namespace`-Einträge anhand des `AndroidManifest`.
+- Wrapper `scripts/build_android_release.sh` und `scripts/build_android_release.ps1` hinzugefügt.
+- README um Hinweise zum neuen Build-Prozess erweitert.
+- Roadmap und Prompt aktualisiert.

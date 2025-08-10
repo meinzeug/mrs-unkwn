@@ -452,3 +452,19 @@ Dokument-Version : 1.0
 Erstellungsdatum: August 2025
 Status: Entwurf zur Review
 Nächste Review : September 2025
+
+## Android Release Build
+
+Für den Android-Release-Build werden fehlende `namespace`-Einträge in Plugin-Modulen automatisch ergänzt.
+
+**Unix**
+```
+./scripts/build_android_release.sh
+```
+
+**Windows (PowerShell)**
+```
+pwsh ./scripts/build_android_release.ps1
+```
+
+Das Skript `tool/fix_android_namespaces.dart` liest den Paketnamen aus dem jeweiligen `AndroidManifest.xml` und trägt ihn als `namespace` in die passende Gradle-Datei ein, ohne Versionsänderungen an Bibliotheken vorzunehmen.
