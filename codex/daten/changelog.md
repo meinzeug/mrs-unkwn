@@ -908,3 +908,8 @@
 ### Produktions-Setup-Skript - 2025-10-20
 - `production-setup.sh` hinzugefügt, automatisiert Docker-, Nginx- und Certbot-Konfiguration sowie Flutter-APK-Build.
 - Beispiel-Dateien `docker-compose.yml`, `backend/Dockerfile.backend` und `nginx.conf` erzeugt.
+
+### Wartung: Disk-Space-Plugin ersetzt & Backend-Build-Skripte - 2025-10-21
+- `disk_space` durch `disk_space_plus` (0.2.2) ersetzt und `DeviceInfoService` angepasst
+- `flutter pub get` ausgeführt (intl via `dependency_overrides` auf 0.20.2 gesetzt)
+- Backend `package.json` um `build`- und `start`-Skripte erweitert

@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js",
     "test": "ts-node --transpile-only tests/security.test.ts && ts-node --transpile-only tests/homework.test.ts && ts-node --transpile-only tests/organization.test.ts && ts-node --transpile-only tests/rateLimit.test.ts && ts-node --transpile-only tests/adaptive.test.ts",
     "retrain-model": "ts-node --transpile-only ../scripts/retrain_homework_model.ts",
     "test:external": "ts-node --transpile-only tests/external_api.test.ts"
