@@ -1,0 +1,27 @@
+# Build stage
+FROM node:20-alpine AS build
+WORKDIR /app
+
+RUN apk add --no-cache python3 make g++  # native deps falls nötig
+
+# Manifest & Lockfile (npm)
+COPY package.json ./
+COPY package-lock.json ./
+
+# Install (nutzt Lockfile; fallback auf install)
+RUN npm ci --omit=dev || npm install --omit=dev
+
+# Restliche Quellen
+COPY . .
+
+# Build (falls vorhanden)
+RUN npm run build || true
+
+# Run stage
+FROM node:20-alpine
+WORKDIR /app
+RUN apk add --no-cache curl
+COPY --from=build /app /app
+ENV NODE_ENV=production
+USER node
+CMD ["node", "dist/index.js"]

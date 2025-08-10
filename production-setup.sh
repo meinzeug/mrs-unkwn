@@ -3,14 +3,20 @@ set -euo pipefail
 
 #=============================================================
 # Mrs-Unkwn Production Setup Script (HOST-NGINX VERSION)
-# - Backend in Docker (nur Backend-Service, host network)
-# - Nginx + Certbot auf dem Host (Reverse Proxy + HTTPS)
-# - API unter https://<DOMAIN>/api
-# - APK wird gebaut und unter https://<DOMAIN>/mrs-unkwn.apk ausgeliefert
-# - Persistente Defaults in ~/.config/mrs-unkwn/setup.json
-# - Secrets (JWT/SESSION/ENCRYPTION) mit sinnvollen Default-Vorschlägen
-# - Lockfile-Handling: Falls kein Lockfile vorhanden, wird es automatisch erzeugt
+# - Backend in Docker (host network)
+# - Nginx + Certbot auf dem Host (erst HTTP, dann Certbot → HTTPS)
+# - API: https://<DOMAIN>/api
+# - APK-Build & Auslieferung: https://<DOMAIN>/mrs-unkwn.apk
+# - Persistente Defaults: ~/.config/mrs-unkwn/setup.json
+# - Secrets (JWT/SESSION/ENCRYPTION) mit Default-Vorschlägen
+# - Lockfile-Handling: erzeugt package-lock.json automatisch (npm)
+# - Flutter-Image: frei pullbar (Docker Hub), Dart >= 3.5
 #=============================================================
+
+#--------------- Konstante/Defaults --------------------------
+FLUTTER_IMAGE="${FLUTTER_IMAGE:-instrumentisto/flutter:3.32.8}"  # Dart 3.8 / Flutter 3.32.x
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/mrs-unkwn"
+CONFIG_FILE="$CONFIG_DIR/setup.json"
 
 #--------------- Utility Functions ---------------------------
 info()  { echo -e "\e[32m[✓]\e[0m $*"; }
@@ -20,9 +26,7 @@ require_cmd() { command -v "$1" >/dev/null 2>&1 || { error "Befehl $1 erforderli
 
 prompt_secret() {
   local var="$1" prompt="$2" value
-  # Wenn bereits gesetzt → nichts tun
   if [[ -n "${!var:-}" ]]; then return 0; fi
-  # Geheimnisse nicht anzeigen, aber Default-Vorschlag generieren und nutzen, wenn Enter
   local default="$(gen_secret)"
   read -r -s -p "$prompt (Enter für Vorschlag): " value || true; echo
   if [[ -z "$value" ]]; then value="$default"; fi
@@ -50,8 +54,6 @@ write_if_diff() {
 backup_if_exists() { [[ -f "$1" ]] && cp "$1" "$1.bak$(date +%s)"; }
 
 #--------------- Persistente Konfiguration -------------------
-CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/mrs-unkwn"
-CONFIG_FILE="$CONFIG_DIR/setup.json"
 mkdir -p "$CONFIG_DIR"
 
 ensure_pkg_jq() {
@@ -61,6 +63,7 @@ ensure_pkg_jq() {
     apt-get install -y jq
   fi
 }
+
 cfg_has() { [[ -f "$CONFIG_FILE" ]] && jq -e ".\"$1\" != null" "$CONFIG_FILE" >/dev/null 2>&1; }
 cfg_get()  { jq -r ".\"$1\" // empty" "$CONFIG_FILE" 2>/dev/null || true; }
 
@@ -112,6 +115,7 @@ config_save() {
     --arg ENABLE_UFW "${ENABLE_UFW:-}" \
     --arg BACKEND_DIR "${BACKEND_DIR:-}" \
     --arg APP_DIR "${APP_DIR:-}" \
+    --arg FLUTTER_IMAGE "${FLUTTER_IMAGE:-}" \
     '{
       DOMAIN:$DOMAIN, EMAIL:$EMAIL, ENVIRONMENT:$ENVIRONMENT,
       BACKEND_PORT:$BACKEND_PORT, EXTERNAL_PORT_HTTP:$EXTERNAL_PORT_HTTP, EXTERNAL_PORT_HTTPS:$EXTERNAL_PORT_HTTPS,
@@ -123,7 +127,8 @@ config_save() {
       DB_ENGINE:$DB_ENGINE, DB_HOST:$DB_HOST, DB_PORT:$DB_PORT, DB_NAME:$DB_NAME, DB_USER:$DB_USER, DB_PASS:$DB_PASS,
       USE_REDIS:$USE_REDIS, USE_S3:$USE_S3,
       ANDROID_APP_ID:$ANDROID_APP_ID, ANDROID_SIGNING:$ANDROID_SIGNING, FLAVOR:$FLAVOR, BUILD_MODE:$BUILD_MODE,
-      ENABLE_UFW:$ENABLE_UFW, BACKEND_DIR:$BACKEND_DIR, APP_DIR:$APP_DIR
+      ENABLE_UFW:$ENABLE_UFW, BACKEND_DIR:$BACKEND_DIR, APP_DIR:$APP_DIR,
+      FLUTTER_IMAGE:$FLUTTER_IMAGE
     }' > "$CONFIG_FILE"
 }
 
@@ -174,6 +179,7 @@ ensure_pkg() {
     apt-get install -y "$pkg"
   fi
 }
+
 ensure_docker() {
   if ! command -v docker >/dev/null 2>&1; then
     info "Installiere Docker"
@@ -187,7 +193,9 @@ ensure_docker() {
     ensure_pkg docker-buildx-plugin; ensure_pkg docker-compose-plugin
   fi
 }
+
 ensure_nginx_certbot() { ensure_pkg nginx; ensure_pkg certbot; ensure_pkg python3-certbot-nginx; }
+
 ensure_ufw() {
   ensure_pkg ufw
   ufw status | grep -q inactive && ufw --force enable
@@ -304,7 +312,7 @@ auto_detect_app
 info "Backend-Verzeichnis: ${BACKEND_DIR}"
 info "Flutter-App-Verzeichnis: ${APP_DIR:-<keins gefunden>}"
 
-# Speichere Defaults inkl. detektierter Pfade
+# Speichere Defaults inkl. detektierter Pfade und Image
 config_save
 
 #--------------- Install Dependencies -----------------------
@@ -313,12 +321,12 @@ ensure_nginx_certbot
 if [[ "${ENABLE_UFW:-true}" == "true" && "${NO_FIREWALL:-false}" == "false" ]]; then ensure_ufw; fi
 ensure_pkg_jq
 
-#--------------- Lockfile-Handling (automatisch) ------------
+#--------------- Lockfile-Handling (npm) ---------------------
 generate_lockfile_if_missing() {
   local dir="$1"
   if [[ ! -f "$dir/package.json" ]]; then return 0; fi
-  if [[ -f "$dir/package-lock.json" || -f "$dir/yarn.lock" || -f "$dir/pnpm-lock.yaml" ]]; then
-    info "Lockfile gefunden (npm/yarn/pnpm) – überspringe Erzeugung"
+  if [[ -f "$dir/package-lock.json" ]]; then
+    info "Lockfile gefunden (package-lock.json)"
     return 0
   fi
   info "Kein Lockfile gefunden – erzeuge package-lock.json im Docker-Container"
@@ -327,7 +335,7 @@ generate_lockfile_if_missing() {
   if [[ -f "$dir/package-lock.json" ]]; then
     info "package-lock.json erzeugt: $dir/package-lock.json"
   else
-    warn "Konnte kein package-lock.json erzeugen – Dockerfile wird Fallback-Install nutzen"
+    warn "Konnte kein package-lock.json erzeugen – es wird npm install (ohne ci) verwendet"
   fi
 }
 generate_lockfile_if_missing "$BACKEND_DIR"
@@ -383,7 +391,6 @@ ADMIN_EMAIL=$ADMIN_EMAIL
 EOF_BENV
 
 #--------------- Dockerfiles / Compose -----------------------
-# Robustes Dockerfile mit Fallback auf vorhandenes Lockfile (npm/yarn/pnpm) oder npm install
 write_if_diff "$BACKEND_DIR/Dockerfile.backend" <<'EOF_DOCKER'
 # Build stage
 FROM node:20-alpine AS build
@@ -391,25 +398,12 @@ WORKDIR /app
 
 RUN apk add --no-cache python3 make g++  # native deps falls nötig
 
-# Manifest + Lockfiles zuerst (Cache)
+# Manifest & Lockfile (npm)
 COPY package.json ./
-COPY package-lock.json . 2>/dev/null || true
-COPY yarn.lock . 2>/dev/null || true
-COPY pnpm-lock.yaml . 2>/dev/null || true
+COPY package-lock.json ./
 
-# Corepack aktivieren für yarn/pnpm
-RUN corepack enable
-
-# Install je nach Lockfile
-RUN if [ -f pnpm-lock.yaml ]; then \
-      pnpm install --frozen-lockfile --prod; \
-    elif [ -f yarn.lock ]; then \
-      yarn install --production --frozen-lockfile; \
-    elif [ -f package-lock.json ]; then \
-      npm ci --omit=dev; \
-    else \
-      npm install --omit=dev; \
-    fi
+# Install (nutzt Lockfile; fallback auf install)
+RUN npm ci --omit=dev || npm install --omit=dev
 
 # Restliche Quellen
 COPY . .
@@ -427,12 +421,12 @@ USER node
 CMD ["node", "dist/index.js"]
 EOF_DOCKER
 
-# host network: Container hört auf 127.0.0.1:$BACKEND_PORT
 write_if_diff docker-compose.yml <<EOF_COMPOSE
 services:
   backend:
     build:
       context: $BACKEND_DIR
+      dockerfile: Dockerfile.backend
     env_file: $BACKEND_DIR/.env
     environment:
       - PORT=${BACKEND_PORT}
@@ -445,19 +439,16 @@ services:
       retries: 3
 EOF_COMPOSE
 
-#--------------- Host-Nginx Setup & TLS (webroot) ------------
-# Nginx stoppen/deaktivieren, Konfig sauber schreiben, dann starten
+#--------------- Host-Nginx: erst NUR HTTP -------------------
 systemctl stop nginx || true
 systemctl disable nginx || true
 
-# ACME Webroot & Webroot für Downloads
 mkdir -p /var/www/certbot
 mkdir -p /var/www/html
 chown -R www-data:www-data /var/www/certbot /var/www/html
 
 VHOST_PATH="/etc/nginx/sites-available/mrs-unkwn.conf"
 
-# 1) HTTP-only vhost schreiben (für ACME und temporäre API/Download bis SSL aktiv)
 write_if_diff "$VHOST_PATH" <<EOF_VHOST_HTTP
 server {
     listen 80;
@@ -501,20 +492,23 @@ nginx -t
 systemctl enable nginx
 systemctl start nginx
 
-# 2) Zertifikat via webroot anfordern
+#--------------- Zertifikat via Certbot (webroot) ------------
 if [[ "${REISSUE_CERT:-false}" == "true" ]]; then
   info "Erzwinge Neu-Ausstellung des Zertifikats"
   rm -rf /etc/letsencrypt/live/"$DOMAIN" /etc/letsencrypt/archive/"$DOMAIN" /etc/letsencrypt/renewal/"$DOMAIN".conf || true
 fi
 
-if ! certbot certificates 2>/dev/null | grep -q "Domains: .*${DOMAIN}"; then
-  info "Fordere Let's Encrypt Zertifikat an (webroot)"
-  certbot certonly --webroot -w /var/www/certbot \
-    -d "$DOMAIN" -m "$EMAIL" --agree-tos --no-eff-email --non-interactive
+CERT_OK=false
+if certbot certonly --webroot -w /var/www/certbot \
+    -d "$DOMAIN" -m "$EMAIL" --agree-tos --no-eff-email --non-interactive; then
+  CERT_OK=true
+else
+  warn "Let's Encrypt Zertifikat konnte nicht ausgestellt werden. HTTPS wird nicht aktiviert."
 fi
 
-# 3) HTTPS vhost schreiben (Redirect von 80 → 443, API + APK)
-write_if_diff "$VHOST_PATH" <<EOF_VHOST_SSL
+#--------------- Wenn Zertifikat ok: HTTPS-Konfig schreiben ---
+if $CERT_OK; then
+  write_if_diff "$VHOST_PATH" <<EOF_VHOST_SSL
 server {
     listen 80;
     server_name $DOMAIN;
@@ -566,22 +560,28 @@ server {
 }
 EOF_VHOST_SSL
 
-nginx -t && systemctl reload nginx
+  nginx -t && systemctl reload nginx
+  info "HTTPS aktiviert."
+fi
 
-#--------------- Docker Compose Up --------------------------
-docker compose build --no-cache backend
+#--------------- Docker Compose Up (Backend) -----------------
+docker compose build backend
 docker compose up -d backend
 
-#--------------- Flutter Build ------------------------------
+#--------------- Flutter Build (inkl. intl-Fix) --------------
 APK_DEST="/var/www/html/mrs-unkwn.apk"
 if ! $SKIP_APK; then
   if [[ -n "${APP_DIR:-}" && -d "$APP_DIR" ]]; then
     mkdir -p /var/www/html
-    docker run --rm -v "$PWD/$APP_DIR":/app -w /app cirrusci/flutter:stable bash -lc \
-      "flutter clean && flutter pub get && flutter build apk --${BUILD_MODE} ${FLAVOR:+--flavor $FLAVOR} \
+    # Fix für intl-Versionskonflikt: hebe intl auf >=0.20.2 an (kompatibel zu flutter_localizations)
+    docker run --rm -v "$PWD/$APP_DIR":/app -w /app "$FLUTTER_IMAGE" bash -lc \
+      "flutter --version && \
+       flutter pub add intl:^0.20.2 || true && \
+       flutter clean && flutter pub get && \
+       flutter build apk --${BUILD_MODE} ${FLAVOR:+--flavor $FLAVOR} \
        --dart-define=API_BASE_URL=${API_BASE_URL_FOR_APP} \
-       --dart-define=OPENROUTER_MODEL=${OPENROUTER_MODEL} \
-       && cp build/app/outputs/flutter-apk/app-${BUILD_MODE}.apk /app/app-release.apk"
+       --dart-define=OPENROUTER_MODEL=${OPENROUTER_MODEL} && \
+       cp build/app/outputs/flutter-apk/app-${BUILD_MODE}.apk /app/app-release.apk"
     cp "$APP_DIR/app-release.apk" "$APK_DEST"
     chown www-data:www-data "$APK_DEST" || true
     info "APK bereit unter $APK_DEST (Download: https://$DOMAIN/mrs-unkwn.apk)"
@@ -592,11 +592,20 @@ fi
 
 #--------------- Health Check -------------------------------
 sleep 5
-default_health="https://$DOMAIN/api/health"
-if curl -k --silent --fail "$default_health" >/dev/null; then
-  info "Healthcheck erfolgreich: $default_health"
+default_health="http://127.0.0.1:${BACKEND_PORT}/health"
+if curl -sSf "$default_health" >/dev/null 2>&1; then
+  info "Backend Healthcheck (lokal) erfolgreich: $default_health"
 else
-  warn "Healthcheck fehlgeschlagen: $default_health"
+  warn "Backend Healthcheck fehlgeschlagen (lokal): $default_health"
+fi
+
+if $CERT_OK; then
+  https_health="https://$DOMAIN/api/health"
+  if curl -k --silent --fail "$https_health" >/dev/null; then
+    info "HTTPS Healthcheck erfolgreich: $https_health"
+  else
+    warn "HTTPS Healthcheck fehlgeschlagen: $https_health"
+  fi
 fi
 
 CERT_INFO="$(certbot certificates 2>/dev/null | awk '/Domains: .*'"$DOMAIN"'/,0')"
@@ -610,9 +619,10 @@ APK Download: https://$DOMAIN/mrs-unkwn.apk
 Docker Befehle:
   docker compose logs -f
   docker compose restart backend
-Zertifikat:
+Zertifikat (ausgestellt): $CERT_OK
 $CERT_INFO
 Konfig gespeichert unter: $CONFIG_FILE
+Flutter-Image: $FLUTTER_IMAGE
 ---------------------------------
 SUMMARY
 
