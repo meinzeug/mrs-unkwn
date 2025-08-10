@@ -59,7 +59,7 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.familyDashboard,
         builder: (context, state) => BlocProvider(
-          create: (_) => FamilyBloc(sl()),
+          create: (_) => FamilyBloc(sl(), sl()),
           child: FamilyDashboardPage(
             familyId: state.uri.queryParameters['id'] ?? '',
             currentUserRole: FamilyRole.values.byName(
@@ -89,7 +89,7 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.familySubscription,
         builder: (context, state) => BlocProvider(
-          create: (_) => FamilyBloc(sl()),
+          create: (_) => FamilyBloc(sl(), sl()),
           child: SubscriptionPage(
             familyId: state.uri.queryParameters['id'] ?? '',
           ),
@@ -132,7 +132,7 @@ class AppRouter {
     final token = await SecureStorageService().read(
       SecureStorageService.tokenKey,
     );
-    final location = state.location;
+    final location = state.uri.toString();
     if (token == null &&
         location != RouteConstants.login &&
         location != RouteConstants.register) {

@@ -67,13 +67,19 @@ void main() {
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 500));
 
-    expect(router.location, RouteConstants.home);
+    expect(
+      router.routerDelegate.currentConfiguration.uri.toString(),
+      RouteConstants.home,
+    );
   });
 
   testWidgets('adapts layout for small screens', (tester) async {
     tester.view.physicalSize = const Size(320, 640);
     tester.view.devicePixelRatio = 1.0;
-    addTearDown(tester.view.resetPhysicalSizeAndDevicePixelRatio);
+    addTearDown(() {
+      tester.view.resetPhysicalSize();
+      tester.view.resetDevicePixelRatio();
+    });
 
     await tester.pumpWidget(
       MaterialApp(

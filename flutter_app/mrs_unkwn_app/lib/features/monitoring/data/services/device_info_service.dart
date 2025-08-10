@@ -20,8 +20,8 @@ class DeviceInfoService {
   })  : _deviceInfo = deviceInfo ?? _defaultDeviceInfo,
         _batteryLevel = batteryLevel ?? _defaultBatteryLevel,
         _batteryState = batteryState ?? _defaultBatteryState,
-        _freeDisk = freeDisk ?? DiskSpace.getFreeDiskSpace,
-        _totalDisk = totalDisk ?? DiskSpace.getTotalDiskSpace,
+        _freeDisk = freeDisk ?? (() => DiskSpace.getFreeDiskSpace),
+        _totalDisk = totalDisk ?? (() => DiskSpace.getTotalDiskSpace),
         _readMemInfo = readMemInfo ?? _defaultReadMemInfo;
 
   final Future<Map<String, dynamic>> Function() _deviceInfo;

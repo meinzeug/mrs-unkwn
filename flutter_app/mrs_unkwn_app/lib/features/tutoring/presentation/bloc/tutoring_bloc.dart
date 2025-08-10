@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:bloc/bloc.dart';
+
 import '../../../../core/bloc/base_bloc.dart';
 import '../../../../core/bloc/base_event.dart';
 import '../../../../core/bloc/base_state.dart';

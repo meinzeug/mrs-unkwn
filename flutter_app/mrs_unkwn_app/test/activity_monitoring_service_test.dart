@@ -30,6 +30,12 @@ class _FakeDeviceMonitoring implements DeviceMonitoring {
 
   @override
   Future<List<Map<String, dynamic>>> getInstalledApps() async => [];
+
+  @override
+  Future<List<Map<String, dynamic>>> getNetworkUsageStats() async => [];
+
+  @override
+  Stream<AppChangeEvent> get onAppChange => const Stream.empty();
 }
 
 void main() {
