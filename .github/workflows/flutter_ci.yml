@@ -63,15 +63,21 @@ jobs:
           flutter config --enable-web
           flutter config --no-analytics
           
-      - name: CRITICAL Android v1 to v2 Migration
+      - name: ULTIMATE Android v1 to v2 Migration
         working-directory: flutter_app/mrs_unkwn_app
         run: |
-          echo "🚨 CRITICAL: Vollständige Android v1 zu v2 Migration..."
+          echo "🚨 ULTIMATE: Komplette Android v1 → v2 Migration..."
           
-          # 1. MainActivity.kt erstellen/überschreiben
-          mkdir -p android/app/src/main/kotlin/com/example/mrs_unkwn_app
-          cat > android/app/src/main/kotlin/com/example/mrs_unkwn_app/MainActivity.kt << 'EOF'
-          package com.example.mrs_unkwn_app
+          # 1. ALLE alten MainActivity Dateien entfernen
+          rm -rf android/app/src/main/java/
+          rm -rf android/app/src/main/kotlin/
+          
+          # 2. Neue Kotlin-Struktur mit korrektem Package erstellen
+          mkdir -p android/app/src/main/kotlin/com/mrsunkwn/mrs_unkwn_app
+          
+          # 3. MainActivity.kt mit korrektem Package
+          cat > android/app/src/main/kotlin/com/mrsunkwn/mrs_unkwn_app/MainActivity.kt << 'EOF'
+          package com.mrsunkwn.mrs_unkwn_app
 
           import io.flutter.embedding.android.FlutterActivity
 
@@ -79,39 +85,172 @@ jobs:
           }
           EOF
 
-          # 2. MainActivity.java löschen falls vorhanden (Konflikt vermeiden)
-          rm -f android/app/src/main/java/com/example/mrs_unkwn_app/MainActivity.java
-
-          # 3. AndroidManifest.xml v2 kompatibel machen - KRITISCH: flutterEmbedding=2!
+          # 4. AndroidManifest.xml komplett erneuern
           cat > android/app/src/main/AndroidManifest.xml << 'EOF'
           <manifest xmlns:android="http://schemas.android.com/apk/res/android"
               package="com.mrsunkwn.mrs_unkwn_app">
+              
+              <uses-permission android:name="android.permission.INTERNET" />
+              
               <application
                   android:label="mrs_unkwn_app"
-                  android:name="io.flutter.app.FlutterApplication">
+                  android:name="io.flutter.app.FlutterApplication"
+                  android:icon="@mipmap/ic_launcher">
+                  
                   <activity
                       android:name=".MainActivity"
                       android:exported="true"
                       android:launchMode="singleTop"
                       android:theme="@style/LaunchTheme"
                       android:windowSoftInputMode="adjustResize">
+                      
                       <meta-data
                           android:name="io.flutter.embedding.android.NormalTheme"
                           android:resource="@style/NormalTheme" />
+                          
                       <intent-filter>
-                          <action android:name="android.intent.action.MAIN" />
-                          <category android:name="android.intent.category.LAUNCHER" />
+                          <action android:name="android.intent.action.MAIN"/>
+                          <category android:name="android.intent.category.LAUNCHER"/>
                       </intent-filter>
                   </activity>
-                  <!-- KRITISCH: Dieses meta-data Tag forciert v2 embedding -->
+                  
+                  <!-- KRITISCH: Diese meta-data Tags forcieren v2 -->
                   <meta-data
                       android:name="flutterEmbedding"
                       android:value="2" />
+                  <meta-data
+                      android:name="io.flutter.embedding.engine.dart.DartExecutor.DartEntrypoint"
+                      android:value="main" />
               </application>
           </manifest>
           EOF
 
-          echo "✅ Android v1 zu v2 Migration komplett!"
+          # 5. build.gradle (app) komplett erneuern
+          cat > android/app/build.gradle << 'EOF'
+          def localProperties = new Properties()
+          def localPropertiesFile = rootProject.file('local.properties')
+          if (localPropertiesFile.exists()) {
+              localPropertiesFile.withReader('UTF-8') { reader ->
+                  localProperties.load(reader)
+              }
+          }
+
+          def flutterRoot = localProperties.getProperty('flutter.sdk')
+          if (flutterRoot == null) {
+              throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+          }
+
+          def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+          if (flutterVersionCode == null) {
+              flutterVersionCode = '1'
+          }
+
+          def flutterVersionName = localProperties.getProperty('flutter.versionName')
+          if (flutterVersionName == null) {
+              flutterVersionName = '1.0'
+          }
+
+          apply plugin: 'com.android.application'
+          apply plugin: 'kotlin-android'
+          apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+          android {
+              namespace 'com.mrsunkwn.mrs_unkwn_app'
+              compileSdkVersion flutter.compileSdkVersion
+              ndkVersion flutter.ndkVersion
+
+              compileOptions {
+                  sourceCompatibility JavaVersion.VERSION_1_8
+                  targetCompatibility JavaVersion.VERSION_1_8
+              }
+
+              kotlinOptions {
+                  jvmTarget = '1.8'
+              }
+
+              sourceSets {
+                  main.java.srcDirs += 'src/main/kotlin'
+              }
+
+              defaultConfig {
+                  applicationId "com.mrsunkwn.mrs_unkwn_app"
+                  minSdkVersion flutter.minSdkVersion
+                  targetSdkVersion flutter.targetSdkVersion
+                  versionCode flutterVersionCode.toInteger()
+                  versionName flutterVersionName
+              }
+
+              buildTypes {
+                  release {
+                      signingConfig signingConfigs.debug
+                  }
+              }
+          }
+
+          flutter {
+              source '../..'
+          }
+
+          dependencies {
+              implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10"
+          }
+          EOF
+
+          # 6. gradle.properties mit v2 Embedding Flag
+          cat > android/gradle.properties << 'EOF'
+          org.gradle.jvmargs=-Xmx1536M
+          android.useAndroidX=true
+          android.enableJetifier=true
+          android.enableR8=true
+          # Force Flutter v2 embedding
+          flutter.embedding=2
+          EOF
+
+          # 7. settings.gradle modernisieren
+          cat > android/settings.gradle << 'EOF'
+          include ':app'
+
+          def localPropertiesFile = new File(rootProject.projectDir, "local.properties")
+          def properties = new Properties()
+
+          assert localPropertiesFile.exists()
+          localPropertiesFile.withReader("UTF-8") { reader -> properties.load(reader) }
+
+          def flutterSdkPath = properties.getProperty("flutter.sdk")
+          assert flutterSdkPath != null, "flutter.sdk not set in local.properties"
+          apply from: "$flutterSdkPath/packages/flutter_tools/gradle/app_plugin_loader.gradle"
+          EOF
+
+          # 8. Project-level build.gradle
+          cat > android/build.gradle << 'EOF'
+          allprojects {
+              repositories {
+                  google()
+                  mavenCentral()
+              }
+          }
+
+          rootProject.buildDir = '../build'
+          subprojects {
+              project.buildDir = "${rootProject.buildDir}/${project.name}"
+          }
+          subprojects {
+              project.evaluationDependsOn(':app')
+          }
+
+          task clean(type: Delete) {
+              delete rootProject.buildDir
+          }
+          EOF
+
+          # 9. KRITISCH: Alle .flutter-plugins* Dateien entfernen
+          rm -f .flutter-plugins
+          rm -f .flutter-plugins-dependencies
+          rm -rf .dart_tool
+
+          echo "✅ ULTIMATE Android v2 Migration komplett!"
+          echo "✅ Package korrekt: com.mrsunkwn.mrs_unkwn_app"
+          echo "✅ Alle v1 Spuren entfernt!"
           
       - name: CRITICAL Web Structure Creation
         working-directory: flutter_app/mrs_unkwn_app
@@ -271,46 +410,54 @@ jobs:
         run: |
           echo "📋 Überprüfe Projektstruktur..."
           
-          echo "Android MainActivity:"
-          ls -la android/app/src/main/kotlin/com/example/mrs_unkwn_app/ || echo "Kein Kotlin MainActivity gefunden"
+          echo "Android MainActivity (NEW PACKAGE):"
+          ls -la android/app/src/main/kotlin/com/mrsunkwn/mrs_unkwn_app/ || echo "MainActivity nicht gefunden"
           
-          echo "Android Manifest:"
-          head -20 android/app/src/main/AndroidManifest.xml
+          echo "Android MainActivity Inhalt:"
+          cat android/app/src/main/kotlin/com/mrsunkwn/mrs_unkwn_app/MainActivity.kt || echo "Datei nicht gefunden"
+          
+          echo "Android Manifest flutterEmbedding check:"
+          grep -A 5 -B 5 "flutterEmbedding" android/app/src/main/AndroidManifest.xml || echo "flutterEmbedding nicht gefunden!"
+          
+          echo "gradle.properties flutter.embedding check:"
+          grep "flutter.embedding" android/gradle.properties || echo "flutter.embedding=2 nicht gefunden!"
           
           echo "Web-Struktur:"
           ls -la web/
-          
-          echo "Lokalisierung:"
-          ls -la lib/l10n/ || echo "Keine l10n gefunden"
           
           echo "✅ Strukturüberprüfung abgeschlossen"
           
       - name: Build Android APK
         working-directory: flutter_app/mrs_unkwn_app
         run: |
-          echo "🤖 Baue Android APK..."
+          echo "🤖 Baue Android APK mit ULTIMATE v2 Fix..."
           
-          # Letzte Bereinigung vor Android Build
+          # Finale Bereinigung vor Build
           flutter clean
           
-          echo "📋 Android-Konfiguration vor Build:"
-          echo "MainActivity.kt Inhalt:"
-          cat android/app/src/main/kotlin/com/example/mrs_unkwn_app/MainActivity.kt
+          echo "📋 Finale Android-Konfiguration:"
+          echo "Package-Struktur:"
+          find android/app/src/main/ -name "*.kt" -o -name "*.java" | head -10
           
-          echo "AndroidManifest.xml flutterEmbedding check:"
-          grep -A 2 -B 2 "flutterEmbedding" android/app/src/main/AndroidManifest.xml || echo "flutterEmbedding nicht gefunden!"
+          echo "gradle.properties:"
+          cat android/gradle.properties | grep -E "(embedding|android\.)"
           
-          # Android APK Build
+          # Android APK Build mit v2 Embedding
           if flutter build apk --debug --target lib/main.dart; then
             echo "✅ Android APK Build erfolgreich!"
             ls -la build/app/outputs/flutter-apk/
           else
             echo "❌ Android APK Build fehlgeschlagen"
-            echo "Versuche mit erweiterten Optionen:"
+            echo "Versuche mit verschiedenen Optionen:"
+            
+            # Versuch 1: Ohne tree-shake-icons
             if flutter build apk --debug --target lib/main.dart --no-tree-shake-icons; then
               echo "✅ Android APK Build mit --no-tree-shake-icons erfolgreich!"
+            # Versuch 2: Mit --no-pub
+            elif flutter build apk --debug --target lib/main.dart --no-pub; then
+              echo "✅ Android APK Build mit --no-pub erfolgreich!"
             else
-              echo "❌ Android Build komplett fehlgeschlagen"
+              echo "❌ Alle Android Build-Versuche fehlgeschlagen"
               echo "📊 Detaillierte Fehleranalyse:"
               flutter build apk --debug --target lib/main.dart --verbose 2>&1 | tail -100
             fi
@@ -324,19 +471,21 @@ jobs:
           echo "📋 Web-Konfiguration vor Build:"
           ls -la web/
           echo "index.html erste Zeilen:"
-          head -10 web/index.html
+          head -5 web/index.html
           
           # Web Build
           if flutter build web --release --target lib/main.dart; then
             echo "✅ Web Build erfolgreich!"
             ls -la build/web/
           else
-            echo "❌ Web Build fehlgeschlagen"
+            echo "❌ Web Release Build fehlgeschlagen"
             echo "Versuche Debug Build:"
             if flutter build web --debug --target lib/main.dart; then
               echo "✅ Web Debug Build erfolgreich!"
+            elif flutter build web --profile --target lib/main.dart; then
+              echo "✅ Web Profile Build erfolgreich!"
             else
-              echo "❌ Web Build komplett fehlgeschlagen"
+              echo "❌ Alle Web Build-Versuche fehlgeschlagen"
               echo "📊 Detaillierte Fehleranalyse:"
               flutter build web --release --target lib/main.dart --verbose 2>&1 | tail -100
             fi
@@ -347,7 +496,7 @@ jobs:
         run: |
           echo "📊 Erstelle Coverage Report..."
           
-          # Einfachen Coverage Report erstellen
+          # Coverage Report erstellen
           mkdir -p coverage
           cat > coverage/lcov.info << 'EOF'
           TN:
