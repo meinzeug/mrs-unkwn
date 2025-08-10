@@ -1,4 +1,4 @@
-# Nächster Schritt: Phase 1 Milestone 6 – Chat Message Model und Serialization
+# Nächster Schritt: Phase 1 Milestone 6 – AI Prompt Engineering für Sokratische Methode
 
 ## Status
 - Phase 0 abgeschlossen ✓
@@ -32,6 +32,7 @@
 - Phase 1 Milestone 5: Privacy und DSGVO Compliance für Monitoring abgeschlossen ✓
 - Phase 1 Milestone 5: Monitoring Performance Optimization abgeschlossen ✓
 - Phase 1 Milestone 6: OpenAI API Integration Setup abgeschlossen ✓
+- Phase 1 Milestone 6: Chat Message Model und Serialization abgeschlossen ✓
 - Wartungscheck am 2025-09-15 durchgeführt (npm test erfolgreich, pytest keine Tests, flutter test fehlgeschlagen)
 - Wartungscheck am 2025-09-16 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
 - Wartungscheck am 2025-09-17 durchgeführt (npm test fehlgeschlagen: ts-node nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Kompilationsfehler)
@@ -45,17 +46,18 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Phase 1 Milestone 6: Chat Message Model und Serialization implementieren.
+Phase 1 Milestone 6: AI Prompt Engineering für Sokratische Methode implementieren.
 
 ### Vorbereitungen
-- `README.md` und Roadmap prüfen.
-- Sicherstellen, dass `json_annotation` und `build_runner` korrekt konfiguriert sind.
+- README und Roadmap prüfen.
+- Sicherstellen, dass `chat_message.dart` verfügbar ist.
 
 ### Implementierungsschritte
-- Datei `lib/features/tutoring/data/models/chat_message.dart` anlegen oder erweitern.
-- Klasse `ChatMessage` mit Rollen, Typen, Zeitstempel und optionalen Metadaten definieren.
-- `@JsonSerializable()` Annotation hinzufügen und `fromJson`/`toJson` Methoden generieren.
-- Unit-Test `chat_message_test.dart` mit Serialisierungs-Checks erstellen.
+- Datei `lib/features/tutoring/data/prompts/socratic_prompts.dart` anlegen oder erweitern.
+- `TutoringSubject` Enum und System-Prompts für Mathematik, Naturwissenschaften, Literatur und Geschichte definieren.
+- `SocraticPrompts` Klasse mit Methoden `systemPrompt` und `buildPrompt` erstellen.
+- Hilfsfunktionen zum Kürzen der Historie (`_trimHistory`) und Token-Zählung (`_countTokens`) implementieren.
+- Unit-Test `socratic_prompts_test.dart` für Prompt-Generierung hinzufügen.
 
 ### Validierung
 - `npm test` ausführen.
