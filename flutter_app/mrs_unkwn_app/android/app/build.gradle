@@ -24,41 +24,59 @@ if (flutterVersionName == null) {
 
 android {
     namespace 'com.mrsunkwn.mrs_unkwn_app'
-    compileSdk flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
 
+    // Hart setzen, um "compileSdkVersion is not specified" auszuschließen
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.mrsunkwn.mrs_unkwn_app"
+        minSdk 23
+        targetSdk 35
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+
+    // AGP 8.x verlangt Java 17
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
-    defaultConfig {
-        applicationId "com.mrsunkwn.mrs_unkwn_app"
-        minSdk flutter.minSdkVersion
-        targetSdk flutter.targetSdkVersion
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
-    }
-
     buildTypes {
         release {
+            // Für CI/signing ohne Keystore
             signingConfig signingConfigs.debug
+            // Optional: Minify, wenn benötigt
+            // minifyEnabled true
+            // proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            // optional debug-spezifische Flags
         }
     }
+
+    // Optional: Falls es Ressourcen-Kollisionen gibt
+    // packaging {
+    //     resources {
+    //         excludes += ["META-INF/*"]
+    //     }
+    // }
 }
 
 flutter {
+    // Pfad zur Flutter-App
     source '../..'
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10"
+    // Keine explizite Kotlin-Stdlib nötig (wird vom Plugin verwaltet)
+    // Weitere App-Dependencies hier eintragen, falls erforderlich
 }
