@@ -822,3 +822,7 @@
 - `ai_response_service.dart` streamt Antworten mit Cache und Inhaltsfilter
 - `openai_service.dart` unterstützt Streaming-Anfragen an die OpenAI API
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Subject Classification System Tests - 2025-10-08
+- Unit-Tests für SubjectClassificationService mit Keyword-Erkennung, Historien-Tracking und Wechselerkennung hinzugefügt
+- Roadmap und Prompt aktualisiert
