@@ -918,3 +918,7 @@
 - Wrapper `scripts/build_android_release.sh` und `scripts/build_android_release.ps1` hinzugefügt.
 - README um Hinweise zum neuen Build-Prozess erweitert.
 - Roadmap und Prompt aktualisiert.
+### Phase 1: Flutter-Projekt mit Multi-Platform-Support re-verifiziert - 2025-10-23
+- `pubspec.yaml` um `flutter: ">=3.16.0"` ergänzt
+- `android/build.gradle` mit `ext.flutter` für SDK-Versionen erweitert
+- `flutter build apk --release` fehlgeschlagen: fehlende Flutter-Maven-Artefakte (`io.flutter:flutter_embedding_release`)

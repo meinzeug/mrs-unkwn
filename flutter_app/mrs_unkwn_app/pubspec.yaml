@@ -4,6 +4,7 @@ description: Mrs-Unkwn Flutter app
 environment:
   # CI hat Dart 3.5.3 -> Constraint so setzen, dass 3.5.x erlaubt ist.
   sdk: ">=3.5.0 <4.0.0"
+  flutter: ">=3.16.0"
 
 dependencies:
   flutter:
