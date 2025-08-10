@@ -856,3 +856,11 @@
 - Lokalisierungs- und BLoC-Imports korrigiert, FamilyBloc-Initialisierung aktualisiert
 - Fehlende DeviceMonitoring-Stubs in Tests implementiert und veralteten API-Integrationstest entfernt
 - Roadmap und Prompt aktualisiert
+### Phase 1: Android v1 → v2 Fix - 2025-10-14
+- Android MainActivity und AndroidManifest auf Flutter Embedding v2 aktualisiert
+- Roadmap und Prompt aktualisiert
+
+### Wartungscheck - 2025-10-14
+- `npm test` fehlgeschlagen: package.json nicht gefunden
+- `pytest codex/tests` ausgeführt: keine Tests gefunden
+- `flutter test` fehlgeschlagen: Befehl nicht gefunden

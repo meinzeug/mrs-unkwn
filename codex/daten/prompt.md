@@ -41,12 +41,14 @@
 - Phase 1 Milestone 6: AI Tutoring BLoC State Management abgeschlossen ✓
 - Phase 1 Milestone 6: Voice Input Integration abgeschlossen ✓
 - Phase 1 Milestone 6: Basic Content Moderation abgeschlossen ✓
+- Android v1 → v2 Fix abgeschlossen ✓
 - Wartungscheck am 2025-09-15 durchgeführt (npm test erfolgreich, pytest keine Tests, flutter test fehlgeschlagen)
 - Wartungscheck am 2025-09-16 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
 - Wartungscheck am 2025-09-17 durchgeführt (npm test fehlgeschlagen: ts-node nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Kompilationsfehler)
 - Wartungscheck am 2025-09-18 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: MissingPluginException und fehlende Abhängigkeiten)
 - Wartungscheck am 2025-09-19 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
 - Wartungscheck am 2025-09-20 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: fehlende Registrierung und Mock-Konfiguration)
+- Wartungscheck am 2025-10-14 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Befehl nicht gefunden)
 
 ## Referenzen
 - `/README.md`

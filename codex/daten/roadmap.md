@@ -228,6 +228,9 @@ Details: Implement Alert-System für verschiedene Monitoring-Events: Screen-Time
 [x] Monitoring Performance Optimization:
 Details: Optimize Background-Service für Minimal-Battery-Impact using JobScheduler/WorkManager. Implement Smart-Monitoring-Intervals basierend auf Usage-Patterns. Create Data-Compression-Strategies für Storage und Network-Efficiency. Implement Caching-Mechanisms für Frequently-Accessed-Monitoring-Data. Handle Memory-Management für Large-Dataset-Processing. Optimize Database-Queries mit proper Indexing-Strategies.
 
+[x] Android v1 → v2 Fix:
+Details: Update MainActivity and AndroidManifest to use Flutter embedding v2 with flutterEmbedding meta-data.
+
 ### Milestone 6: Basic AI Tutoring Foundation
 
 [x] OpenAI API Integration Setup:
