@@ -894,3 +894,14 @@
 - `.gitignore` für neue Plattform-Verzeichnisse aktualisiert
 - `pubspec.yaml` SDK-Minimum auf `>=3.16.0 <4.0.0` gesetzt (fehlgeschlagenes `flutter pub get` wegen Dart 3.5.3)
 - Roadmap-Eintrag mit offenem TODO versehen
+### Phase 1: Android build system upgrade - 2025-10-19
+- Android Gradle Plugin auf 8.5.0, Gradle Wrapper auf 8.6 und Kotlin 1.9.24 umgestellt
+- compileSdk/targetSdk 35 und minSdk 23 in `android/app/build.gradle` gesetzt, Java/Kotlin Toolchain auf 17 festgelegt
+- `dependencyResolutionManagement` in `settings.gradle` ergänzt und `geolocator` auf ^14.0.2 angehoben
+- Build mit `flutter build apk --debug` versucht, schlug jedoch fehl: Minimum supported Gradle version is 8.7
+
+### Wartungscheck - 2025-10-19
+- `npm test` fehlgeschlagen: ts-node nicht gefunden
+- `pytest codex/tests` ausgeführt: keine Tests gefunden
+- `flutter test` fehlgeschlagen: geolocator_android Compile-Fehler
+- `flutter build apk --debug` fehlgeschlagen: Minimum supported Gradle version is 8.7
