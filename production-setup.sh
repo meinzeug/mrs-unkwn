@@ -2,28 +2,43 @@
 set -euo pipefail
 
 #=============================================================
-# Mrs-Unkwn Production Setup Script
-# Automates Docker/Nginx/Certbot/Flutter APK build
+# Mrs-Unkwn Production Setup Script (HOST-NGINX VERSION)
+# - Backend in Docker (nur Backend-Service, host network)
+# - Nginx + Certbot auf dem Host (Reverse Proxy + HTTPS)
+# - API unter https://<DOMAIN>/api
+# - APK wird gebaut und unter https://<DOMAIN>/mrs-unkwn.apk ausgeliefert
+# - Persistente Defaults in ~/.config/mrs-unkwn/setup.json
+# - Secrets (JWT/SESSION/ENCRYPTION) mit sinnvollen Default-Vorschlägen
+# - Lockfile-Handling: Falls kein Lockfile vorhanden, wird es automatisch erzeugt
 #=============================================================
 
 #--------------- Utility Functions ---------------------------
-info() { echo -e "\e[32m[✓]\e[0m $*"; }
-warn() { echo -e "\e[33m[!]\e[0m $*"; }
+info()  { echo -e "\e[32m[✓]\e[0m $*"; }
+warn()  { echo -e "\e[33m[!]\e[0m $*"; }
 error() { echo -e "\e[31m[✗]\e[0m $*" >&2; }
 require_cmd() { command -v "$1" >/dev/null 2>&1 || { error "Befehl $1 erforderlich"; exit 1; }; }
 
 prompt_secret() {
   local var="$1" prompt="$2" value
+  # Wenn bereits gesetzt → nichts tun
   if [[ -n "${!var:-}" ]]; then return 0; fi
-  read -r -s -p "$prompt" value; echo; export "$var"="$value"
+  # Geheimnisse nicht anzeigen, aber Default-Vorschlag generieren und nutzen, wenn Enter
+  local default="$(gen_secret)"
+  read -r -s -p "$prompt (Enter für Vorschlag): " value || true; echo
+  if [[ -z "$value" ]]; then value="$default"; fi
+  export "$var"="$value"
 }
 
 gen_secret() { openssl rand -base64 32; }
 
 write_if_diff() {
-  local file="$1" tmp="${file}.tmp"
+  local file="${1:-}"
+  if [[ -z "$file" ]]; then
+    error "write_if_diff: fehlender Dateiname"; cat >/dev/null; return 1
+  fi
+  local tmp="${file}.tmp"
   cat >"$tmp"
-  if [[ ! -f "$file" || ! cmp -s "$tmp" "$file" ]]; then
+  if [[ ! -f "$file" ]] || ! cmp -s "$tmp" "$file"; then
     mv "$tmp" "$file"
     info "schreibe $file"
   else
@@ -32,11 +47,87 @@ write_if_diff() {
   fi
 }
 
-backup_if_exists() {
-  [[ -f "$1" ]] && cp "$1" "$1.bak$(date +%s)"
+backup_if_exists() { [[ -f "$1" ]] && cp "$1" "$1.bak$(date +%s)"; }
+
+#--------------- Persistente Konfiguration -------------------
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/mrs-unkwn"
+CONFIG_FILE="$CONFIG_DIR/setup.json"
+mkdir -p "$CONFIG_DIR"
+
+ensure_pkg_jq() {
+  if ! command -v jq >/dev/null 2>&1; then
+    info "Installiere jq für JSON-Handling"
+    apt-get update -y
+    apt-get install -y jq
+  fi
+}
+cfg_has() { [[ -f "$CONFIG_FILE" ]] && jq -e ".\"$1\" != null" "$CONFIG_FILE" >/dev/null 2>&1; }
+cfg_get()  { jq -r ".\"$1\" // empty" "$CONFIG_FILE" 2>/dev/null || true; }
+
+config_load() {
+  [[ -f "$CONFIG_FILE" ]] || return 0
+  local key val
+  while IFS= read -r key; do
+    val="$(cfg_get "$key")"
+    if [[ -n "$val" && -z "${!key:-}" ]]; then
+      export "$key"="$val"
+    fi
+  done < <(jq -r 'keys[]' "$CONFIG_FILE")
+  info "Vorhandene Konfiguration geladen: $CONFIG_FILE"
 }
 
-#--------------- Flag Parsing -------------------------------
+config_save() {
+  ensure_pkg_jq
+  info "Speichere Konfiguration nach $CONFIG_FILE"
+  jq -n \
+    --arg DOMAIN "${DOMAIN:-}" \
+    --arg EMAIL "${EMAIL:-}" \
+    --arg ENVIRONMENT "${ENVIRONMENT:-}" \
+    --arg BACKEND_PORT "${BACKEND_PORT:-}" \
+    --arg EXTERNAL_PORT_HTTP "${EXTERNAL_PORT_HTTP:-}" \
+    --arg EXTERNAL_PORT_HTTPS "${EXTERNAL_PORT_HTTPS:-}" \
+    --arg CORS_ORIGINS "${CORS_ORIGINS:-}" \
+    --arg APP_BASE_URL "${APP_BASE_URL:-}" \
+    --arg API_BASE_URL_FOR_APP "${API_BASE_URL_FOR_APP:-}" \
+    --arg OPENROUTER_API_KEY "${OPENROUTER_API_KEY:-}" \
+    --arg OPENROUTER_MODEL "${OPENROUTER_MODEL:-}" \
+    --arg OPENROUTER_BASE_URL "${OPENROUTER_BASE_URL:-}" \
+    --arg OPENROUTER_BUDGET_LIMIT "${OPENROUTER_BUDGET_LIMIT:-}" \
+    --arg JWT_SECRET "${JWT_SECRET:-}" \
+    --arg SESSION_SECRET "${SESSION_SECRET:-}" \
+    --arg ENCRYPTION_KEY "${ENCRYPTION_KEY:-}" \
+    --arg ADMIN_EMAIL "${ADMIN_EMAIL:-}" \
+    --arg DB_ENGINE "${DB_ENGINE:-}" \
+    --arg DB_HOST "${DB_HOST:-}" \
+    --arg DB_PORT "${DB_PORT:-}" \
+    --arg DB_NAME "${DB_NAME:-}" \
+    --arg DB_USER "${DB_USER:-}" \
+    --arg DB_PASS "${DB_PASS:-}" \
+    --arg USE_REDIS "${USE_REDIS:-}" \
+    --arg USE_S3 "${USE_S3:-}" \
+    --arg ANDROID_APP_ID "${ANDROID_APP_ID:-}" \
+    --arg ANDROID_SIGNING "${ANDROID_SIGNING:-}" \
+    --arg FLAVOR "${FLAVOR:-}" \
+    --arg BUILD_MODE "${BUILD_MODE:-}" \
+    --arg ENABLE_UFW "${ENABLE_UFW:-}" \
+    --arg BACKEND_DIR "${BACKEND_DIR:-}" \
+    --arg APP_DIR "${APP_DIR:-}" \
+    '{
+      DOMAIN:$DOMAIN, EMAIL:$EMAIL, ENVIRONMENT:$ENVIRONMENT,
+      BACKEND_PORT:$BACKEND_PORT, EXTERNAL_PORT_HTTP:$EXTERNAL_PORT_HTTP, EXTERNAL_PORT_HTTPS:$EXTERNAL_PORT_HTTPS,
+      CORS_ORIGINS:$CORS_ORIGINS, APP_BASE_URL:$APP_BASE_URL, API_BASE_URL_FOR_APP:$API_BASE_URL_FOR_APP,
+      OPENROUTER_API_KEY:$OPENROUTER_API_KEY, OPENROUTER_MODEL:$OPENROUTER_MODEL,
+      OPENROUTER_BASE_URL:$OPENROUTER_BASE_URL, OPENROUTER_BUDGET_LIMIT:$OPENROUTER_BUDGET_LIMIT,
+      JWT_SECRET:$JWT_SECRET, SESSION_SECRET:$SESSION_SECRET, ENCRYPTION_KEY:$ENCRYPTION_KEY,
+      ADMIN_EMAIL:$ADMIN_EMAIL,
+      DB_ENGINE:$DB_ENGINE, DB_HOST:$DB_HOST, DB_PORT:$DB_PORT, DB_NAME:$DB_NAME, DB_USER:$DB_USER, DB_PASS:$DB_PASS,
+      USE_REDIS:$USE_REDIS, USE_S3:$USE_S3,
+      ANDROID_APP_ID:$ANDROID_APP_ID, ANDROID_SIGNING:$ANDROID_SIGNING, FLAVOR:$FLAVOR, BUILD_MODE:$BUILD_MODE,
+      ENABLE_UFW:$ENABLE_UFW, BACKEND_DIR:$BACKEND_DIR, APP_DIR:$APP_DIR
+    }' > "$CONFIG_FILE"
+}
+
+#--------------- Flags & Defaults ----------------------------
 YES=false
 SKIP_APK=false
 NO_FIREWALL=false
@@ -44,8 +135,8 @@ REISSUE_CERT=false
 WITH_DB=false
 NO_DB=false
 DEBUG=false
-BACKEND_DIR=""
-APP_DIR=""
+BACKEND_DIR="${BACKEND_DIR:-}"
+APP_DIR="${APP_DIR:-}"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -71,11 +162,8 @@ OS_ID="$(. /etc/os-release && echo "$ID")"
 case "$OS_ID" in
   ubuntu|debian) :;;
   *) error "Unsupported OS: $OS_ID"; exit 1;;
-endcase
-
-if [[ $EUID -ne 0 ]]; then
-  error "Bitte als root oder mit sudo ausführen"; exit 1;
-fi
+esac
+if [[ $EUID -ne 0 ]]; then error "Bitte als root oder mit sudo ausführen"; exit 1; fi
 
 #--------------- Package Installation -----------------------
 apt_update_once=false
@@ -86,136 +174,163 @@ ensure_pkg() {
     apt-get install -y "$pkg"
   fi
 }
-
 ensure_docker() {
   if ! command -v docker >/dev/null 2>&1; then
     info "Installiere Docker"
-    ensure_pkg ca-certificates
-    ensure_pkg curl
-    ensure_pkg gnupg
+    ensure_pkg ca-certificates; ensure_pkg curl; ensure_pkg gnupg
     install -m 0755 -d /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/$OS_ID/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    curl -fsSL "https://download.docker.com/linux/$OS_ID/gpg" | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
     chmod a+r /etc/apt/keyrings/docker.gpg
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/$OS_ID $(. /etc/os-release && echo "$VERSION_CODENAME") stable" \
-      >/etc/apt/sources.list.d/docker.list
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/$OS_ID $(. /etc/os-release && echo "$VERSION_CODENAME") stable" >/etc/apt/sources.list.d/docker.list
     apt-get update -y
-    apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    ensure_pkg docker-ce; ensure_pkg docker-ce-cli; ensure_pkg containerd.io
+    ensure_pkg docker-buildx-plugin; ensure_pkg docker-compose-plugin
   fi
 }
-
-ensure_nginx_certbot() {
-  ensure_pkg nginx
-  ensure_pkg certbot
-  ensure_pkg python3-certbot-nginx
-}
-
+ensure_nginx_certbot() { ensure_pkg nginx; ensure_pkg certbot; ensure_pkg python3-certbot-nginx; }
 ensure_ufw() {
   ensure_pkg ufw
   ufw status | grep -q inactive && ufw --force enable
   ufw allow 22/tcp
-  ufw allow "$EXTERNAL_PORT_HTTP"/tcp
-  ufw allow "$EXTERNAL_PORT_HTTPS"/tcp
+  ufw allow "${EXTERNAL_PORT_HTTP}"/tcp
+  ufw allow "${EXTERNAL_PORT_HTTPS}"/tcp
 }
 
-#--------------- Input Handling -----------------------------
+#--------------- Input Handling (+ persistente Defaults) -----
 ask() {
   local var="$1" prompt="$2" default="$3"
+  if [[ -z "${!var:-}" && -f "$CONFIG_FILE" ]] && cfg_has "$var"; then
+    default="$(cfg_get "$var")"
+  fi
   if [[ -n "${!var:-}" ]]; then return; fi
   if $YES; then
     export "$var"="$default"
   else
-    read -r -p "$prompt [$default]: " input
+    read -r -p "$prompt [${default}]: " input
     export "$var"="${input:-$default}"
   fi
 }
 
-ask SECRET "" ""
-
-# Defaults
+#--------------- Defaults & Load previous config -------------
 EXTERNAL_PORT_HTTP=${EXTERNAL_PORT_HTTP:-80}
 EXTERNAL_PORT_HTTPS=${EXTERNAL_PORT_HTTPS:-443}
 ENVIRONMENT=${ENVIRONMENT:-production}
 BACKEND_PORT=${BACKEND_PORT:-3000}
 ENABLE_UFW=${ENABLE_UFW:-true}
-API_BASE_URL_FOR_APP=${API_BASE_URL_FOR_APP:-}
 OPENROUTER_BASE_URL=${OPENROUTER_BASE_URL:-https://openrouter.ai/api/v1}
 OPENROUTER_MODEL=${OPENROUTER_MODEL:-qwen/qwen2.5-coder:latest}
-APP_BASE_URL=${APP_BASE_URL:-}
-CORS_ORIGINS=${CORS_ORIGINS:-}
 ANDROID_SIGNING=${ANDROID_SIGNING:-none}
 BUILD_MODE=${BUILD_MODE:-release}
+APP_BASE_URL=${APP_BASE_URL:-}
+CORS_ORIGINS=${CORS_ORIGINS:-}
+API_BASE_URL_FOR_APP=${API_BASE_URL_FOR_APP:-}
 
-# Prompt
-ask DOMAIN "Domain für HTTPS" ""
-ask EMAIL "Let’s Encrypt E-Mail" ""
-ask ENVIRONMENT "Environment" "production"
-ask BACKEND_PORT "Interner Backend-Port" "3000"
-ask EXTERNAL_PORT_HTTP "Externer HTTP-Port" "80"
-ask EXTERNAL_PORT_HTTPS "Externer HTTPS-Port" "443"
-ask APP_BASE_URL "App-Basis-URL" "https://$DOMAIN"
-ask API_BASE_URL_FOR_APP "API-Basis-URL für App" "https://$DOMAIN"
-ask CORS_ORIGINS "CORS Origins" "https://$DOMAIN"
-ask OPENROUTER_API_KEY "OpenRouter API Key" ""
-ask OPENROUTER_MODEL "OpenRouter Modell" "$OPENROUTER_MODEL"
-ask OPENROUTER_BASE_URL "OpenRouter Base URL" "$OPENROUTER_BASE_URL"
-ask OPENROUTER_BUDGET_LIMIT "OpenRouter Budget Limit" ""
-ask JWT_SECRET "JWT Secret" "$(gen_secret)"
-ask SESSION_SECRET "Session Secret" "$(gen_secret)"
-ask ENCRYPTION_KEY "Encryption Key (32 Byte Base64)" "$(gen_secret)"
-ask ADMIN_EMAIL "Admin Email" ""
-ask USE_REDIS "Redis verwenden? (true/false)" "false"
-ask USE_S3 "S3 Storage verwenden? (true/false)" "false"
-ask DB_ENGINE "DB Engine (postgres/mysql/sqlite/none)" "sqlite"
-if [[ "$DB_ENGINE" != "none" && "$DB_ENGINE" != "sqlite" ]]; then
-  ask DB_HOST "DB Host" "db"
-  ask DB_PORT "DB Port" "$([[ "$DB_ENGINE" == postgres ]] && echo 5432 || echo 3306)"
-  ask DB_NAME "DB Name" "mrsunkwn"
-  ask DB_USER "DB User" "mrsunkwn"
-  ask DB_PASS "DB Passwort" "$(gen_secret)"
+config_load
+
+#--------------- Prompts ------------------------------------
+ask DOMAIN "Domain für HTTPS" "${DOMAIN:-}"
+ask EMAIL "Let’s Encrypt E-Mail" "${EMAIL:-}"
+ask ENVIRONMENT "Environment" "${ENVIRONMENT:-production}"
+ask BACKEND_PORT "Interner Backend-Port" "${BACKEND_PORT:-3000}"
+ask EXTERNAL_PORT_HTTP "Externer HTTP-Port" "${EXTERNAL_PORT_HTTP:-80}"
+ask EXTERNAL_PORT_HTTPS "Externer HTTPS-Port" "${EXTERNAL_PORT_HTTPS:-443}"
+
+# Automatisch aus Domain ableiten
+APP_BASE_URL="https://${DOMAIN}"
+API_BASE_URL_FOR_APP="https://${DOMAIN}/api"
+ask CORS_ORIGINS "CORS Origins" "${CORS_ORIGINS:-https://${DOMAIN}}"
+
+# KI / OpenRouter
+if [[ -z "${OPENROUTER_API_KEY:-}" ]]; then prompt_secret OPENROUTER_API_KEY "OpenRouter API Key"; fi
+ask OPENROUTER_MODEL "OpenRouter Modell" "${OPENROUTER_MODEL:-qwen/qwen2.5-coder:latest}"
+ask OPENROUTER_BASE_URL "OpenRouter Base URL" "${OPENROUTER_BASE_URL:-https://openrouter.ai/api/v1}"
+ask OPENROUTER_BUDGET_LIMIT "OpenRouter Budget Limit" "${OPENROUTER_BUDGET_LIMIT:-}"
+
+# Secrets mit Vorschlag (Enter = Vorschlag übernehmen)
+prompt_secret JWT_SECRET "JWT Secret"
+prompt_secret SESSION_SECRET "Session Secret"
+prompt_secret ENCRYPTION_KEY "Encryption Key (32 Byte Base64)"
+
+ask ADMIN_EMAIL "Admin Email" "${ADMIN_EMAIL:-}"
+ask USE_REDIS "Redis verwenden? (true/false)" "${USE_REDIS:-false}"
+ask USE_S3 "S3 Storage verwenden? (true/false)" "${USE_S3:-false}"
+
+ask DB_ENGINE "DB Engine (postgres/mysql/sqlite/none)" "${DB_ENGINE:-sqlite}"
+if [[ "${DB_ENGINE}" != "none" && "${DB_ENGINE}" != "sqlite" ]]; then
+  ask DB_HOST "DB Host" "${DB_HOST:-db}"
+  if [[ "${DB_ENGINE}" == "postgres" ]]; then
+    ask DB_PORT "DB Port" "${DB_PORT:-5432}"
+  else
+    ask DB_PORT "DB Port" "${DB_PORT:-3306}"
+  fi
+  ask DB_NAME "DB Name" "${DB_NAME:-mrsunkwn}"
+  ask DB_USER "DB User" "${DB_USER:-mrsunkwn}"
+  if [[ -z "${DB_PASS:-}" ]]; then prompt_secret DB_PASS "DB Passwort"; fi
 fi
 
-ask ANDROID_APP_ID "Android App ID" "com.meinzeug.mrsunkwn"
-ask ANDROID_SIGNING "Android Signing (none/debug/release)" "none"
-ask FLAVOR "Flutter Flavor" ""
-ask BUILD_MODE "Build Mode" "release"
+ask ANDROID_APP_ID "Android App ID" "${ANDROID_APP_ID:-com.meinzeug.mrsunkwn}"
+ask ANDROID_SIGNING "Android Signing (none/debug/release)" "${ANDROID_SIGNING:-none}"
+ask FLAVOR "Flutter Flavor" "${FLAVOR:-}"
+ask BUILD_MODE "Build Mode" "${BUILD_MODE:-release}"
 
 #--------------- Auto-Discovery -----------------------------
 auto_detect_backend() {
-  local paths
-  if [[ -n "$BACKEND_DIR" ]]; then echo "$BACKEND_DIR"; return; fi
-  IFS=$'\n' read -r -d '' -a paths < <(find . -maxdepth 3 -name package.json -print0)
-  if [[ ${#paths[@]} -eq 1 ]]; then
+  if [[ -n "${BACKEND_DIR:-}" ]]; then return; fi
+  mapfile -d '' -t paths < <(find . -maxdepth 3 -name package.json -print0)
+  if (( ${#paths[@]} == 1 )); then
     BACKEND_DIR="$(dirname "${paths[0]}")"
-  else
+  elif (( ${#paths[@]} > 1 )); then
     warn "Mehrere Backend-Verzeichnisse gefunden"
     select p in "${paths[@]}"; do BACKEND_DIR="$(dirname "$p")"; break; done
-  fi
-}
-
-auto_detect_app() {
-  local paths
-  if [[ -n "$APP_DIR" ]]; then echo "$APP_DIR"; return; fi
-  IFS=$'\n' read -r -d '' -a paths < <(find . -maxdepth 3 -name pubspec.yaml -print0)
-  if [[ ${#paths[@]} -eq 1 ]]; then
-    APP_DIR="$(dirname "${paths[0]}")"
   else
-    warn "Mehrere Flutter Apps gefunden"
-    select p in "${paths[@]}"; do APP_DIR="$(dirname "$p")"; break; done
+    error "Kein Backend (package.json) gefunden"; exit 1
   fi
 }
-
+auto_detect_app() {
+  if [[ -n "${APP_DIR:-}" ]]; then return; fi
+  mapfile -d '' -t paths < <(find . -maxdepth 3 -name pubspec.yaml -print0)
+  if (( ${#paths[@]} == 1 )); then
+    APP_DIR="$(dirname "${paths[0]}")"
+  elif (( ${#paths[@]} > 1 )); then
+    warn "Mehrere Flutter-Apps gefunden"
+    select p in "${paths[@]}"; do APP_DIR="$(dirname "$p")"; break; done
+  else
+    warn "Keine Flutter-App gefunden – APK-Build wird übersprungen"; SKIP_APK=true
+  fi
+}
 auto_detect_backend
 auto_detect_app
 
-info "Backend-Verzeichnis: $BACKEND_DIR"
-info "Flutter-App-Verzeichnis: $APP_DIR"
+info "Backend-Verzeichnis: ${BACKEND_DIR}"
+info "Flutter-App-Verzeichnis: ${APP_DIR:-<keins gefunden>}"
+
+# Speichere Defaults inkl. detektierter Pfade
+config_save
 
 #--------------- Install Dependencies -----------------------
 ensure_docker
 ensure_nginx_certbot
-if [[ "$ENABLE_UFW" == true && $NO_FIREWALL == false ]]; then
-  ensure_ufw
-fi
+if [[ "${ENABLE_UFW:-true}" == "true" && "${NO_FIREWALL:-false}" == "false" ]]; then ensure_ufw; fi
+ensure_pkg_jq
+
+#--------------- Lockfile-Handling (automatisch) ------------
+generate_lockfile_if_missing() {
+  local dir="$1"
+  if [[ ! -f "$dir/package.json" ]]; then return 0; fi
+  if [[ -f "$dir/package-lock.json" || -f "$dir/yarn.lock" || -f "$dir/pnpm-lock.yaml" ]]; then
+    info "Lockfile gefunden (npm/yarn/pnpm) – überspringe Erzeugung"
+    return 0
+  fi
+  info "Kein Lockfile gefunden – erzeuge package-lock.json im Docker-Container"
+  docker run --rm -v "$PWD/$dir":/app -w /app node:20-alpine sh -lc \
+    "apk add --no-cache git >/dev/null 2>&1 || true; npm install --package-lock-only"
+  if [[ -f "$dir/package-lock.json" ]]; then
+    info "package-lock.json erzeugt: $dir/package-lock.json"
+  else
+    warn "Konnte kein package-lock.json erzeugen – Dockerfile wird Fallback-Install nutzen"
+  fi
+}
+generate_lockfile_if_missing "$BACKEND_DIR"
 
 #--------------- Generate .env ------------------------------
 cat > .env <<EOF_ENV
@@ -227,6 +342,7 @@ EXTERNAL_PORT_HTTP=$EXTERNAL_PORT_HTTP
 EXTERNAL_PORT_HTTPS=$EXTERNAL_PORT_HTTPS
 CORS_ORIGINS=$CORS_ORIGINS
 APP_BASE_URL=$APP_BASE_URL
+API_BASE_URL_FOR_APP=$API_BASE_URL_FOR_APP
 OPENROUTER_API_KEY=$OPENROUTER_API_KEY
 OPENROUTER_MODEL=$OPENROUTER_MODEL
 OPENROUTER_BASE_URL=$OPENROUTER_BASE_URL
@@ -235,17 +351,17 @@ JWT_SECRET=$JWT_SECRET
 SESSION_SECRET=$SESSION_SECRET
 ENCRYPTION_KEY=$ENCRYPTION_KEY
 ADMIN_EMAIL=$ADMIN_EMAIL
-DB_ENGINE=$DB_ENGINE
-DB_HOST=$DB_HOST
-DB_PORT=$DB_PORT
-DB_NAME=$DB_NAME
-DB_USER=$DB_USER
-DB_PASS=$DB_PASS
+DB_ENGINE=${DB_ENGINE:-none}
+DB_HOST=${DB_HOST:-}
+DB_PORT=${DB_PORT:-}
+DB_NAME=${DB_NAME:-}
+DB_USER=${DB_USER:-}
+DB_PASS=${DB_PASS:-}
 USE_REDIS=$USE_REDIS
 USE_S3=$USE_S3
 EOF_ENV
 
-# Backend env
+mkdir -p "$BACKEND_DIR"
 cat > "$BACKEND_DIR/.env" <<EOF_BENV
 PORT=$BACKEND_PORT
 NODE_ENV=$ENVIRONMENT
@@ -256,143 +372,247 @@ OPENROUTER_BUDGET_LIMIT=$OPENROUTER_BUDGET_LIMIT
 JWT_SECRET=$JWT_SECRET
 SESSION_SECRET=$SESSION_SECRET
 ENCRYPTION_KEY=$ENCRYPTION_KEY
-DB_ENGINE=$DB_ENGINE
-DB_HOST=$DB_HOST
-DB_PORT=$DB_PORT
-DB_NAME=$DB_NAME
-DB_USER=$DB_USER
-DB_PASS=$DB_PASS
+DB_ENGINE=${DB_ENGINE:-none}
+DB_HOST=${DB_HOST:-}
+DB_PORT=${DB_PORT:-}
+DB_NAME=${DB_NAME:-}
+DB_USER=${DB_USER:-}
+DB_PASS=${DB_PASS:-}
 USE_REDIS=$USE_REDIS
 ADMIN_EMAIL=$ADMIN_EMAIL
 EOF_BENV
 
-#--------------- Generate Dockerfile ------------------------
+#--------------- Dockerfiles / Compose -----------------------
+# Robustes Dockerfile mit Fallback auf vorhandenes Lockfile (npm/yarn/pnpm) oder npm install
 write_if_diff "$BACKEND_DIR/Dockerfile.backend" <<'EOF_DOCKER'
 # Build stage
 FROM node:20-alpine AS build
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci --omit=dev
+
+RUN apk add --no-cache python3 make g++  # native deps falls nötig
+
+# Manifest + Lockfiles zuerst (Cache)
+COPY package.json ./
+COPY package-lock.json . 2>/dev/null || true
+COPY yarn.lock . 2>/dev/null || true
+COPY pnpm-lock.yaml . 2>/dev/null || true
+
+# Corepack aktivieren für yarn/pnpm
+RUN corepack enable
+
+# Install je nach Lockfile
+RUN if [ -f pnpm-lock.yaml ]; then \
+      pnpm install --frozen-lockfile --prod; \
+    elif [ -f yarn.lock ]; then \
+      yarn install --production --frozen-lockfile; \
+    elif [ -f package-lock.json ]; then \
+      npm ci --omit=dev; \
+    else \
+      npm install --omit=dev; \
+    fi
+
+# Restliche Quellen
 COPY . .
+
+# Build (falls vorhanden)
 RUN npm run build || true
 
 # Run stage
 FROM node:20-alpine
 WORKDIR /app
+RUN apk add --no-cache curl
 COPY --from=build /app /app
 ENV NODE_ENV=production
 USER node
 CMD ["node", "dist/index.js"]
 EOF_DOCKER
 
-#--------------- Generate docker-compose --------------------
+# host network: Container hört auf 127.0.0.1:$BACKEND_PORT
 write_if_diff docker-compose.yml <<EOF_COMPOSE
 services:
   backend:
     build:
       context: $BACKEND_DIR
-      dockerfile: Dockerfile.backend
-    env_file: .env
-    ports:
-      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    env_file: $BACKEND_DIR/.env
+    environment:
+      - PORT=${BACKEND_PORT}
+    network_mode: "host"
+    restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:${BACKEND_PORT}/health"]
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:${BACKEND_PORT}/health"]
       interval: 30s
       timeout: 10s
       retries: 3
-
-  nginx:
-    image: nginx:alpine
-    ports:
-      - "${EXTERNAL_PORT_HTTP}:80"
-      - "${EXTERNAL_PORT_HTTPS}:443"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/www/certbot
-    depends_on:
-      - backend
-
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/www/certbot
-    entrypoint: sh -c "trap exit TERM; while :; do certbot renew --webroot -w /var/www/certbot; sleep 12h; done"
-
-volumes:
-  certbot-etc:
-  certbot-var:
 EOF_COMPOSE
 
-#--------------- Generate nginx.conf ------------------------
-write_if_diff nginx.conf <<EOF_NGINX
-events {}
-http {
-  server {
+#--------------- Host-Nginx Setup & TLS (webroot) ------------
+# Nginx stoppen/deaktivieren, Konfig sauber schreiben, dann starten
+systemctl stop nginx || true
+systemctl disable nginx || true
+
+# ACME Webroot & Webroot für Downloads
+mkdir -p /var/www/certbot
+mkdir -p /var/www/html
+chown -R www-data:www-data /var/www/certbot /var/www/html
+
+VHOST_PATH="/etc/nginx/sites-available/mrs-unkwn.conf"
+
+# 1) HTTP-only vhost schreiben (für ACME und temporäre API/Download bis SSL aktiv)
+write_if_diff "$VHOST_PATH" <<EOF_VHOST_HTTP
+server {
     listen 80;
     server_name $DOMAIN;
-    location /.well-known/acme-challenge/ {
-      root /var/www/certbot;
+
+    # ACME Challenge (Certbot)
+    location ^~ /.well-known/acme-challenge/ {
+        default_type "text/plain";
+        root /var/www/certbot;
+    }
+
+    # API (HTTP bis SSL da)
+    location /api/ {
+        proxy_pass http://127.0.0.1:$BACKEND_PORT/;
+        proxy_http_version 1.1;
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto \$scheme;
+        proxy_redirect off;
+    }
+
+    # APK Download (HTTP → später Redirect auf HTTPS)
+    location = /mrs-unkwn.apk {
+        root /var/www/html;
+        types { }
+        default_type application/vnd.android.package-archive;
+    }
+
+    location / {
+        return 200 "OK";
+        add_header Content-Type text/plain;
+    }
+}
+EOF_VHOST_HTTP
+
+ln -sf "$VHOST_PATH" /etc/nginx/sites-enabled/mrs-unkwn.conf
+[ -e /etc/nginx/sites-enabled/default ] && rm -f /etc/nginx/sites-enabled/default
+
+nginx -t
+systemctl enable nginx
+systemctl start nginx
+
+# 2) Zertifikat via webroot anfordern
+if [[ "${REISSUE_CERT:-false}" == "true" ]]; then
+  info "Erzwinge Neu-Ausstellung des Zertifikats"
+  rm -rf /etc/letsencrypt/live/"$DOMAIN" /etc/letsencrypt/archive/"$DOMAIN" /etc/letsencrypt/renewal/"$DOMAIN".conf || true
+fi
+
+if ! certbot certificates 2>/dev/null | grep -q "Domains: .*${DOMAIN}"; then
+  info "Fordere Let's Encrypt Zertifikat an (webroot)"
+  certbot certonly --webroot -w /var/www/certbot \
+    -d "$DOMAIN" -m "$EMAIL" --agree-tos --no-eff-email --non-interactive
+fi
+
+# 3) HTTPS vhost schreiben (Redirect von 80 → 443, API + APK)
+write_if_diff "$VHOST_PATH" <<EOF_VHOST_SSL
+server {
+    listen 80;
+    server_name $DOMAIN;
+    location ^~ /.well-known/acme-challenge/ {
+        default_type "text/plain";
+        root /var/www/certbot;
     }
     location / {
-      return 301 https://$DOMAIN$request_uri;
+        return 301 https://$DOMAIN\$request_uri;
     }
-  }
-  server {
-    listen 443 ssl;
+}
+
+server {
+    listen 443 ssl http2;
     server_name $DOMAIN;
+
     ssl_certificate /etc/letsencrypt/live/$DOMAIN/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/$DOMAIN/privkey.pem;
     ssl_session_cache shared:SSL:10m;
     ssl_session_timeout 10m;
-    location / {
-      proxy_pass http://backend:$BACKEND_PORT;
-      proxy_set_header Host $host;
-      proxy_set_header X-Real-IP $remote_addr;
-      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-      proxy_set_header X-Forwarded-Proto $scheme;
-    }
-    client_max_body_size 50m;
-  }
-}
-EOF_NGINX
 
-#--------------- TLS Setup ----------------------------------
-if [[ ! -f "/etc/letsencrypt/live/$DOMAIN/fullchain.pem" || $REISSUE_CERT == true ]]; then
-  docker compose up -d nginx
-  certbot certonly --webroot -w /var/www/certbot -d "$DOMAIN" -m "$EMAIL" --agree-tos --no-eff-email --deploy-hook "docker compose reload nginx" || true
-fi
+    # API unter /api → Backend
+    location /api/ {
+      proxy_pass http://127.0.0.1:$BACKEND_PORT/;
+      proxy_http_version 1.1;
+      proxy_set_header Host \$host;
+      proxy_set_header X-Real-IP \$remote_addr;
+      proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto \$scheme;
+      proxy_redirect off;
+    }
+
+    # APK Download unter https://$DOMAIN/mrs-unkwn.apk
+    location = /mrs-unkwn.apk {
+      root /var/www/html;
+      types { }
+      default_type application/vnd.android.package-archive;
+      add_header Content-Disposition "attachment; filename=mrs-unkwn.apk";
+    }
+
+    # Optional: statische Inhalte
+    location / {
+      root /var/www/html;
+      index index.html;
+      try_files \$uri \$uri/ =404;
+    }
+
+    client_max_body_size 50m;
+}
+EOF_VHOST_SSL
+
+nginx -t && systemctl reload nginx
 
 #--------------- Docker Compose Up --------------------------
-docker compose up -d --build
+docker compose build --no-cache backend
+docker compose up -d backend
 
 #--------------- Flutter Build ------------------------------
+APK_DEST="/var/www/html/mrs-unkwn.apk"
 if ! $SKIP_APK; then
-  mkdir -p dist
-  docker run --rm -v "$PWD/$APP_DIR":/app -w /app cirrusci/flutter:stable bash -c "flutter clean && flutter pub get && flutter build apk --${BUILD_MODE} ${FLAVOR:+--flavor $FLAVOR} --dart-define=API_BASE_URL=${API_BASE_URL_FOR_APP} --dart-define=OPENROUTER_MODEL=${OPENROUTER_MODEL} && cp build/app/outputs/flutter-apk/app-${BUILD_MODE}.apk /app/../dist/app-release.apk"
-  info "APK erstellt unter dist/app-release.apk"
+  if [[ -n "${APP_DIR:-}" && -d "$APP_DIR" ]]; then
+    mkdir -p /var/www/html
+    docker run --rm -v "$PWD/$APP_DIR":/app -w /app cirrusci/flutter:stable bash -lc \
+      "flutter clean && flutter pub get && flutter build apk --${BUILD_MODE} ${FLAVOR:+--flavor $FLAVOR} \
+       --dart-define=API_BASE_URL=${API_BASE_URL_FOR_APP} \
+       --dart-define=OPENROUTER_MODEL=${OPENROUTER_MODEL} \
+       && cp build/app/outputs/flutter-apk/app-${BUILD_MODE}.apk /app/app-release.apk"
+    cp "$APP_DIR/app-release.apk" "$APK_DEST"
+    chown www-data:www-data "$APK_DEST" || true
+    info "APK bereit unter $APK_DEST (Download: https://$DOMAIN/mrs-unkwn.apk)"
+  else
+    warn "Flutter-App-Verzeichnis nicht gefunden – APK-Build übersprungen."
+  fi
 fi
 
 #--------------- Health Check -------------------------------
 sleep 5
-default_health="https://$DOMAIN/health"
+default_health="https://$DOMAIN/api/health"
 if curl -k --silent --fail "$default_health" >/dev/null; then
   info "Healthcheck erfolgreich: $default_health"
 else
   warn "Healthcheck fehlgeschlagen: $default_health"
 fi
 
-if command -v certbot >/dev/null 2>&1; then
-  CERT_INFO=$(certbot certificates 2>/dev/null | grep -A1 "Domains: $DOMAIN" || true)
-fi
+CERT_INFO="$(certbot certificates 2>/dev/null | awk '/Domains: .*'"$DOMAIN"'/,0')"
 
 cat <<SUMMARY
 ----- Setup Zusammenfassung -----
 Domain: $DOMAIN
-Backend erreichbar unter: https://$DOMAIN
-APK Pfad: dist/app-release.apk
-Docker Befehle: docker compose logs, docker compose restart
-Zertifikat: $CERT_INFO
+API-Basis: https://$DOMAIN/api
+Backend-Port (intern): $BACKEND_PORT
+APK Download: https://$DOMAIN/mrs-unkwn.apk
+Docker Befehle:
+  docker compose logs -f
+  docker compose restart backend
+Zertifikat:
+$CERT_INFO
+Konfig gespeichert unter: $CONFIG_FILE
 ---------------------------------
 SUMMARY
+
