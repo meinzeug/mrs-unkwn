@@ -46,27 +46,24 @@ class AIResponseService {
         (m) => oai.ChatMessage(role: _mapRole(m.role), content: m.content),
       ),
     ];
-
-    String response;
+    final buffer = StringBuffer();
     try {
-      response = await _openAI.sendChatRequest(question, context);
+      await for (final chunk in _openAI.streamChatRequest(question, context)) {
+        buffer.write(chunk);
+        if (_containsBannedContent(buffer.toString())) {
+          yield 'I\'m sorry, but I can\'t help with that.';
+          return;
+        }
+        yield chunk;
+        await Future.delayed(_delay);
+      }
     } catch (_) {
       yield 'Oops, something went wrong. Please try again.';
       return;
     }
 
-    if (_containsBannedContent(response)) {
-      yield 'I\'m sorry, but I can\'t help with that.';
-      return;
-    }
-
+    final response = buffer.toString();
     _cache[cacheKey] = response;
-
-    final parts = response.split(RegExp(r'\s+'));
-    for (final part in parts) {
-      yield part;
-      await Future.delayed(_delay);
-    }
   }
 
   bool _containsBannedContent(String text) {
@@ -85,4 +82,3 @@ class AIResponseService {
     }
   }
 }
-
