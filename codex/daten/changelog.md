@@ -905,3 +905,6 @@
 - `pytest codex/tests` ausgeführt: keine Tests gefunden
 - `flutter test` fehlgeschlagen: geolocator_android Compile-Fehler
 - `flutter build apk --debug` fehlgeschlagen: Minimum supported Gradle version is 8.7
+### Produktions-Setup-Skript - 2025-10-20
+- `production-setup.sh` hinzugefügt, automatisiert Docker-, Nginx- und Certbot-Konfiguration sowie Flutter-APK-Build.
+- Beispiel-Dateien `docker-compose.yml`, `backend/Dockerfile.backend` und `nginx.conf` erzeugt.

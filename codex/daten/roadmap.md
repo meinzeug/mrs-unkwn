@@ -55,6 +55,9 @@ Details: Erstelle `lib/core/utils/logger.dart` mit `Logger` Klasse basierend auf
 [x] JSON Serialization Setup:
 Details: Erstelle `build.yaml` im Projekt-Root für json_serializable Konfiguration. Definiere Standard-JSON-Serialization-Settings: `explicit_to_json: true`, `create_to_json: true`. Erstelle Beispiel-Model-Klasse `lib/core/models/base_model.dart` mit `@JsonSerializable()` Annotation. Implementiere `fromJson()` und `toJson()` Methoden. Führe `flutter packages pub run build_runner build` aus um Code zu generieren.
 
+[x] Produktions-Setup-Skript und Docker-Infrastruktur eingerichtet:
+Details: Bash-Skript erzeugt Dockerfile, docker-compose und Nginx-Konfiguration für Production.
+
 ### Milestone 2: Backend API Foundation
 
 [x] Node.js Express Server initialisieren:
