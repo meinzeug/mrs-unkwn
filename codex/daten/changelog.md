@@ -826,3 +826,10 @@
 ### Phase 1: Subject Classification System Tests - 2025-10-08
 - Unit-Tests für SubjectClassificationService mit Keyword-Erkennung, Historien-Tracking und Wechselerkennung hinzugefügt
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Learning Session Management - 2025-10-09
+- `LearningSessionService` speichert Sitzungen verschlüsselt in Hive und liefert unsynchronisierte Einträge
+- `SecureStorageService` um `sessionKey` erweitert
+- Service im `service_locator` registriert
+- Unit-Test `learning_session_service_test.dart` prüft Session-Start, Ende und Sync-Status
+- Roadmap und Prompt aktualisiert

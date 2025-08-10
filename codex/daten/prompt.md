@@ -37,6 +37,7 @@
 - Phase 1 Milestone 6: Chat UI Interface Implementation abgeschlossen ✓
 - Phase 1 Milestone 6: AI Response Generation Service abgeschlossen ✓
 - Phase 1 Milestone 6: Subject Classification System abgeschlossen ✓
+- Phase 1 Milestone 6: Learning Session Management abgeschlossen ✓
 - Wartungscheck am 2025-09-15 durchgeführt (npm test erfolgreich, pytest keine Tests, flutter test fehlgeschlagen)
 - Wartungscheck am 2025-09-16 durchgeführt (npm test fehlgeschlagen: package.json nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Testverzeichnis nicht gefunden)
 - Wartungscheck am 2025-09-17 durchgeführt (npm test fehlgeschlagen: ts-node nicht gefunden, pytest codex/tests keine Tests gefunden, flutter test fehlgeschlagen: Kompilationsfehler)
@@ -50,18 +51,18 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Phase 1 Milestone 6: Learning Session Management umsetzen.
+Phase 1 Milestone 6: AI Tutoring BLoC State Management umsetzen.
 
 ### Vorbereitungen
 - README und Roadmap prüfen.
-- Sicherstellen, dass `learning_session.dart` Modell existiert.
+- Sicherstellen, dass `tutoring_bloc.dart` angelegt wird.
 
 ### Implementierungsschritte
-- Datei `lib/features/tutoring/data/models/learning_session.dart` erweitern, falls notwendig.
-- Session-Start- und End-Logik mit Dauerberechnung implementieren.
-- Lernmetriken (Fragenanzahl, Themen, AI-Interaktionen) erfassen und lokal speichern.
-- Sync-Mechanismus zum Backend vorbereiten.
-- Unit-Tests für das Session-Tracking hinzufügen.
+- Datei `lib/features/tutoring/presentation/bloc/tutoring_bloc.dart` erstellen.
+- Events `SendMessageRequested`, `LoadChatHistoryRequested`, `StartLearningSessionRequested`, `EndLearningSessionRequested` definieren.
+- States `TutoringInitial`, `TutoringLoading`, `MessagesLoaded`, `MessageSent`, `TutoringError` implementieren.
+- Event-Handler für AI-Integration und lokale Datenspeicherung umsetzen.
+- Optimistic UI Updates für gesendete Nachrichten berücksichtigen.
 
 ### Validierung
 - `npm test` ausführen.

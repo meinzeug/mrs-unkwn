@@ -20,6 +20,7 @@ import '../../features/analytics/data/services/learning_analytics_service.dart';
 import '../../features/analytics/data/services/analytics_export_service.dart';
 import '../storage/secure_storage_service.dart';
 import '../../features/tutoring/data/services/chat_history_service.dart';
+import '../../features/tutoring/data/services/learning_session_service.dart';
 import '../../features/organization/data/organization_service.dart';
 import '../../features/auth/data/repositories/auth_repository_impl.dart';
 import '../../features/auth/presentation/bloc/auth_bloc.dart';
@@ -71,6 +72,9 @@ void _registerFeatures() {
   );
   sl.registerLazySingleton<ChatHistoryService>(
     () => ChatHistoryService(sl()),
+  );
+  sl.registerLazySingleton<LearningSessionService>(
+    () => LearningSessionService(sl()),
   );
   sl.registerLazySingleton<OrganizationService>(
     () => OrganizationService(DioClient()),
