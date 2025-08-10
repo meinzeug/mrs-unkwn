@@ -844,3 +844,9 @@
 - `VoiceInputService` und `chat_page.dart` leiten erkannte Sprache an den `TutoringBloc` weiter
 - Service Locator um Registrierung des `TutoringBloc` erweitert
 - Roadmap und Prompt aktualisiert
+
+### Phase 1: Basic Content Moderation - 2025-10-12
+- Keywordlisten für Profanity, Violence und Adult Content in `ContentModerationService` erweitert
+- `TutoringBloc` prüft Nutzereingaben und AI-Antworten, protokolliert Verstöße im `ModerationLogService` und informiert Eltern über den `ParentNotificationService`
+- Unit-Test `content_moderation_service_test.dart` hinzugefügt
+- Roadmap und Prompt aktualisiert
