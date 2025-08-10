@@ -1,9 +1,8 @@
-# Nächster Schritt: Gradle-Version für Android-Build klären
+# Nächster Schritt: CI-Build für Android-APK einrichten
 
 ## Status
 - Phase 0 abgeschlossen ✓
-- Flutter-Projekt mit Multi-Platform-Support offen ✗
-- Android build system upgrade durchgeführt ✗ (Build scheiterte: Gradle 8.7 erforderlich)
+- Produktions-Setup-Skript erstellt ✓
 
 ## Referenzen
 - `/README.md`
@@ -12,20 +11,20 @@
 - `/codex/daten/changelog.md`
 
 ## Nächste Aufgabe
-Gradle-Version und AGP-Kompatibilität prüfen, sodass `flutter build apk --debug` erfolgreich durchläuft.
+GitHub Actions Workflow erstellen, der `flutter build apk --release` ausführt und das APK als Artefakt bereitstellt.
 
 ### Vorbereitungen
 - README und Roadmap prüfen.
 
 ### Implementierungsschritte
-- Kompatible Gradle-Version auswählen oder Override prüfen.
-- Build erneut ausführen.
+- Workflow-Datei `.github/workflows/build-apk.yml` anlegen.
+- Container `cirrusci/flutter:stable` verwenden.
+- APK unter `dist/app-release.apk` erzeugen und hochladen.
 
 ### Validierung
 - `npm test`
 - `pytest codex/tests`
 - `flutter test`
-- `flutter build apk --debug`
 
 ### Selbstgenerierung
 - Nach Abschluss neuen Prompt erstellen.
