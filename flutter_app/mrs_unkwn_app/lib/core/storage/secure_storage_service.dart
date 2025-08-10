@@ -8,7 +8,8 @@ class SecureStorageService {
     );
   }
 
-  static final SecureStorageService _instance = SecureStorageService._internal();
+  static final SecureStorageService _instance =
+      SecureStorageService._internal();
 
   /// Returns the singleton instance of [SecureStorageService].
   factory SecureStorageService() => _instance;
@@ -27,8 +28,12 @@ class SecureStorageService {
   /// Storage key for chat encryption key.
   static const String chatKey = 'CHAT_KEY';
 
+  /// Storage key for learning session encryption key.
+  static const String sessionKey = 'SESSION_KEY';
+
   /// Stores a value under the given [key].
-  Future<void> store(String key, String value) => _storage.write(key: key, value: value);
+  Future<void> store(String key, String value) =>
+      _storage.write(key: key, value: value);
 
   /// Reads a value for the given [key]. Returns `null` if not found.
   Future<String?> read(String key) => _storage.read(key: key);
