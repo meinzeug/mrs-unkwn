@@ -864,3 +864,9 @@
 - `npm test` fehlgeschlagen: package.json nicht gefunden
 - `pytest codex/tests` ausgeführt: keine Tests gefunden
 - `flutter test` fehlgeschlagen: Befehl nicht gefunden
+
+### Phase 1: Android package structure cleanup - 2025-10-15
+- Alte Java/Kotlin-Verzeichnisse entfernt und Kotlin-Package `com.mrsunkwn.mrs_unkwn_app` neu erstellt
+- `MainActivity.kt` mit korrektem Package hinzugefügt
+- `flutter.embedding=2` in `android/gradle.properties` eingetragen
+- Flutter-Caches bereinigt und `flutter clean` ausgeführt

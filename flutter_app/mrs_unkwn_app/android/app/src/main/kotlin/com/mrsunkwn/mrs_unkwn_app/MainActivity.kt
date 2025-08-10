@@ -1,4 +1,4 @@
-package com.example.mrs_unkwn_app
+package com.mrsunkwn.mrs_unkwn_app
 
 import io.flutter.embedding.android.FlutterActivity
 
